@@ -1,6 +1,6 @@
-# Roo Code API
+# Syntx API
 
-The Roo Code extension exposes an API that can be used by other extensions.
+The Syntx extension exposes an API that can be used by other extensions.
 To use this API in your extension:
 
 1. Install `@roo-code/types` with npm, pnpm, or yarn.
@@ -23,7 +23,7 @@ if (!api) {
 }
 
 // Start a new task with an initial message.
-await api.startNewTask("Hello, Roo Code API! Let's make a new project...")
+await api.startNewTask("Hello, Syntx API! Let's make a new project...")
 
 // Start a new task with an initial message and images.
 await api.startNewTask("Use this design language", ["data:image/webp;base64,..."])

@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "您编辑器中的完整AI开发团队。"
 	},
 	"number_format": {
@@ -163,8 +163,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "您的组织需要 Roo Code Cloud 身份验证。请登录以继续。",
-			"organization_mismatch": "您必须使用组织的 Roo Code Cloud 账户进行身份验证。",
+			"cloud_auth_required": "您的组织需要 Syntx Cloud 身份验证。请登录以继续。",
+			"organization_mismatch": "您必须使用组织的 Syntx Cloud 账户进行身份验证。",
 			"verification_failed": "无法验证组织身份验证。"
 		}
 	},

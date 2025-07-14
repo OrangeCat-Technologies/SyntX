@@ -62,7 +62,7 @@ describe("OpenRouterHandler", () => {
 			apiKey: mockOptions.openRouterApiKey,
 			defaultHeaders: {
 				"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
-				"X-Title": "Roo Code",
+				"X-Title": "Syntx",
 				"User-Agent": `RooCode/${Package.version}`,
 			},
 		})

@@ -1,14 +1,14 @@
 <pr_template_format>
   <overview>
     This file defines the EXACT PR message template that must be used when updating
-    pull requests. The format is specific to the Roo Code project and must be followed
+    pull requests. The format is specific to the Syntx project and must be followed
     precisely.
   </overview>
 
   <template>
     <![CDATA[
 <!--
-Thank you for contributing to Roo Code!
+Thank you for contributing to Syntx!
 
 Before submitting your PR, please ensure:
 - It's linked to an approved GitHub Issue.
@@ -21,10 +21,10 @@ Before submitting your PR, please ensure:
 
 Closes: #[ISSUE_NUMBER] <!-- Replace with the issue number, e.g., Closes: #123 -->
 
-### Roo Code Task Context (Optional)
+### Syntx Task Context (Optional)
 
 <!--
-If you used Roo Code to help create this PR, you can share public task links here.
+If you used Syntx to help create this PR, you can share public task links here.
 This helps reviewers understand your development process and provides additional context.
 Example: https://app.roocode.com/share/task-id
 -->
@@ -106,8 +106,8 @@ Please provide your Discord username for reviewers or maintainers to reach you i
     </placeholder>
     
     <placeholder name="[TASK_CONTEXT_IF_APPLICABLE]">
-      <description>Optional Roo Code task links if used</description>
-      <default>_No Roo Code task context for this PR._</default>
+      <description>Optional Syntx task links if used</description>
+      <default>_No Syntx task context for this PR._</default>
     </placeholder>
     
     <placeholder name="[DESCRIPTION_OF_CHANGES]">
@@ -223,7 +223,7 @@ Please provide your Discord username for reviewers or maintainers to reach you i
   <example_filled_template>
     <![CDATA[
 <!--
-Thank you for contributing to Roo Code!
+Thank you for contributing to Syntx!
 
 Before submitting your PR, please ensure:
 - It's linked to an approved GitHub Issue.
@@ -236,15 +236,15 @@ Before submitting your PR, please ensure:
 
 Closes: #456
 
-### Roo Code Task Context (Optional)
+### Syntx Task Context (Optional)
 
 <!--
-If you used Roo Code to help create this PR, you can share public task links here.
+If you used Syntx to help create this PR, you can share public task links here.
 This helps reviewers understand your development process and provides additional context.
 Example: https://app.roocode.com/share/task-id
 -->
 
-_No Roo Code task context for this PR._
+_No Syntx task context for this PR._
 
 ### Description
 

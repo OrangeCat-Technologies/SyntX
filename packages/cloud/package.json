@@ -1,6 +1,6 @@
 {
 	"name": "@roo-code/cloud",
-	"description": "Roo Code Cloud VSCode integration.",
+	"description": "Syntx Cloud VSCode integration.",
 	"version": "0.0.0",
 	"type": "module",
 	"exports": "./src/index.ts",

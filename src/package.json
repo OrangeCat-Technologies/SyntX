@@ -14,7 +14,7 @@
 		"node": "20.19.2"
 	},
 	"author": {
-		"name": "Roo Code"
+		"name": "Syntx"
 	},
 	"repository": {
 		"type": "git",
@@ -42,7 +42,7 @@
 		"sonnet",
 		"ai",
 		"llama",
-		"roo code",
+		"Syntx",
 		"roocode"
 	],
 	"activationEvents": [

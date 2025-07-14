@@ -1,9 +1,9 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-	title: "Privacy Policy - Roo Code",
+	title: "Privacy Policy - Syntx",
 	description:
-		"Privacy policy for Roo Code Cloud and marketing website. Learn how we handle your data and protect your privacy.",
+		"Privacy policy for Syntx Cloud and marketing website. Learn how we handle your data and protect your privacy.",
 }
 
 export default function Privacy() {
@@ -12,12 +12,12 @@ export default function Privacy() {
 			<div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
 				<div className="prose prose-lg mx-auto max-w-4xl dark:prose-invert">
 					<h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-						Roo Code Cloud Privacy Policy
+						Syntx Cloud Privacy Policy
 					</h1>
 					<p className="text-muted-foreground">Last Updated: June 19, 2025</p>
 
 					<p className="lead">
-						This Privacy Policy explains how Roo Code, Inc. (&quot;Roo Code,&quot; &quot;we,&quot;
+						This Privacy Policy explains how Syntx, Inc. (&quot;Syntx,&quot; &quot;we,&quot;
 						&quot;our,&quot; or &quot;us&quot;) collects, uses, and shares information when you:
 					</p>
 					<ul className="lead">
@@ -25,23 +25,23 @@ export default function Privacy() {
 							browse any page under <strong>roocode.com</strong> (the <em>Marketing Site</em>); and/or
 						</li>
 						<li>
-							create an account for, sign in to, or otherwise use <strong>Roo Code Cloud</strong> at{" "}
-							<strong>app.roocode.com</strong> or through the Roo Code extension while authenticated to
-							that Cloud account (the <em>Cloud Service</em>).
+							create an account for, sign in to, or otherwise use <strong>Syntx Cloud</strong> at{" "}
+							<strong>app.roocode.com</strong> or through the Syntx extension while authenticated to that
+							Cloud account (the <em>Cloud Service</em>).
 						</li>
 					</ul>
 
 					<div className="my-8 rounded-lg border border-border bg-muted/50 p-6">
 						<h3 className="mt-0 text-lg font-semibold">Extension‑Only Usage</h3>
 						<p className="mb-0">
-							If you run the Roo Code extension <strong>without</strong> connecting to a Cloud account,
-							your data is governed by the standalone{" "}
+							If you run the Syntx extension <strong>without</strong> connecting to a Cloud account, your
+							data is governed by the standalone{" "}
 							<a
 								href="https://github.com/RooCodeInc/Roo-Code/blob/main/PRIVACY.md"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="text-primary hover:underline">
-								Roo Code Extension Privacy Policy
+								Syntx Extension Privacy Policy
 							</a>
 							.
 						</p>
@@ -50,17 +50,17 @@ export default function Privacy() {
 					<h2 className="mt-12 text-2xl font-bold">Quick Summary</h2>
 					<ul>
 						<li>
-							<strong>Your source code never transits Roo Code servers.</strong> It stays on your device
-							and is sent <strong>directly</strong>—via a client‑to‑provider TLS connection—to the
-							third‑party AI model you select. Roo Code never stores, inspects, or trains on your code.
+							<strong>Your source code never transits Syntx servers.</strong> It stays on your device and
+							is sent <strong>directly</strong>—via a client‑to‑provider TLS connection—to the third‑party
+							AI model you select. Syntx never stores, inspects, or trains on your code.
 						</li>
 						<li>
-							<strong>Prompts and chat snippets are collected by default</strong> in Roo Code Cloud so you
+							<strong>Prompts and chat snippets are collected by default</strong> in Syntx Cloud so you
 							can search and re‑use past conversations. Organization admins can disable this collection at
 							any time.
 						</li>
 						<li>
-							We collect only the data needed to operate Roo Code Cloud, do <strong>not</strong> sell
+							We collect only the data needed to operate Syntx Cloud, do <strong>not</strong> sell
 							customer data, and do <strong>not</strong> use your content to train models.
 						</li>
 					</ul>
@@ -134,7 +134,7 @@ export default function Privacy() {
 					<h2 className="mt-12 text-2xl font-bold">2. How We Use Information</h2>
 					<ul>
 						<li>
-							<strong>Operate & secure Roo Code Cloud</strong> (authentication, completions, abuse
+							<strong>Operate & secure Syntx Cloud</strong> (authentication, completions, abuse
 							prevention)
 						</li>
 						<li>
@@ -171,25 +171,21 @@ export default function Privacy() {
 										Your chosen model provider (direct client → provider TLS)
 									</td>
 									<td className="border border-border px-4 py-2">
-										Roo Code servers; ad networks; model‑training pipelines
+										Syntx servers; ad networks; model‑training pipelines
 									</td>
 								</tr>
 								<tr className="bg-muted/25">
 									<td className="border border-border px-4 py-2 font-medium">
 										Prompts, chat snippets & token counts (Cloud)
 									</td>
-									<td className="border border-border px-4 py-2">
-										Roo Code Cloud (encrypted at rest)
-									</td>
+									<td className="border border-border px-4 py-2">Syntx Cloud (encrypted at rest)</td>
 									<td className="border border-border px-4 py-2">Any third‑party</td>
 								</tr>
 								<tr>
 									<td className="border border-border px-4 py-2 font-medium">
 										Workspace Configuration
 									</td>
-									<td className="border border-border px-4 py-2">
-										Roo Code Cloud (encrypted at rest)
-									</td>
+									<td className="border border-border px-4 py-2">Syntx Cloud (encrypted at rest)</td>
 									<td className="border border-border px-4 py-2">Any third-party</td>
 								</tr>
 								<tr className="bg-muted/25">
@@ -203,7 +199,7 @@ export default function Privacy() {
 									<td className="border border-border px-4 py-2 font-medium">Payment Data</td>
 									<td className="border border-border px-4 py-2">Stripe (PCI‑DSS Level 1)</td>
 									<td className="border border-border px-4 py-2">
-										Roo Code servers (we store only the Stripe customer ID)
+										Syntx servers (we store only the Stripe customer ID)
 									</td>
 								</tr>
 							</tbody>
@@ -213,7 +209,7 @@ export default function Privacy() {
 					<h2 className="mt-12 text-2xl font-bold">4. Data Retention</h2>
 					<ul>
 						<li>
-							<strong>Source Code:</strong> Never stored on Roo Code servers.
+							<strong>Source Code:</strong> Never stored on Syntx servers.
 						</li>
 						<li>
 							<strong>Prompts & Chat Snippets:</strong> Persist in your Cloud workspace until you or your
@@ -221,7 +217,7 @@ export default function Privacy() {
 						</li>
 						<li>
 							<strong>Operational Logs & Analytics:</strong> Retained only as needed to operate and secure
-							Roo Code Cloud.
+							Syntx Cloud.
 						</li>
 					</ul>
 
@@ -236,7 +232,7 @@ export default function Privacy() {
 						</li>
 						<li>
 							<strong>Delete your Cloud account</strong> at any time from{" "}
-							<strong>Security Settings</strong> inside Roo Code Cloud.
+							<strong>Security Settings</strong> inside Syntx Cloud.
 						</li>
 					</ul>
 

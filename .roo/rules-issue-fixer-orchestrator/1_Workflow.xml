@@ -347,7 +347,7 @@
         <message>
           **Task: Prepare Pull Request Title and Body**
 
-          You are an expert at writing clear and concise pull request summaries following the Roo Code contribution guidelines.
+          You are an expert at writing clear and concise pull request summaries following the Syntx contribution guidelines.
 
           **Context Files:**
           - **Issue**: `.roo/temp/issue-fixer-orchestrator/[TASK_ID]/issue_context.json`

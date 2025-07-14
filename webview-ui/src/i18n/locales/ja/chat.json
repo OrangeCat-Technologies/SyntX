@@ -1,5 +1,5 @@
 {
-	"greeting": "Roo Code へようこそ",
+	"greeting": "Syntx へようこそ",
 	"task": {
 		"title": "タスク",
 		"seeMore": "もっと見る",
@@ -18,7 +18,7 @@
 		"sharePublicly": "公開で共有",
 		"sharePubliclyDescription": "リンクを持つ誰でもアクセスできます",
 		"connectToCloud": "クラウドに接続",
-		"connectToCloudDescription": "タスクを共有するためにRoo Code Cloudにサインイン",
+		"connectToCloudDescription": "タスクを共有するためにSyntx Cloudにサインイン",
 		"sharingDisabledByOrganization": "組織により共有が無効化されています",
 		"shareSuccessOrganization": "組織リンクをクリップボードにコピーしました",
 		"shareSuccessPublic": "公開リンクをクリップボードにコピーしました"
@@ -222,7 +222,7 @@
 	"autoApprove": {
 		"title": "自動承認:",
 		"none": "なし",
-		"description": "自動承認はRoo Codeに許可を求めずに操作を実行する権限を与えます。完全に信頼できる操作のみ有効にしてください。より詳細な設定は<settingsLink>設定</settingsLink>で利用できます。"
+		"description": "自動承認はSyntxに許可を求めずに操作を実行する権限を与えます。完全に信頼できる操作のみ有効にしてください。より詳細な設定は<settingsLink>設定</settingsLink>で利用できます。"
 	},
 	"reasoning": {
 		"thinking": "考え中",
@@ -240,8 +240,8 @@
 		"countdownDisplay": "{{count}}秒"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} リリース",
-		"description": "Roo Code {{version}}は、開発ワークフローを向上させる強力な新機能と重要な改善をもたらします。",
+		"title": "🎉 Syntx {{version}} リリース",
+		"description": "Syntx {{version}}は、開発ワークフローを向上させる強力な新機能と重要な改善をもたらします。",
 		"whatsNew": "新機能",
 		"feature1": "<bold>コードベースインデックス機能が実験段階を卒業</bold>: 完全なコードベースインデックス機能が安定し、改善された検索とコンテキスト理解により本番環境での使用が可能になりました。",
 		"feature2": "<bold>新しいTodoリスト機能</bold>: 統合されたTodo管理でタスクを軌道に乗せ、開発目標に整理され集中した状態を維持できます。",
@@ -284,7 +284,7 @@
 	"profileViolationWarning": "現在のプロファイルは組織の設定と互換性がありません",
 	"shellIntegration": {
 		"title": "コマンド実行警告",
-		"description": "コマンドはVSCodeターミナルシェル統合なしで実行されています。この警告を非表示にするには、<settingsLink>Roo Code設定</settingsLink>の<strong>Terminal</strong>セクションでシェル統合を無効にするか、以下のリンクを使用してVSCodeターミナル統合のトラブルシューティングを行ってください。",
+		"description": "コマンドはVSCodeターミナルシェル統合なしで実行されています。この警告を非表示にするには、<settingsLink>Syntx設定</settingsLink>の<strong>Terminal</strong>セクションでシェル統合を無効にするか、以下のリンクを使用してVSCodeターミナル統合のトラブルシューティングを行ってください。",
 		"troubleshooting": "シェル統合のドキュメントはこちらをクリック"
 	},
 	"ask": {

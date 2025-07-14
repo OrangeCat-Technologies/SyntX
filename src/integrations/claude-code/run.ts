@@ -128,7 +128,7 @@ function runProcess({
 		"stream-json",
 		"--disallowedTools",
 		claudeCodeTools,
-		// Roo Code will handle recursive calls
+		// Syntx will handle recursive calls
 		"--max-turns",
 		"1",
 	]

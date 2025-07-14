@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "Un intero team di sviluppatori AI nel tuo editor."
 	},
 	"number_format": {
@@ -158,8 +158,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "La tua organizzazione richiede l'autenticazione Roo Code Cloud. Accedi per continuare.",
-			"organization_mismatch": "Devi essere autenticato con l'account Roo Code Cloud della tua organizzazione.",
+			"cloud_auth_required": "La tua organizzazione richiede l'autenticazione Syntx Cloud. Accedi per continuare.",
+			"organization_mismatch": "Devi essere autenticato con l'account Syntx Cloud della tua organizzazione.",
 			"verification_failed": "Impossibile verificare l'autenticazione dell'organizzazione."
 		}
 	},

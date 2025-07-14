@@ -60,7 +60,7 @@ export function Evals({
 		<div className="mx-auto flex max-w-screen-lg flex-col gap-8 p-8">
 			<div className="flex flex-col gap-4">
 				<div>
-					Roo Code tests each frontier model against{" "}
+					Syntx tests each frontier model against{" "}
 					<a href="https://github.com/cte/evals/" className="underline">
 						a suite of hundreds of exercises
 					</a>{" "}

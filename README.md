@@ -12,7 +12,7 @@
 </div>
 <br>
 <div align="center">
-  <h1>Roo Code (prev. Roo Cline)</h1>
+  <h1>Syntx (prev. Roo Cline)</h1>
   <p align="center">
   <img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
   </p>
@@ -34,7 +34,7 @@
 
 </div>
 
-**Roo Code** is an AI-powered **autonomous coding agent** that lives in your editor. It can:
+**Syntx** is an AI-powered **autonomous coding agent** that lives in your editor. It can:
 
 - Communicate in natural language
 - Read and write files directly in your workspace
@@ -43,22 +43,22 @@
 - Integrate with any OpenAI-compatible or custom API/model
 - Adapt its “personality” and capabilities through **Custom Modes**
 
-Whether you’re seeking a flexible coding partner, a system architect, or specialized roles like a QA engineer or product manager, Roo Code can help you build software more efficiently.
+Whether you’re seeking a flexible coding partner, a system architect, or specialized roles like a QA engineer or product manager, Syntx can help you build software more efficiently.
 
 Check out the [CHANGELOG](CHANGELOG.md) for detailed updates and fixes.
 
 ---
 
-## 🎉 Roo Code 3.23 Released
+## 🎉 Syntx 3.23 Released
 
-Roo Code 3.23 brings powerful new features and significant improvements to enhance your development workflow!
+Syntx 3.23 brings powerful new features and significant improvements to enhance your development workflow!
 
 - **Codebase Indexing Graduated from Experimental** - Full codebase indexing is now stable and ready for production use with improved search and context understanding.
 - **New Todo List Feature** - Keep your tasks on track with integrated todo management that helps you stay organized and focused on your development goals.
 
 ---
 
-## What Can Roo Code Do?
+## What Can Syntx Do?
 
 - 🚀 **Generate Code** from natural language descriptions
 - 🔧 **Refactor & Debug** existing code
@@ -69,7 +69,7 @@ Roo Code 3.23 brings powerful new features and significant improvements to enhan
 
 ## Quick Start
 
-1. [Install Roo Code](https://docs.roocode.com/getting-started/installing)
+1. [Install Syntx](https://docs.roocode.com/getting-started/installing)
 2. [Connect Your AI Provider](https://docs.roocode.com/getting-started/connecting-api-provider)
 3. [Try Your First Task](https://docs.roocode.com/getting-started/your-first-task)
 
@@ -77,7 +77,7 @@ Roo Code 3.23 brings powerful new features and significant improvements to enhan
 
 ### Multiple Modes
 
-Roo Code adapts to your needs with specialized [modes](https://docs.roocode.com/basic-usage/using-modes):
+Syntx adapts to your needs with specialized [modes](https://docs.roocode.com/basic-usage/using-modes):
 
 - **Code Mode:** For general-purpose coding tasks
 - **Architect Mode:** For planning and technical leadership
@@ -87,18 +87,18 @@ Roo Code adapts to your needs with specialized [modes](https://docs.roocode.com/
 
 ### Smart Tools
 
-Roo Code comes with powerful [tools](https://docs.roocode.com/basic-usage/how-tools-work) that can:
+Syntx comes with powerful [tools](https://docs.roocode.com/basic-usage/how-tools-work) that can:
 
 - Read and write files in your project
 - Execute commands in your VS Code terminal
 - Control a web browser
 - Use external tools via [MCP (Model Context Protocol)](https://docs.roocode.com/advanced-usage/mcp)
 
-MCP extends Roo Code's capabilities by allowing you to add unlimited custom tools. Integrate with external APIs, connect to databases, or create specialized development tools - MCP provides the framework to expand Roo Code's functionality to meet your specific needs.
+MCP extends Syntx's capabilities by allowing you to add unlimited custom tools. Integrate with external APIs, connect to databases, or create specialized development tools - MCP provides the framework to expand Syntx's functionality to meet your specific needs.
 
 ### Customization
 
-Make Roo Code work your way with:
+Make Syntx work your way with:
 
 - [Custom Instructions](https://docs.roocode.com/advanced-usage/custom-instructions) for personalized behavior
 - [Custom Modes](https://docs.roocode.com/advanced-usage/custom-modes) for specialized tasks
@@ -137,13 +137,13 @@ pnpm install
 
 3. **Run the extension**:
 
-There are several ways to run the Roo Code extension:
+There are several ways to run the Syntx extension:
 
 ### Development Mode (F5)
 
 For active development, use VSCode's built-in debugging:
 
-Press `F5` (or go to **Run** → **Start Debugging**) in VSCode. This will open a new VSCode window with the Roo Code extension running.
+Press `F5` (or go to **Run** → **Start Debugging**) in VSCode. This will open a new VSCode window with the Syntx extension running.
 
 - Changes to the webview will appear immediately.
 - Changes to the core extension will also hot reload automatically.
@@ -191,7 +191,7 @@ We use [changesets](https://github.com/changesets/changesets) for versioning and
 
 ## Disclaimer
 
-**Please note** that Roo Code, Inc does **not** make any representations or warranties regarding any code, models, or other tools provided or made available in connection with Roo Code, any associated third-party tools, or any resulting outputs. You assume **all risks** associated with the use of any such tools or outputs; such tools are provided on an **"AS IS"** and **"AS AVAILABLE"** basis. Such risks may include, without limitation, intellectual property infringement, cyber vulnerabilities or attacks, bias, inaccuracies, errors, defects, viruses, downtime, property loss or damage, and/or personal injury. You are solely responsible for your use of any such tools or outputs (including, without limitation, the legality, appropriateness, and results thereof).
+**Please note** that Syntx, Inc does **not** make any representations or warranties regarding any code, models, or other tools provided or made available in connection with Syntx, any associated third-party tools, or any resulting outputs. You assume **all risks** associated with the use of any such tools or outputs; such tools are provided on an **"AS IS"** and **"AS AVAILABLE"** basis. Such risks may include, without limitation, intellectual property infringement, cyber vulnerabilities or attacks, bias, inaccuracies, errors, defects, viruses, downtime, property loss or damage, and/or personal injury. You are solely responsible for your use of any such tools or outputs (including, without limitation, the legality, appropriateness, and results thereof).
 
 ---
 
@@ -203,7 +203,7 @@ We love community contributions! Get started by reading our [CONTRIBUTING.md](CO
 
 ## Contributors
 
-Thanks to all our contributors who have helped make Roo Code better!
+Thanks to all our contributors who have helped make Syntx better!
 
 <!-- START CONTRIBUTORS SECTION - AUTO-GENERATED, DO NOT EDIT MANUALLY -->
 
@@ -249,8 +249,8 @@ Thanks to all our contributors who have helped make Roo Code better!
 
 ## License
 
-[Apache 2.0 © 2025 Roo Code, Inc.](./LICENSE)
+[Apache 2.0 © 2025 Syntx, Inc.](./LICENSE)
 
 ---
 
-**Enjoy Roo Code!** Whether you keep it on a short leash or let it roam autonomously, we can’t wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!
+**Enjoy Syntx!** Whether you keep it on a short leash or let it roam autonomously, we can’t wait to see what you build. If you have questions or feature ideas, drop by our [Reddit community](https://www.reddit.com/r/RooCode/) or [Discord](https://discord.gg/roocode). Happy coding!

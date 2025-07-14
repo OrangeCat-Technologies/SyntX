@@ -1,5 +1,5 @@
 {
-	"greeting": "欢迎使用 Roo Code",
+	"greeting": "欢迎使用 Syntx",
 	"task": {
 		"title": "任务",
 		"seeMore": "展开",
@@ -18,7 +18,7 @@
 		"sharePublicly": "公开分享",
 		"sharePubliclyDescription": "任何拥有链接的人都可访问",
 		"connectToCloud": "连接到云端",
-		"connectToCloudDescription": "登录 Roo Code Cloud 以分享任务",
+		"connectToCloudDescription": "登录 Syntx Cloud 以分享任务",
 		"sharingDisabledByOrganization": "组织已禁用分享功能",
 		"shareSuccessOrganization": "组织链接已复制到剪贴板",
 		"shareSuccessPublic": "公开链接已复制到剪贴板"
@@ -240,8 +240,8 @@
 		"countdownDisplay": "{{count}}秒"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} 已发布",
-		"description": "Roo Code {{version}} 带来强大的新功能和重大改进，提升您的开发工作流程。",
+		"title": "🎉 Syntx {{version}} 已发布",
+		"description": "Syntx {{version}} 带来强大的新功能和重大改进，提升您的开发工作流程。",
 		"whatsNew": "新特性",
 		"feature1": "<bold>代码库索引从实验阶段正式发布</bold>: 完整的代码库索引现已稳定，可用于生产环境，具备改进的搜索和上下文理解功能。",
 		"feature2": "<bold>新增待办事项列表功能</bold>: 通过集成的待办事项管理保持任务进度，帮助你保持条理并专注于开发目标。",
@@ -284,7 +284,7 @@
 	"profileViolationWarning": "当前配置文件与您的组织设置不兼容",
 	"shellIntegration": {
 		"title": "命令执行警告",
-		"description": "您的命令正在没有 VSCode 终端 shell 集成的情况下执行。要隐藏此警告，您可以在 <settingsLink>Roo Code 设置</settingsLink>的 <strong>Terminal</strong> 部分禁用 shell 集成，或使用下方链接排查 VSCode 终端集成问题。",
+		"description": "您的命令正在没有 VSCode 终端 shell 集成的情况下执行。要隐藏此警告，您可以在 <settingsLink>Syntx 设置</settingsLink>的 <strong>Terminal</strong> 部分禁用 shell 集成，或使用下方链接排查 VSCode 终端集成问题。",
 		"troubleshooting": "点击此处查看 shell 集成文档。"
 	},
 	"ask": {

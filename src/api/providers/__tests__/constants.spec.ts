@@ -16,7 +16,7 @@ describe("DEFAULT_HEADERS", () => {
 	})
 
 	it("should have correct X-Title value", () => {
-		expect(DEFAULT_HEADERS["X-Title"]).toBe("Roo Code")
+		expect(DEFAULT_HEADERS["X-Title"]).toBe("Syntx")
 	})
 
 	it("should have correct User-Agent format", () => {

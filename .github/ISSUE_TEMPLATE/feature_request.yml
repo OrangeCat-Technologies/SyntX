@@ -1,11 +1,11 @@
 name: Detailed Feature Proposal
-description: Report a specific problem that needs solving in Roo Code
+description: Report a specific problem that needs solving in Syntx
 labels: ["proposal", "enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        **Thank you for submitting a feature request for Roo Code!**
+        **Thank you for submitting a feature request for Syntx!**
         
         This template helps you describe problems that need solving. Focus on the problem - the Roo team will work to design solutions unless you want to contribute the implementation yourself.
         
@@ -60,12 +60,12 @@ body:
   - type: textarea
     id: roo-code-tasks
     attributes:
-      label: Roo Code Task Links (Optional)
+      label: Syntx Task Links (Optional)
       description: |
-        If you used Roo Code to explore this feature request or develop solutions, share the public task links here.
+        If you used Syntx to explore this feature request or develop solutions, share the public task links here.
         This helps maintainers understand the context and any exploration you've done.
         Example: https://app.roocode.com/share/task-id
-      placeholder: Paste your Roo Code share links here, one per line
+      placeholder: Paste your Syntx share links here, one per line
 
   - type: checkboxes
     id: checklist

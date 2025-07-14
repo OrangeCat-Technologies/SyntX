@@ -257,16 +257,16 @@ export class WebAuthService extends EventEmitter<AuthServiceEvents> implements A
 			const url = `${getRooCodeApiUrl()}/extension/sign-in?${params.toString()}`
 			await vscode.env.openExternal(vscode.Uri.parse(url))
 		} catch (error) {
-			this.log(`[auth] Error initiating Roo Code Cloud auth: ${error}`)
-			throw new Error(`Failed to initiate Roo Code Cloud authentication: ${error}`)
+			this.log(`[auth] Error initiating Syntx Cloud auth: ${error}`)
+			throw new Error(`Failed to initiate Syntx Cloud authentication: ${error}`)
 		}
 	}
 
 	/**
-	 * Handle the callback from Roo Code Cloud
+	 * Handle the callback from Syntx Cloud
 	 *
 	 * This method is called when the user is redirected back to the extension
-	 * after authenticating with Roo Code Cloud.
+	 * after authenticating with Syntx Cloud.
 	 *
 	 * @param code The authorization code from the callback
 	 * @param state The state parameter from the callback
@@ -278,7 +278,7 @@ export class WebAuthService extends EventEmitter<AuthServiceEvents> implements A
 		organizationId?: string | null,
 	): Promise<void> {
 		if (!code || !state) {
-			vscode.window.showInformationMessage("Invalid Roo Code Cloud sign in url")
+			vscode.window.showInformationMessage("Invalid Syntx Cloud sign in url")
 			return
 		}
 
@@ -298,14 +298,14 @@ export class WebAuthService extends EventEmitter<AuthServiceEvents> implements A
 
 			await this.storeCredentials(credentials)
 
-			vscode.window.showInformationMessage("Successfully authenticated with Roo Code Cloud")
-			this.log("[auth] Successfully authenticated with Roo Code Cloud")
+			vscode.window.showInformationMessage("Successfully authenticated with Syntx Cloud")
+			this.log("[auth] Successfully authenticated with Syntx Cloud")
 		} catch (error) {
-			this.log(`[auth] Error handling Roo Code Cloud callback: ${error}`)
+			this.log(`[auth] Error handling Syntx Cloud callback: ${error}`)
 			const previousState = this.state
 			this.state = "logged-out"
 			this.emit("logged-out", { previousState })
-			throw new Error(`Failed to handle Roo Code Cloud callback: ${error}`)
+			throw new Error(`Failed to handle Syntx Cloud callback: ${error}`)
 		}
 	}
 
@@ -330,11 +330,11 @@ export class WebAuthService extends EventEmitter<AuthServiceEvents> implements A
 				}
 			}
 
-			vscode.window.showInformationMessage("Logged out from Roo Code Cloud")
-			this.log("[auth] Logged out from Roo Code Cloud")
+			vscode.window.showInformationMessage("Logged out from Syntx Cloud")
+			this.log("[auth] Logged out from Syntx Cloud")
 		} catch (error) {
-			this.log(`[auth] Error logging out from Roo Code Cloud: ${error}`)
-			throw new Error(`Failed to log out from Roo Code Cloud: ${error}`)
+			this.log(`[auth] Error logging out from Syntx Cloud: ${error}`)
+			throw new Error(`Failed to log out from Syntx Cloud: ${error}`)
 		}
 	}
 

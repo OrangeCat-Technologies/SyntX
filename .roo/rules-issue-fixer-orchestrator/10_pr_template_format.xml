@@ -5,7 +5,7 @@
     1. JSON format in pr_summary.json (for programmatic use)
     2. Markdown format in pr_message.md (for manual PR creation)
     
-    The PR message must follow the exact Roo Code contribution template.
+    The PR message must follow the exact Syntx contribution template.
   </overview>
 
   <json_format>
@@ -42,11 +42,11 @@
 
   <pr_body_template>
     <description>
-      The PR body must follow this exact Roo Code PR template with all required sections.
+      The PR body must follow this exact Syntx PR template with all required sections.
     </description>
     <template><![CDATA[
 <!--
-Thank you for contributing to Roo Code!
+Thank you for contributing to Syntx!
 
 Before submitting your PR, please ensure:
 - It's linked to an approved GitHub Issue.
@@ -59,10 +59,10 @@ Before submitting your PR, please ensure:
 
 Closes: #[ISSUE_NUMBER] <!-- Replace with the issue number, e.g., Closes: #123 -->
 
-### Roo Code Task Context (Optional)
+### Syntx Task Context (Optional)
 
 <!--
-If you used Roo Code to help create this PR, you can share public task links here.
+If you used Syntx to help create this PR, you can share public task links here.
 This helps reviewers understand your development process and provides additional context.
 Example: https://app.roocode.com/share/task-id
 -->
@@ -139,7 +139,7 @@ Please provide your Discord username for reviewers or maintainers to reach you i
 
   <template_placeholders>
     <placeholder name="[ISSUE_NUMBER]">The GitHub issue number being fixed</placeholder>
-    <placeholder name="[TASK_CONTEXT]">Optional Roo Code task links (remove section if not applicable)</placeholder>
+    <placeholder name="[TASK_CONTEXT]">Optional Syntx task links (remove section if not applicable)</placeholder>
     <placeholder name="[DESCRIPTION_CONTENT]">
       Summary of changes and implementation details. Should include:
       - Key implementation details
