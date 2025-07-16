@@ -109,6 +109,7 @@
 		}
 	},
 	"selectMode": "Select mode for interaction",
+	"selectAgent": "Select Agent",
 	"selectApiConfig": "Select API configuration",
 	"enhancePrompt": "Enhance prompt with additional context",
 	"modeSelector": {

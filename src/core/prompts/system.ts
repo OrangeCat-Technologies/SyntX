@@ -26,6 +26,7 @@ import {
 	addCustomInstructions,
 	markdownFormattingSection,
 } from "./sections"
+import { getDataScienceSystemPrompt } from "./data_science"
 
 // Helper function to get prompt component, filtering out empty objects
 export function getPromptComponent(
@@ -186,24 +187,32 @@ ${customInstructions}`
 	// If diff is disabled, don't pass the diffStrategy
 	const effectiveDiffStrategy = diffEnabled ? diffStrategy : undefined
 
-	return generatePrompt(
-		context,
-		cwd,
-		supportsComputerUse,
-		currentMode.slug,
-		mcpHub,
-		effectiveDiffStrategy,
-		browserViewportSize,
-		promptComponent,
-		customModes,
-		globalCustomInstructions,
-		diffEnabled,
-		experiments,
-		enableMcpServerCreation,
-		language,
-		rooIgnoreInstructions,
-		partialReadsEnabled,
-		settings,
-		todoList,
-	)
+	const selectedAgentId = context.globalState.get("selectedAgentId")
+
+	switch (selectedAgentId) {
+		case "data-science":
+			return getDataScienceSystemPrompt(cwd, effectiveDiffStrategy)
+		case "software-dev":
+		default:
+			return generatePrompt(
+				context,
+				cwd,
+				supportsComputerUse,
+				currentMode.slug,
+				mcpHub,
+				effectiveDiffStrategy,
+				browserViewportSize,
+				promptComponent,
+				customModes,
+				globalCustomInstructions,
+				diffEnabled,
+				experiments,
+				enableMcpServerCreation,
+				language,
+				rooIgnoreInstructions,
+				partialReadsEnabled,
+				settings,
+				todoList,
+			)
+	}
 }

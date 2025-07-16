@@ -24,6 +24,7 @@ import { vscode } from "@src/utils/vscode"
 import { convertTextMateToHljs } from "@src/utils/textMateToHljs"
 
 export interface ExtensionStateContextType extends ExtensionState {
+	showModes?: boolean
 	historyPreviewCollapsed?: boolean // Add the new state property
 	didHydrateState: boolean
 	showWelcome: boolean
@@ -183,6 +184,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		requestDelaySeconds: 5,
 		currentApiConfigName: "default",
 		listApiConfigMeta: [],
+		showModes: true,
 		mode: defaultModeSlug,
 		customModePrompts: defaultPrompts,
 		customSupportPrompts: {},

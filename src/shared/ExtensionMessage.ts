@@ -51,6 +51,7 @@ export interface LanguageModelChatSelector {
 // 'settingsButtonClicked' or 'hello'. Webview will hold state.
 export interface ExtensionMessage {
 	type:
+		| "agentSelected"
 		| "action"
 		| "state"
 		| "selectedImages"
@@ -107,7 +108,10 @@ export interface ExtensionMessage {
 		| "codeIndexSecretStatus"
 	text?: string
 	payload?: any // Add a generic payload for now, can refine later
+	agentId?: string
+	showModes?: boolean
 	action?:
+		| "agentButtonClicked"
 		| "chatButtonClicked"
 		| "mcpButtonClicked"
 		| "settingsButtonClicked"
@@ -218,6 +222,7 @@ export type ExtensionState = Pick<
 	// | "mcpEnabled" // Optional in GlobalSettings, required here.
 	// | "enableMcpServerCreation" // Optional in GlobalSettings, required here.
 	// | "mode" // Optional in GlobalSettings, required here.
+	| "showModes"
 	| "modeApiConfigs"
 	// | "customModes" // Optional in GlobalSettings, required here.
 	| "customModePrompts"

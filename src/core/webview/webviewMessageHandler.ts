@@ -2223,5 +2223,14 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
+
+		case "agentSelected": {
+			const { agentId, showModes } = message
+			await updateGlobalState("selectedAgentId", agentId)
+			await updateGlobalState("showModes", showModes)
+			vscode.window.showInformationMessage(`Switched to ${agentId} agent`)
+			await provider.postStateToWebview()
+			break
+		}
 	}
 }
