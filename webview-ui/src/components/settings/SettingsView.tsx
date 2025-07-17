@@ -23,6 +23,7 @@ import {
 	Info,
 	MessageSquare,
 	LucideIcon,
+	User,
 } from "lucide-react"
 
 import type { ProviderSettings, ExperimentId } from "@roo-code/types"
@@ -65,6 +66,7 @@ import { LanguageSettings } from "./LanguageSettings"
 import { About } from "./About"
 import { Section } from "./Section"
 import PromptsSettings from "./PromptsSettings"
+import ProfileSettings from "./ProfileSettings"
 import { cn } from "@/lib/utils"
 
 export const settingsTabsContainer = "flex flex-1 overflow-hidden [&.narrow_.tab-label]:hidden"
@@ -79,6 +81,7 @@ export interface SettingsViewRef {
 }
 
 const sectionNames = [
+	"profile",
 	"providers",
 	"autoApprove",
 	"browser",
@@ -392,6 +395,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 
 	const sections: { id: SectionName; icon: LucideIcon }[] = useMemo(
 		() => [
+			{ id: "profile", icon: User },
 			{ id: "providers", icon: Webhook },
 			{ id: "autoApprove", icon: CheckCheck },
 			{ id: "browser", icon: SquareMousePointer },
@@ -539,6 +543,22 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 
 				{/* Content area */}
 				<TabContent className="p-0 flex-1 overflow-auto">
+					{/* Profile Section */}
+					{activeTab === "profile" && (
+						<div>
+							<SectionHeader>
+								<div className="flex items-center gap-2">
+									<User className="w-4" />
+									<div>Profile</div>
+								</div>
+							</SectionHeader>
+
+							<Section>
+								<ProfileSettings />
+							</Section>
+						</div>
+					)}
+
 					{/* Providers Section */}
 					{activeTab === "providers" && (
 						<div>

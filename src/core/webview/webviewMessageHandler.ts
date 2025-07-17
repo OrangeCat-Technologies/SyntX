@@ -2232,5 +2232,26 @@ export const webviewMessageHandler = async (
 			await provider.postStateToWebview()
 			break
 		}
+
+		case "initiateWebsiteAuth": {
+			try {
+				await provider.initiateWebsiteAuth()
+			} catch (error) {
+				provider.log(`Website auth initiation failed: ${error}`)
+				vscode.window.showErrorMessage("Website authentication failed to start.")
+			}
+			break
+		}
+
+		case "signOutWebsite": {
+			try {
+				await provider.signOutWebsite()
+				await provider.postStateToWebview()
+			} catch (error) {
+				provider.log(`Website sign out failed: ${error}`)
+				vscode.window.showErrorMessage("Website sign out failed.")
+			}
+			break
+		}
 	}
 }

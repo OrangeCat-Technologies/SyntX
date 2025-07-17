@@ -167,6 +167,8 @@ export interface WebviewMessage {
 		| "accountButtonClicked"
 		| "rooCloudSignIn"
 		| "rooCloudSignOut"
+		| "initiateWebsiteAuth"
+		| "signOutWebsite"
 		| "condenseTaskContextRequest"
 		| "requestIndexingStatus"
 		| "startIndexing"

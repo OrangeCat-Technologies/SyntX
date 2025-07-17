@@ -14,6 +14,7 @@ import ChatView, { ChatViewRef } from "./components/chat/ChatView"
 import HistoryView from "./components/history/HistoryView"
 import SettingsView, { SettingsViewRef } from "./components/settings/SettingsView"
 import WelcomeView from "./components/welcome/WelcomeView"
+import GetStartedView from "./components/welcome/GetStartedView"
 import McpView from "./components/mcp/McpView"
 import { MarketplaceView } from "./components/marketplace/MarketplaceView"
 import ModesView from "./components/modes/ModesView"
@@ -50,6 +51,7 @@ const App = () => {
 		cloudApiUrl,
 		renderContext,
 		mdmCompliant,
+		websiteNotAuthenticated,
 	} = useExtensionState()
 
 	// Create a persistent state manager
@@ -170,7 +172,9 @@ const App = () => {
 
 	// Do not conditionally load ChatView, it's expensive and there's state we
 	// don't want to lose (user input, disableInput, askResponse promise, etc.)
-	return showWelcome ? (
+	return websiteNotAuthenticated ? (
+		<GetStartedView />
+	) : showWelcome ? (
 		<WelcomeView />
 	) : (
 		<>

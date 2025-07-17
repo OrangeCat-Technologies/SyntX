@@ -112,6 +112,11 @@ export const globalSettingsSchema = z.object({
 	lastModeExportPath: z.string().optional(),
 	lastModeImportPath: z.string().optional(),
 
+	// Website authentication properties
+	websiteUsername: z.string().optional(),
+	syntxApiKey: z.string().optional(),
+	websiteNotAuthenticated: z.boolean().optional(),
+
 	selectedAgentId: z.string().optional(),
 	showModes: z.boolean().optional(),
 })

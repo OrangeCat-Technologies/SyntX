@@ -106,6 +106,8 @@ export interface ExtensionMessage {
 		| "shareTaskSuccess"
 		| "codeIndexSettingsSaved"
 		| "codeIndexSecretStatus"
+		| "websiteAuth"
+		| "websiteAuthCallback"
 	text?: string
 	payload?: any // Add a generic payload for now, can refine later
 	agentId?: string
@@ -275,6 +277,11 @@ export type ExtensionState = Pick<
 	cloudApiUrl?: string
 	sharingEnabled: boolean
 	organizationAllowList: OrganizationAllowList
+
+	// Website authentication states
+	websiteUsername?: string
+	syntxApiKey?: string
+	websiteNotAuthenticated?: boolean
 
 	autoCondenseContext: boolean
 	autoCondenseContextPercent: number

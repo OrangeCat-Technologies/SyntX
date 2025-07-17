@@ -1860,4 +1860,51 @@ export class ClineProvider
 			...gitInfo,
 		}
 	}
+
+	// Website Authentication
+
+	async initiateWebsiteAuth() {
+		const packageJSON = this.contextProxy.extension?.packageJSON
+		const publisher = packageJSON?.publisher ?? "OrangecatTechPvtLtd"
+		const name = packageJSON?.name ?? "syntx"
+		const callbackUri = `vscode://${publisher}.${name}/website/callback`
+
+		const authUrl = `https://syntx.dev/login?redirect_uri=${encodeURIComponent(callbackUri)}`
+
+		await vscode.env.openExternal(vscode.Uri.parse(authUrl))
+	}
+
+	async handleWebsiteAuthCallback(username: string, apiKey: string) {
+		if (!username || !apiKey) {
+			throw new Error("Missing username or API key in website authentication callback")
+		}
+
+		// Store credentials in global state
+		await this.contextProxy.setValue("websiteUsername", username)
+		await this.contextProxy.setValue("syntxApiKey", apiKey)
+
+		// Send authentication success message to webview
+		await this.postMessageToWebview({
+			type: "websiteAuth",
+			text: JSON.stringify({ authenticated: true, username, apiKey }),
+		})
+
+		await this.postStateToWebview()
+
+		vscode.window.showInformationMessage("Successfully authenticated with SyntX website")
+	}
+
+	async signOutWebsite() {
+		// Clear stored credentials
+		await this.contextProxy.setValue("websiteUsername", undefined)
+		await this.contextProxy.setValue("syntxApiKey", undefined)
+
+		// Send sign out message to webview
+		await this.postMessageToWebview({
+			type: "websiteAuth",
+			text: JSON.stringify({ authenticated: false, username: undefined, apiKey: undefined }),
+		})
+
+		vscode.window.showInformationMessage("Successfully signed out from SyntX website")
+	}
 }
