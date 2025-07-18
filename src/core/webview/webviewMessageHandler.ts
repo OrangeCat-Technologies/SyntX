@@ -269,6 +269,17 @@ export const webviewMessageHandler = async (
 				provider.postMessageToWebview({ type: "mcpServers", mcpServers: mcpHub.getAllServers() })
 			}
 
+			// START: Add website authentication check on launch
+			const username = await provider.contextProxy.getValue("websiteUsername")
+			const apiKey = await provider.contextProxy.getValue("syntxApiKey")
+			if (username && apiKey) {
+				provider.postMessageToWebview({
+					type: "websiteAuth",
+					text: JSON.stringify({ authenticated: true, username, apiKey }),
+				})
+			}
+			// END: Add website authentication check on launch
+
 			provider.providerSettingsManager
 				.listConfig()
 				.then(async (listApiConfig) => {

@@ -19,11 +19,11 @@ import McpView from "./components/mcp/McpView"
 import { MarketplaceView } from "./components/marketplace/MarketplaceView"
 import ModesView from "./components/modes/ModesView"
 import { HumanRelayDialog } from "./components/human-relay/HumanRelayDialog"
-import { AccountView } from "./components/account/AccountView"
 import { useAddNonInteractiveClickListener } from "./components/ui/hooks/useNonInteractiveClick"
 import { TooltipProvider } from "./components/ui/tooltip"
 import { STANDARD_TOOLTIP_DELAY } from "./components/ui/standard-tooltip"
 import AgentView from "./components/agent/AgentView"
+import ProfileSettings from "./components/settings/ProfileSettings"
 
 type Tab = "settings" | "history" | "mcp" | "modes" | "chat" | "marketplace" | "account" | "agent"
 
@@ -46,9 +46,6 @@ const App = () => {
 		telemetrySetting,
 		telemetryKey,
 		machineId,
-		cloudUserInfo,
-		cloudIsAuthenticated,
-		cloudApiUrl,
 		renderContext,
 		mdmCompliant,
 		websiteNotAuthenticated,
@@ -192,14 +189,7 @@ const App = () => {
 					targetTab={currentMarketplaceTab as "mcp" | "mode" | undefined}
 				/>
 			)}
-			{tab === "account" && (
-				<AccountView
-					userInfo={cloudUserInfo}
-					isAuthenticated={cloudIsAuthenticated}
-					cloudApiUrl={cloudApiUrl}
-					onDone={() => switchTab("chat")}
-				/>
-			)}
+			{tab === "account" && <ProfileSettings />}
 			<ChatView
 				ref={chatViewRef}
 				isHidden={tab !== "chat"}
