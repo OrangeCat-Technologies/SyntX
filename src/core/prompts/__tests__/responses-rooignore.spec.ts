@@ -44,12 +44,12 @@ describe("RooIgnore Response Formatting", () => {
 		mockReadFile.mockResolvedValue("node_modules\n.git\nsecrets/**\n*.log")
 	})
 
-	describe("formatResponse.syntxignoreError", () => {
+	describe("formatResponse.rooIgnoreError", () => {
 		/**
 		 * Tests the error message format for ignored files
 		 */
 		it("should format error message for ignored files", () => {
-			const errorMessage = formatResponse.syntxignoreError("secrets/api-keys.json")
+			const errorMessage = formatResponse.rooIgnoreError("secrets/api-keys.json")
 
 			// Verify error message format
 			expect(errorMessage).toContain(
@@ -67,7 +67,7 @@ describe("RooIgnore Response Formatting", () => {
 
 			// Test each path
 			for (const testPath of paths) {
-				const errorMessage = formatResponse.syntxignoreError(testPath)
+				const errorMessage = formatResponse.rooIgnoreError(testPath)
 				expect(errorMessage).toContain(`Access to ${testPath} is blocked`)
 			}
 		})

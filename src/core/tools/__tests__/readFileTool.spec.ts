@@ -110,7 +110,7 @@ describe("read_file tool with maxReadFileLine setting", () => {
 		mockCline.cwd = "/"
 		mockCline.task = "Test"
 		mockCline.providerRef = mockProvider
-		mockCline.syntxignoreController = {
+		mockCline.rooIgnoreController = {
 			validateAccess: vi.fn().mockReturnValue(true),
 		}
 		mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -367,7 +367,7 @@ describe("read_file tool XML output structure", () => {
 		mockCline.cwd = "/"
 		mockCline.task = "Test"
 		mockCline.providerRef = mockProvider
-		mockCline.syntxignoreController = {
+		mockCline.rooIgnoreController = {
 			validateAccess: vi.fn().mockReturnValue(true),
 		}
 		mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -406,7 +406,7 @@ describe("read_file tool XML output structure", () => {
 		mockProvider.getState.mockResolvedValue({ maxReadFileLine })
 		mockedCountFileLines.mockResolvedValue(totalLines)
 		mockedIsBinaryFile.mockResolvedValue(isBinary)
-		mockCline.syntxignoreController.validateAccess = vi.fn().mockReturnValue(validateAccess)
+		mockCline.rooIgnoreController.validateAccess = vi.fn().mockReturnValue(validateAccess)
 
 		let argsContent = `<file><path>${testFilePath}</path></file>`
 

@@ -67,7 +67,7 @@ export async function listFilesTool(
 				absolutePath,
 				files,
 				didHitLimit,
-				cline.syntxignoreController,
+				cline.rooIgnoreController,
 				showRooIgnoredFiles,
 				cline.rooProtectedController,
 			)

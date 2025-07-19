@@ -239,11 +239,11 @@ export class Task extends EventEmitter<ClineEvents> {
 		this.instanceId = crypto.randomUUID().slice(0, 8)
 		this.taskNumber = -1
 
-		this.syntxignoreController = new RooIgnoreController(this.cwd)
+		this.rooIgnoreController = new RooIgnoreController(this.cwd)
 		this.rooProtectedController = new RooProtectedController(this.cwd)
 		this.fileContextTracker = new FileContextTracker(provider, this.taskId)
 
-		this.syntxignoreController.initialize().catch((error) => {
+		this.rooIgnoreController.initialize().catch((error) => {
 			console.error("Failed to initialize RooIgnoreController:", error)
 		})
 
@@ -1046,9 +1046,9 @@ export class Task extends EventEmitter<ClineEvents> {
 		}
 
 		try {
-			if (this.syntxignoreController) {
-				this.syntxignoreController.dispose()
-				this.syntxignoreController = undefined
+			if (this.rooIgnoreController) {
+				this.rooIgnoreController.dispose()
+				this.rooIgnoreController = undefined
 			}
 		} catch (error) {
 			console.error("Error disposing RooIgnoreController:", error)
@@ -1228,7 +1228,7 @@ export class Task extends EventEmitter<ClineEvents> {
 			cwd: this.cwd,
 			urlContentFetcher: this.urlContentFetcher,
 			fileContextTracker: this.fileContextTracker,
-			rooIgnoreController: this.syntxignoreController,
+			rooIgnoreController: this.rooIgnoreController,
 			showRooIgnoredFiles,
 		})
 
@@ -1604,7 +1604,7 @@ export class Task extends EventEmitter<ClineEvents> {
 			})
 		}
 
-		const rooIgnoreInstructions = this.syntxignoreController?.getInstructions()
+		const rooIgnoreInstructions = this.rooIgnoreController?.getInstructions()
 
 		const state = await this.providerRef.deref()?.getState()
 

@@ -40,11 +40,11 @@ export async function executeCommandTool(
 				return
 			}
 
-			const ignoredFileAttemptedToAccess = cline.syntxignoreController?.validateCommand(command)
+			const ignoredFileAttemptedToAccess = cline.rooIgnoreController?.validateCommand(command)
 
 			if (ignoredFileAttemptedToAccess) {
 				await cline.say("rooignore_error", ignoredFileAttemptedToAccess)
-				pushToolResult(formatResponse.toolError(formatResponse.syntxignoreError(ignoredFileAttemptedToAccess)))
+				pushToolResult(formatResponse.toolError(formatResponse.rooIgnoreError(ignoredFileAttemptedToAccess)))
 				return
 			}
 

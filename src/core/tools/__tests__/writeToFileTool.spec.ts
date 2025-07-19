@@ -132,7 +132,7 @@ describe("writeToFileTool", () => {
 		mockCline.consecutiveMistakeCount = 0
 		mockCline.didEditFile = false
 		mockCline.diffStrategy = undefined
-		mockCline.syntxignoreController = {
+		mockCline.rooIgnoreController = {
 			validateAccess: vi.fn().mockReturnValue(true),
 		}
 		mockCline.diffViewProvider = {
@@ -204,7 +204,7 @@ describe("writeToFileTool", () => {
 		const accessAllowed = options.accessAllowed ?? true
 
 		mockedFileExistsAtPath.mockResolvedValue(fileExists)
-		mockCline.syntxignoreController.validateAccess.mockReturnValue(accessAllowed)
+		mockCline.rooIgnoreController.validateAccess.mockReturnValue(accessAllowed)
 
 		// Create a tool use object
 		const toolUse: ToolUse = {
@@ -237,7 +237,7 @@ describe("writeToFileTool", () => {
 		it("validates and allows access when rooIgnoreController permits", async () => {
 			await executeWriteFileTool({}, { accessAllowed: true })
 
-			expect(mockCline.syntxignoreController.validateAccess).toHaveBeenCalledWith(testFilePath)
+			expect(mockCline.rooIgnoreController.validateAccess).toHaveBeenCalledWith(testFilePath)
 			expect(mockCline.diffViewProvider.open).toHaveBeenCalledWith(testFilePath)
 		})
 	})

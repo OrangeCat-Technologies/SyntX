@@ -172,7 +172,7 @@ describe("getEnvironmentDetails", () => {
 			mockCwd,
 			["file1.ts", "file2.ts"],
 			false,
-			mockCline.syntxignoreController,
+			mockCline.rooIgnoreController,
 			true,
 		)
 	})

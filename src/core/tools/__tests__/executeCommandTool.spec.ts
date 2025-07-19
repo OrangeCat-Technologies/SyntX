@@ -39,15 +39,15 @@ beforeEach(() => {
 			return
 		}
 
-		const ignoredFileAttemptedToAccess = cline.syntxignoreController?.validateCommand(block.params.command)
+		const ignoredFileAttemptedToAccess = cline.rooIgnoreController?.validateCommand(block.params.command)
 		if (ignoredFileAttemptedToAccess) {
 			await cline.say("rooignore_error", ignoredFileAttemptedToAccess)
 			// Call the mocked formatResponse functions with the correct arguments
-			const mockRooIgnoreError = "RooIgnore error"
-			;(formatResponse.syntxignoreError as any).mockReturnValue(mockRooIgnoreError)
+			const mockrooIgnoreError = "RooIgnore error"
+			;(formatResponse.rooIgnoreError as any).mockReturnValue(mockrooIgnoreError)
 			;(formatResponse.toolError as any).mockReturnValue("Tool error")
-			formatResponse.syntxignoreError(ignoredFileAttemptedToAccess)
-			formatResponse.toolError(mockRooIgnoreError)
+			formatResponse.rooIgnoreError(ignoredFileAttemptedToAccess)
+			formatResponse.toolError(mockrooIgnoreError)
 			pushToolResult("Tool error")
 			return
 		}
@@ -238,12 +238,12 @@ describe("executeCommandTool", () => {
 			mockToolUse.params.command = "cat .env"
 			// Override the validateCommand mock to return a filename
 			const validateCommandMock = vitest.fn().mockReturnValue(".env")
-			mockCline.syntxignoreController = {
+			mockCline.rooIgnoreController = {
 				validateCommand: validateCommandMock,
 			}
 
-			const mockRooIgnoreError = "RooIgnore error"
-			;(formatResponse.syntxignoreError as any).mockReturnValue(mockRooIgnoreError)
+			const mockrooIgnoreError = "RooIgnore error"
+			;(formatResponse.rooIgnoreError as any).mockReturnValue(mockrooIgnoreError)
 			;(formatResponse.toolError as any).mockReturnValue("Tool error")
 
 			// Execute
@@ -259,8 +259,8 @@ describe("executeCommandTool", () => {
 			// Verify
 			expect(validateCommandMock).toHaveBeenCalledWith("cat .env")
 			expect(mockCline.say).toHaveBeenCalledWith("rooignore_error", ".env")
-			expect(formatResponse.syntxignoreError).toHaveBeenCalledWith(".env")
-			expect(formatResponse.toolError).toHaveBeenCalledWith(mockRooIgnoreError)
+			expect(formatResponse.rooIgnoreError).toHaveBeenCalledWith(".env")
+			expect(formatResponse.toolError).toHaveBeenCalledWith(mockrooIgnoreError)
 			expect(mockPushToolResult).toHaveBeenCalled()
 			expect(mockAskApproval).not.toHaveBeenCalled()
 			expect(mockExecuteCommand).not.toHaveBeenCalled()

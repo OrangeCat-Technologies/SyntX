@@ -57,7 +57,7 @@ export async function searchFilesTool(
 				absolutePath,
 				regex,
 				filePattern,
-				cline.syntxignoreController,
+				cline.rooIgnoreController,
 			)
 
 			const completeMessage = JSON.stringify({ ...sharedMessageProps, content: results } satisfies ClineSayTool)
