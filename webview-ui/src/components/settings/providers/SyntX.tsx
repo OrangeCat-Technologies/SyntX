@@ -17,8 +17,8 @@ type SyntXProps = {
 	setApiConfigurationField: (field: keyof ProviderSettings, value: ProviderSettings[keyof ProviderSettings]) => void
 	routerModels?: RouterModels
 	refetchRouterModels: () => void
-	modelValidationError?: string
-	organizationAllowList?: any
+	_modelValidationError?: string
+	_organizationAllowList?: any
 }
 
 export const SyntX = ({
@@ -26,8 +26,8 @@ export const SyntX = ({
 	setApiConfigurationField,
 	routerModels,
 	refetchRouterModels,
-	modelValidationError,
-	organizationAllowList,
+	_modelValidationError,
+	_organizationAllowList,
 }: SyntXProps) => {
 	const { t } = useAppTranslation()
 
