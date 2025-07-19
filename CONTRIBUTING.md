@@ -54,8 +54,8 @@ Mention alignment with these areas in your PRs.
 
 ### 3. Join the Syntx Community
 
-- **Primary:** Join our [Discord](https://discord.gg/roocode) and DM **Hannes Rudolph (`hrudolph`)**.
-- **Alternative:** Experienced contributors can engage directly via [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
+- **Primary:** Join our [Discord](https://discord.gg/FzndMpbhDd) and DM the OrangeCat team.
+- **Alternative:** Experienced contributors can engage directly via [GitHub Projects](https://github.com/orgs/OrangeCat-Technologies/projects/1).
 
 ## Finding & Planning Your Contribution
 
@@ -69,7 +69,7 @@ Mention alignment with these areas in your PRs.
 
 All contributions must begin with a GitHub Issue.
 
-- **Check existing issues**: Search [GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues).
+- **Check existing issues**: Search [GitHub Issues](https://github.com/OrangeCat-Technologies/SyntX/issues).
 - **Create an issue**: Use appropriate templates:
     - **Bugs:** "Bug Report" template.
     - **Features:** "Detailed Feature Proposal" template. Approval required before starting.
@@ -79,14 +79,13 @@ All contributions must begin with a GitHub Issue.
 
 ### Deciding What to Work On
 
-- Check the [GitHub Project](https://github.com/orgs/RooCodeInc/projects/1) for unassigned "Good First Issues."
-- For docs, visit [Syntx Docs](https://github.com/RooCodeInc/Roo-Code-Docs).
+- Check the [GitHub Project](https://github.com/orgs/OrangeCat-Technologies/projects/1) for unassigned "Good First Issues."
 
 ### Reporting Bugs
 
 - Check for existing reports first.
-- Create new bugs using the ["Bug Report" template](https://github.com/RooCodeInc/Roo-Code/issues/new/choose).
-- **Security issues**: Report privately via [security advisories](https://github.com/RooCodeInc/Roo-Code/security/advisories/new).
+- Create new bugs using the ["Bug Report" template](https://github.com/OrangeCat-Technologies/SyntX/issues/new/choose).
+- **Security issues**: Report privately via [security advisories](https://github.com/OrangeCat-Technologies/SyntX/security/advisories/new).
 
 ## Development & Submission Process
 
@@ -95,7 +94,7 @@ All contributions must begin with a GitHub Issue.
 1. **Fork & Clone:**
 
 ```
-git clone https://github.com/YOUR_USERNAME/Roo-Code.git
+git clone https://github.com/YOUR_USERNAME/SyntX.git
 ```
 
 2. **Install Dependencies:**
