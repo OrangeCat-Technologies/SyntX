@@ -50,6 +50,7 @@ import {
 	OpenAICompatible,
 	OpenRouter,
 	Requesty,
+	SyntX,
 	Unbound,
 	Vertex,
 	VSCodeLM,
@@ -466,6 +467,17 @@ const ApiOptions = ({
 				/>
 			)}
 
+			{selectedProvider === "syntx" && (
+				<SyntX
+					apiConfiguration={apiConfiguration}
+					setApiConfigurationField={setApiConfigurationField}
+					routerModels={routerModels}
+					refetchRouterModels={refetchRouterModels}
+					organizationAllowList={organizationAllowList}
+					modelValidationError={modelValidationError}
+				/>
+			)}
+
 			{selectedProvider === "human-relay" && (
 				<>
 					<div className="text-sm text-vscode-descriptionForeground">
@@ -524,14 +536,16 @@ const ApiOptions = ({
 				</>
 			)}
 
-			<ThinkingBudget
-				key={`${selectedProvider}-${selectedModelId}`}
-				apiConfiguration={apiConfiguration}
-				setApiConfigurationField={setApiConfigurationField}
-				modelInfo={selectedModelInfo}
-			/>
+			{selectedProvider !== "syntx" && (
+				<ThinkingBudget
+					key={`${selectedProvider}-${selectedModelId}`}
+					apiConfiguration={apiConfiguration}
+					setApiConfigurationField={setApiConfigurationField}
+					modelInfo={selectedModelInfo}
+				/>
+			)}
 
-			{!fromWelcomeView && (
+			{!fromWelcomeView && selectedProvider !== "syntx" && (
 				<>
 					<DiffSettingsControl
 						diffEnabled={apiConfiguration.diffEnabled}

@@ -29,6 +29,7 @@ import { VolumeX, Pin, Check, Image, WandSparkles, SendHorizontal } from "lucide
 import { IndexingStatusBadge } from "./IndexingStatusBadge"
 import { cn } from "@/lib/utils"
 import { usePromptHistory } from "./hooks/usePromptHistory"
+import SyntXModelDropdown from "./SyntXModelDropdown"
 
 interface ChatTextAreaProps {
 	inputValue: string
@@ -80,6 +81,8 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			togglePinnedApiConfig,
 			taskHistory,
 			clineMessages,
+			apiConfiguration,
+			routerModels,
 		} = useExtensionState()
 
 		// Find the ID and display text for the currently selected API configuration
@@ -1158,6 +1161,18 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 								}}
 							/>
 						</div>
+
+						{/* SyntX Model Dropdown - Only show when SyntX provider is active */}
+						{apiConfiguration?.apiProvider === "syntx" && (
+							<div className={cn("flex-1", "min-w-0", "overflow-hidden", "ml-1")}>
+								<SyntXModelDropdown
+									apiConfiguration={apiConfiguration}
+									routerModels={routerModels}
+									sendingDisabled={sendingDisabled}
+									currentApiConfigName={currentApiConfigName}
+								/>
+							</div>
+						)}
 					</div>
 
 					<div className={cn("flex", "items-center", "gap-0.5", "shrink-0")}>

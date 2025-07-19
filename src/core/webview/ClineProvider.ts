@@ -1563,7 +1563,7 @@ export class ClineProvider
 		const customModes = await this.customModesManager.getCustomModes()
 
 		// Determine apiProvider with the same logic as before.
-		const apiProvider: ProviderName = stateValues.apiProvider ? stateValues.apiProvider : "anthropic"
+		const apiProvider: ProviderName = stateValues.apiProvider ? stateValues.apiProvider : "syntx"
 
 		// Build the apiConfiguration object combining state values and secrets.
 		const providerSettings = this.contextProxy.getProviderSettings()
@@ -1773,8 +1773,17 @@ export class ClineProvider
 		await this.providerSettingsManager.resetAllConfigs()
 		await this.customModesManager.resetCustomModes()
 		await this.removeClineFromStack()
+
+		// Clear website authentication to show get started screen
+		await this.contextProxy.setValue("websiteUsername", undefined)
+		await this.contextProxy.setValue("syntxApiKey", undefined)
+
 		await this.postStateToWebview()
-		await this.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
+		// Navigate to get started screen by sending websiteAuth message
+		await this.postMessageToWebview({
+			type: "websiteAuth",
+			text: JSON.stringify({ authenticated: false, username: undefined, apiKey: undefined }),
+		})
 	}
 
 	// logging

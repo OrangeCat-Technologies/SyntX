@@ -570,6 +570,7 @@ export const webviewMessageHandler = async (
 				litellm: {},
 				ollama: {},
 				lmstudio: {},
+				syntx: {},
 			}
 
 			const safeGetModels = async (options: GetModelsOptions): Promise<ModelRecord> => {
@@ -589,6 +590,16 @@ export const webviewMessageHandler = async (
 				{ key: "requesty", options: { provider: "requesty", apiKey: apiConfiguration.requestyApiKey } },
 				{ key: "glama", options: { provider: "glama" } },
 				{ key: "unbound", options: { provider: "unbound", apiKey: apiConfiguration.unboundApiKey } },
+				{
+					key: "syntx",
+					options: {
+						provider: "syntx",
+						apiKey: apiConfiguration.syntxApiKey || "",
+						baseUrl:
+							apiConfiguration.syntxBaseUrl ||
+							"https://lagrange-inference-server-production.up.railway.app",
+					},
+				},
 			]
 
 			// Don't fetch Ollama and LM Studio models by default anymore
@@ -615,6 +626,7 @@ export const webviewMessageHandler = async (
 				// Initialize ollama and lmstudio with empty objects since they use separate handlers
 				ollama: {},
 				lmstudio: {},
+				syntx: {},
 			}
 
 			results.forEach((result, index) => {
@@ -1448,9 +1460,17 @@ export const webviewMessageHandler = async (
 		case "saveApiConfiguration":
 			if (message.text && message.apiConfiguration) {
 				try {
+					console.log("webviewMessageHandler: Received saveApiConfiguration", {
+						name: message.text,
+						config: message.apiConfiguration,
+					})
 					await provider.providerSettingsManager.saveConfig(message.text, message.apiConfiguration)
 					const listApiConfig = await provider.providerSettingsManager.listConfig()
 					await updateGlobalState("listApiConfigMeta", listApiConfig)
+
+					// After saving, we need to activate the profile to load the updated
+					// settings into memory and notify the webview of the state change.
+					await provider.activateProviderProfile({ name: message.text })
 				} catch (error) {
 					provider.log(
 						`Error save api configuration: ${JSON.stringify(error, Object.getOwnPropertyNames(error), 2)}`,
