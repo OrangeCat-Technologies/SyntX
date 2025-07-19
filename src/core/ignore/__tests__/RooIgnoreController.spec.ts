@@ -87,7 +87,7 @@ describe("RooIgnoreController", () => {
 			expect(mockReadFile).toHaveBeenCalledWith(path.join(TEST_CWD, ".syntxignore"), "utf8")
 
 			// Verify content was stored
-			expect(controller.syntxignoreContent).toBe("node_modules\n.git\nsecrets.json")
+			expect(controller.rooIgnoreContent).toBe("node_modules\n.git\nsecrets.json")
 
 			// Test that ignore patterns were applied
 			expect(controller.validateAccess("node_modules/package.json")).toBe(false)
@@ -107,7 +107,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Verify no content was stored
-			expect(controller.syntxignoreContent).toBeUndefined()
+			expect(controller.rooIgnoreContent).toBeUndefined()
 
 			// All files should be accessible
 			expect(controller.validateAccess("node_modules/package.json")).toBe(true)
@@ -418,7 +418,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Verify initial state
-			expect(controller.syntxignoreContent).toBeUndefined()
+			expect(controller.rooIgnoreContent).toBeUndefined()
 			expect(controller.validateAccess("node_modules/package.json")).toBe(true)
 
 			// Setup for the test
@@ -429,7 +429,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Initial state check
-			expect(controller.syntxignoreContent).toBeUndefined()
+			expect(controller.rooIgnoreContent).toBeUndefined()
 
 			// Now simulate file creation
 			mockFileExists.mockResolvedValue(true)
@@ -439,7 +439,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Now verify content was updated
-			expect(controller.syntxignoreContent).toBe("node_modules")
+			expect(controller.rooIgnoreContent).toBe("node_modules")
 
 			// Verify access validation changed
 			expect(controller.validateAccess("node_modules/package.json")).toBe(false)
@@ -466,7 +466,7 @@ describe("RooIgnoreController", () => {
 			await controller.initialize()
 
 			// Verify content was updated
-			expect(controller.syntxignoreContent).toBe("node_modules\n.git")
+			expect(controller.rooIgnoreContent).toBe("node_modules\n.git")
 
 			// Verify access validation changed
 			expect(controller.validateAccess("node_modules/package.json")).toBe(false)
@@ -493,7 +493,7 @@ describe("RooIgnoreController", () => {
 			await onDeleteHandler()
 
 			// Verify content was reset
-			expect(controller.syntxignoreContent).toBeUndefined()
+			expect(controller.rooIgnoreContent).toBeUndefined()
 
 			// Verify access validation changed
 			expect(controller.validateAccess("node_modules/package.json")).toBe(true)
