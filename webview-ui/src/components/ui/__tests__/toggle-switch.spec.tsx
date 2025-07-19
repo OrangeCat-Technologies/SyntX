@@ -89,13 +89,23 @@ describe("ToggleSwitch", () => {
 		expect(toggle).toHaveStyle({ width: "20px", height: "10px" })
 	})
 
-	it("defaults to small size", () => {
+	it("supports small size", () => {
 		const onChange = vi.fn()
-		render(<ToggleSwitch checked={false} onChange={onChange} aria-label="Test toggle" />)
+		render(<ToggleSwitch checked={false} onChange={onChange} size="small" aria-label="Test toggle" />)
 
 		const toggle = screen.getByRole("switch")
 		expect(toggle).toBeInTheDocument()
 		// Small size should be 16px x 8px
 		expect(toggle).toHaveStyle({ width: "16px", height: "8px" })
+	})
+
+	it("defaults to large size", () => {
+		const onChange = vi.fn()
+		render(<ToggleSwitch checked={false} onChange={onChange} aria-label="Test toggle" />)
+
+		const toggle = screen.getByRole("switch")
+		expect(toggle).toBeInTheDocument()
+		// Large size should be 32px x 16px
+		expect(toggle).toHaveStyle({ width: "32px", height: "16px" })
 	})
 })

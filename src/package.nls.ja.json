@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Syntx (旧 Roo Cline)",
+	"extension.displayName": "Syntx",
 	"extension.description": "エディタ内のAIエージェントによる開発チーム。",
 	"views.contextMenu.label": "Syntx",
 	"views.terminalMenu.label": "Syntx",

@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Syntx (ранее Roo Cline)",
+	"extension.displayName": "Syntx",
 	"extension.description": "Целая команда ИИ-разработчиков в вашем редакторе.",
 	"views.contextMenu.label": "Syntx",
 	"views.terminalMenu.label": "Syntx",

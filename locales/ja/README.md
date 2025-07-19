@@ -23,7 +23,7 @@
 <br>
 
 <div align="center">
-<h1>Syntx（旧Roo Cline）</h1>
+<h1>Syntx（旧Lagrange）</h1>
 <p align="center">
 <img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
 </p>
