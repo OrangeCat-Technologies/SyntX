@@ -473,8 +473,8 @@ const ApiOptions = ({
 					setApiConfigurationField={setApiConfigurationField}
 					routerModels={routerModels}
 					refetchRouterModels={refetchRouterModels}
-					organizationAllowList={organizationAllowList}
-					modelValidationError={modelValidationError}
+					_organizationAllowList={organizationAllowList}
+					_modelValidationError={modelValidationError}
 				/>
 			)}
 
