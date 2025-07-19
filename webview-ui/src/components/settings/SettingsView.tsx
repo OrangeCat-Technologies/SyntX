@@ -121,6 +121,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 	const [cachedState, setCachedState] = useState(extensionState)
 
 	const {
+		autoApprovalEnabled,
 		alwaysAllowReadOnly,
 		alwaysAllowReadOnlyOutsideWorkspace,
 		allowedCommands,
@@ -264,6 +265,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 	const handleSubmit = () => {
 		if (isSettingValid) {
 			vscode.postMessage({ type: "language", text: language })
+			vscode.postMessage({ type: "autoApprovalEnabled", bool: autoApprovalEnabled })
 			vscode.postMessage({ type: "alwaysAllowReadOnly", bool: alwaysAllowReadOnly })
 			vscode.postMessage({
 				type: "alwaysAllowReadOnlyOutsideWorkspace",
@@ -593,6 +595,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 					{/* Auto-Approve Section */}
 					{activeTab === "autoApprove" && (
 						<AutoApproveSettings
+							autoApprovalEnabled={autoApprovalEnabled}
 							alwaysAllowReadOnly={alwaysAllowReadOnly}
 							alwaysAllowReadOnlyOutsideWorkspace={alwaysAllowReadOnlyOutsideWorkspace}
 							alwaysAllowWrite={alwaysAllowWrite}

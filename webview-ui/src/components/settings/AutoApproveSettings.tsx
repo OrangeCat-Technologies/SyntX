@@ -12,6 +12,7 @@ import { Section } from "./Section"
 import { AutoApproveToggle } from "./AutoApproveToggle"
 
 type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
+	autoApprovalEnabled?: boolean
 	alwaysAllowReadOnly?: boolean
 	alwaysAllowReadOnlyOutsideWorkspace?: boolean
 	alwaysAllowWrite?: boolean
@@ -31,6 +32,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	allowedCommands?: string[]
 	deniedCommands?: string[]
 	setCachedStateField: SetCachedStateField<
+		| "autoApprovalEnabled"
 		| "alwaysAllowReadOnly"
 		| "alwaysAllowReadOnlyOutsideWorkspace"
 		| "alwaysAllowWrite"
@@ -53,6 +55,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 export const AutoApproveSettings = ({
+	autoApprovalEnabled,
 	alwaysAllowReadOnly,
 	alwaysAllowReadOnlyOutsideWorkspace,
 	alwaysAllowWrite,
@@ -111,6 +114,7 @@ export const AutoApproveSettings = ({
 
 			<Section>
 				<AutoApproveToggle
+					autoApprovalEnabled={autoApprovalEnabled}
 					alwaysAllowReadOnly={alwaysAllowReadOnly}
 					alwaysAllowWrite={alwaysAllowWrite}
 					alwaysAllowBrowser={alwaysAllowBrowser}
@@ -122,6 +126,7 @@ export const AutoApproveSettings = ({
 					alwaysAllowFollowupQuestions={alwaysAllowFollowupQuestions}
 					alwaysAllowUpdateTodoList={alwaysAllowUpdateTodoList}
 					onToggle={(key, value) => setCachedStateField(key, value)}
+					onAutoApprovalToggle={(enabled) => setCachedStateField("autoApprovalEnabled", enabled)}
 				/>
 
 				{/* ADDITIONAL SETTINGS */}

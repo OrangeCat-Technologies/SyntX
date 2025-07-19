@@ -123,6 +123,9 @@
 	},
 	"autoApprove": {
 		"description": "Allow Roo to automatically perform operations without requiring approval. Enable these settings only if you fully trust the AI and understand the associated security risks.",
+		"warning": {
+			"disabled": "Auto-approval is disabled. Individual settings won't work until auto-approval is enabled. Click the checkbox above \"Auto-approve\" to enable it."
+		},
 		"readOnly": {
 			"label": "Read",
 			"description": "When enabled, Roo will automatically view directory contents and read files without requiring you to click the Approve button.",

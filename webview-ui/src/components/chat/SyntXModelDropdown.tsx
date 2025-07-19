@@ -8,6 +8,7 @@ import { vscode } from "@/utils/vscode"
 import { cn } from "@/lib/utils"
 import { Popover, PopoverContent, PopoverTrigger, ToggleSwitch } from "@/components/ui"
 import { useRooPortal } from "@/components/ui/hooks/useRooPortal"
+import { useExtensionState } from "@/context/ExtensionStateContext"
 
 interface SyntXModelDropdownProps {
 	apiConfiguration: ProviderSettings
@@ -26,6 +27,18 @@ const SyntXModelDropdown: React.FC<SyntXModelDropdownProps> = ({
 	const [isAutoSelectEnabled, setIsAutoSelectEnabled] = useState<boolean>(false)
 	const [open, setOpen] = useState(false)
 	const portalContainer = useRooPortal("roo-portal")
+
+	// Get auto-approval setters from extension state
+	const {
+		setAutoApprovalEnabled,
+		setAlwaysAllowReadOnly,
+		setAlwaysAllowWrite,
+		setAlwaysAllowExecute,
+		setAlwaysAllowModeSwitch,
+		setAlwaysAllowUpdateTodoList,
+		setAlwaysAllowFollowupQuestions,
+		setAlwaysAllowSubtasks,
+	} = useExtensionState()
 
 	// Track if we've made a local update to prevent props from overriding
 	const localUpdateRef = useRef(false)
@@ -112,7 +125,7 @@ const SyntXModelDropdown: React.FC<SyntXModelDropdownProps> = ({
 		setIsAutoSelectEnabled(newAutoSelectEnabled)
 
 		if (newAutoSelectEnabled) {
-			// Enable auto-select
+			// Enable auto-select and auto-approval settings
 			const message = {
 				type: "saveApiConfiguration" as const,
 				text: currentApiConfigName || "default",
@@ -124,6 +137,26 @@ const SyntXModelDropdown: React.FC<SyntXModelDropdownProps> = ({
 			}
 			console.log("SyntXModelDropdown: sending saveApiConfiguration for auto-select ON", message)
 			vscode.postMessage(message)
+
+			// Enable auto-approval settings when SyntX auto-select is enabled
+			setAutoApprovalEnabled(true)
+			setAlwaysAllowReadOnly(true)
+			setAlwaysAllowWrite(true)
+			setAlwaysAllowExecute(true)
+			setAlwaysAllowModeSwitch(true)
+			setAlwaysAllowUpdateTodoList(true)
+			setAlwaysAllowFollowupQuestions(true)
+			setAlwaysAllowSubtasks(true)
+
+			// Send auto-approval settings to backend
+			vscode.postMessage({ type: "autoApprovalEnabled", bool: true })
+			vscode.postMessage({ type: "alwaysAllowReadOnly", bool: true })
+			vscode.postMessage({ type: "alwaysAllowWrite", bool: true })
+			vscode.postMessage({ type: "alwaysAllowExecute", bool: true })
+			vscode.postMessage({ type: "alwaysAllowModeSwitch", bool: true })
+			vscode.postMessage({ type: "alwaysAllowUpdateTodoList", bool: true })
+			vscode.postMessage({ type: "alwaysAllowFollowupQuestions", bool: true })
+			vscode.postMessage({ type: "alwaysAllowSubtasks", bool: true })
 		} else {
 			// Disable auto-select and select specific model
 			const modelToSelect =
@@ -143,8 +176,42 @@ const SyntXModelDropdown: React.FC<SyntXModelDropdownProps> = ({
 			}
 			console.log("SyntXModelDropdown: sending saveApiConfiguration for auto-select OFF", message)
 			vscode.postMessage(message)
+
+			// Disable auto-approval settings when SyntX auto-select is disabled
+			setAutoApprovalEnabled(false)
+			setAlwaysAllowReadOnly(false)
+			setAlwaysAllowWrite(false)
+			setAlwaysAllowExecute(false)
+			setAlwaysAllowModeSwitch(false)
+			setAlwaysAllowUpdateTodoList(false)
+			setAlwaysAllowFollowupQuestions(false)
+			setAlwaysAllowSubtasks(false)
+
+			// Send auto-approval settings to backend
+			vscode.postMessage({ type: "autoApprovalEnabled", bool: false })
+			vscode.postMessage({ type: "alwaysAllowReadOnly", bool: false })
+			vscode.postMessage({ type: "alwaysAllowWrite", bool: false })
+			vscode.postMessage({ type: "alwaysAllowExecute", bool: false })
+			vscode.postMessage({ type: "alwaysAllowModeSwitch", bool: false })
+			vscode.postMessage({ type: "alwaysAllowUpdateTodoList", bool: false })
+			vscode.postMessage({ type: "alwaysAllowFollowupQuestions", bool: false })
+			vscode.postMessage({ type: "alwaysAllowSubtasks", bool: false })
 		}
-	}, [isAutoSelectEnabled, apiConfiguration, currentApiConfigName, selectedSyntxModel, filteredSyntxModels])
+	}, [
+		isAutoSelectEnabled,
+		apiConfiguration,
+		currentApiConfigName,
+		selectedSyntxModel,
+		filteredSyntxModels,
+		setAutoApprovalEnabled,
+		setAlwaysAllowReadOnly,
+		setAlwaysAllowWrite,
+		setAlwaysAllowExecute,
+		setAlwaysAllowModeSwitch,
+		setAlwaysAllowUpdateTodoList,
+		setAlwaysAllowFollowupQuestions,
+		setAlwaysAllowSubtasks,
+	])
 
 	const displayText = useMemo(() => {
 		if (isAutoSelectEnabled) {
