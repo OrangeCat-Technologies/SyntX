@@ -14,7 +14,7 @@
         <fields>slug, name, roleDefinition, groups</fields>
       </item>
       <item priority="critical">
-        <check>No customInstructions field in .roomodes</check>
+        <check>No customInstructions field in .syntxmodes</check>
         <validation>All instructions must be in XML files in .roo/rules-[slug]/</validation>
       </item>
       <item priority="high">
@@ -181,7 +181,7 @@
       <usage>Check mode configuration syntax</usage>
       <command><![CDATA[
 <read_file>
-<path>.roomodes</path>
+<path>.syntxmodes</path>
 </read_file>
       ]]></command>
     </tool>

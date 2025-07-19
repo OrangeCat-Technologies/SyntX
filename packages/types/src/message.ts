@@ -75,7 +75,7 @@ export type ClineAsk = z.infer<typeof clineAskSchema>
  * - `mcp_server_response`: Response received from MCP server
  * - `subtask_result`: Result of a completed subtask
  * - `checkpoint_saved`: Indicates a checkpoint has been saved
- * - `rooignore_error`: Error related to .rooignore file processing
+ * - `rooignore_error`: Error related to .syntxignore file processing
  * - `diff_error`: Error occurred while applying a diff/patch
  * - `condense_context`: Context condensation/summarization has started
  * - `condense_context_error`: Error occurred during context condensation

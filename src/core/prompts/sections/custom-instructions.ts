@@ -274,8 +274,8 @@ export async function addCustomInstructions(
 		}
 	}
 
-	if (options.rooIgnoreInstructions) {
-		rules.push(options.rooIgnoreInstructions)
+	if (options.syntxignoreInstructions) {
+		rules.push(options.syntxignoreInstructions)
 	}
 
 	// Add generic rules

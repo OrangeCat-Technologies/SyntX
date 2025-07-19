@@ -8,7 +8,7 @@
 		"noMatchFound": "未找到任何模式",
 		"editModesConfig": "模式设置",
 		"editGlobalModes": "修改全局模式",
-		"editProjectModes": "编辑项目模式 (.roomodes)",
+		"editProjectModes": "编辑项目模式 (.syntxmodes)",
 		"createModeHelpText": "模式是Roo的专属角色，用于定制其行为。<0>了解如何使用模式</0>或<1>自定义模式。</1>",
 		"selectMode": "搜索模式"
 	},
@@ -155,7 +155,7 @@
 				"description": "全局可用"
 			},
 			"project": {
-				"label": "项目特定 (.roomodes)",
+				"label": "项目特定 (.syntxmodes)",
 				"description": "仅当前项目有效"
 			}
 		},

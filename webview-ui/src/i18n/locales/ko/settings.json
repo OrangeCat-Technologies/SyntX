@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "보호된 파일 포함",
-				"description": "Roo가 보호된 파일(.rooignore 및 .roo/ 구성 파일 등)을 승인 없이 생성하고 편집할 수 있도록 허용합니다."
+				"description": "Roo가 보호된 파일(.syntxignore 및 .roo/ 구성 파일 등)을 승인 없이 생성하고 편집할 수 있도록 허용합니다."
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "현재 작업 디렉토리 세부 정보에 포함할 파일의 최대 수. 높은 값은 더 많은 컨텍스트를 제공하지만 token 사용량이 증가합니다."
 		},
 		"rooignore": {
-			"label": "목록 및 검색에서 .rooignore 파일 표시",
-			"description": "활성화되면 .rooignore의 패턴과 일치하는 파일이 잠금 기호와 함께 목록에 표시됩니다. 비활성화되면 이러한 파일은 파일 목록 및 검색에서 완전히 숨겨집니다."
+			"label": "목록 및 검색에서 .syntxignore 파일 표시",
+			"description": "활성화되면 .syntxignore의 패턴과 일치하는 파일이 잠금 기호와 함께 목록에 표시됩니다. 비활성화되면 이러한 파일은 파일 목록 및 검색에서 완전히 숨겨집니다."
 		},
 		"maxReadFile": {
 			"label": "파일 읽기 자동 축소 임계값",

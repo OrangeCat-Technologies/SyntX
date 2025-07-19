@@ -110,7 +110,7 @@ describe("read_file tool with maxReadFileLine setting", () => {
 		mockCline.cwd = "/"
 		mockCline.task = "Test"
 		mockCline.providerRef = mockProvider
-		mockCline.rooIgnoreController = {
+		mockCline.syntxignoreController = {
 			validateAccess: vi.fn().mockReturnValue(true),
 		}
 		mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -367,7 +367,7 @@ describe("read_file tool XML output structure", () => {
 		mockCline.cwd = "/"
 		mockCline.task = "Test"
 		mockCline.providerRef = mockProvider
-		mockCline.rooIgnoreController = {
+		mockCline.syntxignoreController = {
 			validateAccess: vi.fn().mockReturnValue(true),
 		}
 		mockCline.say = vi.fn().mockResolvedValue(undefined)
@@ -406,7 +406,7 @@ describe("read_file tool XML output structure", () => {
 		mockProvider.getState.mockResolvedValue({ maxReadFileLine })
 		mockedCountFileLines.mockResolvedValue(totalLines)
 		mockedIsBinaryFile.mockResolvedValue(isBinary)
-		mockCline.rooIgnoreController.validateAccess = vi.fn().mockReturnValue(validateAccess)
+		mockCline.syntxignoreController.validateAccess = vi.fn().mockReturnValue(validateAccess)
 
 		let argsContent = `<file><path>${testFilePath}</path></file>`
 
@@ -515,7 +515,7 @@ describe("read_file tool XML output structure", () => {
 
 			// Verify
 			expect(result).toBe(
-				`<files>\n<file><path>${testFilePath}</path><error>Access to ${testFilePath} is blocked by the .rooignore file settings. You must try to continue in the task without using this file, or ask the user to update the .rooignore file.</error></file>\n</files>`,
+				`<files>\n<file><path>${testFilePath}</path><error>Access to ${testFilePath} is blocked by the .syntxignore file settings. You must try to continue in the task without using this file, or ask the user to update the .syntxignore file.</error></file>\n</files>`,
 			)
 		})
 	})

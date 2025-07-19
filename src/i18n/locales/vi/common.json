@@ -142,8 +142,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML không hợp lệ trong tệp .roomodes tại dòng {{line}}. Vui lòng kiểm tra:\n• Thụt lề đúng (dùng dấu cách, không dùng tab)\n• Dấu ngoặc kép và ngoặc đơn khớp nhau\n• Cú pháp YAML hợp lệ",
-			"schemaValidationError": "Định dạng chế độ tùy chỉnh không hợp lệ trong .roomodes:\n{{issues}}",
+			"yamlParseError": "YAML không hợp lệ trong tệp .syntxmodes tại dòng {{line}}. Vui lòng kiểm tra:\n• Thụt lề đúng (dùng dấu cách, không dùng tab)\n• Dấu ngoặc kép và ngoặc đơn khớp nhau\n• Cú pháp YAML hợp lệ",
+			"schemaValidationError": "Định dạng chế độ tùy chỉnh không hợp lệ trong .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Định dạng chế độ tùy chỉnh không hợp lệ. Vui lòng đảm bảo cài đặt của bạn tuân theo định dạng YAML đúng.",
 			"updateFailed": "Cập nhật chế độ tùy chỉnh thất bại: {{error}}",
 			"deleteFailed": "Xóa chế độ tùy chỉnh thất bại: {{error}}",

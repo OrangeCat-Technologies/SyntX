@@ -69,7 +69,7 @@
         </field>
       </recommended_fields>
       <important_note>
-        Do not include customInstructions in the .roomodes configuration.
+        Do not include customInstructions in the .syntxmodes configuration.
         All detailed instructions should be placed in XML files within
         the .roo/rules-[mode-slug]/ directory instead.
       </important_note>
@@ -134,7 +134,7 @@ groups:
   </detailed_steps>
 
   <quick_reference>
-    <command>Create mode in .roomodes for project-specific modes</command>
+    <command>Create mode in .syntxmodes for project-specific modes</command>
     <command>Create mode in global custom_modes.yaml for system-wide modes</command>
     <command>Use list_files to verify .roo folder structure</command>
     <command>Test file regex patterns with search_files</command>

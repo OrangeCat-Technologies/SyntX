@@ -142,8 +142,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML tidak valid dalam file .roomodes pada baris {{line}}. Silakan periksa:\n• Indentasi yang benar (gunakan spasi, bukan tab)\n• Tanda kutip dan kurung yang cocok\n• Sintaks YAML yang valid",
-			"schemaValidationError": "Format mode kustom tidak valid dalam .roomodes:\n{{issues}}",
+			"yamlParseError": "YAML tidak valid dalam file .syntxmodes pada baris {{line}}. Silakan periksa:\n• Indentasi yang benar (gunakan spasi, bukan tab)\n• Tanda kutip dan kurung yang cocok\n• Sintaks YAML yang valid",
+			"schemaValidationError": "Format mode kustom tidak valid dalam .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Format mode kustom tidak valid. Pastikan pengaturan kamu mengikuti format YAML yang benar.",
 			"updateFailed": "Gagal memperbarui mode kustom: {{error}}",
 			"deleteFailed": "Gagal menghapus mode kustom: {{error}}",

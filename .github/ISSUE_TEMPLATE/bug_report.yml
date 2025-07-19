@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         **Thanks for your report!** Please check existing issues first:  
-        👉 https://github.com/RooCodeInc/Roo-Code/issues
+        👉 https://github.com/OrangeCat-Technologies/SyntX/issues
 
   - type: input
     id: version
@@ -21,6 +21,7 @@ body:
     attributes:
       label: API Provider
       options:
+        - SyntX
         - Anthropic
         - AWS Bedrock
         - Chutes AI
@@ -52,16 +53,6 @@ body:
       description: Exact model name (e.g., Claude 3.7 Sonnet). Use N/A if irrelevant.
     validations:
       required: true
-
-  - type: textarea
-    id: roo-code-tasks
-    attributes:
-      label: Syntx Task Links (Optional)
-      description: |
-        If you have any publicly shared task links that demonstrate the issue, please paste them here.
-        This helps maintainers understand the context.
-        Example: https://app.roocode.com/share/task-id
-      placeholder: Paste your Syntx share links here, one per line
 
   - type: textarea
     id: steps

@@ -8,7 +8,7 @@
 		"noMatchFound": "Nie znaleziono trybów",
 		"editModesConfig": "Edytuj konfigurację trybów",
 		"editGlobalModes": "Edytuj tryby globalne",
-		"editProjectModes": "Edytuj tryby projektu (.roomodes)",
+		"editProjectModes": "Edytuj tryby projektu (.syntxmodes)",
 		"createModeHelpText": "Tryby to wyspecjalizowane persony, które dostosowują zachowanie Roo. <0>Dowiedz się o używaniu trybów</0> lub <1>dostosowywaniu trybów.</1>",
 		"selectMode": "Szukaj trybów"
 	},
@@ -158,7 +158,7 @@
 				"description": "Dostępny we wszystkich obszarach roboczych"
 			},
 			"project": {
-				"label": "Specyficzny dla projektu (.roomodes)",
+				"label": "Specyficzny dla projektu (.syntxmodes)",
 				"description": "Dostępny tylko w tym obszarze roboczym, ma pierwszeństwo przed globalnym"
 			}
 		},

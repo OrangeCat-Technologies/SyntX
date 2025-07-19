@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "Uwzględnij pliki chronione",
-				"description": "Pozwól Roo na tworzenie i edycję plików chronionych (takich jak .rooignore i pliki konfiguracyjne .roo/) bez konieczności zatwierdzania."
+				"description": "Pozwól Roo na tworzenie i edycję plików chronionych (takich jak .syntxignore i pliki konfiguracyjne .roo/) bez konieczności zatwierdzania."
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "Maksymalna liczba plików do uwzględnienia w szczegółach bieżącego katalogu roboczego. Wyższe wartości zapewniają więcej kontekstu, ale zwiększają zużycie token."
 		},
 		"rooignore": {
-			"label": "Pokaż pliki .rooignore na listach i w wyszukiwaniach",
-			"description": "Gdy włączone, pliki pasujące do wzorców w .rooignore będą pokazywane na listach z symbolem kłódki. Gdy wyłączone, te pliki będą całkowicie ukryte z list plików i wyszukiwań."
+			"label": "Pokaż pliki .syntxignore na listach i w wyszukiwaniach",
+			"description": "Gdy włączone, pliki pasujące do wzorców w .syntxignore będą pokazywane na listach z symbolem kłódki. Gdy wyłączone, te pliki będą całkowicie ukryte z list plików i wyszukiwań."
 		},
 		"maxReadFile": {
 			"label": "Próg automatycznego skracania odczytu pliku",

@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "Sertakan file yang dilindungi",
-				"description": "Izinkan Roo membuat dan mengedit file yang dilindungi (seperti .rooignore dan file konfigurasi .roo/) tanpa memerlukan persetujuan."
+				"description": "Izinkan Roo membuat dan mengedit file yang dilindungi (seperti .syntxignore dan file konfigurasi .roo/) tanpa memerlukan persetujuan."
 			}
 		},
 		"browser": {
@@ -472,8 +472,8 @@
 			"description": "Jumlah maksimum file yang disertakan dalam detail direktori kerja saat ini. Nilai yang lebih tinggi memberikan lebih banyak konteks tetapi meningkatkan penggunaan token."
 		},
 		"rooignore": {
-			"label": "Tampilkan file .rooignore'd dalam daftar dan pencarian",
-			"description": "Ketika diaktifkan, file yang cocok dengan pola di .rooignore akan ditampilkan dalam daftar dengan simbol kunci. Ketika dinonaktifkan, file ini akan sepenuhnya disembunyikan dari daftar file dan pencarian."
+			"label": "Tampilkan file .syntxignore'd dalam daftar dan pencarian",
+			"description": "Ketika diaktifkan, file yang cocok dengan pola di .syntxignore akan ditampilkan dalam daftar dengan simbol kunci. Ketika dinonaktifkan, file ini akan sepenuhnya disembunyikan dari daftar file dan pencarian."
 		},
 		"maxConcurrentFileReads": {
 			"label": "Batas pembacaan file bersamaan",

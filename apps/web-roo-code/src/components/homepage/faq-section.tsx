@@ -25,7 +25,7 @@ const faqs: FAQItem[] = [
 	},
 	{
 		question: "Will my code stay private?",
-		answer: "Yes. Because Syntx is an extension in your local VS Code, your code never leaves your machine unless you connect to an external AI API. Even then, you control exactly what is sent to the AI model. You can use tools like .rooignore to exclude sensitive files, and you can also run Syntx with offline/local models for full privacy.",
+		answer: "Yes. Because Syntx is an extension in your local VS Code, your code never leaves your machine unless you connect to an external AI API. Even then, you control exactly what is sent to the AI model. You can use tools like .syntxignore to exclude sensitive files, and you can also run Syntx with offline/local models for full privacy.",
 	},
 	{
 		question: "Which AI models does Syntx support?",

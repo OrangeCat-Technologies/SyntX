@@ -142,8 +142,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML inválido no arquivo .roomodes na linha {{line}}. Verifique:\n• Indentação correta (use espaços, não tabs)\n• Aspas e colchetes correspondentes\n• Sintaxe YAML válida",
-			"schemaValidationError": "Formato de modos personalizados inválido em .roomodes:\n{{issues}}",
+			"yamlParseError": "YAML inválido no arquivo .syntxmodes na linha {{line}}. Verifique:\n• Indentação correta (use espaços, não tabs)\n• Aspas e colchetes correspondentes\n• Sintaxe YAML válida",
+			"schemaValidationError": "Formato de modos personalizados inválido em .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Formato de modos personalizados inválido. Certifique-se de que suas configurações seguem o formato YAML correto.",
 			"updateFailed": "Falha ao atualizar modo personalizado: {{error}}",
 			"deleteFailed": "Falha ao excluir modo personalizado: {{error}}",

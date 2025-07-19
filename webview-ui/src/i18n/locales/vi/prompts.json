@@ -8,7 +8,7 @@
 		"noMatchFound": "Không tìm thấy chế độ nào",
 		"editModesConfig": "Chỉnh sửa cấu hình chế độ",
 		"editGlobalModes": "Chỉnh sửa chế độ toàn cục",
-		"editProjectModes": "Chỉnh sửa chế độ dự án (.roomodes)",
+		"editProjectModes": "Chỉnh sửa chế độ dự án (.syntxmodes)",
 		"createModeHelpText": "Chế độ là các vai trò chuyên biệt điều chỉnh hành vi của Roo. <0>Tìm hiểu về Sử dụng Chế độ</0> hoặc <1>Tùy chỉnh Chế độ.</1>",
 		"selectMode": "Tìm kiếm chế độ"
 	},
@@ -155,7 +155,7 @@
 				"description": "Có sẵn trong tất cả các không gian làm việc"
 			},
 			"project": {
-				"label": "Dành riêng cho dự án (.roomodes)",
+				"label": "Dành riêng cho dự án (.syntxmodes)",
 				"description": "Chỉ có sẵn trong không gian làm việc này, được ưu tiên hơn toàn cục"
 			}
 		},

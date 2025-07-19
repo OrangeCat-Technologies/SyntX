@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "包含受保护的文件",
-				"description": "允许 Roo 创建和编辑受保护的文件（如 .rooignore 和 .roo/ 配置文件），无需批准。"
+				"description": "允许 Roo 创建和编辑受保护的文件（如 .syntxignore 和 .roo/ 配置文件），无需批准。"
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "允许纳入上下文的最大文件数（值越大消耗token越多）"
 		},
 		"rooignore": {
-			"label": "在列表和搜索中显示 .rooignore 文件",
-			"description": "启用后，与 .rooignore 中模式匹配的文件将在列表中显示锁定符号。禁用时，这些文件将从文件列表和搜索中完全隐藏。"
+			"label": "在列表和搜索中显示 .syntxignore 文件",
+			"description": "启用后，与 .syntxignore 中模式匹配的文件将在列表中显示锁定符号。禁用时，这些文件将从文件列表和搜索中完全隐藏。"
 		},
 		"maxReadFile": {
 			"label": "文件读取自动截断阈值",

@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "Inclure les fichiers protégés",
-				"description": "Permettre à Roo de créer et modifier des fichiers protégés (comme .rooignore et les fichiers de configuration .roo/) sans nécessiter d'approbation."
+				"description": "Permettre à Roo de créer et modifier des fichiers protégés (comme .syntxignore et les fichiers de configuration .roo/) sans nécessiter d'approbation."
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "Nombre maximum de fichiers à inclure dans les détails du répertoire de travail actuel. Des valeurs plus élevées fournissent plus de contexte mais augmentent l'utilisation de token."
 		},
 		"rooignore": {
-			"label": "Afficher les fichiers .rooignore dans les listes et recherches",
-			"description": "Lorsque cette option est activée, les fichiers correspondant aux modèles dans .rooignore seront affichés dans les listes avec un symbole de cadenas. Lorsqu'elle est désactivée, ces fichiers seront complètement masqués des listes de fichiers et des recherches."
+			"label": "Afficher les fichiers .syntxignore dans les listes et recherches",
+			"description": "Lorsque cette option est activée, les fichiers correspondant aux modèles dans .syntxignore seront affichés dans les listes avec un symbole de cadenas. Lorsqu'elle est désactivée, ces fichiers seront complètement masqués des listes de fichiers et des recherches."
 		},
 		"maxReadFile": {
 			"label": "Seuil d'auto-troncature de lecture de fichier",

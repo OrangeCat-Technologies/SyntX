@@ -8,7 +8,7 @@
 		"noMatchFound": "Keine Modi gefunden",
 		"editModesConfig": "Moduskonfiguration bearbeiten",
 		"editGlobalModes": "Globale Modi bearbeiten",
-		"editProjectModes": "Projektmodi bearbeiten (.roomodes)",
+		"editProjectModes": "Projektmodi bearbeiten (.syntxmodes)",
 		"createModeHelpText": "Modi sind spezialisierte Personas, die Roos Verhalten anpassen. <0>Erfahre mehr über die Verwendung von Modi</0> oder <1>die Anpassung von Modi.</1>",
 		"selectMode": "Modi suchen"
 	},
@@ -158,7 +158,7 @@
 				"description": "Verfügbar in allen Arbeitsbereichen"
 			},
 			"project": {
-				"label": "Projektspezifisch (.roomodes)",
+				"label": "Projektspezifisch (.syntxmodes)",
 				"description": "Nur in diesem Arbeitsbereich verfügbar, hat Vorrang vor global"
 			}
 		},

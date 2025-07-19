@@ -231,12 +231,12 @@ Original error: ${errorMessage}`
 			const { path: relPath, diff: diffItems } = operation
 
 			// Verify file access is allowed
-			const accessAllowed = cline.rooIgnoreController?.validateAccess(relPath)
+			const accessAllowed = cline.syntxignoreController?.validateAccess(relPath)
 			if (!accessAllowed) {
 				await cline.say("rooignore_error", relPath)
 				updateOperationResult(relPath, {
 					status: "blocked",
-					error: formatResponse.rooIgnoreError(relPath),
+					error: formatResponse.syntxignoreError(relPath),
 				})
 				continue
 			}

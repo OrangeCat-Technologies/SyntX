@@ -9,7 +9,7 @@ export const LOCK_TEXT_SYMBOL = "\u{1F512}"
 /**
  * Controls LLM access to files by enforcing ignore patterns.
  * Designed to be instantiated once in Cline.ts and passed to file manipulation services.
- * Uses the 'ignore' library to support standard .gitignore syntax in .rooignore files.
+ * Uses the 'ignore' library to support standard .gitignore syntax in .syntxignore files.
  */
 export class RooIgnoreController {
 	private cwd: string
@@ -20,8 +20,8 @@ export class RooIgnoreController {
 	constructor(cwd: string) {
 		this.cwd = cwd
 		this.ignoreInstance = ignore()
-		this.rooIgnoreContent = undefined
-		// Set up file watcher for .rooignore
+		this.syntxignoreContent = undefined
+		// Set up file watcher for .syntxignore
 		this.setupFileWatcher()
 	}
 
@@ -34,10 +34,10 @@ export class RooIgnoreController {
 	}
 
 	/**
-	 * Set up the file watcher for .rooignore changes
+	 * Set up the file watcher for .syntxignore changes
 	 */
 	private setupFileWatcher(): void {
-		const rooignorePattern = new vscode.RelativePattern(this.cwd, ".rooignore")
+		const rooignorePattern = new vscode.RelativePattern(this.cwd, ".syntxignore")
 		const fileWatcher = vscode.workspace.createFileSystemWatcher(rooignorePattern)
 
 		// Watch for changes and updates
@@ -58,24 +58,24 @@ export class RooIgnoreController {
 	}
 
 	/**
-	 * Load custom patterns from .rooignore if it exists
+	 * Load custom patterns from .syntxignore if it exists
 	 */
 	private async loadRooIgnore(): Promise<void> {
 		try {
 			// Reset ignore instance to prevent duplicate patterns
 			this.ignoreInstance = ignore()
-			const ignorePath = path.join(this.cwd, ".rooignore")
+			const ignorePath = path.join(this.cwd, ".syntxignore")
 			if (await fileExistsAtPath(ignorePath)) {
 				const content = await fs.readFile(ignorePath, "utf8")
-				this.rooIgnoreContent = content
+				this.syntxignoreContent = content
 				this.ignoreInstance.add(content)
-				this.ignoreInstance.add(".rooignore")
+				this.ignoreInstance.add(".syntxignore")
 			} else {
-				this.rooIgnoreContent = undefined
+				this.syntxignoreContent = undefined
 			}
 		} catch (error) {
 			// Should never happen: reading file failed even though it exists
-			console.error("Unexpected error loading .rooignore:", error)
+			console.error("Unexpected error loading .syntxignore:", error)
 		}
 	}
 
@@ -85,8 +85,8 @@ export class RooIgnoreController {
 	 * @returns true if file is accessible, false if ignored
 	 */
 	validateAccess(filePath: string): boolean {
-		// Always allow access if .rooignore does not exist
-		if (!this.rooIgnoreContent) {
+		// Always allow access if .syntxignore does not exist
+		if (!this.syntxignoreContent) {
 			return true
 		}
 		try {
@@ -109,8 +109,8 @@ export class RooIgnoreController {
 	 * @returns path of file that is being accessed if it is being accessed, undefined if command is allowed
 	 */
 	validateCommand(command: string): string | undefined {
-		// Always allow if no .rooignore exists
-		if (!this.rooIgnoreContent) {
+		// Always allow if no .syntxignore exists
+		if (!this.syntxignoreContent) {
 			return undefined
 		}
 
@@ -188,14 +188,14 @@ export class RooIgnoreController {
 	}
 
 	/**
-	 * Get formatted instructions about the .rooignore file for the LLM
-	 * @returns Formatted instructions or undefined if .rooignore doesn't exist
+	 * Get formatted instructions about the .syntxignore file for the LLM
+	 * @returns Formatted instructions or undefined if .syntxignore doesn't exist
 	 */
 	getInstructions(): string | undefined {
-		if (!this.rooIgnoreContent) {
+		if (!this.syntxignoreContent) {
 			return undefined
 		}
 
-		return `# .rooignore\n\n(The following is provided by a root-level .rooignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${this.rooIgnoreContent}\n.rooignore`
+		return `# .syntxignore\n\n(The following is provided by a root-level .syntxignore file where the user has specified files and directories that should not be accessed. When using list_files, you'll notice a ${LOCK_TEXT_SYMBOL} next to files that are blocked. Attempting to access the file's contents e.g. through read_file will result in an error.)\n\n${this.syntxignoreContent}\n.syntxignore`
 	}
 }

@@ -8,7 +8,7 @@
 		"noMatchFound": "Geen modi gevonden",
 		"editModesConfig": "Modusconfiguratie bewerken",
 		"editGlobalModes": "Globale modi bewerken",
-		"editProjectModes": "Projectmodi bewerken (.roomodes)",
+		"editProjectModes": "Projectmodi bewerken (.syntxmodes)",
 		"createModeHelpText": "Modi zijn gespecialiseerde persona's die het gedrag van Roo aanpassen. <0>Meer informatie over het gebruik van modi</0> of <1>het aanpassen van modi.</1>",
 		"selectMode": "Modus zoeken"
 	},
@@ -158,7 +158,7 @@
 				"description": "Beschikbaar in alle werkruimtes"
 			},
 			"project": {
-				"label": "Projectspecifiek (.roomodes)",
+				"label": "Projectspecifiek (.syntxmodes)",
 				"description": "Alleen beschikbaar in deze werkruimte, heeft voorrang op globaal"
 			}
 		},

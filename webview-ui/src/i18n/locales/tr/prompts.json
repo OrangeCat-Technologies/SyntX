@@ -8,7 +8,7 @@
 		"noMatchFound": "Mod bulunamadı",
 		"editModesConfig": "Mod yapılandırmasını düzenle",
 		"editGlobalModes": "Global modları düzenle",
-		"editProjectModes": "Proje modlarını düzenle (.roomodes)",
+		"editProjectModes": "Proje modlarını düzenle (.syntxmodes)",
 		"createModeHelpText": "Modlar, Roo'nun davranışını uyarlayan özel kişiliklerdir. <0>Modları Kullanma Hakkında Bilgi Edinin</0> veya <1>Modları Özelleştirme.</1>",
 		"selectMode": "Modları Ara"
 	},
@@ -155,7 +155,7 @@
 				"description": "Tüm çalışma alanlarında kullanılabilir"
 			},
 			"project": {
-				"label": "Projeye özgü (.roomodes)",
+				"label": "Projeye özgü (.syntxmodes)",
 				"description": "Yalnızca bu çalışma alanında kullanılabilir, globale göre önceliklidir"
 			}
 		},

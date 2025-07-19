@@ -67,7 +67,7 @@ describe("ContextManagementSettings", () => {
 		const workspaceFilesSlider = screen.getByTestId("workspace-files-limit-slider")
 		expect(workspaceFilesSlider).toBeInTheDocument()
 
-		// Show .rooignore'd files
+		// Show .syntxignore'd files
 		const showRooIgnoredFilesCheckbox = screen.getByTestId("show-rooignored-files-checkbox")
 		expect(showRooIgnoredFilesCheckbox).toBeInTheDocument()
 		expect(screen.getByTestId("show-rooignored-files-checkbox")).not.toBeChecked()
@@ -485,12 +485,12 @@ describe("ContextManagementSettings", () => {
 			// Check that labels are present
 			expect(screen.getByText("settings:contextManagement.openTabs.label")).toBeInTheDocument()
 			expect(screen.getByText("settings:contextManagement.workspaceFiles.label")).toBeInTheDocument()
-			expect(screen.getByText("settings:contextManagement.rooignore.label")).toBeInTheDocument()
+			expect(screen.getByText("settings:contextManagement.syntxignore.label")).toBeInTheDocument()
 
 			// Check that descriptions are present
 			expect(screen.getByText("settings:contextManagement.openTabs.description")).toBeInTheDocument()
 			expect(screen.getByText("settings:contextManagement.workspaceFiles.description")).toBeInTheDocument()
-			expect(screen.getByText("settings:contextManagement.rooignore.description")).toBeInTheDocument()
+			expect(screen.getByText("settings:contextManagement.syntxignore.description")).toBeInTheDocument()
 		})
 
 		it("has proper test ids for all interactive elements", () => {
@@ -517,7 +517,7 @@ describe("ContextManagementSettings", () => {
 			expect(screen.getByText("settings:contextManagement.description")).toBeInTheDocument()
 			expect(screen.getByText("settings:contextManagement.openTabs.label")).toBeInTheDocument()
 			expect(screen.getByText("settings:contextManagement.workspaceFiles.label")).toBeInTheDocument()
-			expect(screen.getByText("settings:contextManagement.rooignore.label")).toBeInTheDocument()
+			expect(screen.getByText("settings:contextManagement.syntxignore.label")).toBeInTheDocument()
 		})
 	})
 })

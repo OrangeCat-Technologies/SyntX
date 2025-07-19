@@ -111,7 +111,7 @@
 
 **"What if some files are blocked?"**
 - Roo reads approved files and works with what it has.
-- `.rooignore` files are excluded automatically.
+- `.syntxignore` files are excluded automatically.
 - Individual files can still be denied in the batch dialog.
       ]]></template>
     </faq>

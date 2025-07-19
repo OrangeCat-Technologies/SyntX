@@ -56,7 +56,7 @@ export class SimpleInstaller {
 				existingData = { customModes: [] }
 			} else if (error.name === "YAMLParseError" || error.message?.includes("YAML")) {
 				// YAML parsing error - don't overwrite the file!
-				const fileName = target === "project" ? ".roomodes" : "custom-modes.yaml"
+				const fileName = target === "project" ? ".syntxmodes" : "custom-modes.yaml"
 				throw new Error(
 					`Cannot install mode: The ${fileName} file contains invalid YAML. ` +
 						`Please fix the syntax errors in the file before installing new modes.`,
@@ -260,7 +260,7 @@ export class SimpleInstaller {
 				existingData = parsed && typeof parsed === "object" ? parsed : {}
 			} catch (parseError) {
 				// If we can't parse the file, we can't safely remove a mode
-				const fileName = target === "project" ? ".roomodes" : "custom-modes.yaml"
+				const fileName = target === "project" ? ".syntxmodes" : "custom-modes.yaml"
 				throw new Error(
 					`Cannot remove mode: The ${fileName} file contains invalid YAML. ` +
 						`Please fix the syntax errors before removing modes.`,
@@ -334,7 +334,7 @@ export class SimpleInstaller {
 			if (!workspaceFolder) {
 				throw new Error("No workspace folder found")
 			}
-			return path.join(workspaceFolder.uri.fsPath, ".roomodes")
+			return path.join(workspaceFolder.uri.fsPath, ".syntxmodes")
 		} else {
 			const globalSettingsPath = await ensureSettingsDirectoryExists(this.context)
 			return path.join(globalSettingsPath, GlobalFileNames.customModes)

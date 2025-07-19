@@ -547,7 +547,7 @@ const ModesView = ({ onDone }: ModesViewProps) => {
 												e.preventDefault() // Prevent blur
 												vscode.postMessage({
 													type: "openFile",
-													text: "./.roomodes",
+													text: "./.syntxmodes",
 													values: {
 														create: true,
 														content: JSON.stringify({ customModes: [] }, null, 2),

@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "Geschützte Dateien einbeziehen",
-				"description": "Roo erlauben, geschützte Dateien (wie .rooignore und .roo/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
+				"description": "Roo erlauben, geschützte Dateien (wie .syntxignore und .roo/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "Maximale Anzahl von Dateien, die in den Details des aktuellen Arbeitsverzeichnisses enthalten sein sollen. Höhere Werte bieten mehr Kontext, erhöhen aber den Token-Verbrauch."
 		},
 		"rooignore": {
-			"label": ".rooignore-Dateien in Listen und Suchen anzeigen",
-			"description": "Wenn aktiviert, werden Dateien, die mit Mustern in .rooignore übereinstimmen, in Listen mit einem Schlosssymbol angezeigt. Wenn deaktiviert, werden diese Dateien vollständig aus Dateilisten und Suchen ausgeblendet."
+			"label": ".syntxignore-Dateien in Listen und Suchen anzeigen",
+			"description": "Wenn aktiviert, werden Dateien, die mit Mustern in .syntxignore übereinstimmen, in Listen mit einem Schlosssymbol angezeigt. Wenn deaktiviert, werden diese Dateien vollständig aus Dateilisten und Suchen ausgeblendet."
 		},
 		"maxConcurrentFileReads": {
 			"label": "Concurrent file reads limit",

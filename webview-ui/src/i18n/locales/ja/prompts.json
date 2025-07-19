@@ -8,7 +8,7 @@
 		"noMatchFound": "モードが見つかりません",
 		"editModesConfig": "モード設定を編集",
 		"editGlobalModes": "グローバルモードを編集",
-		"editProjectModes": "プロジェクトモードを編集 (.roomodes)",
+		"editProjectModes": "プロジェクトモードを編集 (.syntxmodes)",
 		"createModeHelpText": "モードはRooの振る舞いを調整する専門的なペルソナです。<0>モードの使用について学ぶ</0>か、<1>モードのカスタマイズについて学ぶ</1>。",
 		"selectMode": "モードを検索"
 	},
@@ -158,7 +158,7 @@
 				"description": "すべてのワークスペースで利用可能"
 			},
 			"project": {
-				"label": "プロジェクト固有 (.roomodes)",
+				"label": "プロジェクト固有 (.syntxmodes)",
 				"description": "このワークスペースでのみ使用可能、グローバルよりも優先"
 			}
 		},

@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "Includi file protetti",
-				"description": "Permetti a Roo di creare e modificare file protetti (come .rooignore e file di configurazione .roo/) senza richiedere approvazione."
+				"description": "Permetti a Roo di creare e modificare file protetti (come .syntxignore e file di configurazione .roo/) senza richiedere approvazione."
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "Numero massimo di file da includere nei dettagli della directory di lavoro corrente. Valori più alti forniscono più contesto ma aumentano l'utilizzo di token."
 		},
 		"rooignore": {
-			"label": "Mostra file .rooignore negli elenchi e nelle ricerche",
-			"description": "Quando abilitato, i file che corrispondono ai pattern in .rooignore verranno mostrati negli elenchi con un simbolo di blocco. Quando disabilitato, questi file saranno completamente nascosti dagli elenchi di file e dalle ricerche."
+			"label": "Mostra file .syntxignore negli elenchi e nelle ricerche",
+			"description": "Quando abilitato, i file che corrispondono ai pattern in .syntxignore verranno mostrati negli elenchi con un simbolo di blocco. Quando disabilitato, questi file saranno completamente nascosti dagli elenchi di file e dalle ricerche."
 		},
 		"maxReadFile": {
 			"label": "Soglia di auto-troncamento lettura file",

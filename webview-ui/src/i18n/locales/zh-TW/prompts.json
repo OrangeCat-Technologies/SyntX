@@ -8,7 +8,7 @@
 		"noMatchFound": "找不到任何模式",
 		"editModesConfig": "編輯模式設定",
 		"editGlobalModes": "編輯全域模式",
-		"editProjectModes": "編輯專案模式 (.roomodes)",
+		"editProjectModes": "編輯專案模式 (.syntxmodes)",
 		"createModeHelpText": "模式是 Roo 的專屬角色，用於客製化其行為。<0>了解如何使用模式</0>或<1>自訂模式。</1>",
 		"selectMode": "搜尋模式"
 	},
@@ -155,7 +155,7 @@
 				"description": "在所有工作區可用"
 			},
 			"project": {
-				"label": "專案特定 (.roomodes)",
+				"label": "專案特定 (.syntxmodes)",
 				"description": "僅在此工作區可用，優先於全域模式"
 			}
 		},

@@ -141,7 +141,7 @@
 			},
 			"protected": {
 				"label": "Korumalı dosyaları dahil et",
-				"description": "Roo'nun korumalı dosyaları (.rooignore ve .roo/ yapılandırma dosyaları gibi) onay gerektirmeden oluşturmasına ve düzenlemesine izin ver."
+				"description": "Roo'nun korumalı dosyaları (.syntxignore ve .roo/ yapılandırma dosyaları gibi) onay gerektirmeden oluşturmasına ve düzenlemesine izin ver."
 			}
 		},
 		"browser": {
@@ -459,8 +459,8 @@
 			"description": "Mevcut çalışma dizini ayrıntılarına dahil edilecek maksimum dosya sayısı. Daha yüksek değerler daha fazla bağlam sağlar ancak token kullanımını artırır."
 		},
 		"rooignore": {
-			"label": "Listelerde ve aramalarda .rooignore dosyalarını göster",
-			"description": "Etkinleştirildiğinde, .rooignore'daki desenlerle eşleşen dosyalar kilit sembolü ile listelerde gösterilecektir. Devre dışı bırakıldığında, bu dosyalar dosya listelerinden ve aramalardan tamamen gizlenecektir."
+			"label": "Listelerde ve aramalarda .syntxignore dosyalarını göster",
+			"description": "Etkinleştirildiğinde, .syntxignore'daki desenlerle eşleşen dosyalar kilit sembolü ile listelerde gösterilecektir. Devre dışı bırakıldığında, bu dosyalar dosya listelerinden ve aramalardan tamamen gizlenecektir."
 		},
 		"maxReadFile": {
 			"label": "Dosya okuma otomatik kısaltma eşiği",

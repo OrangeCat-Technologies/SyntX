@@ -147,8 +147,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": ".roomodes 文件第 {{line}} 行 YAML 格式无效。请检查：\n• 正确的缩进（使用空格，不要使用制表符）\n• 匹配的引号和括号\n• 有效的 YAML 语法",
-			"schemaValidationError": ".roomodes 中自定义模式格式无效：\n{{issues}}",
+			"yamlParseError": ".syntxmodes 文件第 {{line}} 行 YAML 格式无效。请检查：\n• 正确的缩进（使用空格，不要使用制表符）\n• 匹配的引号和括号\n• 有效的 YAML 语法",
+			"schemaValidationError": ".syntxmodes 中自定义模式格式无效：\n{{issues}}",
 			"invalidFormat": "自定义模式格式无效。请确保你的设置遵循正确的 YAML 格式。",
 			"updateFailed": "更新自定义模式失败：{{error}}",
 			"deleteFailed": "删除自定义模式失败：{{error}}",

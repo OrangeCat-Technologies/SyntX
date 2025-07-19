@@ -8,7 +8,7 @@
 		"noMatchFound": "Aucun mode trouvé",
 		"editModesConfig": "Modifier la configuration des modes",
 		"editGlobalModes": "Modifier les modes globaux",
-		"editProjectModes": "Modifier les modes du projet (.roomodes)",
+		"editProjectModes": "Modifier les modes du projet (.syntxmodes)",
 		"createModeHelpText": "Les modes sont des personas spécialisés qui adaptent le comportement de Roo. <0>En savoir plus sur l'utilisation des modes</0> ou <1>la personnalisation des modes.</1>",
 		"selectMode": "Rechercher les modes"
 	},
@@ -158,7 +158,7 @@
 				"description": "Disponible dans tous les espaces de travail"
 			},
 			"project": {
-				"label": "Spécifique au projet (.roomodes)",
+				"label": "Spécifique au projet (.syntxmodes)",
 				"description": "Disponible uniquement dans cet espace de travail, a priorité sur le global"
 			}
 		},

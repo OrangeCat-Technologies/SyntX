@@ -10,8 +10,8 @@ describe("RooProtectedController", () => {
 	})
 
 	describe("isWriteProtected", () => {
-		it("should protect .rooignore file", () => {
-			expect(controller.isWriteProtected(".rooignore")).toBe(true)
+		it("should protect .syntxignore file", () => {
+			expect(controller.isWriteProtected(".syntxignore")).toBe(true)
 		})
 
 		it("should protect files in .roo directory", () => {
@@ -24,8 +24,8 @@ describe("RooProtectedController", () => {
 			expect(controller.isWriteProtected(".rooprotected")).toBe(true)
 		})
 
-		it("should protect .roomodes files", () => {
-			expect(controller.isWriteProtected(".roomodes")).toBe(true)
+		it("should protect .syntxmodes files", () => {
+			expect(controller.isWriteProtected(".syntxmodes")).toBe(true)
 		})
 
 		it("should protect .roorules* files", () => {
@@ -62,13 +62,13 @@ describe("RooProtectedController", () => {
 
 		it("should handle nested paths correctly", () => {
 			expect(controller.isWriteProtected(".roo/config.json")).toBe(true) // .roo/** matches at root
-			expect(controller.isWriteProtected("nested/.rooignore")).toBe(true) // .rooignore matches anywhere by default
-			expect(controller.isWriteProtected("nested/.roomodes")).toBe(true) // .roomodes matches anywhere by default
+			expect(controller.isWriteProtected("nested/.syntxignore")).toBe(true) // .syntxignore matches anywhere by default
+			expect(controller.isWriteProtected("nested/.syntxmodes")).toBe(true) // .syntxmodes matches anywhere by default
 			expect(controller.isWriteProtected("nested/.roorules.md")).toBe(true) // .roorules* matches anywhere by default
 		})
 
 		it("should handle absolute paths by converting to relative", () => {
-			const absolutePath = path.join(TEST_CWD, ".rooignore")
+			const absolutePath = path.join(TEST_CWD, ".syntxignore")
 			expect(controller.isWriteProtected(absolutePath)).toBe(true)
 		})
 
@@ -80,11 +80,11 @@ describe("RooProtectedController", () => {
 
 	describe("getProtectedFiles", () => {
 		it("should return set of protected files from a list", () => {
-			const files = ["src/index.ts", ".rooignore", "package.json", ".roo/config.json", "README.md"]
+			const files = ["src/index.ts", ".syntxignore", "package.json", ".roo/config.json", "README.md"]
 
 			const protectedFiles = controller.getProtectedFiles(files)
 
-			expect(protectedFiles).toEqual(new Set([".rooignore", ".roo/config.json"]))
+			expect(protectedFiles).toEqual(new Set([".syntxignore", ".roo/config.json"]))
 		})
 
 		it("should return empty set when no files are protected", () => {
@@ -98,13 +98,13 @@ describe("RooProtectedController", () => {
 
 	describe("annotatePathsWithProtection", () => {
 		it("should annotate paths with protection status", () => {
-			const files = ["src/index.ts", ".rooignore", ".roo/config.json", "package.json"]
+			const files = ["src/index.ts", ".syntxignore", ".roo/config.json", "package.json"]
 
 			const annotated = controller.annotatePathsWithProtection(files)
 
 			expect(annotated).toEqual([
 				{ path: "src/index.ts", isProtected: false },
-				{ path: ".rooignore", isProtected: true },
+				{ path: ".syntxignore", isProtected: true },
 				{ path: ".roo/config.json", isProtected: true },
 				{ path: "package.json", isProtected: false },
 			])
@@ -124,7 +124,7 @@ describe("RooProtectedController", () => {
 
 			expect(instructions).toContain("# Protected Files")
 			expect(instructions).toContain("write-protected")
-			expect(instructions).toContain(".rooignore")
+			expect(instructions).toContain(".syntxignore")
 			expect(instructions).toContain(".roo/**")
 			expect(instructions).toContain("\u{1F6E1}") // Shield symbol
 		})
@@ -135,8 +135,8 @@ describe("RooProtectedController", () => {
 			const patterns = RooProtectedController.getProtectedPatterns()
 
 			expect(patterns).toEqual([
-				".rooignore",
-				".roomodes",
+				".syntxignore",
+				".syntxmodes",
 				".roorules*",
 				".clinerules*",
 				".roo/**",

@@ -131,8 +131,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "Invalid YAML in .roomodes file at line {{line}}. Please check for:\n• Proper indentation (use spaces, not tabs)\n• Matching quotes and brackets\n• Valid YAML syntax",
-			"schemaValidationError": "Invalid custom modes format in .roomodes:\n{{issues}}",
+			"yamlParseError": "Invalid YAML in .syntxmodes file at line {{line}}. Please check for:\n• Proper indentation (use spaces, not tabs)\n• Matching quotes and brackets\n• Valid YAML syntax",
+			"schemaValidationError": "Invalid custom modes format in .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Invalid custom modes format. Please ensure your settings follow the correct YAML format.",
 			"updateFailed": "Failed to update custom mode: {{error}}",
 			"deleteFailed": "Failed to delete custom mode: {{error}}",

@@ -13,6 +13,11 @@ export class RooProtectedController {
 
 	// Predefined list of protected Roo configuration patterns
 	private static readonly PROTECTED_PATTERNS = [
+		".syntxignore",
+		".syntxmodes",
+		".syntxrules",
+		".syntxprotected",
+		".syntx/**",
 		".rooignore",
 		".roomodes",
 		".roorules*",

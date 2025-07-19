@@ -8,7 +8,7 @@
 		"noMatchFound": "No s'han trobat modes",
 		"editModesConfig": "Editar configuració de modes",
 		"editGlobalModes": "Editar modes globals",
-		"editProjectModes": "Editar modes de projecte (.roomodes)",
+		"editProjectModes": "Editar modes de projecte (.syntxmodes)",
 		"createModeHelpText": "Els modes són persones especialitzades que adapten el comportament de Roo. <0>Aprèn sobre l'ús de modes</0> o <1>Personalització de modes.</1>",
 		"selectMode": "Cerqueu modes"
 	},
@@ -158,7 +158,7 @@
 				"description": "Disponible a tots els espais de treball"
 			},
 			"project": {
-				"label": "Específic del projecte (.roomodes)",
+				"label": "Específic del projecte (.syntxmodes)",
 				"description": "Només disponible en aquest espai de treball, té prioritat sobre el global"
 			}
 		},

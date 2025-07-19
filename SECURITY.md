@@ -6,7 +6,7 @@ We actively patch only the most recent minor release of SyntX. Older versions re
 
 ## Reporting a Vulnerability
 
-Email security@orangecat.ai with:
+Email support@orangecat.ai with:
 
 - A short summary of the issue
 - Steps to reproduce or a proof of concept
