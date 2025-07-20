@@ -1,5 +1,5 @@
 {
-	"extension.displayName": "Roo Code (anteriormente Roo Cline)",
+	"extension.displayName": "Syntx",
 	"extension.description": "Uma equipe completa de desenvolvimento de agentes de IA no seu editor.",
 	"command.newTask.title": "Nova Tarefa",
 	"command.explainCode.title": "Explicar Código",
@@ -14,10 +14,10 @@
 	"command.terminal.fixCommand.title": "Corrigir Este Comando",
 	"command.terminal.explainCommand.title": "Explicar Este Comando",
 	"command.acceptInput.title": "Aceitar Entrada/Sugestão",
-	"views.activitybar.title": "Roo Code",
-	"views.contextMenu.label": "Roo Code",
-	"views.terminalMenu.label": "Roo Code",
-	"views.sidebar.name": "Roo Code",
+	"views.activitybar.title": "Syntx",
+	"views.contextMenu.label": "Syntx",
+	"views.terminalMenu.label": "Syntx",
+	"views.sidebar.name": "Syntx",
 	"command.mcpServers.title": "Servidores MCP",
 	"command.prompts.title": "Modos",
 	"command.history.title": "Histórico",
@@ -25,7 +25,7 @@
 	"command.openInEditor.title": "Abrir no Editor",
 	"command.settings.title": "Configurações",
 	"command.documentation.title": "Documentação",
-	"configuration.title": "Roo Code",
+	"configuration.title": "Syntx",
 	"commands.allowedCommands.description": "Comandos que podem ser executados automaticamente quando 'Sempre aprovar operações de execução' está ativado",
 	"commands.deniedCommands.description": "Prefixos de comandos que serão automaticamente negados sem solicitar aprovação. Em caso de conflitos com comandos permitidos, a correspondência de prefixo mais longa tem precedência. Adicione * para negar todos os comandos.",
 	"commands.commandExecutionTimeout.description": "Tempo máximo em segundos para aguardar a conclusão da execução do comando antes do timeout (0 = sem timeout, 1-600s, padrão: 0s)",
@@ -34,6 +34,6 @@
 	"settings.vsCodeLmModelSelector.vendor.description": "O fornecedor do modelo de linguagem (ex: copilot)",
 	"settings.vsCodeLmModelSelector.family.description": "A família do modelo de linguagem (ex: gpt-4)",
 	"settings.customStoragePath.description": "Caminho de armazenamento personalizado. Deixe vazio para usar o local padrão. Suporta caminhos absolutos (ex: 'D:\\RooCodeStorage')",
-	"settings.enableCodeActions.description": "Habilitar correções rápidas do Roo Code.",
+	"settings.enableCodeActions.description": "Habilitar correções rápidas do Syntx.",
 	"settings.autoImportSettingsPath.description": "Caminho para um arquivo de configuração do RooCode para importar automaticamente na inicialização da extensão. Suporta caminhos absolutos e caminhos relativos ao diretório inicial (por exemplo, '~/Documents/roo-code-settings.json'). Deixe em branco para desativar a importação automática."
 }

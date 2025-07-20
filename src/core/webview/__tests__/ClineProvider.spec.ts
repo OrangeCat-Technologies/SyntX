@@ -2416,6 +2416,7 @@ describe("ClineProvider - Router Models", () => {
 				litellm: mockModels,
 				ollama: {},
 				lmstudio: {},
+				syntx: mockModels,
 			},
 		})
 	})
@@ -2430,6 +2431,7 @@ describe("ClineProvider - Router Models", () => {
 				requestyApiKey: "requesty-key",
 				glamaApiKey: "glama-key",
 				unboundApiKey: "unbound-key",
+				syntxApiKey: "syntx-key",
 				litellmApiKey: "litellm-key",
 				litellmBaseUrl: "http://localhost:4000",
 			},
@@ -2446,6 +2448,7 @@ describe("ClineProvider - Router Models", () => {
 			.mockRejectedValueOnce(new Error("Requesty API error")) // requesty fail
 			.mockResolvedValueOnce(mockModels) // glama success
 			.mockRejectedValueOnce(new Error("Unbound API error")) // unbound fail
+			.mockRejectedValueOnce(new Error("Syntx API error")) // syntx fail
 			.mockRejectedValueOnce(new Error("LiteLLM connection failed")) // litellm fail
 
 		await messageHandler({ type: "requestRouterModels" })
@@ -2458,6 +2461,7 @@ describe("ClineProvider - Router Models", () => {
 				requesty: {},
 				glama: mockModels,
 				unbound: {},
+				syntx: {},
 				ollama: {},
 				lmstudio: {},
 				litellm: {},
@@ -2482,8 +2486,8 @@ describe("ClineProvider - Router Models", () => {
 		expect(mockPostMessage).toHaveBeenCalledWith({
 			type: "singleRouterModelFetchResponse",
 			success: false,
-			error: "Unbound API error",
-			values: { provider: "unbound" },
+			error: "Syntx API error",
+			values: { provider: "syntx" },
 		})
 
 		expect(mockPostMessage).toHaveBeenCalledWith({
@@ -2571,6 +2575,7 @@ describe("ClineProvider - Router Models", () => {
 				litellm: {},
 				ollama: {},
 				lmstudio: {},
+				syntx: mockModels,
 			},
 		})
 	})

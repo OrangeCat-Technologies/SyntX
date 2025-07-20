@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "エディター内のAIデベロッパーチーム全体。"
 	},
 	"number_format": {
@@ -138,8 +138,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": ".roomodes ファイルの {{line}} 行目で無効な YAML です。以下を確認してください：\n• 正しいインデント（タブではなくスペースを使用）\n• 引用符と括弧の対応\n• 有効な YAML 構文",
-			"schemaValidationError": ".roomodes のカスタムモード形式が無効です：\n{{issues}}",
+			"yamlParseError": ".syntxmodes ファイルの {{line}} 行目で無効な YAML です。以下を確認してください：\n• 正しいインデント（タブではなくスペースを使用）\n• 引用符と括弧の対応\n• 有効な YAML 構文",
+			"schemaValidationError": ".syntxmodes のカスタムモード形式が無効です：\n{{issues}}",
 			"invalidFormat": "カスタムモード形式が無効です。設定が正しい YAML 形式に従っていることを確認してください。",
 			"updateFailed": "カスタムモードの更新に失敗しました：{{error}}",
 			"deleteFailed": "カスタムモードの削除に失敗しました：{{error}}",
@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "あなたの組織では Roo Code Cloud 認証が必要です。続行するにはサインインしてください。",
-			"organization_mismatch": "組織の Roo Code Cloud アカウントで認証する必要があります。",
+			"cloud_auth_required": "あなたの組織では Syntx Cloud 認証が必要です。続行するにはサインインしてください。",
+			"organization_mismatch": "組織の Syntx Cloud アカウントで認証する必要があります。",
 			"verification_failed": "組織認証の確認ができませんでした。"
 		}
 	},

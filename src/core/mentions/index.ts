@@ -219,7 +219,7 @@ async function getFileOrFolderContent(
 
 		if (stats.isFile()) {
 			if (rooIgnoreController && !rooIgnoreController.validateAccess(absPath)) {
-				return `(File ${mentionPath} is ignored by .rooignore)`
+				return `(File ${mentionPath} is ignored by .syntxignore)`
 			}
 			try {
 				const content = await extractTextFromFile(absPath)

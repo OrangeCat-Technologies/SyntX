@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "Cały zespół programistów AI w Twoim edytorze."
 	},
 	"number_format": {
@@ -122,7 +122,7 @@
 		"enter_valid_path": "Wprowadź prawidłową ścieżkę"
 	},
 	"input": {
-		"task_prompt": "Co ma zrobić Roo?",
+		"task_prompt": "Co ma zrobić SyntX?",
 		"task_placeholder": "Wpisz swoje zadanie tutaj"
 	},
 	"settings": {
@@ -138,8 +138,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "Nieprawidłowy YAML w pliku .roomodes w linii {{line}}. Sprawdź:\n• Prawidłowe wcięcia (używaj spacji, nie tabulatorów)\n• Pasujące cudzysłowy i nawiasy\n• Prawidłową składnię YAML",
-			"schemaValidationError": "Nieprawidłowy format trybów niestandardowych w .roomodes:\n{{issues}}",
+			"yamlParseError": "Nieprawidłowy YAML w pliku .syntxmodes w linii {{line}}. Sprawdź:\n• Prawidłowe wcięcia (używaj spacji, nie tabulatorów)\n• Pasujące cudzysłowy i nawiasy\n• Prawidłową składnię YAML",
+			"schemaValidationError": "Nieprawidłowy format trybów niestandardowych w .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Nieprawidłowy format trybów niestandardowych. Upewnij się, że twoje ustawienia są zgodne z prawidłowym formatem YAML.",
 			"updateFailed": "Aktualizacja trybu niestandardowego nie powiodła się: {{error}}",
 			"deleteFailed": "Usunięcie trybu niestandardowego nie powiodło się: {{error}}",
@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Twoja organizacja wymaga uwierzytelnienia Roo Code Cloud. Zaloguj się, aby kontynuować.",
-			"organization_mismatch": "Musisz być uwierzytelniony kontem Roo Code Cloud swojej organizacji.",
+			"cloud_auth_required": "Twoja organizacja wymaga uwierzytelnienia Syntx Cloud. Zaloguj się, aby kontynuować.",
+			"organization_mismatch": "Musisz być uwierzytelniony kontem Syntx Cloud swojej organizacji.",
 			"verification_failed": "Nie można zweryfikować uwierzytelnienia organizacji."
 		}
 	},

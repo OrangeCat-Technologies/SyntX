@@ -51,6 +51,7 @@ export interface LanguageModelChatSelector {
 // 'settingsButtonClicked' or 'hello'. Webview will hold state.
 export interface ExtensionMessage {
 	type:
+		| "agentSelected"
 		| "action"
 		| "state"
 		| "selectedImages"
@@ -105,11 +106,16 @@ export interface ExtensionMessage {
 		| "shareTaskSuccess"
 		| "codeIndexSettingsSaved"
 		| "codeIndexSecretStatus"
+		| "websiteAuth"
+		| "websiteAuthCallback"
 		| "showDeleteMessageDialog"
 		| "showEditMessageDialog"
 	text?: string
 	payload?: any // Add a generic payload for now, can refine later
+	agentId?: string
+	showModes?: boolean
 	action?:
+		| "agentButtonClicked"
 		| "chatButtonClicked"
 		| "mcpButtonClicked"
 		| "settingsButtonClicked"
@@ -224,6 +230,7 @@ export type ExtensionState = Pick<
 	// | "mcpEnabled" // Optional in GlobalSettings, required here.
 	// | "enableMcpServerCreation" // Optional in GlobalSettings, required here.
 	// | "mode" // Optional in GlobalSettings, required here.
+	| "showModes"
 	| "modeApiConfigs"
 	// | "customModes" // Optional in GlobalSettings, required here.
 	| "customModePrompts"
@@ -250,7 +257,7 @@ export type ExtensionState = Pick<
 	enableCheckpoints: boolean
 	maxOpenTabsContext: number // Maximum number of VSCode open tabs to include in context (0-500)
 	maxWorkspaceFiles: number // Maximum number of files to include in current working directory details (0-500)
-	showRooIgnoredFiles: boolean // Whether to show .rooignore'd files in listings
+	showRooIgnoredFiles: boolean // Whether to show .syntxignore'd files in listings
 	maxReadFileLine: number // Maximum number of lines to read from a file before truncating
 
 	experiments: Experiments // Map of experiment IDs to their enabled state
@@ -276,6 +283,11 @@ export type ExtensionState = Pick<
 	cloudApiUrl?: string
 	sharingEnabled: boolean
 	organizationAllowList: OrganizationAllowList
+
+	// Website authentication states
+	websiteUsername?: string
+	syntxApiKey?: string
+	websiteNotAuthenticated?: boolean
 
 	autoCondenseContext: boolean
 	autoCondenseContextPercent: number

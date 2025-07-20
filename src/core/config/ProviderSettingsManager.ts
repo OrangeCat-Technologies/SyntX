@@ -44,7 +44,7 @@ export class ProviderSettingsManager {
 
 	private readonly defaultProviderProfiles: ProviderProfiles = {
 		currentApiConfigName: "default",
-		apiConfigs: { default: { id: this.defaultConfigId } },
+		apiConfigs: { default: { id: this.defaultConfigId, apiProvider: "syntx" } },
 		modeApiConfigs: this.defaultModeApiConfigs,
 		migrations: {
 			rateLimitSecondsMigrated: true, // Mark as migrated on fresh installs
@@ -285,6 +285,11 @@ export class ProviderSettingsManager {
 				// Filter out settings from other providers.
 				const filteredConfig = providerSettingsSchemaDiscriminated.parse(config)
 				providerProfiles.apiConfigs[name] = { ...filteredConfig, id }
+				console.log("ProviderSettingsManager: Saving config", {
+					name,
+					id,
+					config: providerProfiles.apiConfigs[name],
+				})
 				await this.store(providerProfiles)
 				return id
 			})

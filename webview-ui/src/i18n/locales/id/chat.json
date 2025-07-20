@@ -1,5 +1,5 @@
 {
-	"greeting": "Selamat datang di Roo Code",
+	"greeting": "Selamat datang di Syntx",
 	"task": {
 		"title": "Tugas",
 		"seeMore": "Lihat lebih banyak",
@@ -18,7 +18,7 @@
 		"sharePublicly": "Bagikan secara publik",
 		"sharePubliclyDescription": "Siapa pun dengan tautan dapat mengakses",
 		"connectToCloud": "Hubungkan ke Cloud",
-		"connectToCloudDescription": "Masuk ke Roo Code Cloud untuk berbagi tugas",
+		"connectToCloudDescription": "Masuk ke Syntx Cloud untuk berbagi tugas",
 		"sharingDisabledByOrganization": "Berbagi dinonaktifkan oleh organisasi",
 		"shareSuccessOrganization": "Tautan organisasi disalin ke clipboard",
 		"shareSuccessPublic": "Tautan publik disalin ke clipboard"
@@ -122,7 +122,7 @@
 		"title": "Mode",
 		"marketplace": "Marketplace Mode",
 		"settings": "Pengaturan Mode",
-		"description": "Persona khusus yang menyesuaikan perilaku Roo."
+		"description": "Persona khusus yang menyesuaikan perilaku SyntX."
 	},
 	"addImages": "Tambahkan gambar ke pesan",
 	"sendMessage": "Kirim pesan",
@@ -169,46 +169,46 @@
 		"tokens": "token"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo ingin mengambil instruksi detail untuk membantu tugas saat ini"
+		"wantsToFetch": "SyntX ingin mengambil instruksi detail untuk membantu tugas saat ini"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo ingin membaca file ini:",
-		"wantsToReadMultiple": "Roo ingin membaca beberapa file:",
-		"wantsToReadAndXMore": "Roo ingin membaca file ini dan {{count}} lainnya:",
-		"wantsToReadOutsideWorkspace": "Roo ingin membaca file ini di luar workspace:",
-		"didRead": "Roo membaca file ini:",
-		"wantsToEdit": "Roo ingin mengedit file ini:",
-		"wantsToEditOutsideWorkspace": "Roo ingin mengedit file ini di luar workspace:",
-		"wantsToEditProtected": "Roo ingin mengedit file konfigurasi yang dilindungi:",
-		"wantsToApplyBatchChanges": "Roo ingin menerapkan perubahan ke beberapa file:",
-		"wantsToCreate": "Roo ingin membuat file baru:",
-		"wantsToSearchReplace": "Roo ingin mencari dan mengganti di file ini:",
-		"didSearchReplace": "Roo melakukan pencarian dan penggantian pada file ini:",
-		"wantsToInsert": "Roo ingin menyisipkan konten ke file ini:",
-		"wantsToInsertWithLineNumber": "Roo ingin menyisipkan konten ke file ini di baris {{lineNumber}}:",
-		"wantsToInsertAtEnd": "Roo ingin menambahkan konten ke akhir file ini:"
+		"wantsToRead": "SyntX ingin membaca file ini:",
+		"wantsToReadMultiple": "SyntX ingin membaca beberapa file:",
+		"wantsToReadAndXMore": "SyntX ingin membaca file ini dan {{count}} lainnya:",
+		"wantsToReadOutsideWorkspace": "SyntX ingin membaca file ini di luar workspace:",
+		"didRead": "SyntX membaca file ini:",
+		"wantsToEdit": "SyntX ingin mengedit file ini:",
+		"wantsToEditOutsideWorkspace": "SyntX ingin mengedit file ini di luar workspace:",
+		"wantsToEditProtected": "SyntX ingin mengedit file konfigurasi yang dilindungi:",
+		"wantsToApplyBatchChanges": "SyntX ingin menerapkan perubahan ke beberapa file:",
+		"wantsToCreate": "SyntX ingin membuat file baru:",
+		"wantsToSearchReplace": "SyntX ingin mencari dan mengganti di file ini:",
+		"didSearchReplace": "SyntX melakukan pencarian dan penggantian pada file ini:",
+		"wantsToInsert": "SyntX ingin menyisipkan konten ke file ini:",
+		"wantsToInsertWithLineNumber": "SyntX ingin menyisipkan konten ke file ini di baris {{lineNumber}}:",
+		"wantsToInsertAtEnd": "SyntX ingin menambahkan konten ke akhir file ini:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo ingin melihat file tingkat atas di direktori ini:",
-		"didViewTopLevel": "Roo melihat file tingkat atas di direktori ini:",
-		"wantsToViewRecursive": "Roo ingin melihat semua file secara rekursif di direktori ini:",
-		"didViewRecursive": "Roo melihat semua file secara rekursif di direktori ini:",
-		"wantsToViewDefinitions": "Roo ingin melihat nama definisi source code yang digunakan di direktori ini:",
-		"didViewDefinitions": "Roo melihat nama definisi source code yang digunakan di direktori ini:",
-		"wantsToSearch": "Roo ingin mencari direktori ini untuk <code>{{regex}}</code>:",
-		"didSearch": "Roo mencari direktori ini untuk <code>{{regex}}</code>:",
-		"wantsToSearchOutsideWorkspace": "Roo ingin mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
-		"didSearchOutsideWorkspace": "Roo mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo ingin melihat file tingkat atas di direktori ini (di luar workspace):",
-		"didViewTopLevelOutsideWorkspace": "Roo melihat file tingkat atas di direktori ini (di luar workspace):",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo ingin melihat semua file secara rekursif di direktori ini (di luar workspace):",
-		"didViewRecursiveOutsideWorkspace": "Roo melihat semua file secara rekursif di direktori ini (di luar workspace):",
-		"wantsToViewDefinitionsOutsideWorkspace": "Roo ingin melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):",
-		"didViewDefinitionsOutsideWorkspace": "Roo melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):"
+		"wantsToViewTopLevel": "SyntX ingin melihat file tingkat atas di direktori ini:",
+		"didViewTopLevel": "SyntX melihat file tingkat atas di direktori ini:",
+		"wantsToViewRecursive": "SyntX ingin melihat semua file secara rekursif di direktori ini:",
+		"didViewRecursive": "SyntX melihat semua file secara rekursif di direktori ini:",
+		"wantsToViewDefinitions": "SyntX ingin melihat nama definisi source code yang digunakan di direktori ini:",
+		"didViewDefinitions": "SyntX melihat nama definisi source code yang digunakan di direktori ini:",
+		"wantsToSearch": "SyntX ingin mencari direktori ini untuk <code>{{regex}}</code>:",
+		"didSearch": "SyntX mencari direktori ini untuk <code>{{regex}}</code>:",
+		"wantsToSearchOutsideWorkspace": "SyntX ingin mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
+		"didSearchOutsideWorkspace": "SyntX mencari direktori ini (di luar workspace) untuk <code>{{regex}}</code>:",
+		"wantsToViewTopLevelOutsideWorkspace": "SyntX ingin melihat file tingkat atas di direktori ini (di luar workspace):",
+		"didViewTopLevelOutsideWorkspace": "SyntX melihat file tingkat atas di direktori ini (di luar workspace):",
+		"wantsToViewRecursiveOutsideWorkspace": "SyntX ingin melihat semua file secara rekursif di direktori ini (di luar workspace):",
+		"didViewRecursiveOutsideWorkspace": "SyntX melihat semua file secara rekursif di direktori ini (di luar workspace):",
+		"wantsToViewDefinitionsOutsideWorkspace": "SyntX ingin melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):",
+		"didViewDefinitionsOutsideWorkspace": "SyntX melihat nama definisi source code yang digunakan di direktori ini (di luar workspace):"
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo ingin mencari codebase untuk <code>{{query}}</code>:",
-		"wantsToSearchWithPath": "Roo ingin mencari codebase untuk <code>{{query}}</code> di <code>{{path}}</code>:",
+		"wantsToSearch": "SyntX ingin mencari codebase untuk <code>{{query}}</code>:",
+		"wantsToSearchWithPath": "SyntX ingin mencari codebase untuk <code>{{query}}</code> di <code>{{path}}</code>:",
 		"didSearch_one": "Ditemukan 1 hasil",
 		"didSearch_other": "Ditemukan {{count}} hasil",
 		"resultTooltip": "Skor kemiripan: {{score}} (klik untuk membuka file)"
@@ -217,18 +217,18 @@
 	"response": "Respons",
 	"arguments": "Argumen",
 	"mcp": {
-		"wantsToUseTool": "Roo ingin menggunakan tool di server MCP {{serverName}}:",
-		"wantsToAccessResource": "Roo ingin mengakses resource di server MCP {{serverName}}:"
+		"wantsToUseTool": "SyntX ingin menggunakan tool di server MCP {{serverName}}:",
+		"wantsToAccessResource": "SyntX ingin mengakses resource di server MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo ingin beralih ke mode {{mode}}",
-		"wantsToSwitchWithReason": "Roo ingin beralih ke mode {{mode}} karena: {{reason}}",
-		"didSwitch": "Roo beralih ke mode {{mode}}",
-		"didSwitchWithReason": "Roo beralih ke mode {{mode}} karena: {{reason}}"
+		"wantsToSwitch": "SyntX ingin beralih ke mode {{mode}}",
+		"wantsToSwitchWithReason": "SyntX ingin beralih ke mode {{mode}} karena: {{reason}}",
+		"didSwitch": "SyntX beralih ke mode {{mode}}",
+		"didSwitchWithReason": "SyntX beralih ke mode {{mode}} karena: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo ingin membuat subtugas baru dalam mode {{mode}}:",
-		"wantsToFinish": "Roo ingin menyelesaikan subtugas ini",
+		"wantsToCreate": "SyntX ingin membuat subtugas baru dalam mode {{mode}}:",
+		"wantsToFinish": "SyntX ingin menyelesaikan subtugas ini",
 		"newTaskContent": "Instruksi Subtugas",
 		"completionContent": "Subtugas Selesai",
 		"resultContent": "Hasil Subtugas",
@@ -236,34 +236,34 @@
 		"completionInstructions": "Subtugas selesai! Kamu bisa meninjau hasilnya dan menyarankan koreksi atau langkah selanjutnya. Jika semuanya terlihat baik, konfirmasi untuk mengembalikan hasil ke tugas induk."
 	},
 	"questions": {
-		"hasQuestion": "Roo punya pertanyaan:"
+		"hasQuestion": "SyntX punya pertanyaan:"
 	},
 	"taskCompleted": "Tugas Selesai",
 	"error": "Error",
 	"diffError": {
 		"title": "Edit Tidak Berhasil"
 	},
-	"troubleMessage": "Roo mengalami masalah...",
+	"troubleMessage": "SyntX mengalami masalah...",
 	"powershell": {
 		"issues": "Sepertinya kamu mengalami masalah Windows PowerShell, silakan lihat ini"
 	},
 	"autoApprove": {
 		"title": "Auto-approve:",
 		"none": "Tidak Ada",
-		"description": "Auto-approve memungkinkan Roo Code melakukan aksi tanpa meminta izin. Hanya aktifkan untuk aksi yang benar-benar kamu percayai. Konfigurasi lebih detail tersedia di <settingsLink>Pengaturan</settingsLink>.",
+		"description": "Auto-approve memungkinkan Syntx melakukan aksi tanpa meminta izin. Hanya aktifkan untuk aksi yang benar-benar kamu percayai. Konfigurasi lebih detail tersedia di <settingsLink>Pengaturan</settingsLink>.",
 		"selectOptionsFirst": "Pilih setidaknya satu opsi di bawah untuk mengaktifkan persetujuan otomatis",
 		"toggleAriaLabel": "Beralih persetujuan otomatis",
 		"disabledAriaLabel": "Persetujuan otomatis dinonaktifkan - pilih opsi terlebih dahulu"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} Dirilis",
-		"description": "Roo Code {{version}} menghadirkan fitur-fitur baru yang kuat dan peningkatan signifikan untuk meningkatkan alur kerja pengembangan Anda.",
+		"title": "🎉 Syntx {{version}} Dirilis",
+		"description": "Syntx {{version}} menghadirkan fitur-fitur baru yang kuat dan peningkatan signifikan untuk meningkatkan alur kerja pengembangan Anda.",
 		"whatsNew": "Yang Baru",
 		"feature1": "<bold>Pengindeksan Codebase Lulus dari Eksperimental</bold>: Pengindeksan codebase lengkap kini stabil dan siap untuk penggunaan produksi dengan pencarian yang ditingkatkan dan pemahaman konteks.",
 		"feature2": "<bold>Fitur Daftar Todo Baru</bold>: Jaga tugas Anda tetap pada jalur dengan manajemen todo terintegrasi yang membantu Anda tetap terorganisir dan fokus pada tujuan pengembangan.",
 		"feature3": "<bold>Transisi Arsitektur ke Kode yang Ditingkatkan</bold>: Transfer yang mulus dari perencanaan di mode Arsitektur ke implementasi di mode Kode.",
 		"hideButton": "Sembunyikan pengumuman",
-		"detailsDiscussLinks": "Dapatkan detail lebih lanjut dan bergabung dalam diskusi di <discordLink>Discord</discordLink> dan <redditLink>Reddit</redditLink> 🚀"
+		"detailsDiscussLinks": "Dapatkan detail lebih lanjut dan bergabung dalam diskusi di <discordLink>Discord</discordLink> 🚀"
 	},
 	"reasoning": {
 		"thinking": "Berpikir",
@@ -275,7 +275,7 @@
 		"countdownDisplay": "{{count}}dtk"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo ingin menggunakan browser:",
+		"rooWantsToUse": "SyntX ingin menggunakan browser:",
 		"consoleLogs": "Log Konsol",
 		"noNewLogs": "(Tidak ada log baru)",
 		"screenshot": "Screenshot browser",
@@ -309,13 +309,13 @@
 	"profileViolationWarning": "Profil saat ini tidak kompatibel dengan pengaturan organisasi kamu",
 	"shellIntegration": {
 		"title": "Peringatan Eksekusi Perintah",
-		"description": "Perintah kamu dijalankan tanpa integrasi shell terminal VSCode. Untuk menekan peringatan ini kamu bisa menonaktifkan integrasi shell di bagian <strong>Terminal</strong> dari <settingsLink>pengaturan Roo Code</settingsLink> atau troubleshoot integrasi terminal VSCode menggunakan link di bawah.",
+		"description": "Perintah kamu dijalankan tanpa integrasi shell terminal VSCode. Untuk menekan peringatan ini kamu bisa menonaktifkan integrasi shell di bagian <strong>Terminal</strong> dari <settingsLink>pengaturan Syntx</settingsLink> atau troubleshoot integrasi terminal VSCode menggunakan link di bawah.",
 		"troubleshooting": "Klik di sini untuk dokumentasi integrasi shell."
 	},
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "Batas Permintaan yang Disetujui Otomatis Tercapai",
-			"description": "Roo telah mencapai batas {{count}} permintaan API yang disetujui otomatis. Apakah kamu ingin mengatur ulang hitungan dan melanjutkan tugas?",
+			"description": "SyntX telah mencapai batas {{count}} permintaan API yang disetujui otomatis. Apakah kamu ingin mengatur ulang hitungan dan melanjutkan tugas?",
 			"button": "Atur Ulang dan Lanjutkan"
 		}
 	},

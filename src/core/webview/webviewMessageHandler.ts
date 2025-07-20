@@ -227,6 +227,17 @@ export const webviewMessageHandler = async (
 				provider.postMessageToWebview({ type: "mcpServers", mcpServers: mcpHub.getAllServers() })
 			}
 
+			// START: Add website authentication check on launch
+			const username = await provider.contextProxy.getValue("websiteUsername")
+			const apiKey = await provider.contextProxy.getValue("syntxApiKey")
+			if (username && apiKey) {
+				provider.postMessageToWebview({
+					type: "websiteAuth",
+					text: JSON.stringify({ authenticated: true, username, apiKey }),
+				})
+			}
+			// END: Add website authentication check on launch
+
 			provider.providerSettingsManager
 				.listConfig()
 				.then(async (listApiConfig) => {
@@ -522,6 +533,7 @@ export const webviewMessageHandler = async (
 				litellm: {},
 				ollama: {},
 				lmstudio: {},
+				syntx: {},
 			}
 
 			const safeGetModels = async (options: GetModelsOptions): Promise<ModelRecord> => {
@@ -541,6 +553,16 @@ export const webviewMessageHandler = async (
 				{ key: "requesty", options: { provider: "requesty", apiKey: apiConfiguration.requestyApiKey } },
 				{ key: "glama", options: { provider: "glama" } },
 				{ key: "unbound", options: { provider: "unbound", apiKey: apiConfiguration.unboundApiKey } },
+				{
+					key: "syntx",
+					options: {
+						provider: "syntx",
+						apiKey: apiConfiguration.syntxApiKey || "",
+						baseUrl:
+							apiConfiguration.syntxBaseUrl ||
+							"https://lagrange-inference-server-production.up.railway.app",
+					},
+				},
 			]
 
 			// Don't fetch Ollama and LM Studio models by default anymore
@@ -567,6 +589,7 @@ export const webviewMessageHandler = async (
 				// Initialize ollama and lmstudio with empty objects since they use separate handlers
 				ollama: {},
 				lmstudio: {},
+				syntx: {},
 			}
 
 			results.forEach((result, index) => {
@@ -1435,9 +1458,17 @@ export const webviewMessageHandler = async (
 		case "saveApiConfiguration":
 			if (message.text && message.apiConfiguration) {
 				try {
+					console.log("webviewMessageHandler: Received saveApiConfiguration", {
+						name: message.text,
+						config: message.apiConfiguration,
+					})
 					await provider.providerSettingsManager.saveConfig(message.text, message.apiConfiguration)
 					const listApiConfig = await provider.providerSettingsManager.listConfig()
 					await updateGlobalState("listApiConfigMeta", listApiConfig)
+
+					// After saving, we need to activate the profile to load the updated
+					// settings into memory and notify the webview of the state change.
+					await provider.activateProviderProfile({ name: message.text })
 				} catch (error) {
 					provider.log(
 						`Error save api configuration: ${JSON.stringify(error, Object.getOwnPropertyNames(error), 2)}`,
@@ -2236,6 +2267,36 @@ export const webviewMessageHandler = async (
 				}
 
 				await provider.postMessageToWebview({ type: "action", action: "switchTab", tab: message.tab })
+			}
+			break
+		}
+
+		case "agentSelected": {
+			const { agentId, showModes } = message
+			await updateGlobalState("selectedAgentId", agentId)
+			await updateGlobalState("showModes", showModes)
+			vscode.window.showInformationMessage(`Switched to ${agentId} agent`)
+			await provider.postStateToWebview()
+			break
+		}
+
+		case "initiateWebsiteAuth": {
+			try {
+				await provider.initiateWebsiteAuth()
+			} catch (error) {
+				provider.log(`Website auth initiation failed: ${error}`)
+				vscode.window.showErrorMessage("Website authentication failed to start.")
+			}
+			break
+		}
+
+		case "signOutWebsite": {
+			try {
+				await provider.signOutWebsite()
+				await provider.postStateToWebview()
+			} catch (error) {
+				provider.log(`Website sign out failed: ${error}`)
+				vscode.window.showErrorMessage("Website sign out failed.")
 			}
 			break
 		}

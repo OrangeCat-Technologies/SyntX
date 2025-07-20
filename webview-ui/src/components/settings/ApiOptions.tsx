@@ -66,6 +66,7 @@ import {
 	OpenAICompatible,
 	OpenRouter,
 	Requesty,
+	SyntX,
 	Unbound,
 	Vertex,
 	VSCodeLM,
@@ -492,6 +493,17 @@ const ApiOptions = ({
 				/>
 			)}
 
+			{selectedProvider === "syntx" && (
+				<SyntX
+					apiConfiguration={apiConfiguration}
+					setApiConfigurationField={setApiConfigurationField}
+					routerModels={routerModels}
+					refetchRouterModels={refetchRouterModels}
+					_organizationAllowList={organizationAllowList}
+					_modelValidationError={modelValidationError}
+				/>
+			)}
+
 			{selectedProvider === "human-relay" && (
 				<>
 					<div className="text-sm text-vscode-descriptionForeground">
@@ -550,14 +562,16 @@ const ApiOptions = ({
 				</>
 			)}
 
-			<ThinkingBudget
-				key={`${selectedProvider}-${selectedModelId}`}
-				apiConfiguration={apiConfiguration}
-				setApiConfigurationField={setApiConfigurationField}
-				modelInfo={selectedModelInfo}
-			/>
+			{selectedProvider !== "syntx" && (
+				<ThinkingBudget
+					key={`${selectedProvider}-${selectedModelId}`}
+					apiConfiguration={apiConfiguration}
+					setApiConfigurationField={setApiConfigurationField}
+					modelInfo={selectedModelInfo}
+				/>
+			)}
 
-			{!fromWelcomeView && (
+			{!fromWelcomeView && selectedProvider !== "syntx" && (
 				<Collapsible open={isAdvancedSettingsOpen} onOpenChange={setIsAdvancedSettingsOpen}>
 					<CollapsibleTrigger className="flex items-center gap-1 w-full cursor-pointer hover:opacity-80 mb-2">
 						<span className={`codicon codicon-chevron-${isAdvancedSettingsOpen ? "down" : "right"}`}></span>

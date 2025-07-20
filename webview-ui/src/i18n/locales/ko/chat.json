@@ -1,5 +1,5 @@
 {
-	"greeting": "Roo Code에 오신 것을 환영합니다",
+	"greeting": "Syntx에 오신 것을 환영합니다",
 	"task": {
 		"title": "작업",
 		"seeMore": "더 보기",
@@ -18,7 +18,7 @@
 		"sharePublicly": "공개적으로 공유",
 		"sharePubliclyDescription": "링크가 있는 누구나 액세스할 수 있습니다",
 		"connectToCloud": "클라우드에 연결",
-		"connectToCloudDescription": "작업을 공유하려면 Roo Code Cloud에 로그인하세요",
+		"connectToCloudDescription": "작업을 공유하려면 Syntx Cloud에 로그인하세요",
 		"sharingDisabledByOrganization": "조직에서 공유가 비활성화됨",
 		"shareSuccessOrganization": "조직 링크가 클립보드에 복사되었습니다",
 		"shareSuccessPublic": "공개 링크가 클립보드에 복사되었습니다"
@@ -223,7 +223,7 @@
 	"autoApprove": {
 		"title": "자동 승인:",
 		"none": "없음",
-		"description": "자동 승인을 사용하면 Roo Code가 권한을 요청하지 않고 작업을 수행할 수 있습니다. 완전히 신뢰할 수 있는 작업에만 활성화하세요. 더 자세한 구성은 <settingsLink>설정</settingsLink>에서 사용할 수 있습니다.",
+		"description": "자동 승인을 사용하면 Syntx가 권한을 요청하지 않고 작업을 수행할 수 있습니다. 완전히 신뢰할 수 있는 작업에만 활성화하세요. 더 자세한 구성은 <settingsLink>설정</settingsLink>에서 사용할 수 있습니다.",
 		"selectOptionsFirst": "자동 승인을 활성화하려면 아래 옵션 중 하나 이상을 선택하세요",
 		"toggleAriaLabel": "자동 승인 전환",
 		"disabledAriaLabel": "자동 승인 비활성화됨 - 먼저 옵션을 선택하세요"
@@ -244,14 +244,14 @@
 		"countdownDisplay": "{{count}}초"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} 출시",
-		"description": "Roo Code {{version}}은 개발 워크플로우를 향상시키는 강력한 새 기능과 중요한 개선사항을 제공합니다.",
+		"title": "🎉 Syntx {{version}} 출시",
+		"description": "Syntx {{version}}은 개발 워크플로우를 향상시키는 강력한 새 기능과 중요한 개선사항을 제공합니다.",
 		"whatsNew": "새로운 기능",
 		"feature1": "<bold>코드베이스 인덱싱이 실험 단계에서 졸업</bold>: 전체 코드베이스 인덱싱이 이제 안정적이며 향상된 검색 및 컨텍스트 이해 기능으로 프로덕션 사용이 준비되었습니다.",
 		"feature2": "<bold>새로운 할 일 목록 기능</bold>: 통합된 할 일 관리로 작업을 궤도에 유지하여 개발 목표에 체계적이고 집중된 상태를 유지하세요.",
 		"feature3": "<bold>개선된 아키텍트에서 코드로의 전환</bold>: 아키텍트 모드에서의 계획부터 코드 모드에서의 구현까지 원활한 인수인계.",
 		"hideButton": "공지 숨기기",
-		"detailsDiscussLinks": "<discordLink>Discord</discordLink>와 <redditLink>Reddit</redditLink>에서 자세한 내용을 확인하고 토론에 참여하세요 🚀"
+		"detailsDiscussLinks": "<discordLink>Discord</discordLink>에서 자세한 내용을 확인하고 토론에 참여하세요 🚀"
 	},
 	"browser": {
 		"rooWantsToUse": "Roo가 브라우저를 사용하고 싶어합니다:",
@@ -288,7 +288,7 @@
 	"profileViolationWarning": "현재 프로필이 조직 설정과 호환되지 않습니다",
 	"shellIntegration": {
 		"title": "명령 실행 경고",
-		"description": "명령이 VSCode 터미널 쉘 통합 없이 실행되고 있습니다. 이 경고를 숨기려면 <settingsLink>Roo Code 설정</settingsLink>의 <strong>Terminal</strong> 섹션에서 쉘 통합을 비활성화하거나 아래 링크를 사용하여 VSCode 터미널 통합 문제를 해결하세요.",
+		"description": "명령이 VSCode 터미널 쉘 통합 없이 실행되고 있습니다. 이 경고를 숨기려면 <settingsLink>Syntx 설정</settingsLink>의 <strong>Terminal</strong> 섹션에서 쉘 통합을 비활성화하거나 아래 링크를 사용하여 VSCode 터미널 통합 문제를 해결하세요.",
 		"troubleshooting": "쉘 통합 문서를 보려면 여기를 클릭하세요."
 	},
 	"ask": {

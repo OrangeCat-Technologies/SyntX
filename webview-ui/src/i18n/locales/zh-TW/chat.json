@@ -1,5 +1,5 @@
 {
-	"greeting": "歡迎使用 Roo Code",
+	"greeting": "歡迎使用 Syntx",
 	"task": {
 		"title": "工作",
 		"seeMore": "顯示更多",
@@ -18,7 +18,7 @@
 		"sharePublicly": "公開分享",
 		"sharePubliclyDescription": "任何擁有連結的人都可存取",
 		"connectToCloud": "連接到雲端",
-		"connectToCloudDescription": "登入 Roo Code Cloud 以分享工作",
+		"connectToCloudDescription": "登入 Syntx Cloud 以分享工作",
 		"sharingDisabledByOrganization": "組織已停用分享功能",
 		"shareSuccessOrganization": "組織連結已複製到剪貼簿",
 		"shareSuccessPublic": "公開連結已複製到剪貼簿"
@@ -81,7 +81,7 @@
 	},
 	"scrollToBottom": "捲動至對話框底部",
 	"about": "透過 AI 輔助產生、重構和偵錯程式碼。查看我們的 <DocsLink>說明文件</DocsLink> 以瞭解更多資訊。",
-	"onboarding": "<strong>您在此工作區中的工作清單是空的。</strong> 請在下方輸入工作以開始。 不確定如何開始？ 在 <DocsLink>說明文件</DocsLink> 中閱讀更多關於 Roo 能為您做什麼的資訊。",
+	"onboarding": "<strong>您在此工作區中的工作清單是空的。</strong> 請在下方輸入工作以開始。 不確定如何開始？ 在 <DocsLink>說明文件</DocsLink> 中閱讀更多關於 SyntX 能為您做什麼的資訊。",
 	"rooTips": {
 		"boomerangTasks": {
 			"title": "任務編排",
@@ -128,7 +128,7 @@
 	"diffError": {
 		"title": "編輯失敗"
 	},
-	"troubleMessage": "Roo 遇到問題...",
+	"troubleMessage": "SyntX 遇到問題...",
 	"apiRequest": {
 		"title": "API 請求",
 		"failed": "API 請求失敗",
@@ -154,59 +154,59 @@
 		"current": "目前"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo 想要取得詳細指示以協助目前任務"
+		"wantsToFetch": "SyntX 想要取得詳細指示以協助目前任務"
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo 想要讀取此檔案：",
-		"wantsToReadOutsideWorkspace": "Roo 想要讀取此工作區外的檔案：",
-		"didRead": "Roo 已讀取此檔案：",
-		"wantsToEdit": "Roo 想要編輯此檔案：",
-		"wantsToEditOutsideWorkspace": "Roo 想要編輯此工作區外的檔案：",
-		"wantsToEditProtected": "Roo 想要編輯受保護的設定檔案：",
-		"wantsToCreate": "Roo 想要建立新檔案：",
-		"wantsToSearchReplace": "Roo 想要在此檔案中搜尋和取代：",
-		"didSearchReplace": "Roo 已在此檔案執行搜尋和取代：",
-		"wantsToInsert": "Roo 想要在此檔案中插入內容：",
-		"wantsToInsertWithLineNumber": "Roo 想要在此檔案第 {{lineNumber}} 行插入內容：",
-		"wantsToInsertAtEnd": "Roo 想要在此檔案末尾新增內容：",
-		"wantsToReadAndXMore": "Roo 想要讀取此檔案以及另外 {{count}} 個檔案：",
-		"wantsToReadMultiple": "Roo 想要讀取多個檔案：",
-		"wantsToApplyBatchChanges": "Roo 想要對多個檔案套用變更："
+		"wantsToRead": "SyntX 想要讀取此檔案：",
+		"wantsToReadOutsideWorkspace": "SyntX 想要讀取此工作區外的檔案：",
+		"didRead": "SyntX 已讀取此檔案：",
+		"wantsToEdit": "SyntX 想要編輯此檔案：",
+		"wantsToEditOutsideWorkspace": "SyntX 想要編輯此工作區外的檔案：",
+		"wantsToEditProtected": "SyntX 想要編輯受保護的設定檔案：",
+		"wantsToCreate": "SyntX 想要建立新檔案：",
+		"wantsToSearchReplace": "SyntX 想要在此檔案中搜尋和取代：",
+		"didSearchReplace": "SyntX 已在此檔案執行搜尋和取代：",
+		"wantsToInsert": "SyntX 想要在此檔案中插入內容：",
+		"wantsToInsertWithLineNumber": "SyntX 想要在此檔案第 {{lineNumber}} 行插入內容：",
+		"wantsToInsertAtEnd": "SyntX 想要在此檔案末尾新增內容：",
+		"wantsToReadAndXMore": "SyntX 想要讀取此檔案以及另外 {{count}} 個檔案：",
+		"wantsToReadMultiple": "SyntX 想要讀取多個檔案：",
+		"wantsToApplyBatchChanges": "SyntX 想要對多個檔案套用變更："
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo 想要檢視此目錄中最上層的檔案：",
-		"didViewTopLevel": "Roo 已檢視此目錄中最上層的檔案：",
-		"wantsToViewRecursive": "Roo 想要遞迴檢視此目錄中的所有檔案：",
-		"didViewRecursive": "Roo 已遞迴檢視此目錄中的所有檔案：",
-		"wantsToViewDefinitions": "Roo 想要檢視此目錄中使用的原始碼定義名稱：",
-		"didViewDefinitions": "Roo 已檢視此目錄中使用的原始碼定義名稱：",
-		"wantsToSearch": "Roo 想要在此目錄中搜尋 <code>{{regex}}</code>：",
-		"didSearch": "Roo 已在此目錄中搜尋 <code>{{regex}}</code>：",
-		"wantsToSearchOutsideWorkspace": "Roo 想要在此目錄（工作區外）中搜尋 <code>{{regex}}</code>：",
-		"didSearchOutsideWorkspace": "Roo 已在此目錄（工作區外）中搜尋 <code>{{regex}}</code>：",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo 想要檢視此目錄（工作區外）中最上層的檔案：",
-		"didViewTopLevelOutsideWorkspace": "Roo 已檢視此目錄（工作區外）中最上層的檔案：",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo 想要遞迴檢視此目錄（工作區外）中的所有檔案：",
-		"didViewRecursiveOutsideWorkspace": "Roo 已遞迴檢視此目錄（工作區外）中的所有檔案：",
-		"wantsToViewDefinitionsOutsideWorkspace": "Roo 想要檢視此目錄（工作區外）中使用的原始碼定義名稱：",
-		"didViewDefinitionsOutsideWorkspace": "Roo 已檢視此目錄（工作區外）中使用的原始碼定義名稱："
+		"wantsToViewTopLevel": "SyntX 想要檢視此目錄中最上層的檔案：",
+		"didViewTopLevel": "SyntX 已檢視此目錄中最上層的檔案：",
+		"wantsToViewRecursive": "SyntX 想要遞迴檢視此目錄中的所有檔案：",
+		"didViewRecursive": "SyntX 已遞迴檢視此目錄中的所有檔案：",
+		"wantsToViewDefinitions": "SyntX 想要檢視此目錄中使用的原始碼定義名稱：",
+		"didViewDefinitions": "SyntX 已檢視此目錄中使用的原始碼定義名稱：",
+		"wantsToSearch": "SyntX 想要在此目錄中搜尋 <code>{{regex}}</code>：",
+		"didSearch": "SyntX 已在此目錄中搜尋 <code>{{regex}}</code>：",
+		"wantsToSearchOutsideWorkspace": "SyntX 想要在此目錄（工作區外）中搜尋 <code>{{regex}}</code>：",
+		"didSearchOutsideWorkspace": "SyntX 已在此目錄（工作區外）中搜尋 <code>{{regex}}</code>：",
+		"wantsToViewTopLevelOutsideWorkspace": "SyntX 想要檢視此目錄（工作區外）中最上層的檔案：",
+		"didViewTopLevelOutsideWorkspace": "SyntX 已檢視此目錄（工作區外）中最上層的檔案：",
+		"wantsToViewRecursiveOutsideWorkspace": "SyntX 想要遞迴檢視此目錄（工作區外）中的所有檔案：",
+		"didViewRecursiveOutsideWorkspace": "SyntX 已遞迴檢視此目錄（工作區外）中的所有檔案：",
+		"wantsToViewDefinitionsOutsideWorkspace": "SyntX 想要檢視此目錄（工作區外）中使用的原始碼定義名稱：",
+		"didViewDefinitionsOutsideWorkspace": "SyntX 已檢視此目錄（工作區外）中使用的原始碼定義名稱："
 	},
 	"commandOutput": "命令輸出",
 	"response": "回應",
 	"arguments": "參數",
 	"mcp": {
-		"wantsToUseTool": "Roo 想要在 {{serverName}} MCP 伺服器上使用工具：",
-		"wantsToAccessResource": "Roo 想要存取 {{serverName}} MCP 伺服器上的資源："
+		"wantsToUseTool": "SyntX 想要在 {{serverName}} MCP 伺服器上使用工具：",
+		"wantsToAccessResource": "SyntX 想要存取 {{serverName}} MCP 伺服器上的資源："
 	},
 	"modes": {
-		"wantsToSwitch": "Roo 想要切換至 <code>{{mode}}</code> 模式",
-		"wantsToSwitchWithReason": "Roo 想要切換至 <code>{{mode}}</code> 模式，原因：{{reason}}",
-		"didSwitch": "Roo 已切換至 <code>{{mode}}</code> 模式",
-		"didSwitchWithReason": "Roo 已切換至 <code>{{mode}}</code> 模式，原因：{{reason}}"
+		"wantsToSwitch": "SyntX 想要切換至 <code>{{mode}}</code> 模式",
+		"wantsToSwitchWithReason": "SyntX 想要切換至 <code>{{mode}}</code> 模式，原因：{{reason}}",
+		"didSwitch": "SyntX 已切換至 <code>{{mode}}</code> 模式",
+		"didSwitchWithReason": "SyntX 已切換至 <code>{{mode}}</code> 模式，原因：{{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo 想要在 <code>{{mode}}</code> 模式下建立新的子工作：",
-		"wantsToFinish": "Roo 想要完成此子工作",
+		"wantsToCreate": "SyntX 想要在 <code>{{mode}}</code> 模式下建立新的子工作：",
+		"wantsToFinish": "SyntX 想要完成此子工作",
 		"newTaskContent": "子工作指示",
 		"completionContent": "子工作已完成",
 		"resultContent": "子工作結果",
@@ -214,7 +214,7 @@
 		"completionInstructions": "子工作已完成！您可以檢閱結果並提出修正或下一步建議。如果一切看起來良好，請確認以將結果傳回主工作。"
 	},
 	"questions": {
-		"hasQuestion": "Roo 有一個問題："
+		"hasQuestion": "SyntX 有一個問題："
 	},
 	"taskCompleted": "工作完成",
 	"powershell": {
@@ -223,7 +223,7 @@
 	"autoApprove": {
 		"title": "自動核准：",
 		"none": "無",
-		"description": "自動核准讓 Roo Code 可以在無需徵求您同意的情況下執行動作。請僅對您完全信任的動作啟用此功能。您可以在<settingsLink>設定</settingsLink>中進行更詳細的調整。",
+		"description": "自動核准讓 Syntx 可以在無需徵求您同意的情況下執行動作。請僅對您完全信任的動作啟用此功能。您可以在<settingsLink>設定</settingsLink>中進行更詳細的調整。",
 		"selectOptionsFirst": "請至少選擇以下一個選項以啟用自動核准",
 		"toggleAriaLabel": "切換自動核准",
 		"disabledAriaLabel": "自動核准已停用 - 請先選取選項"
@@ -244,17 +244,17 @@
 		"countdownDisplay": "{{count}}秒"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} 已發布",
-		"description": "Roo Code {{version}} 帶來強大的新功能和重大改進，提升您的開發工作流程。",
+		"title": "🎉 Syntx {{version}} 已發布",
+		"description": "Syntx {{version}} 帶來強大的新功能和重大改進，提升您的開發工作流程。",
 		"whatsNew": "新功能",
 		"feature1": "<bold>程式碼庫索引從實驗階段正式發布</bold>：完整的程式碼庫索引現已穩定，可用於正式環境，具備改進的搜尋和內容理解功能。",
 		"feature2": "<bold>新增待辦事項清單功能</bold>：透過整合的待辦事項管理保持工作進度，幫助您保持條理並專注於開發目標。",
 		"feature3": "<bold>改進的 Architect 到 Code 轉換</bold>：從 Architect 模式的規劃到 Code 模式的實作，轉換更加順暢。",
 		"hideButton": "隱藏公告",
-		"detailsDiscussLinks": "在 <discordLink>Discord</discordLink> 和 <redditLink>Reddit</redditLink> 取得更多詳細資訊並參與討論 🚀"
+		"detailsDiscussLinks": "在 <discordLink>Discord</discordLink> 取得更多詳細資訊並參與討論 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo 想要使用瀏覽器：",
+		"rooWantsToUse": "SyntX 想要使用瀏覽器：",
 		"consoleLogs": "主控台記錄",
 		"noNewLogs": "（沒有新記錄）",
 		"screenshot": "瀏覽器螢幕擷圖",
@@ -288,19 +288,19 @@
 	"profileViolationWarning": "目前設定檔與您的組織設定不相容",
 	"shellIntegration": {
 		"title": "命令執行警告",
-		"description": "您的命令正在沒有 VSCode 終端機 shell 整合的情況下執行。要隱藏此警告，您可以在 <settingsLink>Roo Code 設定</settingsLink>的 <strong>Terminal</strong> 部分停用 shell 整合，或使用下方連結排查 VSCode 終端機整合問題。",
+		"description": "您的命令正在沒有 VSCode 終端機 shell 整合的情況下執行。要隱藏此警告，您可以在 <settingsLink>Syntx 設定</settingsLink>的 <strong>Terminal</strong> 部分停用 shell 整合，或使用下方連結排查 VSCode 終端機整合問題。",
 		"troubleshooting": "點擊此處查看 shell 整合文件。"
 	},
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "已達自動核准請求限制",
-			"description": "Roo 已達到 {{count}} 次 API 請求的自動核准限制。您想要重設計數並繼續工作嗎？",
+			"description": "SyntX 已達到 {{count}} 次 API 請求的自動核准限制。您想要重設計數並繼續工作嗎？",
 			"button": "重設並繼續"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo 想要搜尋程式碼庫：<code>{{query}}</code>",
-		"wantsToSearchWithPath": "Roo 想要在 <code>{{path}}</code> 中搜尋：<code>{{query}}</code>",
+		"wantsToSearch": "SyntX 想要搜尋程式碼庫：<code>{{query}}</code>",
+		"wantsToSearchWithPath": "SyntX 想要在 <code>{{path}}</code> 中搜尋：<code>{{query}}</code>",
 		"didSearch_one": "找到 1 個結果",
 		"didSearch_other": "找到 {{count}} 個結果",
 		"resultTooltip": "相似度評分：{{score}} (點擊開啟檔案)"

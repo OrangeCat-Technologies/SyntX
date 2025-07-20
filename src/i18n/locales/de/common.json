@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "Ein komplettes Entwicklerteam mit KI in deinem Editor."
 	},
 	"number_format": {
@@ -122,7 +122,7 @@
 		"enter_valid_path": "Bitte gib einen gültigen Pfad ein"
 	},
 	"input": {
-		"task_prompt": "Was soll Roo tun?",
+		"task_prompt": "Was soll SyntX tun?",
 		"task_placeholder": "Gib deine Aufgabe hier ein"
 	},
 	"settings": {
@@ -138,8 +138,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "Ungültiges YAML in .roomodes-Datei in Zeile {{line}}. Bitte überprüfe:\n• Korrekte Einrückung (verwende Leerzeichen, keine Tabs)\n• Passende Anführungszeichen und Klammern\n• Gültige YAML-Syntax",
-			"schemaValidationError": "Ungültiges Format für benutzerdefinierte Modi in .roomodes:\n{{issues}}",
+			"yamlParseError": "Ungültiges YAML in .syntxmodes-Datei in Zeile {{line}}. Bitte überprüfe:\n• Korrekte Einrückung (verwende Leerzeichen, keine Tabs)\n• Passende Anführungszeichen und Klammern\n• Gültige YAML-Syntax",
+			"schemaValidationError": "Ungültiges Format für benutzerdefinierte Modi in .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Ungültiges Format für benutzerdefinierte Modi. Bitte stelle sicher, dass deine Einstellungen dem korrekten YAML-Format folgen.",
 			"updateFailed": "Fehler beim Aktualisieren des benutzerdefinierten Modus: {{error}}",
 			"deleteFailed": "Fehler beim Löschen des benutzerdefinierten Modus: {{error}}",
@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Deine Organisation erfordert eine Roo Code Cloud-Authentifizierung. Bitte melde dich an, um fortzufahren.",
-			"organization_mismatch": "Du musst mit dem Roo Code Cloud-Konto deiner Organisation authentifiziert sein.",
+			"cloud_auth_required": "Deine Organisation erfordert eine Syntx Cloud-Authentifizierung. Bitte melde dich an, um fortzufahren.",
+			"organization_mismatch": "Du musst mit dem Syntx Cloud-Konto deiner Organisation authentifiziert sein.",
 			"verification_failed": "Die Organisationsauthentifizierung konnte nicht verifiziert werden."
 		}
 	},

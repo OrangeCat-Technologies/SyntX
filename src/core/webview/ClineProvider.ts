@@ -699,7 +699,7 @@ export class ClineProvider
 						window.AUDIO_BASE_URI = "${audioUri}"
 						window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 					</script>
-					<title>Roo Code</title>
+					<title>Syntx</title>
 				</head>
 				<body>
 					<div id="root"></div>
@@ -772,7 +772,7 @@ export class ClineProvider
 				window.AUDIO_BASE_URI = "${audioUri}"
 				window.MATERIAL_ICONS_BASE_URI = "${materialIconsUri}"
 			</script>
-            <title>Roo Code</title>
+            <title>Syntx</title>
           </head>
           <body>
             <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -1575,7 +1575,7 @@ export class ClineProvider
 		const customModes = await this.customModesManager.getCustomModes()
 
 		// Determine apiProvider with the same logic as before.
-		const apiProvider: ProviderName = stateValues.apiProvider ? stateValues.apiProvider : "anthropic"
+		const apiProvider: ProviderName = stateValues.apiProvider ? stateValues.apiProvider : "syntx"
 
 		// Build the apiConfiguration object combining state values and secrets.
 		const providerSettings = this.contextProxy.getProviderSettings()
@@ -1794,8 +1794,17 @@ export class ClineProvider
 		await this.providerSettingsManager.resetAllConfigs()
 		await this.customModesManager.resetCustomModes()
 		await this.removeClineFromStack()
+
+		// Clear website authentication to show get started screen
+		await this.contextProxy.setValue("websiteUsername", undefined)
+		await this.contextProxy.setValue("syntxApiKey", undefined)
+
 		await this.postStateToWebview()
-		await this.postMessageToWebview({ type: "action", action: "chatButtonClicked" })
+		// Navigate to get started screen by sending websiteAuth message
+		await this.postMessageToWebview({
+			type: "websiteAuth",
+			text: JSON.stringify({ authenticated: false, username: undefined, apiKey: undefined }),
+		})
 	}
 
 	// logging
@@ -1849,7 +1858,7 @@ export class ClineProvider
 
 		const packageJSON = this.context.extension?.packageJSON
 
-		// Get Roo Code Cloud authentication state
+		// Get Syntx Cloud authentication state
 		let cloudIsAuthenticated: boolean | undefined
 
 		try {
@@ -1894,5 +1903,52 @@ export class ClineProvider
 			...(todos && { todos }),
 			...gitInfo,
 		}
+	}
+
+	// Website Authentication
+
+	async initiateWebsiteAuth() {
+		const packageJSON = this.contextProxy.extension?.packageJSON
+		const publisher = packageJSON?.publisher ?? "OrangecatTechPvtLtd"
+		const name = packageJSON?.name ?? "syntx"
+		const callbackUri = `vscode://${publisher}.${name}/website/callback`
+
+		const authUrl = `https://syntx.dev/login?redirect_uri=${encodeURIComponent(callbackUri)}`
+
+		await vscode.env.openExternal(vscode.Uri.parse(authUrl))
+	}
+
+	async handleWebsiteAuthCallback(username: string, apiKey: string) {
+		if (!username || !apiKey) {
+			throw new Error("Missing username or API key in website authentication callback")
+		}
+
+		// Store credentials in global state
+		await this.contextProxy.setValue("websiteUsername", username)
+		await this.contextProxy.setValue("syntxApiKey", apiKey)
+
+		// Send authentication success message to webview
+		await this.postMessageToWebview({
+			type: "websiteAuth",
+			text: JSON.stringify({ authenticated: true, username, apiKey }),
+		})
+
+		await this.postStateToWebview()
+
+		vscode.window.showInformationMessage("Successfully authenticated with SyntX website")
+	}
+
+	async signOutWebsite() {
+		// Clear stored credentials
+		await this.contextProxy.setValue("websiteUsername", undefined)
+		await this.contextProxy.setValue("syntxApiKey", undefined)
+
+		// Send sign out message to webview
+		await this.postMessageToWebview({
+			type: "websiteAuth",
+			text: JSON.stringify({ authenticated: false, username: undefined, apiKey: undefined }),
+		})
+
+		vscode.window.showInformationMessage("Successfully signed out from SyntX website")
 	}
 }

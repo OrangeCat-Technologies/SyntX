@@ -52,9 +52,11 @@ describe("RooIgnore Response Formatting", () => {
 			const errorMessage = formatResponse.rooIgnoreError("secrets/api-keys.json")
 
 			// Verify error message format
-			expect(errorMessage).toContain("Access to secrets/api-keys.json is blocked by the .rooignore file settings")
+			expect(errorMessage).toContain(
+				"Access to secrets/api-keys.json is blocked by the .syntxignore file settings",
+			)
 			expect(errorMessage).toContain("continue in the task without using this file")
-			expect(errorMessage).toContain("ask the user to update the .rooignore file")
+			expect(errorMessage).toContain("ask the user to update the .syntxignore file")
 		})
 
 		/**
@@ -209,7 +211,7 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests the instructions format
 		 */
-		it("should format .rooignore instructions for the LLM", async () => {
+		it("should format .syntxignore instructions for the LLM", async () => {
 			// Create controller
 			const controller = new RooIgnoreController(TEST_CWD)
 			await controller.initialize()
@@ -218,7 +220,7 @@ describe("RooIgnore Response Formatting", () => {
 			const instructions = controller.getInstructions()
 
 			// Verify format and content
-			expect(instructions).toContain("# .rooignore")
+			expect(instructions).toContain("# .syntxignore")
 			expect(instructions).toContain(LOCK_TEXT_SYMBOL)
 			expect(instructions).toContain("node_modules")
 			expect(instructions).toContain(".git")
@@ -233,11 +235,11 @@ describe("RooIgnore Response Formatting", () => {
 		/**
 		 * Tests null/undefined case
 		 */
-		it("should return undefined when no .rooignore exists", async () => {
-			// Set up no .rooignore
+		it("should return undefined when no .syntxignore exists", async () => {
+			// Set up no .syntxignore
 			mockFileExists.mockResolvedValue(false)
 
-			// Create controller without .rooignore
+			// Create controller without .syntxignore
 			const controller = new RooIgnoreController(TEST_CWD)
 			await controller.initialize()
 

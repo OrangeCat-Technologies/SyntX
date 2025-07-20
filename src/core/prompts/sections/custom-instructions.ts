@@ -183,7 +183,7 @@ export async function loadRuleFiles(cwd: string): Promise<string> {
 	}
 
 	// Fall back to existing behavior for legacy .roorules/.clinerules files
-	const ruleFiles = [".roorules", ".clinerules"]
+	const ruleFiles = [".roorules", ".clinerules", ".syntxrules"]
 
 	for (const file of ruleFiles) {
 		const content = await safeReadFile(path.join(cwd, file))

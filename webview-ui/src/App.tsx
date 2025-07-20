@@ -14,17 +14,20 @@ import ChatView, { ChatViewRef } from "./components/chat/ChatView"
 import HistoryView from "./components/history/HistoryView"
 import SettingsView, { SettingsViewRef } from "./components/settings/SettingsView"
 import WelcomeView from "./components/welcome/WelcomeView"
+import GetStartedView from "./components/welcome/GetStartedView"
 import McpView from "./components/mcp/McpView"
 import { MarketplaceView } from "./components/marketplace/MarketplaceView"
 import ModesView from "./components/modes/ModesView"
 import { HumanRelayDialog } from "./components/human-relay/HumanRelayDialog"
 import { DeleteMessageDialog, EditMessageDialog } from "./components/chat/MessageModificationConfirmationDialog"
-import { AccountView } from "./components/account/AccountView"
+//import { AccountView } from "./components/account/AccountView"
 import { useAddNonInteractiveClickListener } from "./components/ui/hooks/useNonInteractiveClick"
 import { TooltipProvider } from "./components/ui/tooltip"
 import { STANDARD_TOOLTIP_DELAY } from "./components/ui/standard-tooltip"
+import AgentView from "./components/agent/AgentView"
+import ProfileSettings from "./components/settings/ProfileSettings"
 
-type Tab = "settings" | "history" | "mcp" | "modes" | "chat" | "marketplace" | "account"
+type Tab = "settings" | "history" | "mcp" | "modes" | "chat" | "marketplace" | "account" | "agent"
 
 interface HumanRelayDialogState {
 	isOpen: boolean
@@ -50,6 +53,7 @@ const MemoizedEditMessageDialog = React.memo(EditMessageDialog)
 const MemoizedHumanRelayDialog = React.memo(HumanRelayDialog)
 
 const tabsByMessageAction: Partial<Record<NonNullable<ExtensionMessage["action"]>, Tab>> = {
+	agentButtonClicked: "agent",
 	chatButtonClicked: "chat",
 	settingsButtonClicked: "settings",
 	promptsButtonClicked: "modes",
@@ -67,11 +71,9 @@ const App = () => {
 		telemetrySetting,
 		telemetryKey,
 		machineId,
-		cloudUserInfo,
-		cloudIsAuthenticated,
-		cloudApiUrl,
 		renderContext,
 		mdmCompliant,
+		websiteNotAuthenticated,
 	} = useExtensionState()
 
 	// Create a persistent state manager
@@ -213,10 +215,13 @@ const App = () => {
 
 	// Do not conditionally load ChatView, it's expensive and there's state we
 	// don't want to lose (user input, disableInput, askResponse promise, etc.)
-	return showWelcome ? (
+	return websiteNotAuthenticated ? (
+		<GetStartedView />
+	) : showWelcome ? (
 		<WelcomeView />
 	) : (
 		<>
+			{tab === "agent" && <AgentView onDone={() => switchTab("chat")} />}
 			{tab === "modes" && <ModesView onDone={() => switchTab("chat")} />}
 			{tab === "mcp" && <McpView onDone={() => switchTab("chat")} />}
 			{tab === "history" && <HistoryView onDone={() => switchTab("chat")} />}
@@ -230,14 +235,7 @@ const App = () => {
 					targetTab={currentMarketplaceTab as "mcp" | "mode" | undefined}
 				/>
 			)}
-			{tab === "account" && (
-				<AccountView
-					userInfo={cloudUserInfo}
-					isAuthenticated={cloudIsAuthenticated}
-					cloudApiUrl={cloudApiUrl}
-					onDone={() => switchTab("chat")}
-				/>
-			)}
+			{tab === "account" && <ProfileSettings />}
 			<ChatView
 				ref={chatViewRef}
 				isHidden={tab !== "chat"}

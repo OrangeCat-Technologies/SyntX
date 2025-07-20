@@ -15,6 +15,7 @@ import { useAutoApprovalState } from "@/hooks/useAutoApprovalState"
 import { useAutoApprovalToggles } from "@/hooks/useAutoApprovalToggles"
 
 type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
+	autoApprovalEnabled?: boolean
 	alwaysAllowReadOnly?: boolean
 	alwaysAllowReadOnlyOutsideWorkspace?: boolean
 	alwaysAllowWrite?: boolean
@@ -34,6 +35,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	allowedCommands?: string[]
 	deniedCommands?: string[]
 	setCachedStateField: SetCachedStateField<
+		| "autoApprovalEnabled"
 		| "alwaysAllowReadOnly"
 		| "alwaysAllowReadOnlyOutsideWorkspace"
 		| "alwaysAllowWrite"
@@ -56,6 +58,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 export const AutoApproveSettings = ({
+	autoApprovalEnabled,
 	alwaysAllowReadOnly,
 	alwaysAllowReadOnlyOutsideWorkspace,
 	alwaysAllowWrite,
@@ -80,11 +83,14 @@ export const AutoApproveSettings = ({
 	const { t } = useAppTranslation()
 	const [commandInput, setCommandInput] = useState("")
 	const [deniedCommandInput, setDeniedCommandInput] = useState("")
-	const { autoApprovalEnabled, setAutoApprovalEnabled } = useExtensionState()
+	const { autoApprovalEnabled: extensionAutoApprovalEnabled, setAutoApprovalEnabled } = useExtensionState()
 
 	const toggles = useAutoApprovalToggles()
 
-	const { hasEnabledOptions, effectiveAutoApprovalEnabled } = useAutoApprovalState(toggles, autoApprovalEnabled)
+	const { hasEnabledOptions, effectiveAutoApprovalEnabled } = useAutoApprovalState(
+		toggles,
+		extensionAutoApprovalEnabled,
+	)
 
 	const handleAddCommand = () => {
 		const currentCommands = allowedCommands ?? []
@@ -130,7 +136,7 @@ export const AutoApproveSettings = ({
 							disabled={!hasEnabledOptions}
 							aria-label={t("settings:autoApprove.toggleAriaLabel")}
 							onChange={() => {
-								const newValue = !(autoApprovalEnabled ?? false)
+								const newValue = !(extensionAutoApprovalEnabled ?? false)
 								setAutoApprovalEnabled(newValue)
 								vscode.postMessage({ type: "autoApprovalEnabled", bool: newValue })
 							}}
@@ -143,6 +149,7 @@ export const AutoApproveSettings = ({
 
 			<Section>
 				<AutoApproveToggle
+					autoApprovalEnabled={autoApprovalEnabled}
 					alwaysAllowReadOnly={alwaysAllowReadOnly}
 					alwaysAllowWrite={alwaysAllowWrite}
 					alwaysAllowBrowser={alwaysAllowBrowser}
@@ -154,6 +161,7 @@ export const AutoApproveSettings = ({
 					alwaysAllowFollowupQuestions={alwaysAllowFollowupQuestions}
 					alwaysAllowUpdateTodoList={alwaysAllowUpdateTodoList}
 					onToggle={(key, value) => setCachedStateField(key, value)}
+					onAutoApprovalToggle={(enabled) => setCachedStateField("autoApprovalEnabled", enabled)}
 				/>
 
 				{/* ADDITIONAL SETTINGS */}

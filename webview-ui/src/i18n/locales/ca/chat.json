@@ -1,5 +1,5 @@
 {
-	"greeting": "Benvingut a Roo Code",
+	"greeting": "Benvingut a Syntx",
 	"task": {
 		"title": "Tasca",
 		"seeMore": "Veure més",
@@ -18,7 +18,7 @@
 		"sharePublicly": "Compartir públicament",
 		"sharePubliclyDescription": "Qualsevol amb l'enllaç pot accedir",
 		"connectToCloud": "Connecta al núvol",
-		"connectToCloudDescription": "Inicia sessió a Roo Code Cloud per compartir tasques",
+		"connectToCloudDescription": "Inicia sessió a Syntx Cloud per compartir tasques",
 		"sharingDisabledByOrganization": "Compartició deshabilitada per l'organització",
 		"shareSuccessOrganization": "Enllaç d'organització copiat al porta-retalls",
 		"shareSuccessPublic": "Enllaç públic copiat al porta-retalls"
@@ -81,7 +81,7 @@
 	},
 	"scrollToBottom": "Desplaça't al final del xat",
 	"about": "Genera, refactoritza i depura codi amb l'ajuda de la IA. Consulta la nostra <DocsLink>documentació</DocsLink> per obtenir més informació.",
-	"onboarding": "<strong> La vostra llista de tasques en aquest espai de treball està buida. </strong> Comença escrivint una tasca a continuació. \nNo esteu segur per on començar? \nMés informació sobre què pot fer Roo als documents.",
+	"onboarding": "<strong> La vostra llista de tasques en aquest espai de treball està buida. </strong> Comença escrivint una tasca a continuació. \nNo esteu segur per on començar? \nMés informació sobre què pot fer SyntX als documents.",
 	"rooTips": {
 		"boomerangTasks": {
 			"title": "Orquestració de Tasques",
@@ -116,7 +116,7 @@
 		"title": "Modes",
 		"marketplace": "Marketplace de Modes",
 		"settings": "Configuració de Modes",
-		"description": "Personalitats especialitzades que adapten el comportament de Roo."
+		"description": "Personalitats especialitzades que adapten el comportament de SyntX."
 	},
 	"errorReadingFile": "Error en llegir el fitxer:",
 	"noValidImages": "No s'ha processat cap imatge vàlida",
@@ -128,7 +128,7 @@
 	"diffError": {
 		"title": "Edició fallida"
 	},
-	"troubleMessage": "Roo està tenint problemes...",
+	"troubleMessage": "SyntX està tenint problemes...",
 	"apiRequest": {
 		"title": "Sol·licitud API",
 		"failed": "Sol·licitud API ha fallat",
@@ -154,59 +154,59 @@
 		"current": "Actual"
 	},
 	"instructions": {
-		"wantsToFetch": "Roo vol obtenir instruccions detallades per ajudar amb la tasca actual."
+		"wantsToFetch": "SyntX vol obtenir instruccions detallades per ajudar amb la tasca actual."
 	},
 	"fileOperations": {
-		"wantsToRead": "Roo vol llegir aquest fitxer:",
-		"wantsToReadOutsideWorkspace": "Roo vol llegir aquest fitxer fora de l'espai de treball:",
-		"didRead": "Roo ha llegit aquest fitxer:",
-		"wantsToEdit": "Roo vol editar aquest fitxer:",
-		"wantsToEditOutsideWorkspace": "Roo vol editar aquest fitxer fora de l'espai de treball:",
-		"wantsToEditProtected": "Roo vol editar un fitxer de configuració protegit:",
-		"wantsToCreate": "Roo vol crear un nou fitxer:",
-		"wantsToSearchReplace": "Roo vol realitzar cerca i substitució en aquest fitxer:",
-		"didSearchReplace": "Roo ha realitzat cerca i substitució en aquest fitxer:",
-		"wantsToInsert": "Roo vol inserir contingut en aquest fitxer:",
-		"wantsToInsertWithLineNumber": "Roo vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
-		"wantsToInsertAtEnd": "Roo vol afegir contingut al final d'aquest fitxer:",
-		"wantsToReadAndXMore": "En Roo vol llegir aquest fitxer i {{count}} més:",
-		"wantsToReadMultiple": "Roo vol llegir diversos fitxers:",
-		"wantsToApplyBatchChanges": "Roo vol aplicar canvis a múltiples fitxers:"
+		"wantsToRead": "SyntX vol llegir aquest fitxer:",
+		"wantsToReadOutsideWorkspace": "SyntX vol llegir aquest fitxer fora de l'espai de treball:",
+		"didRead": "SyntX ha llegit aquest fitxer:",
+		"wantsToEdit": "SyntX vol editar aquest fitxer:",
+		"wantsToEditOutsideWorkspace": "SyntX vol editar aquest fitxer fora de l'espai de treball:",
+		"wantsToEditProtected": "SyntX vol editar un fitxer de configuració protegit:",
+		"wantsToCreate": "SyntX vol crear un nou fitxer:",
+		"wantsToSearchReplace": "SyntX vol realitzar cerca i substitució en aquest fitxer:",
+		"didSearchReplace": "SyntX ha realitzat cerca i substitució en aquest fitxer:",
+		"wantsToInsert": "SyntX vol inserir contingut en aquest fitxer:",
+		"wantsToInsertWithLineNumber": "SyntX vol inserir contingut a la línia {{lineNumber}} d'aquest fitxer:",
+		"wantsToInsertAtEnd": "SyntX vol afegir contingut al final d'aquest fitxer:",
+		"wantsToReadAndXMore": "En SyntX vol llegir aquest fitxer i {{count}} més:",
+		"wantsToReadMultiple": "SyntX vol llegir diversos fitxers:",
+		"wantsToApplyBatchChanges": "SyntX vol aplicar canvis a múltiples fitxers:"
 	},
 	"directoryOperations": {
-		"wantsToViewTopLevel": "Roo vol veure els fitxers de nivell superior en aquest directori:",
-		"didViewTopLevel": "Roo ha vist els fitxers de nivell superior en aquest directori:",
-		"wantsToViewRecursive": "Roo vol veure recursivament tots els fitxers en aquest directori:",
-		"didViewRecursive": "Roo ha vist recursivament tots els fitxers en aquest directori:",
-		"wantsToViewDefinitions": "Roo vol veure noms de definicions de codi font utilitzats en aquest directori:",
-		"didViewDefinitions": "Roo ha vist noms de definicions de codi font utilitzats en aquest directori:",
-		"wantsToSearch": "Roo vol cercar en aquest directori <code>{{regex}}</code>:",
-		"didSearch": "Roo ha cercat en aquest directori <code>{{regex}}</code>:",
-		"wantsToSearchOutsideWorkspace": "Roo vol cercar en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
-		"didSearchOutsideWorkspace": "Roo ha cercat en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
-		"wantsToViewTopLevelOutsideWorkspace": "Roo vol veure els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
-		"didViewTopLevelOutsideWorkspace": "Roo ha vist els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
-		"wantsToViewRecursiveOutsideWorkspace": "Roo vol veure recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
-		"didViewRecursiveOutsideWorkspace": "Roo ha vist recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
-		"wantsToViewDefinitionsOutsideWorkspace": "Roo vol veure noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):",
-		"didViewDefinitionsOutsideWorkspace": "Roo ha vist noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):"
+		"wantsToViewTopLevel": "SyntX vol veure els fitxers de nivell superior en aquest directori:",
+		"didViewTopLevel": "SyntX ha vist els fitxers de nivell superior en aquest directori:",
+		"wantsToViewRecursive": "SyntX vol veure recursivament tots els fitxers en aquest directori:",
+		"didViewRecursive": "SyntX ha vist recursivament tots els fitxers en aquest directori:",
+		"wantsToViewDefinitions": "SyntX vol veure noms de definicions de codi font utilitzats en aquest directori:",
+		"didViewDefinitions": "SyntX ha vist noms de definicions de codi font utilitzats en aquest directori:",
+		"wantsToSearch": "SyntX vol cercar en aquest directori <code>{{regex}}</code>:",
+		"didSearch": "SyntX ha cercat en aquest directori <code>{{regex}}</code>:",
+		"wantsToSearchOutsideWorkspace": "SyntX vol cercar en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
+		"didSearchOutsideWorkspace": "SyntX ha cercat en aquest directori (fora de l'espai de treball) <code>{{regex}}</code>:",
+		"wantsToViewTopLevelOutsideWorkspace": "SyntX vol veure els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
+		"didViewTopLevelOutsideWorkspace": "SyntX ha vist els fitxers de nivell superior en aquest directori (fora de l'espai de treball):",
+		"wantsToViewRecursiveOutsideWorkspace": "SyntX vol veure recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
+		"didViewRecursiveOutsideWorkspace": "SyntX ha vist recursivament tots els fitxers en aquest directori (fora de l'espai de treball):",
+		"wantsToViewDefinitionsOutsideWorkspace": "SyntX vol veure noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):",
+		"didViewDefinitionsOutsideWorkspace": "SyntX ha vist noms de definicions de codi font utilitzats en aquest directori (fora de l'espai de treball):"
 	},
 	"commandOutput": "Sortida de l'ordre",
 	"response": "Resposta",
 	"arguments": "Arguments",
 	"mcp": {
-		"wantsToUseTool": "Roo vol utilitzar una eina al servidor MCP {{serverName}}:",
-		"wantsToAccessResource": "Roo vol accedir a un recurs al servidor MCP {{serverName}}:"
+		"wantsToUseTool": "SyntX vol utilitzar una eina al servidor MCP {{serverName}}:",
+		"wantsToAccessResource": "SyntX vol accedir a un recurs al servidor MCP {{serverName}}:"
 	},
 	"modes": {
-		"wantsToSwitch": "Roo vol canviar a mode <code>{{mode}}</code>",
-		"wantsToSwitchWithReason": "Roo vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
-		"didSwitch": "Roo ha canviat a mode <code>{{mode}}</code>",
-		"didSwitchWithReason": "Roo ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
+		"wantsToSwitch": "SyntX vol canviar a mode <code>{{mode}}</code>",
+		"wantsToSwitchWithReason": "SyntX vol canviar a mode <code>{{mode}}</code> perquè: {{reason}}",
+		"didSwitch": "SyntX ha canviat a mode <code>{{mode}}</code>",
+		"didSwitchWithReason": "SyntX ha canviat a mode <code>{{mode}}</code> perquè: {{reason}}"
 	},
 	"subtasks": {
-		"wantsToCreate": "Roo vol crear una nova subtasca en mode <code>{{mode}}</code>:",
-		"wantsToFinish": "Roo vol finalitzar aquesta subtasca",
+		"wantsToCreate": "SyntX vol crear una nova subtasca en mode <code>{{mode}}</code>:",
+		"wantsToFinish": "SyntX vol finalitzar aquesta subtasca",
 		"newTaskContent": "Instruccions de la subtasca",
 		"completionContent": "Subtasca completada",
 		"resultContent": "Resultats de la subtasca",
@@ -214,7 +214,7 @@
 		"completionInstructions": "Subtasca completada! Pots revisar els resultats i suggerir correccions o següents passos. Si tot sembla correcte, confirma per tornar el resultat a la tasca principal."
 	},
 	"questions": {
-		"hasQuestion": "Roo té una pregunta:"
+		"hasQuestion": "SyntX té una pregunta:"
 	},
 	"taskCompleted": "Tasca completada",
 	"powershell": {
@@ -223,7 +223,7 @@
 	"autoApprove": {
 		"title": "Aprovació automàtica:",
 		"none": "Cap",
-		"description": "L'aprovació automàtica permet a Roo Code realitzar accions sense demanar permís. Activa-la només per a accions en les que confies plenament. Configuració més detallada disponible a la <settingsLink>Configuració</settingsLink>.",
+		"description": "L'aprovació automàtica permet a Syntx realitzar accions sense demanar permís. Activa-la només per a accions en les que confies plenament. Configuració més detallada disponible a la <settingsLink>Configuració</settingsLink>.",
 		"selectOptionsFirst": "Selecciona almenys una opció a continuació per activar l'aprovació automàtica",
 		"toggleAriaLabel": "Commuta l'aprovació automàtica",
 		"disabledAriaLabel": "Aprovació automàtica desactivada: seleccioneu primer les opcions"
@@ -244,17 +244,17 @@
 		"countdownDisplay": "{{count}}s"
 	},
 	"announcement": {
-		"title": "🎉 Roo Code {{version}} Llançat",
-		"description": "Roo Code {{version}} porta noves funcions potents i millores significatives per millorar el vostre flux de treball de desenvolupament.",
+		"title": "🎉 Syntx {{version}} Llançat",
+		"description": "Syntx {{version}} porta noves funcions potents i millores significatives per millorar el vostre flux de treball de desenvolupament.",
 		"whatsNew": "Novetats",
 		"feature1": "<bold>Indexació de Base de Codi Graduada d'Experimental</bold>: La indexació completa de la base de codi ara és estable i està llesta per a ús en producció amb cerca millorada i comprensió del context.",
 		"feature2": "<bold>Nova Funcionalitat de Llista de Tasques Pendents</bold>: Mantingueu les vostres tasques en el bon camí amb gestió integrada de tasques pendents que us ajuda a mantenir-vos organitzats i centrats en els vostres objectius de desenvolupament.",
 		"feature3": "<bold>Transicions Millorades d'Arquitecte a Codi</bold>: Transferències fluides de la planificació en mode Arquitecte a la implementació en mode Codi.",
 		"hideButton": "Amaga l'anunci",
-		"detailsDiscussLinks": "Obtén més detalls i uneix-te a les discussions a <discordLink>Discord</discordLink> i <redditLink>Reddit</redditLink> 🚀"
+		"detailsDiscussLinks": "Obtén més detalls i uneix-te a les discussions a <discordLink>Discord</discordLink> 🚀"
 	},
 	"browser": {
-		"rooWantsToUse": "Roo vol utilitzar el navegador:",
+		"rooWantsToUse": "SyntX vol utilitzar el navegador:",
 		"consoleLogs": "Registres de consola",
 		"noNewLogs": "(Cap registre nou)",
 		"screenshot": "Captura de pantalla del navegador",
@@ -288,19 +288,19 @@
 	"profileViolationWarning": "El perfil actual no és compatible amb la configuració de la teva organització",
 	"shellIntegration": {
 		"title": "Advertència d'execució d'ordres",
-		"description": "La teva ordre s'està executant sense la integració de shell del terminal VSCode. Per suprimir aquest advertiment, pots desactivar la integració de shell a la secció <strong>Terminal</strong> de la <settingsLink>configuració de Roo Code</settingsLink> o solucionar problemes d'integració del terminal VSCode utilitzant l'enllaç a continuació.",
+		"description": "La teva ordre s'està executant sense la integració de shell del terminal VSCode. Per suprimir aquest advertiment, pots desactivar la integració de shell a la secció <strong>Terminal</strong> de la <settingsLink>configuració de Syntx</settingsLink> o solucionar problemes d'integració del terminal VSCode utilitzant l'enllaç a continuació.",
 		"troubleshooting": "Fes clic aquí per a la documentació d'integració de shell."
 	},
 	"ask": {
 		"autoApprovedRequestLimitReached": {
 			"title": "S'ha arribat al límit de sol·licituds aprovades automàticament",
-			"description": "Roo ha arribat al límit aprovat automàticament de {{count}} sol·licitud(s) d'API. Vols reiniciar el comptador i continuar amb la tasca?",
+			"description": "SyntX ha arribat al límit aprovat automàticament de {{count}} sol·licitud(s) d'API. Vols reiniciar el comptador i continuar amb la tasca?",
 			"button": "Reiniciar i continuar"
 		}
 	},
 	"codebaseSearch": {
-		"wantsToSearch": "Roo vol cercar a la base de codi <code>{{query}}</code>:",
-		"wantsToSearchWithPath": "Roo vol cercar a la base de codi <code>{{query}}</code> a <code>{{path}}</code>:",
+		"wantsToSearch": "SyntX vol cercar a la base de codi <code>{{query}}</code>:",
+		"wantsToSearchWithPath": "SyntX vol cercar a la base de codi <code>{{query}}</code> a <code>{{path}}</code>:",
 		"didSearch_one": "S'ha trobat 1 resultat",
 		"didSearch_other": "S'han trobat {{count}} resultats",
 		"resultTooltip": "Puntuació de similitud: {{score}} (fes clic per obrir el fitxer)"

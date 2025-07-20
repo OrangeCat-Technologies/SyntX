@@ -154,12 +154,11 @@ describe("custom-instructions global .roo support", () => {
 				.mockRejectedValueOnce(new Error("ENOENT")) // global rules dir doesn't exist
 				.mockRejectedValueOnce(new Error("ENOENT")) // project rules dir doesn't exist
 
-			// Mock legacy file reading - both fail (using safeReadFile which catches errors)
-			// The safeReadFile function catches ENOENT errors and returns empty string
-			// So we don't need to mock rejections, just empty responses
+			// Mock legacy file reading - all return empty (simulating ENOENT caught by safeReadFile)
 			mockReadFile
-				.mockResolvedValueOnce("") // .roorules returns empty (simulating ENOENT caught by safeReadFile)
-				.mockResolvedValueOnce("") // .clinerules returns empty (simulating ENOENT caught by safeReadFile)
+				.mockResolvedValueOnce("") // .roorules returns empty
+				.mockResolvedValueOnce("") // .clinerules returns empty
+				.mockResolvedValueOnce("") // .syntxrules returns empty
 
 			const result = await loadRuleFiles(mockCwd)
 
@@ -195,6 +194,7 @@ describe("custom-instructions global .roo support", () => {
 				.mockResolvedValueOnce("project mode rule content")
 				.mockResolvedValueOnce("") // .roorules legacy file (empty)
 				.mockResolvedValueOnce("") // .clinerules legacy file (empty)
+				.mockResolvedValueOnce("") // .syntxrules legacy file (empty)
 
 			const result = await addCustomInstructions("", "", mockCwd, mode)
 
@@ -220,6 +220,7 @@ describe("custom-instructions global .roo support", () => {
 				.mockResolvedValueOnce("legacy mode rule content") // .roorules-code
 				.mockResolvedValueOnce("") // generic .roorules (empty)
 				.mockResolvedValueOnce("") // generic .clinerules (empty)
+				.mockResolvedValueOnce("") // generic .syntxrules (empty)
 
 			const result = await addCustomInstructions("", "", mockCwd, mode)
 

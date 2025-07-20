@@ -131,6 +131,14 @@ export const globalSettingsSchema = z.object({
 	hasOpenedModeSelector: z.boolean().optional(),
 	lastModeExportPath: z.string().optional(),
 	lastModeImportPath: z.string().optional(),
+
+	// Website authentication properties
+	websiteUsername: z.string().optional(),
+	syntxApiKey: z.string().optional(),
+	websiteNotAuthenticated: z.boolean().optional(),
+
+	selectedAgentId: z.string().optional(),
+	showModes: z.boolean().optional(),
 })
 
 export type GlobalSettings = z.infer<typeof globalSettingsSchema>
@@ -166,6 +174,7 @@ export const SECRET_STATE_KEYS = [
 	"groqApiKey",
 	"chutesApiKey",
 	"litellmApiKey",
+	"syntxApiKey",
 	"codeIndexOpenAiKey",
 	"codeIndexQdrantApiKey",
 	"codebaseIndexOpenAiCompatibleApiKey",

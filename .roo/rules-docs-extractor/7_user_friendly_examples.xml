@@ -197,7 +197,7 @@ Customize in Roo's settings:
 
 **"Some files were denied but others were approved."**
 - Normal behavior. Roo works with approved files.
-- Files may be blocked by `.rooignore` settings.
+- Files may be blocked by `.syntxignore` settings.
 
 **"Does this use more memory?"**
 - Yes, but the impact is usually minimal.

@@ -246,7 +246,11 @@ const AutoApproveMenu = ({ style }: AutoApproveMenuProps) => {
 						/>
 					</div>
 
-					<AutoApproveToggle {...toggles} onToggle={onAutoApproveToggle} />
+					<AutoApproveToggle
+						{...toggles}
+						autoApprovalEnabled={autoApprovalEnabled}
+						onToggle={onAutoApproveToggle}
+					/>
 
 					{/* Auto-approve API request count limit input row inspired by Cline */}
 					<div

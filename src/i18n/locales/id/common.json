@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "Tim pengembang AI lengkap di editor kamu."
 	},
 	"number_format": {
@@ -122,7 +122,7 @@
 		"enter_valid_path": "Silakan masukkan path yang valid"
 	},
 	"input": {
-		"task_prompt": "Apa yang harus Roo lakukan?",
+		"task_prompt": "Apa yang harus SyntX lakukan?",
 		"task_placeholder": "Ketik tugas kamu di sini"
 	},
 	"settings": {
@@ -138,8 +138,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML tidak valid dalam file .roomodes pada baris {{line}}. Silakan periksa:\n• Indentasi yang benar (gunakan spasi, bukan tab)\n• Tanda kutip dan kurung yang cocok\n• Sintaks YAML yang valid",
-			"schemaValidationError": "Format mode kustom tidak valid dalam .roomodes:\n{{issues}}",
+			"yamlParseError": "YAML tidak valid dalam file .syntxmodes pada baris {{line}}. Silakan periksa:\n• Indentasi yang benar (gunakan spasi, bukan tab)\n• Tanda kutip dan kurung yang cocok\n• Sintaks YAML yang valid",
+			"schemaValidationError": "Format mode kustom tidak valid dalam .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Format mode kustom tidak valid. Pastikan pengaturan kamu mengikuti format YAML yang benar.",
 			"updateFailed": "Gagal memperbarui mode kustom: {{error}}",
 			"deleteFailed": "Gagal menghapus mode kustom: {{error}}",
@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Organisasi kamu memerlukan autentikasi Roo Code Cloud. Silakan masuk untuk melanjutkan.",
-			"organization_mismatch": "Kamu harus diautentikasi dengan akun Roo Code Cloud organisasi kamu.",
+			"cloud_auth_required": "Organisasi kamu memerlukan autentikasi Syntx Cloud. Silakan masuk untuk melanjutkan.",
+			"organization_mismatch": "Kamu harus diautentikasi dengan akun Syntx Cloud organisasi kamu.",
 			"verification_failed": "Tidak dapat memverifikasi autentikasi organisasi."
 		}
 	},

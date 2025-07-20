@@ -4,7 +4,7 @@ export interface ToggleSwitchProps {
 	checked: boolean
 	onChange: () => void
 	disabled?: boolean
-	size?: "small" | "medium"
+	size?: "small" | "medium" | "large"
 	"aria-label"?: string
 	"data-testid"?: string
 }
@@ -13,11 +13,16 @@ export const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
 	checked,
 	onChange,
 	disabled = false,
-	size = "small",
+	size = "large",
 	"aria-label": ariaLabel,
 	"data-testid": dataTestId,
 }) => {
-	const dimensions = size === "small" ? { width: 16, height: 8, dotSize: 4 } : { width: 20, height: 10, dotSize: 6 }
+	const dimensions =
+		size === "small"
+			? { width: 16, height: 8, dotSize: 4 }
+			: size === "medium"
+				? { width: 20, height: 10, dotSize: 6 }
+				: { width: 32, height: 16, dotSize: 12 }
 
 	const handleKeyDown = (e: React.KeyboardEvent) => {
 		if (e.key === "Enter" || e.key === " ") {

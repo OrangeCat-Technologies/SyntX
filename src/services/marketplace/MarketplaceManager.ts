@@ -197,8 +197,8 @@ export class MarketplaceManager {
 				return // No workspace, no project installations
 			}
 
-			// Check modes in .roomodes
-			const projectModesPath = path.join(workspaceFolder.uri.fsPath, ".roomodes")
+			// Check modes in .syntxmodes
+			const projectModesPath = path.join(workspaceFolder.uri.fsPath, ".syntxmodes")
 			try {
 				const content = await fs.readFile(projectModesPath, "utf-8")
 				const data = yaml.parse(content)

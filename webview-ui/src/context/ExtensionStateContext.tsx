@@ -24,6 +24,7 @@ import { vscode } from "@src/utils/vscode"
 import { convertTextMateToHljs } from "@src/utils/textMateToHljs"
 
 export interface ExtensionStateContextType extends ExtensionState {
+	showModes?: boolean
 	historyPreviewCollapsed?: boolean // Add the new state property
 	didHydrateState: boolean
 	showWelcome: boolean
@@ -36,6 +37,10 @@ export interface ExtensionStateContextType extends ExtensionState {
 	organizationAllowList: OrganizationAllowList
 	cloudIsAuthenticated: boolean
 	sharingEnabled: boolean
+	// Website authentication properties
+	websiteUsername?: string
+	syntxApiKey?: string
+	websiteNotAuthenticated?: boolean
 	maxConcurrentFileReads?: number
 	mdmCompliant?: boolean
 	hasOpenedModeSelector: boolean // New property to track if user has opened mode selector
@@ -186,6 +191,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		requestDelaySeconds: 5,
 		currentApiConfigName: "default",
 		listApiConfigMeta: [],
+		showModes: true,
 		mode: defaultModeSlug,
 		customModePrompts: defaultPrompts,
 		customSupportPrompts: {},
@@ -201,7 +207,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		cwd: "",
 		browserToolEnabled: true,
 		telemetrySetting: "unset",
-		showRooIgnoredFiles: true, // Default to showing .rooignore'd files with lock symbol (current behavior).
+		showRooIgnoredFiles: true, // Default to showing .syntxignore'd files with lock symbol (current behavior).
 		renderContext: "sidebar",
 		maxReadFileLine: -1, // Default max read file line limit
 		pinnedApiConfigs: {}, // Empty object for pinned API configs
@@ -214,6 +220,10 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		cloudUserInfo: null,
 		cloudIsAuthenticated: false,
 		sharingEnabled: false,
+		// Website authentication initialization
+		websiteUsername: undefined,
+		syntxApiKey: undefined,
+		websiteNotAuthenticated: true, // Default to not authenticated
 		organizationAllowList: ORGANIZATION_ALLOW_ALL,
 		autoCondenseContext: true,
 		autoCondenseContextPercent: 100,
@@ -268,6 +278,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 			switch (message.type) {
 				case "state": {
 					const newState = message.state!
+					console.log("ExtensionStateContext: received state", newState)
 					setState((prevState) => mergeExtensionState(prevState, newState))
 					setShowWelcome(!checkExistKey(newState.apiConfiguration))
 					setDidHydrateState(true)
@@ -341,6 +352,19 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 					}
 					break
 				}
+				case "websiteAuth": {
+					// Handle website authentication result
+					if (message.text) {
+						const { authenticated, username, apiKey } = JSON.parse(message.text)
+						setState((prevState) => ({
+							...prevState,
+							websiteNotAuthenticated: !authenticated,
+							websiteUsername: username,
+							syntxApiKey: apiKey,
+						}))
+					}
+					break
+				}
 			}
 		},
 		[setListApiConfigMeta],
@@ -373,6 +397,10 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		screenshotQuality: state.screenshotQuality,
 		routerModels: extensionRouterModels,
 		cloudIsAuthenticated: state.cloudIsAuthenticated ?? false,
+		// Website authentication properties
+		websiteUsername: state.websiteUsername,
+		syntxApiKey: state.syntxApiKey,
+		websiteNotAuthenticated: state.websiteNotAuthenticated ?? true,
 		marketplaceItems,
 		marketplaceInstalledMetadata,
 		profileThresholds: state.profileThresholds ?? {},

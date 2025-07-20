@@ -24,6 +24,8 @@ export interface UpdateTodoListPayload {
 
 export interface WebviewMessage {
 	type:
+		| "action"
+		| "agentSelected"
 		| "updateTodoList"
 		| "deleteMultipleTasksWithIds"
 		| "currentApiConfigName"
@@ -169,6 +171,8 @@ export interface WebviewMessage {
 		| "accountButtonClicked"
 		| "rooCloudSignIn"
 		| "rooCloudSignOut"
+		| "initiateWebsiteAuth"
+		| "signOutWebsite"
 		| "condenseTaskContextRequest"
 		| "requestIndexingStatus"
 		| "startIndexing"
@@ -208,6 +212,20 @@ export interface WebviewMessage {
 	apiConfiguration?: ProviderSettings
 	images?: string[]
 	bool?: boolean
+	agentId?: string
+	showModes?: boolean
+	action?:
+		| "agentButtonClicked"
+		| "chatButtonClicked"
+		| "mcpButtonClicked"
+		| "settingsButtonClicked"
+		| "historyButtonClicked"
+		| "promptsButtonClicked"
+		| "marketplaceButtonClicked"
+		| "accountButtonClicked"
+		| "didBecomeVisible"
+		| "focusInput"
+		| "switchTab"
 	value?: number
 	commands?: string[]
 	audioType?: AudioType

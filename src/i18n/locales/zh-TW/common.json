@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "您編輯器中的完整 AI 開發團隊。"
 	},
 	"number_format": {
@@ -122,7 +122,7 @@
 		"enter_valid_path": "請輸入有效的路徑"
 	},
 	"input": {
-		"task_prompt": "讓 Roo 做什麼？",
+		"task_prompt": "讓 SyntX 做什麼？",
 		"task_placeholder": "在這裡輸入工作"
 	},
 	"settings": {
@@ -138,8 +138,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": ".roomodes 檔案第 {{line}} 行 YAML 格式無效。請檢查：\n• 正確的縮排（使用空格，不要使用定位字元）\n• 匹配的引號和括號\n• 有效的 YAML 語法",
-			"schemaValidationError": ".roomodes 中自訂模式格式無效：\n{{issues}}",
+			"yamlParseError": ".syntxmodes 檔案第 {{line}} 行 YAML 格式無效。請檢查：\n• 正確的縮排（使用空格，不要使用定位字元）\n• 匹配的引號和括號\n• 有效的 YAML 語法",
+			"schemaValidationError": ".syntxmodes 中自訂模式格式無效：\n{{issues}}",
 			"invalidFormat": "自訂模式格式無效。請確保你的設定遵循正確的 YAML 格式。",
 			"updateFailed": "更新自訂模式失敗：{{error}}",
 			"deleteFailed": "刪除自訂模式失敗：{{error}}",
@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "您的組織需要 Roo Code Cloud 身份驗證。請登入以繼續。",
-			"organization_mismatch": "您必須使用組織的 Roo Code Cloud 帳戶進行身份驗證。",
+			"cloud_auth_required": "您的組織需要 Syntx Cloud 身份驗證。請登入以繼續。",
+			"organization_mismatch": "您必須使用組織的 Syntx Cloud 帳戶進行身份驗證。",
 			"verification_failed": "無法驗證組織身份驗證。"
 		}
 	},

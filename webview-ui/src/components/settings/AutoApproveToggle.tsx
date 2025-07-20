@@ -1,4 +1,5 @@
 import type { GlobalSettings } from "@roo-code/types"
+import { useCallback, useEffect, useState } from "react"
 
 import { useAppTranslation } from "@/i18n/TranslationContext"
 import { cn } from "@/lib/utils"
@@ -102,36 +103,79 @@ export const autoApproveSettingsConfig: Record<AutoApproveSetting, AutoApproveCo
 }
 
 type AutoApproveToggleProps = AutoApproveToggles & {
+	autoApprovalEnabled?: boolean
 	onToggle: (key: AutoApproveSetting, value: boolean) => void
+	onAutoApprovalToggle?: (enabled: boolean) => void
 }
 
-export const AutoApproveToggle = ({ onToggle, ...props }: AutoApproveToggleProps) => {
+export const AutoApproveToggle = ({
+	onToggle,
+	autoApprovalEnabled,
+	onAutoApprovalToggle,
+	...props
+}: AutoApproveToggleProps) => {
 	const { t } = useAppTranslation()
+	const [hasUserManuallyDisabledAutoApproval, setHasUserManuallyDisabledAutoApproval] = useState(false)
+
+	// Track if user has manually disabled auto-approval
+	useEffect(() => {
+		if (autoApprovalEnabled === false) {
+			setHasUserManuallyDisabledAutoApproval(true)
+		}
+	}, [autoApprovalEnabled])
+
+	const handleToggle = useCallback(
+		(key: AutoApproveSetting, value: boolean) => {
+			// If auto-approval is off and user is trying to enable an individual setting
+			if (!autoApprovalEnabled && value && !hasUserManuallyDisabledAutoApproval) {
+				// Auto-enable auto-approval when user clicks on an individual setting for the first time
+				onAutoApprovalToggle?.(true)
+			}
+
+			onToggle(key, value)
+		},
+		[autoApprovalEnabled, hasUserManuallyDisabledAutoApproval, onAutoApprovalToggle, onToggle],
+	)
+
+	// Check if any individual settings are enabled but auto-approval is off
+	const hasIndividualSettingsEnabled = Object.values(autoApproveSettingsConfig).some(({ key }) => props[key])
 
 	return (
-		<div
-			className={cn(
-				"flex flex-row flex-wrap justify-center gap-2 max-w-[600px] mx-auto my-2 ",
-				"[@media(min-width:600px)]:gap-4",
-				"[@media(min-width:800px)]:max-w-[900px]",
-				"[@media(min-width:1200px)]:max-w-[1800px]",
-			)}>
-			{Object.values(autoApproveSettingsConfig).map(({ key, descriptionKey, labelKey, icon, testId }) => (
-				<StandardTooltip key={key} content={t(descriptionKey || "")}>
-					<Button
-						variant={props[key] ? "default" : "outline"}
-						onClick={() => onToggle(key, !props[key])}
-						aria-label={t(labelKey)}
-						aria-pressed={!!props[key]}
-						data-testid={testId}
-						className={cn(" aspect-square h-[80px]", !props[key] && "opacity-50")}>
-						<span className={cn("flex flex-col items-center gap-1")}>
-							<span className={`codicon codicon-${icon}`} />
-							<span className="text-sm text-center">{t(labelKey)}</span>
-						</span>
-					</Button>
-				</StandardTooltip>
-			))}
+		<div className="space-y-4">
+			{/* Warning message when auto-approval is off but individual settings are enabled */}
+			{!autoApprovalEnabled && hasIndividualSettingsEnabled && (
+				<div className="flex items-center gap-2 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-md">
+					<span className="codicon codicon-warning text-yellow-500" />
+					<span className="text-sm text-yellow-600 dark:text-yellow-400">
+						{t("settings:autoApprove.warning.disabled")}
+					</span>
+				</div>
+			)}
+
+			<div
+				className={cn(
+					"flex flex-row flex-wrap justify-center gap-2 max-w-[600px] mx-auto my-2 ",
+					"[@media(min-width:600px)]:gap-4",
+					"[@media(min-width:800px)]:max-w-[900px]",
+					"[@media(min-width:1200px)]:max-w-[1800px]",
+				)}>
+				{Object.values(autoApproveSettingsConfig).map(({ key, descriptionKey, labelKey, icon, testId }) => (
+					<StandardTooltip key={key} content={t(descriptionKey || "")}>
+						<Button
+							variant={props[key] ? "default" : "outline"}
+							onClick={() => handleToggle(key, !props[key])}
+							aria-label={t(labelKey)}
+							aria-pressed={!!props[key]}
+							data-testid={testId}
+							className={cn(" aspect-square h-[80px]", !props[key] && "opacity-50")}>
+							<span className={cn("flex flex-col items-center gap-1")}>
+								<span className={`codicon codicon-${icon}`} />
+								<span className="text-sm text-center">{t(labelKey)}</span>
+							</span>
+						</Button>
+					</StandardTooltip>
+				))}
+			</div>
 		</div>
 	)
 }

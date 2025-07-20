@@ -11,9 +11,9 @@
 </sub>
 </div>
 
-# Contribuire a Roo Code
+# Contribuire a Syntx
 
-Roo Code è un progetto guidato dalla community e apprezziamo molto ogni contributo. Per semplificare la collaborazione, operiamo secondo un approccio [Issue-First](#approccio-issue-first), il che significa che tutte le [Pull Request (PR)](#inviare-una-pull-request) devono prima essere collegate a una Issue GitHub. Ti preghiamo di leggere attentamente questa guida.
+Syntx è un progetto guidato dalla community e apprezziamo molto ogni contributo. Per semplificare la collaborazione, operiamo secondo un approccio [Issue-First](#approccio-issue-first), il che significa che tutte le [Pull Request (PR)](#inviare-una-pull-request) devono prima essere collegate a una Issue GitHub. Ti preghiamo di leggere attentamente questa guida.
 
 ## Indice
 
@@ -52,9 +52,9 @@ La nostra roadmap guida la direzione del progetto. Allinea i tuoi contributi con
 
 Menziona l'allineamento con queste aree nelle tue PR.
 
-### 3. Unisciti alla community Roo Code
+### 3. Unisciti alla community Syntx
 
-- **Principale:** Unisciti al nostro [Discord](https://discord.gg/roocode) e invia un DM a **Hannes Rudolph (`hrudolph`)**.
+- **Principale:** Unisciti al nostro [Discord](https://discord.gg/FzndMpbhDd) e invia un DM a **Hannes Rudolph (`hrudolph`)**.
 - **Alternativa:** I collaboratori esperti possono partecipare direttamente tramite [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Trovare e pianificare il tuo contributo
@@ -69,7 +69,7 @@ Menziona l'allineamento con queste aree nelle tue PR.
 
 Tutti i contributi devono iniziare con una Issue GitHub.
 
-- **Verificare le issue esistenti:** Cerca su [GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues).
+- **Verificare le issue esistenti:** Cerca su [GitHub Issues](https://github.com/OrangeCat-Technologies/SyntX/issues).
 - **Creare una issue:** Usa i template appropriati:
     - **Bug:** Template "Bug Report".
     - **Funzionalità:** Template "Detailed Feature Proposal". Approvazione richiesta prima di iniziare.
@@ -80,13 +80,13 @@ Tutti i contributi devono iniziare con una Issue GitHub.
 ### Decidere su cosa lavorare
 
 - Controlla il [Progetto GitHub](https://github.com/orgs/RooCodeInc/projects/1) per "Good First Issues" non assegnate.
-- Per la documentazione, visita [Roo Code Docs](https://github.com/RooCodeInc/Roo-Code-Docs).
+- Per la documentazione, visita [Syntx Docs](https://github.com/OrangeCat-Technologies/SyntX-Docs).
 
 ### Segnalare bug
 
 - Controlla prima i report esistenti.
-- Crea nuovi report di bug usando il [template "Bug Report"](https://github.com/RooCodeInc/Roo-Code/issues/new/choose).
-- **Problemi di sicurezza:** Segnala privatamente tramite [security advisories](https://github.com/RooCodeInc/Roo-Code/security/advisories/new).
+- Crea nuovi report di bug usando il [template "Bug Report"](https://github.com/OrangeCat-Technologies/SyntX/issues/new/choose).
+- **Problemi di sicurezza:** Segnala privatamente tramite [security advisories](https://github.com/OrangeCat-Technologies/SyntX/security/advisories/new).
 
 ## Processo di sviluppo e invio
 
@@ -95,7 +95,7 @@ Tutti i contributi devono iniziare con una Issue GitHub.
 1. **Fork & Clona:**
 
 ```
-git clone https://github.com/TUO_USERNAME/Roo-Code.git
+git clone https://github.com/TUO_USERNAME/SyntX-Code.git
 ```
 
 2. **Installa le dipendenze:**
@@ -135,4 +135,4 @@ npm run install:all
 
 ## Legale
 
-Inviando una pull request, accetti che i tuoi contributi siano concessi in licenza sotto la Licenza Apache 2.0, in linea con la licenza di Roo Code.
+Inviando una pull request, accetti che i tuoi contributi siano concessi in licenza sotto la Licenza Apache 2.0, in linea con la licenza di Syntx.

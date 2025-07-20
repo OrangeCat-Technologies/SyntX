@@ -16,7 +16,7 @@ export const formatResponse = {
 	toolError: (error?: string) => `The tool execution failed with the following error:\n<error>\n${error}\n</error>`,
 
 	rooIgnoreError: (path: string) =>
-		`Access to ${path} is blocked by the .rooignore file settings. You must try to continue in the task without using this file, or ask the user to update the .rooignore file.`,
+		`Access to ${path} is blocked by the .syntxignore file settings. You must try to continue in the task without using this file, or ask the user to update the .syntxignore file.`,
 
 	noToolsUsed: () =>
 		`[ERROR] You did not use a tool in your previous response! Please retry with a tool use.

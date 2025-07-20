@@ -47,6 +47,15 @@ export const handleUri = async (uri: vscode.Uri) => {
 			)
 			break
 		}
+		case "/website/callback": {
+			const username = query.get("username")
+			const apiKey = query.get("apiKey")
+
+			if (username && apiKey) {
+				await visibleProvider.handleWebsiteAuthCallback(username, apiKey)
+			}
+			break
+		}
 		default:
 			break
 	}

@@ -75,7 +75,7 @@ describe("QdrantVectorStore", () => {
 			port: 6333,
 			apiKey: mockApiKey,
 			headers: {
-				"User-Agent": "Roo-Code",
+				"User-Agent": "SyntX",
 			},
 		})
 		expect(createHash).toHaveBeenCalledWith("sha256")
@@ -94,7 +94,7 @@ describe("QdrantVectorStore", () => {
 			port: 6333,
 			apiKey: undefined,
 			headers: {
-				"User-Agent": "Roo-Code",
+				"User-Agent": "SyntX",
 			},
 		})
 	})
@@ -108,7 +108,7 @@ describe("QdrantVectorStore", () => {
 			port: 6333,
 			apiKey: undefined,
 			headers: {
-				"User-Agent": "Roo-Code",
+				"User-Agent": "SyntX",
 			},
 		})
 	})
@@ -128,7 +128,7 @@ describe("QdrantVectorStore", () => {
 					prefix: undefined, // No prefix for root path
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("https://qdrant.ashbyfam.com")
@@ -143,7 +143,7 @@ describe("QdrantVectorStore", () => {
 					prefix: undefined, // No prefix for root path
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("https://example.com:9000")
@@ -162,7 +162,7 @@ describe("QdrantVectorStore", () => {
 					prefix: "/api/v1", // Should have prefix
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("https://example.com/api/v1?key=value")
@@ -179,7 +179,7 @@ describe("QdrantVectorStore", () => {
 					prefix: undefined, // No prefix for root path
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://example.com")
@@ -194,7 +194,7 @@ describe("QdrantVectorStore", () => {
 					prefix: undefined, // No prefix for root path
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://localhost:8080")
@@ -213,7 +213,7 @@ describe("QdrantVectorStore", () => {
 					prefix: "/api/v1", // Should have prefix
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://example.com/api/v1?key=value")
@@ -229,7 +229,7 @@ describe("QdrantVectorStore", () => {
 					port: 80,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://qdrant.example.com")
@@ -243,7 +243,7 @@ describe("QdrantVectorStore", () => {
 					port: 6333,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://localhost:6333")
@@ -257,7 +257,7 @@ describe("QdrantVectorStore", () => {
 					port: 9000,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://localhost:9000")
@@ -273,7 +273,7 @@ describe("QdrantVectorStore", () => {
 					port: 80,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://192.168.1.100")
@@ -287,7 +287,7 @@ describe("QdrantVectorStore", () => {
 					port: 6333,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://192.168.1.100:6333")
@@ -303,7 +303,7 @@ describe("QdrantVectorStore", () => {
 					port: 6333,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://localhost:6333")
@@ -317,7 +317,7 @@ describe("QdrantVectorStore", () => {
 					port: 6333,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://localhost:6333")
@@ -331,7 +331,7 @@ describe("QdrantVectorStore", () => {
 					port: 6333,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://localhost:6333")
@@ -347,7 +347,7 @@ describe("QdrantVectorStore", () => {
 					port: 80,
 					apiKey: undefined,
 					headers: {
-						"User-Agent": "Roo-Code",
+						"User-Agent": "SyntX",
 					},
 				})
 				expect((vectorStore as any).qdrantUrl).toBe("http://invalid-url-format")
@@ -369,7 +369,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/some/path",
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithPrefix as any).qdrantUrl).toBe("http://localhost:6333/some/path")
@@ -388,7 +388,7 @@ describe("QdrantVectorStore", () => {
 				prefix: undefined,
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithoutPrefix as any).qdrantUrl).toBe("http://localhost:6333/")
@@ -407,7 +407,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/api",
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithHttpsPrefix as any).qdrantUrl).toBe("https://qdrant.ashbyfam.com/api")
@@ -426,7 +426,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/api", // Trailing slash should be removed
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithTrailingSlash as any).qdrantUrl).toBe("http://localhost:6333/api/")
@@ -445,7 +445,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/api", // All trailing slashes should be removed
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithMultipleTrailingSlashes as any).qdrantUrl).toBe("http://localhost:6333/api///")
@@ -464,7 +464,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/api/v1/qdrant",
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithMultiSegment as any).qdrantUrl).toBe("http://localhost:6333/api/v1/qdrant")
@@ -480,7 +480,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/ollama/api/v1", // Trailing slash removed, query/fragment ignored
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreComplex as any).qdrantUrl).toBe(complexUrl)
@@ -499,7 +499,7 @@ describe("QdrantVectorStore", () => {
 				prefix: "/api/path", // Query params and fragment should be ignored
 				apiKey: undefined,
 				headers: {
-					"User-Agent": "Roo-Code",
+					"User-Agent": "SyntX",
 				},
 			})
 			expect((vectorStoreWithQueryParams as any).qdrantUrl).toBe(

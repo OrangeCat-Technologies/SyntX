@@ -8,8 +8,8 @@
 		"noMatchFound": "Tidak ada mode yang ditemukan",
 		"editModesConfig": "Edit konfigurasi mode",
 		"editGlobalModes": "Edit Mode Global",
-		"editProjectModes": "Edit Mode Proyek (.roomodes)",
-		"createModeHelpText": "Mode adalah persona khusus yang menyesuaikan perilaku Roo Code. <0>Pelajari tentang Menggunakan Mode</0> atau <1>Menyesuaikan Mode.</1>",
+		"editProjectModes": "Edit Mode Proyek (.syntxmodes)",
+		"createModeHelpText": "Mode adalah persona khusus yang menyesuaikan perilaku Syntx. <0>Pelajari tentang Menggunakan Mode</0> atau <1>Menyesuaikan Mode.</1>",
 		"selectMode": "Cari mode"
 	},
 	"apiConfiguration": {
@@ -34,7 +34,7 @@
 	"roleDefinition": {
 		"title": "Definisi Peran",
 		"resetToDefault": "Reset ke default",
-		"description": "Tentukan keahlian dan kepribadian Roo untuk mode ini. Deskripsi ini membentuk bagaimana Roo mempresentasikan dirinya dan mendekati tugas."
+		"description": "Tentukan keahlian dan kepribadian SyntX untuk mode ini. Deskripsi ini membentuk bagaimana SyntX mempresentasikan dirinya dan mendekati tugas."
 	},
 	"description": {
 		"title": "Deskripsi singkat (untuk manusia)",
@@ -50,7 +50,7 @@
 		"title": "Instruksi Kustom Khusus Mode (opsional)",
 		"resetToDefault": "Reset ke default",
 		"description": "Tambahkan panduan perilaku khusus untuk mode {{modeName}}.",
-		"loadFromFile": "Instruksi kustom khusus untuk mode {{mode}} juga dapat dimuat dari folder <span>.roo/rules-{{slug}}/</span> di workspace Anda (.roomodes-{{slug}} dan .clinerules-{{slug}} sudah deprecated dan akan segera berhenti bekerja)."
+		"loadFromFile": "Instruksi kustom khusus untuk mode {{mode}} juga dapat dimuat dari folder <span>.roo/rules-{{slug}}/</span> di workspace Anda (.syntxmodes-{{slug}} dan .clinerules-{{slug}} sudah deprecated dan akan segera berhenti bekerja)."
 	},
 	"exportMode": {
 		"title": "Ekspor Mode",
@@ -104,7 +104,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Tingkatkan Prompt",
-				"description": "Gunakan peningkatan prompt untuk mendapatkan saran atau perbaikan yang disesuaikan untuk input Anda. Ini memastikan Roo memahami maksud Anda dan memberikan respons terbaik. Tersedia melalui ikon ✨ di chat."
+				"description": "Gunakan peningkatan prompt untuk mendapatkan saran atau perbaikan yang disesuaikan untuk input Anda. Ini memastikan SyntX memahami maksud Anda dan memberikan respons terbaik. Tersedia melalui ikon ✨ di chat."
 			},
 			"CONDENSE": {
 				"label": "Peringkasan Konteks",
@@ -167,13 +167,13 @@
 				"description": "Tersedia di semua workspace"
 			},
 			"project": {
-				"label": "Khusus proyek (.roomodes)",
+				"label": "Khusus proyek (.syntxmodes)",
 				"description": "Hanya tersedia di workspace ini, lebih diutamakan daripada global"
 			}
 		},
 		"roleDefinition": {
 			"label": "Definisi Peran",
-			"description": "Tentukan keahlian dan kepribadian Roo untuk mode ini."
+			"description": "Tentukan keahlian dan kepribadian SyntX untuk mode ini."
 		},
 		"whenToUse": {
 			"label": "Kapan Menggunakan (opsional)",

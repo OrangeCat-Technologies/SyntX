@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "Un equipo completo de desarrolladores con IA en tu editor."
 	},
 	"number_format": {
@@ -122,7 +122,7 @@
 		"enter_valid_path": "Por favor, ingresa una ruta válida"
 	},
 	"input": {
-		"task_prompt": "¿Qué debe hacer Roo?",
+		"task_prompt": "¿Qué debe hacer SyntX?",
 		"task_placeholder": "Escribe tu tarea aquí"
 	},
 	"settings": {
@@ -138,8 +138,8 @@
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "YAML inválido en archivo .roomodes en línea {{line}}. Verifica:\n• Indentación correcta (usa espacios, no tabs)\n• Comillas y corchetes coincidentes\n• Sintaxis YAML válida",
-			"schemaValidationError": "Formato inválido de modos personalizados en .roomodes:\n{{issues}}",
+			"yamlParseError": "YAML inválido en archivo .syntxmodes en línea {{line}}. Verifica:\n• Indentación correcta (usa espacios, no tabs)\n• Comillas y corchetes coincidentes\n• Sintaxis YAML válida",
+			"schemaValidationError": "Formato inválido de modos personalizados en .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Formato inválido de modos personalizados. Asegúrate de que tu configuración siga el formato YAML correcto.",
 			"updateFailed": "Error al actualizar modo personalizado: {{error}}",
 			"deleteFailed": "Error al eliminar modo personalizado: {{error}}",
@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Tu organización requiere autenticación de Roo Code Cloud. Por favor, inicia sesión para continuar.",
-			"organization_mismatch": "Debes estar autenticado con la cuenta de Roo Code Cloud de tu organización.",
+			"cloud_auth_required": "Tu organización requiere autenticación de Syntx Cloud. Por favor, inicia sesión para continuar.",
+			"organization_mismatch": "Debes estar autenticado con la cuenta de Syntx Cloud de tu organización.",
 			"verification_failed": "No se pudo verificar la autenticación de la organización."
 		}
 	},

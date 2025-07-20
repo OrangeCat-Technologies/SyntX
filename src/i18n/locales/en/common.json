@@ -1,6 +1,6 @@
 {
 	"extension": {
-		"name": "Roo Code",
+		"name": "Syntx",
 		"description": "A whole dev team of AI agents in your editor."
 	},
 	"number_format": {
@@ -122,13 +122,13 @@
 		"enter_valid_path": "Please enter a valid path"
 	},
 	"input": {
-		"task_prompt": "What should Roo do?",
+		"task_prompt": "What should SyntX do?",
 		"task_placeholder": "Type your task here"
 	},
 	"customModes": {
 		"errors": {
-			"yamlParseError": "Invalid YAML in .roomodes file at line {{line}}. Please check for:\n• Proper indentation (use spaces, not tabs)\n• Matching quotes and brackets\n• Valid YAML syntax",
-			"schemaValidationError": "Invalid custom modes format in .roomodes:\n{{issues}}",
+			"yamlParseError": "Invalid YAML in .syntxmodes file at line {{line}}. Please check for:\n• Proper indentation (use spaces, not tabs)\n• Matching quotes and brackets\n• Valid YAML syntax",
+			"schemaValidationError": "Invalid custom modes format in .syntxmodes:\n{{issues}}",
 			"invalidFormat": "Invalid custom modes format. Please ensure your settings follow the correct YAML format.",
 			"updateFailed": "Failed to update custom mode: {{error}}",
 			"deleteFailed": "Failed to delete custom mode: {{error}}",
@@ -143,8 +143,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Your organization requires Roo Code Cloud authentication. Please sign in to continue.",
-			"organization_mismatch": "You must be authenticated with your organization's Roo Code Cloud account.",
+			"cloud_auth_required": "Your organization requires Syntx Cloud authentication. Please sign in to continue.",
+			"organization_mismatch": "You must be authenticated with your organization's Syntx Cloud account.",
 			"verification_failed": "Unable to verify organization authentication."
 		}
 	},

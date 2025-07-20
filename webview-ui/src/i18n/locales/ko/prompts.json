@@ -8,7 +8,7 @@
 		"noMatchFound": "모드를 찾을 수 없습니다",
 		"editModesConfig": "모드 구성 편집",
 		"editGlobalModes": "전역 모드 편집",
-		"editProjectModes": "프로젝트 모드 편집 (.roomodes)",
+		"editProjectModes": "프로젝트 모드 편집 (.syntxmodes)",
 		"createModeHelpText": "모드는 Roo의 행동을 맞춤화하는 특화된 페르소나입니다. <0>모드 사용에 대해 알아보기</0> 또는 <1>모드 사용자 정의하기.</1>",
 		"selectMode": "모드 검색"
 	},
@@ -167,7 +167,7 @@
 				"description": "모든 작업 공간에서 사용 가능"
 			},
 			"project": {
-				"label": "프로젝트별 (.roomodes)",
+				"label": "프로젝트별 (.syntxmodes)",
 				"description": "이 작업 공간에서만 사용 가능, 전역보다 우선"
 			}
 		},

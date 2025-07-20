@@ -12,12 +12,12 @@ export async function createModeInstructions(context: vscode.ExtensionContext | 
 	return `
 Custom modes can be configured in two ways:
   1. Globally via '${customModesPath}' (created automatically on startup)
-  2. Per-workspace via '.roomodes' in the workspace root directory
+  2. Per-workspace via '.syntxmodes' in the workspace root directory
 
-When modes with the same slug exist in both files, the workspace-specific .roomodes version takes precedence. This allows projects to override global modes or define project-specific modes.
+When modes with the same slug exist in both files, the workspace-specific .syntxmodes version takes precedence. This allows projects to override global modes or define project-specific modes.
 
 
-If asked to create a project mode, create it in .roomodes in the workspace root. If asked to create a global mode, use the global custom modes file.
+If asked to create a project mode, create it in .syntxmodes in the workspace root. If asked to create a global mode, use the global custom modes file.
 
 - The following fields are required and must not be empty:
   * slug: A valid slug (lowercase letters, numbers, and hyphens). Must be unique, and shorter is better.
@@ -39,7 +39,7 @@ customModes:
     name: Designer  # Required: mode display name
     description: UI/UX design systems expert  # Optional but recommended: short description (5 words)
     roleDefinition: >-
-      You are Roo, a UI/UX expert specializing in design systems and frontend development. Your expertise includes:
+      You are SyntX, a UI/UX expert specializing in design systems and frontend development. Your expertise includes:
       - Creating and maintaining design systems
       - Implementing responsive and accessible web interfaces
       - Working with CSS, HTML, and modern frontend frameworks
