@@ -126,7 +126,7 @@
 		"enter_valid_path": "Пожалуйста, введите корректный путь"
 	},
 	"input": {
-		"task_prompt": "Что должен сделать Roo?",
+		"task_prompt": "Что должен сделать SyntX?",
 		"task_placeholder": "Введите вашу задачу здесь"
 	},
 	"settings": {

@@ -34,7 +34,7 @@
 	"roleDefinition": {
 		"title": "Definisi Peran",
 		"resetToDefault": "Reset ke default",
-		"description": "Tentukan keahlian dan kepribadian Roo untuk mode ini. Deskripsi ini membentuk bagaimana Roo mempresentasikan dirinya dan mendekati tugas."
+		"description": "Tentukan keahlian dan kepribadian SyntX untuk mode ini. Deskripsi ini membentuk bagaimana SyntX mempresentasikan dirinya dan mendekati tugas."
 	},
 	"description": {
 		"title": "Deskripsi singkat (untuk manusia)",
@@ -99,7 +99,7 @@
 		"types": {
 			"ENHANCE": {
 				"label": "Tingkatkan Prompt",
-				"description": "Gunakan peningkatan prompt untuk mendapatkan saran atau perbaikan yang disesuaikan untuk input Anda. Ini memastikan Roo memahami maksud Anda dan memberikan respons terbaik. Tersedia melalui ikon ✨ di chat."
+				"description": "Gunakan peningkatan prompt untuk mendapatkan saran atau perbaikan yang disesuaikan untuk input Anda. Ini memastikan SyntX memahami maksud Anda dan memberikan respons terbaik. Tersedia melalui ikon ✨ di chat."
 			},
 			"EXPLAIN": {
 				"label": "Jelaskan Kode",
@@ -164,7 +164,7 @@
 		},
 		"roleDefinition": {
 			"label": "Definisi Peran",
-			"description": "Tentukan keahlian dan kepribadian Roo untuk mode ini."
+			"description": "Tentukan keahlian dan kepribadian SyntX untuk mode ini."
 		},
 		"whenToUse": {
 			"label": "Kapan Menggunakan (opsional)",

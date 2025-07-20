@@ -15,7 +15,7 @@
   <h2>Syntx 커뮤니티에 참여하세요</h2>
   <p>개발자들과 연결하고, 아이디어를 기여하고, 최신 AI 기반 코딩 도구를 계속 확인하세요.</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Discord%20참여-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord 참여"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Discord%20참여-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord 참여"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Reddit%20참여-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Reddit 참여"></a>
   
 </div>
@@ -25,11 +25,11 @@
 <div align="center">
 <h1>Syntx (이전 Lagrange)</h1>
 <p align="center">
-<img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
 </p>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/VS%20Marketplace에서%20다운로드-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Marketplace에서 다운로드"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/기능%20요청-yellow?style=for-the-badge" alt="기능 요청"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/기능%20요청-yellow?style=for-the-badge" alt="기능 요청"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/평가%20%26%20리뷰-green?style=for-the-badge" alt="평가 & 리뷰"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/문서-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="문서"></a>
 
@@ -116,9 +116,9 @@ MCP는 무제한 커스텀 도구를 추가할 수 있게 하여 Syntx의 기능
 
 ### 커뮤니티
 
-- **Discord:** 실시간 도움과 토론을 위한 [Discord 서버 참여](https://discord.gg/roocode)
+- **Discord:** 실시간 도움과 토론을 위한 [Discord 서버 참여](https://discord.gg/FzndMpbhDd)
 - **Reddit:** 경험과 팁을 공유하는 [서브레딧 방문](https://www.reddit.com/r/RooCode)
-- **GitHub:** [문제 보고](https://github.com/RooCodeInc/Roo-Code/issues) 또는 [기능 요청](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** [문제 보고](https://github.com/OrangeCat-Technologies/SyntX/issues) 또는 [기능 요청](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ MCP는 무제한 커스텀 도구를 추가할 수 있게 하여 Syntx의 기능
 1. 저장소 **클론**:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **의존성 설치**:
@@ -227,4 +227,4 @@ Syntx를 더 좋게 만드는 데 도움을 준 모든 기여자에게 감사드
 
 ---
 
-**Syntx를 즐기세요!** 짧은 목줄에 묶어두든 자율적으로 돌아다니게 하든, 여러분이 무엇을 만들지 기대됩니다. 질문이나 기능 아이디어가 있으시면 [Reddit 커뮤니티](https://www.reddit.com/r/RooCode/) 또는 [Discord](https://discord.gg/roocode)를 방문해 주세요. 행복한 코딩 되세요!
+**Syntx를 즐기세요!** 짧은 목줄에 묶어두든 자율적으로 돌아다니게 하든, 여러분이 무엇을 만들지 기대됩니다. 질문이나 기능 아이디어가 있으시면 [Reddit 커뮤니티](https://www.reddit.com/r/RooCode/) 또는 [Discord](https://discord.gg/FzndMpbhDd)를 방문해 주세요. 행복한 코딩 되세요!

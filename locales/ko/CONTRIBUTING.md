@@ -54,7 +54,7 @@ PR에서 이러한 영역과의 연관성을 언급하세요.
 
 ### 3. Syntx 커뮤니티 참여
 
-- **주요 방법:** [Discord](https://discord.gg/roocode)에 가입하고 **Hannes Rudolph (`hrudolph`)**에게 DM을 보내세요.
+- **주요 방법:** [Discord](https://discord.gg/FzndMpbhDd)에 가입하고 **Hannes Rudolph (`hrudolph`)**에게 DM을 보내세요.
 - **대안:** 경험 많은 기여자는 [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1)를 통해 직접 참여할 수 있습니다.
 
 ## 기여 내용 찾기 및 계획 세우기
@@ -69,7 +69,7 @@ PR에서 이러한 영역과의 연관성을 언급하세요.
 
 모든 기여는 GitHub Issue에서 시작해야 합니다.
 
-- **기존 Issue 확인:** [GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues)를 검색하세요.
+- **기존 Issue 확인:** [GitHub Issues](https://github.com/OrangeCat-Technologies/SyntX/issues)를 검색하세요.
 - **Issue 생성:** 적절한 템플릿 사용:
     - **버그:** "Bug Report" 템플릿.
     - **기능:** "Detailed Feature Proposal" 템플릿. 시작 전 승인 필요.
@@ -80,13 +80,13 @@ PR에서 이러한 영역과의 연관성을 언급하세요.
 ### 작업 선택하기
 
 - 할당되지 않은 "Good First Issues"를 [GitHub 프로젝트](https://github.com/orgs/RooCodeInc/projects/1)에서 확인하세요.
-- 문서 관련은 [Syntx Docs](https://github.com/RooCodeInc/Roo-Code-Docs)를 참조하세요.
+- 문서 관련은 [Syntx Docs](https://github.com/OrangeCat-Technologies/SyntX-Docs)를 참조하세요.
 
 ### 버그 신고
 
 - 먼저 기존 신고를 확인하세요.
-- ["Bug Report" 템플릿](https://github.com/RooCodeInc/Roo-Code/issues/new/choose)을 사용하여 새 버그를 신고하세요.
-- **보안 문제:** [security advisories](https://github.com/RooCodeInc/Roo-Code/security/advisories/new)를 통해 비공개로 신고하세요.
+- ["Bug Report" 템플릿](https://github.com/OrangeCat-Technologies/SyntX/issues/new/choose)을 사용하여 새 버그를 신고하세요.
+- **보안 문제:** [security advisories](https://github.com/OrangeCat-Technologies/SyntX/security/advisories/new)를 통해 비공개로 신고하세요.
 
 ## 개발 및 제출 프로세스
 
@@ -95,7 +95,7 @@ PR에서 이러한 영역과의 연관성을 언급하세요.
 1. **Fork & Clone:**
 
 ```
-git clone https://github.com/당신의_아이디/Roo-Code.git
+git clone https://github.com/당신의_아이디/SyntX-Code.git
 ```
 
 2. **의존성 설치:**

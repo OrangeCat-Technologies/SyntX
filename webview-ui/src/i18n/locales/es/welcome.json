@@ -12,7 +12,7 @@
 			"description": "Una interfaz unificada para LLMs"
 		}
 	},
-	"chooseProvider": "Para hacer su magia, Roo necesita una clave API.",
+	"chooseProvider": "Para hacer su magia, SyntX necesita una clave API.",
 	"startRouter": "Recomendamos usar un router LLM:",
 	"startCustom": "O puedes traer tu propia clave API:",
 	"telemetry": {

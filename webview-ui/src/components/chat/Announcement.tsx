@@ -85,7 +85,7 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 					</ul>
 					<Trans
 						i18nKey="chat:announcement.detailsDiscussLinks"
-						components={{ discordLink: <DiscordLink />, redditLink: <RedditLink /> }}
+						components={{ discordLink: <DiscordLink /> }}
 					/>
 				</div>
 			</DialogContent>
@@ -95,29 +95,15 @@ const Announcement = ({ hideAnnouncement }: AnnouncementProps) => {
 
 const DiscordLink = () => (
 	<VSCodeLink
-		href="https://discord.gg/roocode"
+		href="https://discord.gg/FzndMpbhDd"
 		onClick={(e) => {
 			e.preventDefault()
 			window.postMessage(
-				{ type: "action", action: "openExternal", data: { url: "https://discord.gg/roocode" } },
+				{ type: "action", action: "openExternal", data: { url: "https://discord.gg/FzndMpbhDd" } },
 				"*",
 			)
 		}}>
 		Discord
-	</VSCodeLink>
-)
-
-const RedditLink = () => (
-	<VSCodeLink
-		href="https://reddit.com/r/RooCode"
-		onClick={(e) => {
-			e.preventDefault()
-			window.postMessage(
-				{ type: "action", action: "openExternal", data: { url: "https://reddit.com/r/RooCode" } },
-				"*",
-			)
-		}}>
-		Reddit
 	</VSCodeLink>
 )
 

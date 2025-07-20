@@ -12,7 +12,7 @@
 			"description": "A unified interface for LLMs"
 		}
 	},
-	"chooseProvider": "To do its magic, Roo needs an API key.",
+	"chooseProvider": "To do its magic, SyntX needs an API key.",
 	"startRouter": "We recommend using an LLM Router:",
 	"startCustom": "Or you can bring your provider API key:",
 	"telemetry": {

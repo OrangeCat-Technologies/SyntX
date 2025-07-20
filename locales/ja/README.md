@@ -15,7 +15,7 @@
   <h2>Syntxコミュニティに参加しよう</h2>
   <p>開発者とつながり、アイデアを提供し、最新のAIパワードコーディングツールで先を行きましょう。</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Discord%E3%81%AB%E5%8F%82%E5%8A%A0-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discordに参加"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Discord%E3%81%AB%E5%8F%82%E5%8A%A0-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discordに参加"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Reddit%E3%81%AB%E5%8F%82%E5%8A%A0-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Redditに参加"></a>
   
 </div>
@@ -25,11 +25,11 @@
 <div align="center">
 <h1>Syntx（旧Lagrange）</h1>
 <p align="center">
-<img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
 </p>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/VS%20Marketplace%E3%81%A7%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Marketplaceでダウンロード"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/%E6%A9%9F%E8%83%BD%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88-yellow?style=for-the-badge" alt="機能リクエスト"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/%E6%A9%9F%E8%83%BD%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88-yellow?style=for-the-badge" alt="機能リクエスト"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/%E8%A9%95%E4%BE%A1%E3%81%A8%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC-green?style=for-the-badge" alt="評価とレビュー"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="ドキュメンテーション"></a>
 
@@ -116,9 +116,9 @@ Syntxをあなた好みに動作させる方法：
 
 ### コミュニティ
 
-- **Discord：** リアルタイムのヘルプとディスカッションについては[Discord サーバーに参加](https://discord.gg/roocode)
+- **Discord：** リアルタイムのヘルプとディスカッションについては[Discord サーバーに参加](https://discord.gg/FzndMpbhDd)
 - **Reddit：** 経験とヒントを共有するには[サブレディット](https://www.reddit.com/r/RooCode)にアクセス
-- **GitHub：** [問題](https://github.com/RooCodeInc/Roo-Code/issues)を報告したり[機能](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)をリクエスト
+- **GitHub：** [問題](https://github.com/OrangeCat-Technologies/SyntX/issues)を報告したり[機能](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)をリクエスト
 
 ---
 
@@ -127,7 +127,7 @@ Syntxをあなた好みに動作させる方法：
 1. レポジトリを**クローン**：
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **依存関係をインストール**：
@@ -227,4 +227,4 @@ Syntxの改善に貢献してくれたすべての貢献者に感謝します！
 
 ---
 
-**Syntxをお楽しみください！** 短いリードで保持するか、自律的に動き回らせるかにかかわらず、あなたが何を構築するのか楽しみにしています。質問や機能のアイデアがある場合は、[Redditコミュニティ](https://www.reddit.com/r/RooCode/)や[Discord](https://discord.gg/roocode)にお立ち寄りください。ハッピーコーディング！
+**Syntxをお楽しみください！** 短いリードで保持するか、自律的に動き回らせるかにかかわらず、あなたが何を構築するのか楽しみにしています。質問や機能のアイデアがある場合は、[Redditコミュニティ](https://www.reddit.com/r/RooCode/)や[Discord](https://discord.gg/FzndMpbhDd)にお立ち寄りください。ハッピーコーディング！

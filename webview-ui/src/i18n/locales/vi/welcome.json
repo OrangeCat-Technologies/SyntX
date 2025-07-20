@@ -12,7 +12,7 @@
 			"description": "Giao diện thống nhất cho các LLM"
 		}
 	},
-	"chooseProvider": "Để thực hiện phép màu của mình, Roo cần một khóa API.",
+	"chooseProvider": "Để thực hiện phép màu của mình, SyntX cần một khóa API.",
 	"startRouter": "Chúng tôi khuyên bạn nên sử dụng bộ định tuyến LLM:",
 	"startCustom": "Hoặc bạn có thể sử dụng khóa API của riêng mình:",
 	"telemetry": {

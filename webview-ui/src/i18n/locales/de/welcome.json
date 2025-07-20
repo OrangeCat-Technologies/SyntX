@@ -12,7 +12,7 @@
 			"description": "Eine einheitliche Schnittstelle für LLMs"
 		}
 	},
-	"chooseProvider": "Um seine Magie zu entfalten, benötigt Roo einen API-Schlüssel.",
+	"chooseProvider": "Um seine Magie zu entfalten, benötigt SyntX einen API-Schlüssel.",
 	"startRouter": "Wir empfehlen die Verwendung eines LLM-Routers:",
 	"startCustom": "Oder du kannst deinen eigenen API-Schlüssel verwenden:",
 	"telemetry": {

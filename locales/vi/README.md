@@ -15,7 +15,7 @@
   <h2>Tham Gia Cộng Đồng Syntx</h2>
   <p>Kết nối với các nhà phát triển, đóng góp ý tưởng và cập nhật với các công cụ lập trình mới nhất được hỗ trợ bởi AI.</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Tham%20gia%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Tham gia Discord"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Tham%20gia%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Tham gia Discord"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Tham%20gia%20Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Tham gia Reddit"></a>
   
 </div>
@@ -25,11 +25,11 @@
 <div align="center">
 <h1>Syntx (trước đây là Lagrange)</h1>
 <p align="center">
-<img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
 </p>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Tải%20từ%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Tải từ VS Marketplace"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Yêu%20cầu%20tính%20năng-yellow?style=for-the-badge" alt="Yêu cầu tính năng"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Yêu%20cầu%20tính%20năng-yellow?style=for-the-badge" alt="Yêu cầu tính năng"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Đánh%20giá%20%26%20Nhận%20xét-green?style=for-the-badge" alt="Đánh giá & Nhận xét"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Tài%20liệu-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Tài liệu"></a>
 
@@ -116,9 +116,9 @@ Làm cho Syntx hoạt động theo cách của bạn với:
 
 ### Cộng Đồng
 
-- **Discord:** [Tham gia máy chủ Discord của chúng tôi](https://discord.gg/roocode) để được trợ giúp và thảo luận trong thời gian thực
+- **Discord:** [Tham gia máy chủ Discord của chúng tôi](https://discord.gg/FzndMpbhDd) để được trợ giúp và thảo luận trong thời gian thực
 - **Reddit:** [Ghé thăm subreddit của chúng tôi](https://www.reddit.com/r/RooCode) để chia sẻ kinh nghiệm và mẹo
-- **GitHub:** [Báo cáo vấn đề](https://github.com/RooCodeInc/Roo-Code/issues) hoặc [yêu cầu tính năng](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** [Báo cáo vấn đề](https://github.com/OrangeCat-Technologies/SyntX/issues) hoặc [yêu cầu tính năng](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ Làm cho Syntx hoạt động theo cách của bạn với:
 1. **Clone** kho lưu trữ:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **Cài đặt các phụ thuộc**:
@@ -227,4 +227,4 @@ Cảm ơn tất cả những người đóng góp đã giúp cải thiện Syntx
 
 ---
 
-**Hãy tận hưởng Syntx!** Cho dù bạn giữ nó trên dây ngắn hay để nó tự do hoạt động, chúng tôi rất mong được thấy những gì bạn xây dựng. Nếu bạn có câu hỏi hoặc ý tưởng về tính năng, hãy ghé qua [cộng đồng Reddit](https://www.reddit.com/r/RooCode/) hoặc [Discord](https://discord.gg/roocode) của chúng tôi. Chúc lập trình vui vẻ!
+**Hãy tận hưởng Syntx!** Cho dù bạn giữ nó trên dây ngắn hay để nó tự do hoạt động, chúng tôi rất mong được thấy những gì bạn xây dựng. Nếu bạn có câu hỏi hoặc ý tưởng về tính năng, hãy ghé qua [cộng đồng Reddit](https://www.reddit.com/r/RooCode/) hoặc [Discord](https://discord.gg/FzndMpbhDd) của chúng tôi. Chúc lập trình vui vẻ!

@@ -12,7 +12,7 @@
 			"description": "Ujednolicony interfejs dla LLMs"
 		}
 	},
-	"chooseProvider": "Aby działać, Roo potrzebuje klucza API.",
+	"chooseProvider": "Aby działać, SyntX potrzebuje klucza API.",
 	"startRouter": "Zalecamy korzystanie z routera LLM:",
 	"startCustom": "Lub możesz użyć własnego klucza API:",
 	"telemetry": {

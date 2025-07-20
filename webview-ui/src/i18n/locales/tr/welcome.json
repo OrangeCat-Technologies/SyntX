@@ -12,7 +12,7 @@
 			"description": "LLM'ler için birleşik bir arayüz"
 		}
 	},
-	"chooseProvider": "Sihirini yapabilmesi için Roo'nun bir API anahtarına ihtiyacı var.",
+	"chooseProvider": "Sihirini yapabilmesi için SyntX'nun bir API anahtarına ihtiyacı var.",
 	"startRouter": "Bir LLM yönlendiricisi kullanmanı öneririz:",
 	"startCustom": "Veya kendi API anahtarını kullanabilirsin:",
 	"telemetry": {

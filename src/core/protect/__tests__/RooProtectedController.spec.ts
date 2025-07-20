@@ -114,7 +114,7 @@ describe("RooProtectedController", () => {
 	describe("getProtectionMessage", () => {
 		it("should return appropriate protection message", () => {
 			const message = controller.getProtectionMessage()
-			expect(message).toBe("This is a Roo configuration file and requires approval for modifications")
+			expect(message).toBe("This is a SyntX configuration file and requires approval for modifications")
 		})
 	})
 
@@ -137,6 +137,11 @@ describe("RooProtectedController", () => {
 			expect(patterns).toEqual([
 				".syntxignore",
 				".syntxmodes",
+				".syntxrules",
+				".syntxprotected",
+				".syntx/**",
+				".rooignore",
+				".roomodes",
 				".roorules*",
 				".clinerules*",
 				".roo/**",

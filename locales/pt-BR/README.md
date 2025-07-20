@@ -15,7 +15,7 @@
   <h2>Junte-se à Comunidade Syntx</h2>
   <p>Conecte-se com desenvolvedores, contribua com ideias e mantenha-se atualizado com as ferramentas de codificação mais recentes com IA.</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Entrar%20no%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Entrar no Discord"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Entrar%20no%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Entrar no Discord"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Entrar%20no%20Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Entrar no Reddit"></a>
   
 </div>
@@ -25,11 +25,11 @@
 <div align="center">
 <h1>Syntx (anteriormente Lagrange)</h1>
 <p align="center">
-<img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
 </p>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Baixar%20no%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Baixar no VS Marketplace"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Solicitar%20Recursos-yellow?style=for-the-badge" alt="Solicitar Recursos"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Solicitar%20Recursos-yellow?style=for-the-badge" alt="Solicitar Recursos"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Avaliar%20%26%20Comentar-green?style=for-the-badge" alt="Avaliar & Comentar"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Documentação-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentação"></a>
 
@@ -116,9 +116,9 @@ Faça o Syntx funcionar do seu jeito com:
 
 ### Comunidade
 
-- **Discord:** [Participe do nosso servidor Discord](https://discord.gg/roocode) para ajuda em tempo real e discussões
+- **Discord:** [Participe do nosso servidor Discord](https://discord.gg/FzndMpbhDd) para ajuda em tempo real e discussões
 - **Reddit:** [Visite nosso subreddit](https://www.reddit.com/r/RooCode) para compartilhar experiências e dicas
-- **GitHub:** [Reportar problemas](https://github.com/RooCodeInc/Roo-Code/issues) ou [solicitar recursos](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** [Reportar problemas](https://github.com/OrangeCat-Technologies/SyntX/issues) ou [solicitar recursos](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ Faça o Syntx funcionar do seu jeito com:
 1. **Clone** o repositório:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **Instale as dependências**:
@@ -227,4 +227,4 @@ Obrigado a todos os nossos contribuidores que ajudaram a tornar o Syntx melhor!
 
 ---
 
-**Aproveite o Syntx!** Seja você o mantenha em uma coleira curta ou deixe-o vagar autonomamente, mal podemos esperar para ver o que você construirá. Se você tiver dúvidas ou ideias de recursos, passe por nossa [comunidade Reddit](https://www.reddit.com/r/RooCode/) ou [Discord](https://discord.gg/roocode). Feliz codificação!
+**Aproveite o Syntx!** Seja você o mantenha em uma coleira curta ou deixe-o vagar autonomamente, mal podemos esperar para ver o que você construirá. Se você tiver dúvidas ou ideias de recursos, passe por nossa [comunidade Reddit](https://www.reddit.com/r/RooCode/) ou [Discord](https://discord.gg/FzndMpbhDd). Feliz codificação!

@@ -15,7 +15,7 @@
   <h2>Syntx समुदाय में शामिल हों</h2>
   <p>डेवलपर्स से जुड़ें, विचारों का योगदान दें, और AI-संचालित कोडिंग टूल्स के साथ अपडेट रहें।</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Discord%20में%20शामिल%20हों-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord में शामिल हों"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Discord%20में%20शामिल%20हों-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord में शामिल हों"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Reddit%20में%20शामिल%20हों-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Reddit में शामिल हों"></a>
   
 </div>
@@ -25,11 +25,11 @@
 <div align="center">
 <h1>Syntx (पूर्व में Lagrange)</h1>
 <p align="center">
-<img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
 </p>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/VS%20Marketplace%20पर%20डाउनलोड%20करें-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Marketplace पर डाउनलोड करें"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/फीचर%20अनुरोध-yellow?style=for-the-badge" alt="फीचर अनुरोध"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/फीचर%20अनुरोध-yellow?style=for-the-badge" alt="फीचर अनुरोध"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/रेट%20%26%20समीक्षा-green?style=for-the-badge" alt="रेट & समीक्षा"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/दस्तावेज़ीकरण-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="दस्तावेज़ीकरण"></a>
 
@@ -116,9 +116,9 @@ MCP आपको असीमित कस्टम टूल्स जोड़
 
 ### समुदाय
 
-- **Discord:** रीयल-टाइम मदद और चर्चाओं के लिए [हमारे Discord सर्वर में शामिल हों](https://discord.gg/roocode)
+- **Discord:** रीयल-टाइम मदद और चर्चाओं के लिए [हमारे Discord सर्वर में शामिल हों](https://discord.gg/FzndMpbhDd)
 - **Reddit:** अनुभव और टिप्स साझा करने के लिए [हमारे subreddit पर जाएं](https://www.reddit.com/r/RooCode)
-- **GitHub:** [समस्याओं की रिपोर्ट करें](https://github.com/RooCodeInc/Roo-Code/issues) या [फीचर अनुरोध करें](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** [समस्याओं की रिपोर्ट करें](https://github.com/OrangeCat-Technologies/SyntX/issues) या [फीचर अनुरोध करें](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ MCP आपको असीमित कस्टम टूल्स जोड़
 1. रिपो **क्लोन** करें:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **डिपेंडेंसीज इंस्टॉल** करें:
@@ -227,4 +227,4 @@ Syntx को बेहतर बनाने में मदद करने �
 
 ---
 
-**Syntx का आनंद लें!** चाहे आप इसे छोटी रस्सी पर रखें या स्वायत्त रूप से घूमने दें, हम यह देखने के लिए इंतज़ार नहीं कर सकते कि आप क्या बनाते हैं। यदि आपके पास प्रश्न या फीचर आइडिया हैं, तो हमारे [Reddit समुदाय](https://www.reddit.com/r/RooCode/) या [Discord](https://discord.gg/roocode) पर आएं। हैप्पी कोडिंग!
+**Syntx का आनंद लें!** चाहे आप इसे छोटी रस्सी पर रखें या स्वायत्त रूप से घूमने दें, हम यह देखने के लिए इंतज़ार नहीं कर सकते कि आप क्या बनाते हैं। यदि आपके पास प्रश्न या फीचर आइडिया हैं, तो हमारे [Reddit समुदाय](https://www.reddit.com/r/RooCode/) या [Discord](https://discord.gg/FzndMpbhDd) पर आएं। हैप्पी कोडिंग!

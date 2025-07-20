@@ -34,7 +34,7 @@
 		"about": "Tentang Syntx"
 	},
 	"prompts": {
-		"description": "Konfigurasi support prompt yang digunakan untuk aksi cepat seperti meningkatkan prompt, menjelaskan kode, dan memperbaiki masalah. Prompt ini membantu Roo memberikan bantuan yang lebih baik untuk tugas pengembangan umum."
+		"description": "Konfigurasi support prompt yang digunakan untuk aksi cepat seperti meningkatkan prompt, menjelaskan kode, dan memperbaiki masalah. Prompt ini membantu SyntX memberikan bantuan yang lebih baik untuk tugas pengembangan umum."
 	},
 	"codeIndex": {
 		"title": "Pengindeksan Codebase",
@@ -122,13 +122,13 @@
 		"resetToDefault": "Reset ke default"
 	},
 	"autoApprove": {
-		"description": "Izinkan Roo untuk secara otomatis melakukan operasi tanpa memerlukan persetujuan. Aktifkan pengaturan ini hanya jika kamu sepenuhnya mempercayai AI dan memahami risiko keamanan yang terkait.",
+		"description": "Izinkan SyntX untuk secara otomatis melakukan operasi tanpa memerlukan persetujuan. Aktifkan pengaturan ini hanya jika kamu sepenuhnya mempercayai AI dan memahami risiko keamanan yang terkait.",
 		"readOnly": {
 			"label": "Baca",
-			"description": "Ketika diaktifkan, Roo akan secara otomatis melihat konten direktori dan membaca file tanpa memerlukan kamu mengklik tombol Setujui.",
+			"description": "Ketika diaktifkan, SyntX akan secara otomatis melihat konten direktori dan membaca file tanpa memerlukan kamu mengklik tombol Setujui.",
 			"outsideWorkspace": {
 				"label": "Sertakan file di luar workspace",
-				"description": "Izinkan Roo membaca file di luar workspace saat ini tanpa memerlukan persetujuan."
+				"description": "Izinkan SyntX membaca file di luar workspace saat ini tanpa memerlukan persetujuan."
 			}
 		},
 		"write": {
@@ -137,11 +137,11 @@
 			"delayLabel": "Delay setelah menulis untuk memungkinkan diagnostik mendeteksi masalah potensial",
 			"outsideWorkspace": {
 				"label": "Sertakan file di luar workspace",
-				"description": "Izinkan Roo membuat dan mengedit file di luar workspace saat ini tanpa memerlukan persetujuan."
+				"description": "Izinkan SyntX membuat dan mengedit file di luar workspace saat ini tanpa memerlukan persetujuan."
 			},
 			"protected": {
 				"label": "Sertakan file yang dilindungi",
-				"description": "Izinkan Roo membuat dan mengedit file yang dilindungi (seperti .syntxignore dan file konfigurasi .roo/) tanpa memerlukan persetujuan."
+				"description": "Izinkan SyntX membuat dan mengedit file yang dilindungi (seperti .syntxignore dan file konfigurasi .roo/) tanpa memerlukan persetujuan."
 			}
 		},
 		"browser": {
@@ -389,7 +389,7 @@
 	"browser": {
 		"enable": {
 			"label": "Aktifkan tool browser",
-			"description": "Ketika diaktifkan, Roo dapat menggunakan browser untuk berinteraksi dengan website ketika menggunakan model yang mendukung computer use. <0>Pelajari lebih lanjut</0>"
+			"description": "Ketika diaktifkan, SyntX dapat menggunakan browser untuk berinteraksi dengan website ketika menggunakan model yang mendukung computer use. <0>Pelajari lebih lanjut</0>"
 		},
 		"viewport": {
 			"label": "Ukuran viewport",
@@ -417,18 +417,18 @@
 	"checkpoints": {
 		"enable": {
 			"label": "Aktifkan checkpoint otomatis",
-			"description": "Ketika diaktifkan, Roo akan secara otomatis membuat checkpoint selama eksekusi tugas, memudahkan untuk meninjau perubahan atau kembali ke state sebelumnya. <0>Pelajari lebih lanjut</0>"
+			"description": "Ketika diaktifkan, SyntX akan secara otomatis membuat checkpoint selama eksekusi tugas, memudahkan untuk meninjau perubahan atau kembali ke state sebelumnya. <0>Pelajari lebih lanjut</0>"
 		}
 	},
 	"notifications": {
 		"sound": {
 			"label": "Aktifkan efek suara",
-			"description": "Ketika diaktifkan, Roo akan memutar efek suara untuk notifikasi dan event.",
+			"description": "Ketika diaktifkan, SyntX akan memutar efek suara untuk notifikasi dan event.",
 			"volumeLabel": "Volume"
 		},
 		"tts": {
 			"label": "Aktifkan text-to-speech",
-			"description": "Ketika diaktifkan, Roo akan membacakan responnya menggunakan text-to-speech.",
+			"description": "Ketika diaktifkan, SyntX akan membacakan responnya menggunakan text-to-speech.",
 			"speedLabel": "Kecepatan"
 		}
 	},
@@ -436,7 +436,7 @@
 		"description": "Kontrol informasi apa yang disertakan dalam context window AI, mempengaruhi penggunaan token dan kualitas respons",
 		"autoCondenseContextPercent": {
 			"label": "Ambang batas untuk memicu kondensasi konteks cerdas",
-			"description": "Ketika context window mencapai ambang batas ini, Roo akan secara otomatis mengondensasikannya."
+			"description": "Ketika context window mencapai ambang batas ini, SyntX akan secara otomatis mengondensasikannya."
 		},
 		"condensingApiConfiguration": {
 			"label": "Konfigurasi API untuk Kondensasi Konteks",
@@ -452,7 +452,7 @@
 		},
 		"autoCondenseContext": {
 			"name": "Secara otomatis memicu kondensasi konteks cerdas",
-			"description": "Ketika diaktifkan, Roo akan secara otomatis mengondensasi konteks ketika ambang batas tercapai. Ketika dinonaktifkan, kamu masih dapat memicu kondensasi konteks secara manual."
+			"description": "Ketika diaktifkan, SyntX akan secara otomatis mengondensasi konteks ketika ambang batas tercapai. Ketika dinonaktifkan, kamu masih dapat memicu kondensasi konteks secara manual."
 		},
 		"condensingThreshold": {
 			"label": "Ambang Batas Pemicu Kondensasi",
@@ -481,7 +481,7 @@
 		},
 		"maxReadFile": {
 			"label": "Ambang batas auto-truncate pembacaan file",
-			"description": "Roo membaca sejumlah baris ini ketika model menghilangkan nilai start/end. Jika angka ini kurang dari total file, Roo menghasilkan indeks nomor baris dari definisi kode. Kasus khusus: -1 menginstruksikan Roo untuk membaca seluruh file (tanpa indexing), dan 0 menginstruksikannya untuk tidak membaca baris dan hanya menyediakan indeks baris untuk konteks minimal. Nilai yang lebih rendah meminimalkan penggunaan konteks awal, memungkinkan pembacaan rentang baris yang tepat selanjutnya. Permintaan start/end eksplisit tidak dibatasi oleh pengaturan ini.",
+			"description": "SyntX membaca sejumlah baris ini ketika model menghilangkan nilai start/end. Jika angka ini kurang dari total file, SyntX menghasilkan indeks nomor baris dari definisi kode. Kasus khusus: -1 menginstruksikan SyntX untuk membaca seluruh file (tanpa indexing), dan 0 menginstruksikannya untuk tidak membaca baris dan hanya menyediakan indeks baris untuk konteks minimal. Nilai yang lebih rendah meminimalkan penggunaan konteks awal, memungkinkan pembacaan rentang baris yang tepat selanjutnya. Permintaan start/end eksplisit tidak dibatasi oleh pengaturan ini.",
 			"lines": "baris",
 			"always_full_read": "Selalu baca seluruh file"
 		}
@@ -543,7 +543,7 @@
 	"advanced": {
 		"diff": {
 			"label": "Aktifkan editing melalui diff",
-			"description": "Ketika diaktifkan, Roo akan dapat mengedit file lebih cepat dan akan secara otomatis menolak penulisan file penuh yang terpotong. Bekerja terbaik dengan model Claude 3.7 Sonnet terbaru.",
+			"description": "Ketika diaktifkan, SyntX akan dapat mengedit file lebih cepat dan akan secara otomatis menolak penulisan file penuh yang terpotong. Bekerja terbaik dengan model Claude 3.7 Sonnet terbaru.",
 			"strategy": {
 				"label": "Strategi diff",
 				"options": {
@@ -567,7 +567,7 @@
 		"warning": "⚠️",
 		"autoCondenseContextPercent": {
 			"label": "Ambang batas untuk memicu kondensasi konteks cerdas",
-			"description": "Ketika context window mencapai ambang batas ini, Roo akan secara otomatis mengondensasikannya."
+			"description": "Ketika context window mencapai ambang batas ini, SyntX akan secara otomatis mengondensasikannya."
 		},
 		"condensingApiConfiguration": {
 			"label": "Konfigurasi API untuk Kondensasi Konteks",
@@ -591,27 +591,27 @@
 		},
 		"SEARCH_AND_REPLACE": {
 			"name": "Gunakan tool search and replace eksperimental",
-			"description": "Aktifkan tool search and replace eksperimental, memungkinkan Roo mengganti beberapa instance dari term pencarian dalam satu permintaan."
+			"description": "Aktifkan tool search and replace eksperimental, memungkinkan SyntX mengganti beberapa instance dari term pencarian dalam satu permintaan."
 		},
 		"INSERT_BLOCK": {
 			"name": "Gunakan tool insert content eksperimental",
-			"description": "Aktifkan tool insert content eksperimental, memungkinkan Roo menyisipkan konten pada nomor baris spesifik tanpa perlu membuat diff."
+			"description": "Aktifkan tool insert content eksperimental, memungkinkan SyntX menyisipkan konten pada nomor baris spesifik tanpa perlu membuat diff."
 		},
 		"POWER_STEERING": {
 			"name": "Gunakan mode \"power steering\" eksperimental",
-			"description": "Ketika diaktifkan, Roo akan mengingatkan model tentang detail definisi mode saat ini lebih sering. Ini akan menghasilkan kepatuhan yang lebih kuat terhadap definisi peran dan instruksi kustom, tetapi akan menggunakan lebih banyak token per pesan."
+			"description": "Ketika diaktifkan, SyntX akan mengingatkan model tentang detail definisi mode saat ini lebih sering. Ini akan menghasilkan kepatuhan yang lebih kuat terhadap definisi peran dan instruksi kustom, tetapi akan menggunakan lebih banyak token per pesan."
 		},
 		"AUTOCOMPLETE": {
 			"name": "Gunakan fitur \"autocomplete\" eksperimental",
-			"description": "Ketika diaktifkan, Roo akan memberikan saran kode inline saat kamu mengetik. Memerlukan Syntx API Provider."
+			"description": "Ketika diaktifkan, SyntX akan memberikan saran kode inline saat kamu mengetik. Memerlukan Syntx API Provider."
 		},
 		"CONCURRENT_FILE_READS": {
 			"name": "Aktifkan pembacaan file bersamaan",
-			"description": "Ketika diaktifkan, Roo dapat membaca beberapa file dalam satu permintaan. Ketika dinonaktifkan, Roo harus membaca file satu per satu. Menonaktifkan ini dapat membantu saat bekerja dengan model yang kurang mampu atau ketika kamu ingin kontrol lebih terhadap akses file."
+			"description": "Ketika diaktifkan, SyntX dapat membaca beberapa file dalam satu permintaan. Ketika dinonaktifkan, SyntX harus membaca file satu per satu. Menonaktifkan ini dapat membantu saat bekerja dengan model yang kurang mampu atau ketika kamu ingin kontrol lebih terhadap akses file."
 		},
 		"MULTI_SEARCH_AND_REPLACE": {
 			"name": "Gunakan tool multi block diff eksperimental",
-			"description": "Ketika diaktifkan, Roo akan menggunakan tool multi block diff. Ini akan mencoba memperbarui beberapa blok kode dalam file dalam satu permintaan."
+			"description": "Ketika diaktifkan, SyntX akan menggunakan tool multi block diff. Ini akan mencoba memperbarui beberapa blok kode dalam file dalam satu permintaan."
 		},
 		"MARKETPLACE": {
 			"name": "Aktifkan Marketplace",
@@ -619,12 +619,12 @@
 		},
 		"MULTI_FILE_APPLY_DIFF": {
 			"name": "Aktifkan edit file bersamaan",
-			"description": "Ketika diaktifkan, Roo dapat mengedit beberapa file dalam satu permintaan. Ketika dinonaktifkan, Roo harus mengedit file satu per satu. Menonaktifkan ini dapat membantu saat bekerja dengan model yang kurang mampu atau ketika kamu ingin kontrol lebih terhadap modifikasi file."
+			"description": "Ketika diaktifkan, SyntX dapat mengedit beberapa file dalam satu permintaan. Ketika dinonaktifkan, SyntX harus mengedit file satu per satu. Menonaktifkan ini dapat membantu saat bekerja dengan model yang kurang mampu atau ketika kamu ingin kontrol lebih terhadap modifikasi file."
 		}
 	},
 	"promptCaching": {
 		"label": "Nonaktifkan prompt caching",
-		"description": "Ketika dicentang, Roo tidak akan menggunakan prompt caching untuk model ini."
+		"description": "Ketika dicentang, SyntX tidak akan menggunakan prompt caching untuk model ini."
 	},
 	"temperature": {
 		"useCustom": "Gunakan temperature kustom",
@@ -662,7 +662,7 @@
 		"useCustomModel": "Gunakan kustom: {{modelId}}"
 	},
 	"footer": {
-		"feedback": "Jika kamu punya pertanyaan atau feedback, jangan ragu untuk membuka issue di <githubLink>github.com/RooCodeInc/Roo-Code</githubLink> atau bergabung <redditLink>reddit.com/r/RooCode</redditLink> atau <discordLink>discord.gg/roocode</discordLink>",
+		"feedback": "Jika kamu punya pertanyaan atau feedback, jangan ragu untuk membuka issue di <githubLink>github.com/OrangeCat-Technologies/SyntX</githubLink> atau bergabung <redditLink>reddit.com/r/RooCode</redditLink> atau <discordLink>discord.gg/roocode</discordLink>",
 		"telemetry": {
 			"label": "Izinkan pelaporan error dan penggunaan anonim",
 			"description": "Bantu tingkatkan Syntx dengan mengirim data penggunaan anonim dan laporan error. Tidak ada kode, prompt, atau informasi pribadi yang pernah dikirim. Lihat kebijakan privasi kami untuk detail lebih lanjut."

@@ -54,7 +54,7 @@ PRでこれらの領域との関連性に言及してください。
 
 ### 3. Syntx コミュニティに参加する
 
-- **主な方法：** [Discord](https://discord.gg/roocode)に参加し、**Hannes Rudolph (`hrudolph`)**にDMを送る。
+- **主な方法：** [Discord](https://discord.gg/FzndMpbhDd)に参加し、**Hannes Rudolph (`hrudolph`)**にDMを送る。
 - **代替手段：** 経験豊富なコントリビューターは[GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1)を通じて直接参加できます。
 
 ## 貢献内容の発見と計画
@@ -69,7 +69,7 @@ PRでこれらの領域との関連性に言及してください。
 
 すべての貢献はGitHub Issueから始めてください。
 
-- **既存Issueの確認：** [GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues)を検索。
+- **既存Issueの確認：** [GitHub Issues](https://github.com/OrangeCat-Technologies/SyntX/issues)を検索。
 - **Issueの作成：** 適切なテンプレートを使用：
     - **バグ：** 「Bug Report」テンプレート。
     - **機能：** 「Detailed Feature Proposal」テンプレート。開始前に承認が必要。
@@ -80,13 +80,13 @@ PRでこれらの領域との関連性に言及してください。
 ### 何に取り組むか決める
 
 - 未割り当ての「Good First Issues」を[GitHub Project](https://github.com/orgs/RooCodeInc/projects/1)でチェック。
-- ドキュメント関連は[Syntx Docs](https://github.com/RooCodeInc/Roo-Code-Docs)を参照。
+- ドキュメント関連は[Syntx Docs](https://github.com/OrangeCat-Technologies/SyntX-Docs)を参照。
 
 ### バグの報告
 
 - まず既存の報告がないか確認。
-- 新しいバグは[「Bug Report」テンプレート](https://github.com/RooCodeInc/Roo-Code/issues/new/choose)で報告。
-- **セキュリティ問題：** [security advisories](https://github.com/RooCodeInc/Roo-Code/security/advisories/new)を通じて非公開で報告。
+- 新しいバグは[「Bug Report」テンプレート](https://github.com/OrangeCat-Technologies/SyntX/issues/new/choose)で報告。
+- **セキュリティ問題：** [security advisories](https://github.com/OrangeCat-Technologies/SyntX/security/advisories/new)を通じて非公開で報告。
 
 ## 開発と提出のプロセス
 
@@ -95,7 +95,7 @@ PRでこれらの領域との関連性に言及してください。
 1. **Fork & Clone：**
 
 ```
-git clone https://github.com/あなたのユーザー名/Roo-Code.git
+git clone https://github.com/あなたのユーザー名/SyntX-Code.git
 ```
 
 2. **依存関係のインストール：**

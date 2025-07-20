@@ -168,7 +168,7 @@
 		"wantsToInsert": "Rooはこのファイルにコンテンツを挿入したい:",
 		"wantsToInsertWithLineNumber": "Rooはこのファイルの{{lineNumber}}行目にコンテンツを挿入したい:",
 		"wantsToInsertAtEnd": "Rooはこのファイルの末尾にコンテンツを追加したい:",
-		"wantsToReadAndXMore": "Roo はこのファイルと他に {{count}} 個のファイルを読み込もうとしています:",
+		"wantsToReadAndXMore": "SyntX はこのファイルと他に {{count}} 個のファイルを読み込もうとしています:",
 		"wantsToReadMultiple": "Rooは複数のファイルを読み取ろうとしています：",
 		"wantsToApplyBatchChanges": "Rooは複数のファイルに変更を適用したい:"
 	},
@@ -247,7 +247,7 @@
 		"feature2": "<bold>新しいTodoリスト機能</bold>: 統合されたTodo管理でタスクを軌道に乗せ、開発目標に整理され集中した状態を維持できます。",
 		"feature3": "<bold>改善されたアーキテクトからコードへの移行</bold>: アーキテクトモードでの計画からコードモードでの実装へのシームレスな引き継ぎ。",
 		"hideButton": "通知を非表示",
-		"detailsDiscussLinks": "詳細は<discordLink>Discord</discordLink>と<redditLink>Reddit</redditLink>でご確認・ディスカッションください 🚀"
+		"detailsDiscussLinks": "詳細は<discordLink>Discord</discordLink>でご確認・ディスカッションください 🚀"
 	},
 	"browser": {
 		"rooWantsToUse": "Rooはブラウザを使用したい:",

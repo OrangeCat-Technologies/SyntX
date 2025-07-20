@@ -253,7 +253,7 @@
 		"feature1": "<bold>Codebase Indexing Graduated from Experimental</bold>: Full codebase indexing is now stable and ready for production use with improved search and context understanding.",
 		"feature2": "<bold>New Todo List Feature</bold>: Keep your tasks on track with integrated todo management that helps you stay organized and focused on your development goals.",
 		"hideButton": "Hide announcement",
-		"detailsDiscussLinks": "Get more details and discuss in <discordLink>Discord</discordLink> and <redditLink>Reddit</redditLink> 🚀"
+		"detailsDiscussLinks": "Get more details and discuss in <discordLink>Discord</discordLink> 🚀"
 	},
 	"reasoning": {
 		"thinking": "Thinking",

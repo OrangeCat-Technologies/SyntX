@@ -12,7 +12,7 @@
 			"description": "LLMs के लिए एक एकीकृत इंटरफेस"
 		}
 	},
-	"chooseProvider": "अपना जादू दिखाने के लिए, Roo को एक API कुंजी की आवश्यकता है।",
+	"chooseProvider": "अपना जादू दिखाने के लिए, SyntX को एक API कुंजी की आवश्यकता है।",
 	"startRouter": "हम एक LLM राउटर का उपयोग करने की सलाह देते हैं:",
 	"startCustom": "या आप अपनी खुद की API कुंजी ला सकते हैं:",
 	"telemetry": {

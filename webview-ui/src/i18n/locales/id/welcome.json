@@ -12,7 +12,7 @@
 			"description": "Interface terpadu untuk LLM"
 		}
 	},
-	"chooseProvider": "Untuk melakukan keajaibannya, Roo membutuhkan API key.",
+	"chooseProvider": "Untuk melakukan keajaibannya, SyntX membutuhkan API key.",
 	"startRouter": "Kami merekomendasikan menggunakan Router LLM:",
 	"startCustom": "Atau Anda dapat menggunakan API key Anda sendiri:",
 	"telemetry": {

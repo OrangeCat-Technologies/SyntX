@@ -3,7 +3,7 @@
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
 	"publisher": "OrangecatTechPvtLtd",
-	"version": "3.23.7",
+	"version": "2.3.7",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -14,13 +14,13 @@
 		"node": "20.19.2"
 	},
 	"author": {
-		"name": "Syntx"
+		"name": "OrangecatAI"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/RooCodeInc/Roo-Code"
+		"url": "https://github.com/OrangeCat-Technologies/SyntX"
 	},
-	"homepage": "https://github.com/RooCodeInc/Roo-Code",
+	"homepage": "https://syntx.dev",
 	"categories": [
 		"AI",
 		"Chat",
@@ -30,20 +30,43 @@
 		"Testing"
 	],
 	"keywords": [
-		"cline",
-		"claude",
-		"dev",
-		"mcp",
-		"openrouter",
-		"coding",
-		"agent",
-		"autonomous",
-		"chatgpt",
-		"sonnet",
 		"ai",
-		"llama",
-		"Syntx",
-		"roocode"
+		"chatgpt",
+		"code completion",
+		"autocomplete",
+		"intellisense",
+		"intellicode",
+		"autopilot",
+		"copilot",
+		"code assistant",
+		"code refactor",
+		"typescript",
+		"javascript",
+		"python",
+		"java",
+		"cpp",
+		"c++",
+		"c",
+		"bash",
+		"go",
+		"golang",
+		"node",
+		"nodejs",
+		"react",
+		"vue",
+		"html",
+		"css",
+		"php",
+		"ruby",
+		"rust",
+		"swift",
+		"kotlin",
+		"peer programmer",
+		"vibe coding",
+		"mcp",
+		"agent",
+		"mcp marketplace",
+		"agent marketplace"
 	],
 	"activationEvents": [
 		"onLanguage",

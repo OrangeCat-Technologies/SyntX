@@ -54,7 +54,7 @@ Menciona la alineación con estas áreas en tus PRs.
 
 ### 3. Únete a la Comunidad Syntx
 
-- **Principal:** Únete a nuestro [Discord](https://discord.gg/roocode) y envía un DM a **Hannes Rudolph (`hrudolph`)**.
+- **Principal:** Únete a nuestro [Discord](https://discord.gg/FzndMpbhDd) y envía un DM a **Hannes Rudolph (`hrudolph`)**.
 - **Alternativa:** Los colaboradores experimentados pueden participar directamente a través de [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Encontrar y Planificar tu Contribución
@@ -69,7 +69,7 @@ Menciona la alineación con estas áreas en tus PRs.
 
 Todas las contribuciones deben comenzar con un Issue de GitHub.
 
-- **Revisar issues existentes**: Busca en [GitHub Issues](https://github.com/RooCodeInc/Roo-Code/issues).
+- **Revisar issues existentes**: Busca en [GitHub Issues](https://github.com/OrangeCat-Technologies/SyntX/issues).
 - **Crear un issue**: Usa las plantillas apropiadas:
     - **Errores:** Plantilla "Bug Report".
     - **Funciones:** Plantilla "Detailed Feature Proposal". Se requiere aprobación antes de comenzar.
@@ -80,13 +80,13 @@ Todas las contribuciones deben comenzar con un Issue de GitHub.
 ### Decidir en Qué Trabajar
 
 - Revisa el [Proyecto GitHub](https://github.com/orgs/RooCodeInc/projects/1) para "Good First Issues" no asignados.
-- Para documentación, visita [Syntx Docs](https://github.com/RooCodeInc/Roo-Code-Docs).
+- Para documentación, visita [Syntx Docs](https://github.com/OrangeCat-Technologies/SyntX-Docs).
 
 ### Reportar Errores
 
 - Primero verifica si ya existen reportes.
-- Crea nuevos reportes de errores usando la [plantilla "Bug Report"](https://github.com/RooCodeInc/Roo-Code/issues/new/choose).
-- **Problemas de seguridad**: Reporta de forma privada a través de [security advisories](https://github.com/RooCodeInc/Roo-Code/security/advisories/new).
+- Crea nuevos reportes de errores usando la [plantilla "Bug Report"](https://github.com/OrangeCat-Technologies/SyntX/issues/new/choose).
+- **Problemas de seguridad**: Reporta de forma privada a través de [security advisories](https://github.com/OrangeCat-Technologies/SyntX/security/advisories/new).
 
 ## Proceso de Desarrollo y Envío
 
@@ -95,7 +95,7 @@ Todas las contribuciones deben comenzar con un Issue de GitHub.
 1. **Fork & Clona:**
 
 ```
-git clone https://github.com/TU_USUARIO/Roo-Code.git
+git clone https://github.com/TU_USUARIO/SyntX-Code.git
 ```
 
 2. **Instalar Dependencias:**

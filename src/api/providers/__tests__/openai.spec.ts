@@ -103,7 +103,7 @@ describe("OpenAiHandler", () => {
 				baseURL: expect.any(String),
 				apiKey: expect.any(String),
 				defaultHeaders: {
-					"HTTP-Referer": "https://github.com/RooVetGit/Roo-Cline",
+					"HTTP-Referer": "https://syntx.dev",
 					"X-Title": "Syntx",
 					"User-Agent": `RooCode/${Package.version}`,
 				},

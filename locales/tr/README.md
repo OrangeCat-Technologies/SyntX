@@ -15,7 +15,7 @@
   <h2>Syntx Topluluğuna Katılın</h2>
   <p>Geliştiricilerle bağlantı kurun, fikirlerinizi paylaşın ve en son yapay zeka destekli kodlama araçlarıyla güncel kalın.</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Discord%27a%20Katıl-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord'a Katıl"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Discord%27a%20Katıl-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord'a Katıl"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Reddit%27e%20Katıl-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Reddit'e Katıl"></a>
   
 </div>
@@ -25,11 +25,11 @@
 <div align="center">
 <h1>Syntx (önceki adıyla Lagrange)</h1>
 <p align="center">
-<img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
 </p>
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/VS%20Marketplace%27den%20İndir-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Marketplace'den İndir"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Özellik%20İstekleri-yellow?style=for-the-badge" alt="Özellik İstekleri"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Özellik%20İstekleri-yellow?style=for-the-badge" alt="Özellik İstekleri"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Değerlendir%20%26%20İnceleme-green?style=for-the-badge" alt="Değerlendir & İnceleme"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Dokümantasyon-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Dokümantasyon"></a>
 
@@ -116,9 +116,9 @@ Syntx'u kendi tarzınıza göre çalıştırın:
 
 ### Topluluk
 
-- **Discord:** Gerçek zamanlı yardım ve tartışmalar için [Discord sunucumuza katılın](https://discord.gg/roocode)
+- **Discord:** Gerçek zamanlı yardım ve tartışmalar için [Discord sunucumuza katılın](https://discord.gg/FzndMpbhDd)
 - **Reddit:** Deneyimlerinizi ve ipuçlarınızı paylaşmak için [subreddit'imizi ziyaret edin](https://www.reddit.com/r/RooCode)
-- **GitHub:** [Sorunları bildirin](https://github.com/RooCodeInc/Roo-Code/issues) veya [özellik talep edin](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** [Sorunları bildirin](https://github.com/OrangeCat-Technologies/SyntX/issues) veya [özellik talep edin](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -127,7 +127,7 @@ Syntx'u kendi tarzınıza göre çalıştırın:
 1. Depoyu **klonlayın**:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **Bağımlılıkları yükleyin**:
@@ -227,4 +227,4 @@ Syntx'u daha iyi hale getirmeye yardımcı olan tüm katkıda bulunanlara teşek
 
 ---
 
-**Syntx'un keyfini çıkarın!** İster kısa bir tasmayla tutun ister otonom dolaşmasına izin verin, ne inşa edeceğinizi görmek için sabırsızlanıyoruz. Sorularınız veya özellik fikirleriniz varsa, [Reddit topluluğumuza](https://www.reddit.com/r/RooCode/) veya [Discord'umuza](https://discord.gg/roocode) uğrayın. Mutlu kodlamalar!
+**Syntx'un keyfini çıkarın!** İster kısa bir tasmayla tutun ister otonom dolaşmasına izin verin, ne inşa edeceğinizi görmek için sabırsızlanıyoruz. Sorularınız veya özellik fikirleriniz varsa, [Reddit topluluğumuza](https://www.reddit.com/r/RooCode/) veya [Discord'umuza](https://discord.gg/FzndMpbhDd) uğrayın. Mutlu kodlamalar!

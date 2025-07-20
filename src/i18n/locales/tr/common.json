@@ -126,7 +126,7 @@
 		"enter_valid_path": "Lütfen geçerli bir yol girin"
 	},
 	"input": {
-		"task_prompt": "Roo ne yapsın?",
+		"task_prompt": "SyntX ne yapsın?",
 		"task_placeholder": "Görevini buraya yaz"
 	},
 	"settings": {

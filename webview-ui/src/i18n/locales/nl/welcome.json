@@ -12,7 +12,7 @@
 			"description": "Een uniforme interface voor LLM's"
 		}
 	},
-	"chooseProvider": "Om zijn magie te doen, heeft Roo een API-sleutel nodig.",
+	"chooseProvider": "Om zijn magie te doen, heeft SyntX een API-sleutel nodig.",
 	"startRouter": "We raden aan om een LLM-router te gebruiken:",
 	"startCustom": "Of je kunt je eigen API-sleutel gebruiken:",
 	"telemetry": {

@@ -12,7 +12,7 @@
 			"description": "统一了大语言模型的接口"
 		}
 	},
-	"chooseProvider": "Roo 需要一个 API 密钥才能发挥魔力。",
+	"chooseProvider": "SyntX 需要一个 API 密钥才能发挥魔力。",
 	"startRouter": "我们推荐使用 LLM 路由器：",
 	"startCustom": "或者你可以使用自己的 API 密钥：",
 	"telemetry": {

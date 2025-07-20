@@ -5,7 +5,7 @@
 		"invalid_settings_validation": "Ongeldig MCP-instellingenformaat: {{errorMessages}}",
 		"create_json": "Aanmaken of openen van .roo/mcp.json mislukt: {{error}}",
 		"failed_update_project": "Bijwerken van project MCP-servers mislukt",
-		"invalidJsonArgument": "Roo probeerde {{toolName}} te gebruiken met een ongeldig JSON-argument. Opnieuw proberen..."
+		"invalidJsonArgument": "SyntX probeerde {{toolName}} te gebruiken met een ongeldig JSON-argument. Opnieuw proberen..."
 	},
 	"info": {
 		"server_restarting": "{{serverName}} MCP-server wordt opnieuw gestart...",

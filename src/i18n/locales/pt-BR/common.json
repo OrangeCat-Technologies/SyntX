@@ -1,6 +1,6 @@
 {
 	"input": {
-		"task_prompt": "O que você quer que o Roo faça?",
+		"task_prompt": "O que você quer que o SyntX faça?",
 		"task_placeholder": "Digite sua tarefa aqui"
 	},
 	"extension": {

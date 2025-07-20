@@ -14,11 +14,11 @@
 <div align="center">
   <h1>Syntx (sebelumnya Lagrange)</h1>
   <p align="center">
-  <img src="https://media.githubusercontent.com/media/RooCodeInc/Roo-Code/main/src/assets/docs/demo.gif" width="100%" />
+  <img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
   </p>
   <p>Terhubung dengan developer, berkontribusi ide, dan tetap terdepan dengan tools coding bertenaga AI terbaru.</p>
   
-  <a href="https://discord.gg/roocode" target="_blank"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"></a>
+  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"></a>
   <a href="https://www.reddit.com/r/RooCode/" target="_blank"><img src="https://img.shields.io/badge/Join%20Reddit-FF4500?style=for-the-badge&logo=reddit&logoColor=white" alt="Join Reddit"></a>
   
 </div>
@@ -28,7 +28,7 @@
 <div align="center">
 
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Download%20on%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Download on VS Marketplace"></a>
-<a href="https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Feature%20Requests-yellow?style=for-the-badge" alt="Feature Requests"></a>
+<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Feature%20Requests-yellow?style=for-the-badge" alt="Feature Requests"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Rate%20%26%20Review-green?style=for-the-badge" alt="Rate & Review"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Documentation-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentation"></a>
 
@@ -115,9 +115,9 @@ Buat Syntx bekerja sesuai cara kamu dengan:
 
 ### Komunitas
 
-- **Discord:** [Bergabung dengan server Discord kami](https://discord.gg/roocode) untuk bantuan real-time dan diskusi
+- **Discord:** [Bergabung dengan server Discord kami](https://discord.gg/FzndMpbhDd) untuk bantuan real-time dan diskusi
 - **Reddit:** [Kunjungi subreddit kami](https://www.reddit.com/r/RooCode) untuk berbagi pengalaman dan tips
-- **GitHub:** Laporkan [issues](https://github.com/RooCodeInc/Roo-Code/issues) atau request [fitur](https://github.com/RooCodeInc/Roo-Code/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
+- **GitHub:** Laporkan [issues](https://github.com/OrangeCat-Technologies/SyntX/issues) atau request [fitur](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
 
 ---
 
@@ -126,7 +126,7 @@ Buat Syntx bekerja sesuai cara kamu dengan:
 1. **Clone** repo:
 
 ```sh
-git clone https://github.com/RooCodeInc/Roo-Code.git
+git clone https://github.com/OrangeCat-Technologies/SyntX.git
 ```
 
 2. **Install dependencies**:
@@ -221,4 +221,4 @@ Terima kasih kepada semua kontributor kami yang telah membantu membuat Syntx leb
 
 ---
 
-**Nikmati Syntx!** Baik kamu menggunakannya dengan ketat atau membiarkannya berjalan otonom, kami tidak sabar melihat apa yang kamu bangun. Jika kamu memiliki pertanyaan atau ide fitur, kunjungi [komunitas Reddit](https://www.reddit.com/r/RooCode/) atau [Discord](https://discord.gg/roocode) kami. Selamat coding!
+**Nikmati Syntx!** Baik kamu menggunakannya dengan ketat atau membiarkannya berjalan otonom, kami tidak sabar melihat apa yang kamu bangun. Jika kamu memiliki pertanyaan atau ide fitur, kunjungi [komunitas Reddit](https://www.reddit.com/r/RooCode/) atau [Discord](https://discord.gg/FzndMpbhDd) kami. Selamat coding!
