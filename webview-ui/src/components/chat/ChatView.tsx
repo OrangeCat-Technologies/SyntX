@@ -3,7 +3,6 @@ import { useDeepCompareEffect, useEvent, useMount } from "react-use"
 import debounce from "debounce"
 import { Virtuoso, type VirtuosoHandle } from "react-virtuoso"
 import removeMd from "remove-markdown"
-import { Trans } from "react-i18next"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
 import useSound from "use-sound"
 import { LRUCache } from "lru-cache"
@@ -32,19 +31,15 @@ import {
 	parseCommand,
 } from "@src/utils/command-validation"
 import { useTranslation } from "react-i18next"
-import { buildDocLink } from "@src/utils/docLinks"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { useSelectedModel } from "@src/components/ui/hooks/useSelectedModel"
 import RooHero from "@src/components/welcome/RooHero"
-import RooTips from "@src/components/welcome/RooTips"
 import { StandardTooltip } from "@src/components/ui"
 import { useAutoApprovalState } from "@src/hooks/useAutoApprovalState"
 import { useAutoApprovalToggles } from "@src/hooks/useAutoApprovalToggles"
 
-import TelemetryBanner from "../common/TelemetryBanner"
 import VersionIndicator from "../common/VersionIndicator"
-import { useTaskSearch } from "../history/useTaskSearch"
 import HistoryPreview from "../history/HistoryPreview"
 import Announcement from "./Announcement"
 import BrowserSessionRow from "./BrowserSessionRow"
@@ -56,6 +51,7 @@ import SystemPromptWarning from "./SystemPromptWarning"
 import ProfileViolationWarning from "./ProfileViolationWarning"
 import { CheckpointWarning } from "./CheckpointWarning"
 import { getLatestTodo } from "@roo/todo"
+import BoilerplateList, { DEFAULT_BOILERPLATES } from "./BoilerplateList"
 
 export interface ChatViewProps {
 	isHidden: boolean
@@ -110,9 +106,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		alwaysAllowFollowupQuestions,
 		alwaysAllowUpdateTodoList,
 		customModes,
-		telemetrySetting,
 		hasSystemPromptOverride,
-		historyPreviewCollapsed, // Added historyPreviewCollapsed
 		soundEnabled,
 		soundVolume,
 	} = useExtensionState()
@@ -121,20 +115,6 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	useEffect(() => {
 		messagesRef.current = messages
 	}, [messages])
-
-	const { tasks } = useTaskSearch()
-
-	// Initialize expanded state based on the persisted setting (default to expanded if undefined)
-	const [isExpanded, setIsExpanded] = useState(
-		historyPreviewCollapsed === undefined ? true : !historyPreviewCollapsed,
-	)
-
-	const toggleExpanded = useCallback(() => {
-		const newState = !isExpanded
-		setIsExpanded(newState)
-		// Send message to extension to persist the new collapsed state
-		vscode.postMessage({ type: "setHistoryPreviewCollapsed", bool: !newState })
-	}, [isExpanded])
 
 	// Leaving this less safe version here since if the first message is not a
 	// task, then the extension is in a bad state and needs to be debugged (see
@@ -1673,21 +1653,7 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				</>
 			) : (
 				<div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4 relative">
-					{/* Moved Task Bar Header Here */}
-					{tasks.length !== 0 && (
-						<div className="flex text-vscode-descriptionForeground w-full mx-auto px-5 pt-3">
-							<div className="flex items-center gap-1 cursor-pointer" onClick={toggleExpanded}>
-								{tasks.length < 10 && (
-									<span className={`font-medium text-xs `}>{t("history:recentTasks")}</span>
-								)}
-								<span
-									className={`codicon  ${isExpanded ? "codicon-eye" : "codicon-eye-closed"} scale-90`}
-								/>
-							</div>
-						</div>
-					)}
-					<div
-						className={` w-full flex flex-col gap-4 m-auto ${isExpanded && tasks.length > 0 ? "mt-0" : ""} px-3.5 min-[370px]:px-10 pt-5 transition-all duration-300`}>
+					<div className="w-full flex flex-col gap-4 m-auto px-3.5 min-[370px]:px-10 pt-5 transition-all duration-300">
 						{/* Version indicator in top-right corner - only on welcome screen */}
 						<VersionIndicator
 							onClick={() => setShowAnnouncementModal(true)}
@@ -1695,24 +1661,17 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						/>
 
 						<RooHero />
-						{telemetrySetting === "unset" && <TelemetryBanner />}
-						<p className="text-vscode-editor-foreground leading-tight font-vscode-font-family text-center text-balance max-w-[380px] mx-auto my-0">
-							<Trans
-								i18nKey="chat:about"
-								components={{
-									DocsLink: (
-										<a href={buildDocLink("", "welcome")} target="_blank" rel="noopener noreferrer">
-											the docs
-										</a>
-									),
+						{/* Show the task history preview if expanded and tasks exist */}
+						{taskHistory.length > 0 && <HistoryPreview />}
+						{/* Show boilerplate list if no task history */}
+						{taskHistory.length === 0 && (
+							<BoilerplateList
+								boilerplates={DEFAULT_BOILERPLATES}
+								onSelect={(boilerplate) => {
+									vscode.postMessage({ type: "newTask", text: boilerplate.initialInput })
 								}}
 							/>
-						</p>
-						<div className="mb-2.5">
-							<RooTips cycle={false} />
-						</div>
-						{/* Show the task history preview if expanded and tasks exist */}
-						{taskHistory.length > 0 && isExpanded && <HistoryPreview />}
+						)}
 					</div>
 				</div>
 			)}

@@ -3,12 +3,11 @@
 	"profilePicture": "Foto profil",
 	"logOut": "Keluar",
 	"testApiAuthentication": "Uji Autentikasi API",
-	"signIn": "Hubungkan ke Syntx Cloud",
-	"connect": "Hubungkan",
-	"cloudBenefitsTitle": "Hubungkan ke Syntx Cloud",
+	"signIn": "",
+	"cloudBenefitsTitle": "",
 	"cloudBenefitsSubtitle": "Sinkronkan prompt dan telemetri kamu untuk mengaktifkan:",
 	"cloudBenefitHistory": "Riwayat tugas online",
 	"cloudBenefitSharing": "Fitur berbagi dan kolaborasi",
 	"cloudBenefitMetrics": "Metrik penggunaan berdasarkan tugas, token, dan biaya",
-	"visitCloudWebsite": "Kunjungi Syntx Cloud"
+	"visitCloudWebsite": ""
 }

@@ -18,7 +18,7 @@
 		"sharePublicly": "公開分享",
 		"sharePubliclyDescription": "任何擁有連結的人都可存取",
 		"connectToCloud": "連接到雲端",
-		"connectToCloudDescription": "登入 Syntx Cloud 以分享工作",
+		"connectToCloudDescription": "",
 		"sharingDisabledByOrganization": "組織已停用分享功能",
 		"shareSuccessOrganization": "組織連結已複製到剪貼簿",
 		"shareSuccessPublic": "公開連結已複製到剪貼簿"

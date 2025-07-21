@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Twoja organizacja wymaga uwierzytelnienia Syntx Cloud. Zaloguj się, aby kontynuować.",
-			"organization_mismatch": "Musisz być uwierzytelniony kontem Syntx Cloud swojej organizacji.",
+			"cloud_auth_required": "",
+			"organization_mismatch": "",
 			"verification_failed": "Nie można zweryfikować uwierzytelnienia organizacji."
 		}
 	},

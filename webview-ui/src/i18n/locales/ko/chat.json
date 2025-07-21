@@ -18,7 +18,7 @@
 		"sharePublicly": "공개적으로 공유",
 		"sharePubliclyDescription": "링크가 있는 누구나 액세스할 수 있습니다",
 		"connectToCloud": "클라우드에 연결",
-		"connectToCloudDescription": "작업을 공유하려면 Syntx Cloud에 로그인하세요",
+		"connectToCloudDescription": "",
 		"sharingDisabledByOrganization": "조직에서 공유가 비활성화됨",
 		"shareSuccessOrganization": "조직 링크가 클립보드에 복사되었습니다",
 		"shareSuccessPublic": "공개 링크가 클립보드에 복사되었습니다"

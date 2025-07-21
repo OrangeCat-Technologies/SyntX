@@ -3,12 +3,11 @@
 	"profilePicture": "Zdjęcie profilowe",
 	"logOut": "Wyloguj",
 	"testApiAuthentication": "Testuj uwierzytelnianie API",
-	"signIn": "Połącz z Syntx Cloud",
-	"connect": "Połącz",
-	"cloudBenefitsTitle": "Połącz z Syntx Cloud",
+	"signIn": "",
+	"cloudBenefitsTitle": "",
 	"cloudBenefitsSubtitle": "Synchronizuj swoje prompty i telemetrię, aby włączyć:",
 	"cloudBenefitHistory": "Historia zadań online",
 	"cloudBenefitSharing": "Funkcje udostępniania i współpracy",
 	"cloudBenefitMetrics": "Metryki użycia oparte na zadaniach, tokenach i kosztach",
-	"visitCloudWebsite": "Odwiedź Syntx Cloud"
+	"visitCloudWebsite": ""
 }

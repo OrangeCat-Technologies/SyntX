@@ -267,11 +267,6 @@
 					"when": "view == syntx.SidebarProvider"
 				},
 				{
-					"command": "roo-cline.accountButtonClicked",
-					"group": "navigation@4",
-					"when": "view == roo-cline.SidebarProvider"
-				},
-				{
 					"command": "syntx.historyButtonClicked",
 					"group": "overflow@1",
 					"when": "view == syntx.SidebarProvider"
@@ -317,11 +312,6 @@
 					"command": "syntx.accountButtonClicked",
 					"group": "navigation@4",
 					"when": "activeWebviewPanelId == syntx.TabPanelProvider"
-				},
-				{
-					"command": "roo-cline.accountButtonClicked",
-					"group": "navigation@4",
-					"when": "activeWebviewPanelId == roo-cline.TabPanelProvider"
 				},
 				{
 					"command": "syntx.historyButtonClicked",
@@ -386,14 +376,14 @@
 					"default": [],
 					"description": "%commands.deniedCommands.description%"
 				},
-				"roo-cline.commandExecutionTimeout": {
+				"syntx.commandExecutionTimeout": {
 					"type": "number",
 					"default": 0,
 					"minimum": 0,
 					"maximum": 600,
 					"description": "%commands.commandExecutionTimeout.description%"
 				},
-				"roo-cline.commandTimeoutAllowlist": {
+				"syntx.commandTimeoutAllowlist": {
 					"type": "array",
 					"items": {
 						"type": "string"
@@ -401,12 +391,12 @@
 					"default": [],
 					"description": "%commands.commandTimeoutAllowlist.description%"
 				},
-				"roo-cline.preventCompletionWithOpenTodos": {
+				"syntx.preventCompletionWithOpenTodos": {
 					"type": "boolean",
 					"default": false,
 					"description": "%commands.preventCompletionWithOpenTodos.description%"
 				},
-				"roo-cline.vsCodeLmModelSelector": {
+				"syntx.vsCodeLmModelSelector": {
 					"type": "object",
 					"properties": {
 						"vendor": {

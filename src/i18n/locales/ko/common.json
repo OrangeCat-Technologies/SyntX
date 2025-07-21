@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "조직에서 Syntx Cloud 인증이 필요합니다. 계속하려면 로그인하세요.",
-			"organization_mismatch": "조직의 Syntx Cloud 계정으로 인증해야 합니다.",
+			"cloud_auth_required": "",
+			"organization_mismatch": "",
 			"verification_failed": "조직 인증을 확인할 수 없습니다."
 		}
 	},

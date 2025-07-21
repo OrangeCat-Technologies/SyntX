@@ -659,7 +659,7 @@
 		"feedback": "If you have any questions or feedback, feel free to open an issue at <githubLink>github.com/OrangeCat-Technologies/SyntX</githubLink> or <discordLink>discord.gg/FzndMpbhDd</discordLink>",
 		"telemetry": {
 			"label": "Allow anonymous error and usage reporting",
-			"description": "Help improve Syntx by sending anonymous usage data and error reports. No code, prompts, or personal information is ever sent (unless you connect to Syntx Cloud). See our <privacyLink>privacy policy</privacyLink> for more details."
+			"description": "Help improve Syntx by sending anonymous usage data and error reports. No code, prompts, or personal information is ever sent. See our <privacyLink>privacy policy</privacyLink> for more details."
 		},
 		"settings": {
 			"import": "Import",

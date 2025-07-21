@@ -18,7 +18,7 @@
 		"sharePublicly": "Share Publicly",
 		"sharePubliclyDescription": "Anyone with the link can access",
 		"connectToCloud": "Connect to Cloud",
-		"connectToCloudDescription": "Sign in to Syntx Cloud to share tasks",
+		"connectToCloudDescription": "",
 		"sharingDisabledByOrganization": "Sharing disabled by organization",
 		"shareSuccessOrganization": "Organization link copied to clipboard",
 		"shareSuccessPublic": "Public link copied to clipboard"

@@ -1245,12 +1245,13 @@ export class ClineProvider
 		await this.postStateToWebview()
 	}
 
-	async postStateToWebview() {
+	async postStateToWebview(skipMdmRedirect: boolean = false) {
 		const state = await this.getStateToPostToWebview()
 		this.postMessageToWebview({ type: "state", state })
 
 		// Check MDM compliance and send user to account tab if not compliant
-		if (!this.checkMdmCompliance()) {
+		// Skip redirect if we're in the middle of authentication flow
+		if (!skipMdmRedirect && !this.checkMdmCompliance()) {
 			await this.postMessageToWebview({ type: "action", action: "accountButtonClicked" })
 		}
 	}
@@ -1697,7 +1698,7 @@ export class ClineProvider
 			maxWorkspaceFiles: stateValues.maxWorkspaceFiles ?? 200,
 			openRouterUseMiddleOutTransform: stateValues.openRouterUseMiddleOutTransform ?? true,
 			browserToolEnabled: stateValues.browserToolEnabled ?? true,
-			telemetrySetting: stateValues.telemetrySetting || "unset",
+			telemetrySetting: stateValues.telemetrySetting || "enabled",
 			showRooIgnoredFiles: stateValues.showRooIgnoredFiles ?? true,
 			maxReadFileLine: stateValues.maxReadFileLine ?? -1,
 			maxConcurrentFileReads: stateValues.maxConcurrentFileReads ?? 5,
@@ -1923,9 +1924,17 @@ export class ClineProvider
 			throw new Error("Missing username or API key in website authentication callback")
 		}
 
+		this.log(
+			"[DEBUG] Website auth callback started - username: " + username + ", apiKey: " + (apiKey ? "***" : "null"),
+		)
+
 		// Store credentials in global state
 		await this.contextProxy.setValue("websiteUsername", username)
 		await this.contextProxy.setValue("syntxApiKey", apiKey)
+
+		// Always show demo after successful authentication
+		this.log("[DEBUG] Triggering demo window after successful authentication")
+		await this.openDemoWindow()
 
 		// Send authentication success message to webview
 		await this.postMessageToWebview({
@@ -1933,7 +1942,13 @@ export class ClineProvider
 			text: JSON.stringify({ authenticated: true, username, apiKey }),
 		})
 
-		await this.postStateToWebview()
+		// Ensure we navigate to chat view after authentication, not settings
+		await this.postMessageToWebview({
+			type: "action",
+			action: "chatButtonClicked",
+		})
+
+		await this.postStateToWebview(true) // Skip MDM redirect during auth flow
 
 		vscode.window.showInformationMessage("Successfully authenticated with SyntX website")
 	}
@@ -1950,5 +1965,42 @@ export class ClineProvider
 		})
 
 		vscode.window.showInformationMessage("Successfully signed out from SyntX website")
+	}
+
+	async openDemoWindow() {
+		try {
+			this.log("[DEBUG] openDemoWindow called - starting demo window opening process")
+
+			// Get the path to the demo.md file
+			const extensionPath = this.context.extensionPath
+			// Since extensionPath points to src, we need to go up and then into webview-ui
+			const demoPath = vscode.Uri.file(path.join(extensionPath, "..", "webview-ui", "public", "demo.md"))
+
+			this.log(
+				"[DEBUG] Demo file path constructed - extensionPath: " +
+					extensionPath +
+					", demoPath: " +
+					demoPath.fsPath,
+			)
+
+			// Check if file exists
+			try {
+				await vscode.workspace.fs.stat(demoPath)
+				this.log("[DEBUG] Demo file exists, proceeding to open")
+			} catch (error) {
+				this.log("[DEBUG] Demo file does not exist - error: " + error)
+				throw new Error(`Demo file not found at ${demoPath.fsPath}`)
+			}
+
+			// Open the demo.md file in markdown preview mode on the right side
+			this.log("[DEBUG] Opening markdown preview...")
+			await vscode.commands.executeCommand("markdown.showPreviewToSide", demoPath)
+
+			this.log("[DEBUG] Demo window opened successfully in preview mode")
+		} catch (error) {
+			this.log("[DEBUG] Error opening demo file: " + error)
+			// Fallback: show a simple information message if file opening fails
+			vscode.window.showInformationMessage("Welcome to SyntX! Check out the demo content in the chat.")
+		}
 	}
 }

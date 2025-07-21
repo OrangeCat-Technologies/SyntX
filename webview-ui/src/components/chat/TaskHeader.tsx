@@ -60,6 +60,9 @@ const TaskHeader = ({
 
 	const { width: windowWidth } = useWindowSize()
 
+	// Check if using syntx provider
+	const isSyntxProvider = apiConfiguration?.apiProvider === "syntx"
+
 	const condenseButton = (
 		<StandardTooltip content={t("chat:task.condenseContext")}>
 			<button
@@ -121,7 +124,7 @@ const TaskHeader = ({
 							}
 						/>
 						{condenseButton}
-						<ShareButton item={currentTaskItem} disabled={buttonsDisabled} />
+						{!isSyntxProvider && <ShareButton item={currentTaskItem} disabled={buttonsDisabled} />}
 						{!!totalCost && <VSCodeBadge>${totalCost.toFixed(2)}</VSCodeBadge>}
 					</div>
 				)}
@@ -169,24 +172,28 @@ const TaskHeader = ({
 									{condenseButton}
 								</div>
 							)}
-							<div className="flex justify-between items-center h-[20px]">
-								<div className="flex items-center gap-1 flex-wrap">
-									<span className="font-bold">{t("chat:task.tokens")}</span>
-									{typeof tokensIn === "number" && tokensIn > 0 && (
-										<span className="flex items-center gap-0.5">
-											<i className="codicon codicon-arrow-up text-xs font-bold" />
-											{formatLargeNumber(tokensIn)}
-										</span>
-									)}
-									{typeof tokensOut === "number" && tokensOut > 0 && (
-										<span className="flex items-center gap-0.5">
-											<i className="codicon codicon-arrow-down text-xs font-bold" />
-											{formatLargeNumber(tokensOut)}
-										</span>
+							{!isSyntxProvider && (
+								<div className="flex justify-between items-center h-[20px]">
+									<div className="flex items-center gap-1 flex-wrap">
+										<span className="font-bold">{t("chat:task.tokens")}</span>
+										{typeof tokensIn === "number" && tokensIn > 0 && (
+											<span className="flex items-center gap-0.5">
+												<i className="codicon codicon-arrow-up text-xs font-bold" />
+												{formatLargeNumber(tokensIn)}
+											</span>
+										)}
+										{typeof tokensOut === "number" && tokensOut > 0 && (
+											<span className="flex items-center gap-0.5">
+												<i className="codicon codicon-arrow-down text-xs font-bold" />
+												{formatLargeNumber(tokensOut)}
+											</span>
+										)}
+									</div>
+									{!totalCost && (
+										<TaskActions item={currentTaskItem} buttonsDisabled={buttonsDisabled} />
 									)}
 								</div>
-								{!totalCost && <TaskActions item={currentTaskItem} buttonsDisabled={buttonsDisabled} />}
-							</div>
+							)}
 
 							{((typeof cacheReads === "number" && cacheReads > 0) ||
 								(typeof cacheWrites === "number" && cacheWrites > 0)) && (
@@ -213,7 +220,9 @@ const TaskHeader = ({
 										<span className="font-bold">{t("chat:task.apiCost")}</span>
 										<span>${totalCost?.toFixed(2)}</span>
 									</div>
-									<TaskActions item={currentTaskItem} buttonsDisabled={buttonsDisabled} />
+									{!isSyntxProvider && (
+										<TaskActions item={currentTaskItem} buttonsDisabled={buttonsDisabled} />
+									)}
 								</div>
 							)}
 						</div>

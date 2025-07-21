@@ -3,12 +3,12 @@
 	"profilePicture": "Profile picture",
 	"logOut": "Log out",
 	"testApiAuthentication": "Test API Authentication",
-	"signIn": "Connect to Syntx Cloud",
+	"signIn": "",
 	"connect": "Connect",
-	"cloudBenefitsTitle": "Connect to Syntx Cloud",
+	"cloudBenefitsTitle": "",
 	"cloudBenefitsSubtitle": "Sync your prompts and telemetry to enable:",
 	"cloudBenefitHistory": "Online task history",
 	"cloudBenefitSharing": "Sharing and collaboration features",
 	"cloudBenefitMetrics": "Task, token, and cost-based usage metrics",
-	"visitCloudWebsite": "Visit Syntx Cloud"
+	"visitCloudWebsite": ""
 }

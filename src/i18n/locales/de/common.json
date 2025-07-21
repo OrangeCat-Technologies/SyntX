@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Deine Organisation erfordert eine Syntx Cloud-Authentifizierung. Bitte melde dich an, um fortzufahren.",
-			"organization_mismatch": "Du musst mit dem Syntx Cloud-Konto deiner Organisation authentifiziert sein.",
+			"cloud_auth_required": "",
+			"organization_mismatch": "",
 			"verification_failed": "Die Organisationsauthentifizierung konnte nicht verifiziert werden."
 		}
 	},

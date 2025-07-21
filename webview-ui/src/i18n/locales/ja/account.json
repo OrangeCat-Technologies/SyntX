@@ -3,12 +3,12 @@
 	"profilePicture": "プロフィール画像",
 	"logOut": "ログアウト",
 	"testApiAuthentication": "API認証をテスト",
-	"signIn": "Syntx Cloud に接続",
+	"signIn": "",
 	"connect": "接続",
-	"cloudBenefitsTitle": "Syntx Cloudに接続",
+	"cloudBenefitsTitle": "",
 	"cloudBenefitsSubtitle": "プロンプトとテレメトリを同期して以下を有効にする：",
 	"cloudBenefitHistory": "オンラインタスク履歴",
 	"cloudBenefitSharing": "共有とコラボレーション機能",
 	"cloudBenefitMetrics": "タスク、Token、コストベースの使用メトリクス",
-	"visitCloudWebsite": "Syntx Cloudを訪問"
+	"visitCloudWebsite": ""
 }

@@ -154,8 +154,8 @@
 	},
 	"mdm": {
 		"errors": {
-			"cloud_auth_required": "Tổ chức của bạn yêu cầu xác thực Syntx Cloud. Vui lòng đăng nhập để tiếp tục.",
-			"organization_mismatch": "Bạn phải được xác thực bằng tài khoản Syntx Cloud của tổ chức.",
+			"cloud_auth_required": "",
+			"organization_mismatch": "",
 			"verification_failed": "Không thể xác minh xác thực tổ chức."
 		}
 	},
