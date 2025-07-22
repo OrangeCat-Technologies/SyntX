@@ -80,8 +80,8 @@ Syntx 3.23 brengt krachtige nieuwe functies en significante verbeteringen om je 
 Syntx past zich aan jouw behoeften aan met gespecialiseerde [modi](https://docs.roocode.com/basic-usage/using-modes):
 
 - **Code-modus:** Voor algemene coderingstaken
-- **Architect-modus:** Voor planning en technisch leiderschap
-- **Vraag-modus:** Voor het beantwoorden van vragen en het geven van informatie
+- **Planner-modus:** Voor planning en technisch leiderschap
+- **Chat-modus:** Voor het beantwoorden van vragen en het geven van informatie
 - **Debug-modus:** Voor systematische probleemdiagnose
 - **[Aangepaste modi](https://docs.roocode.com/advanced-usage/custom-modes):** Maak onbeperkt gespecialiseerde persona's voor beveiligingsaudits, prestatieoptimalisatie, documentatie of andere taken
 

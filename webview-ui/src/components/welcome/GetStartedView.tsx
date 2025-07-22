@@ -182,6 +182,9 @@ const GetStartedView = () => {
 							marginBottom: "0.75rem",
 							borderRadius: "0.75rem",
 							fontWeight: "bold",
+							backgroundColor: "rgba(255, 165, 0, 1)",
+							borderColor: "rgba(255, 165, 0, 1)",
+							color: "white",
 						}}>
 						{authAttempted ? "Try Again" : "Get Started"}
 					</VSCodeButton>

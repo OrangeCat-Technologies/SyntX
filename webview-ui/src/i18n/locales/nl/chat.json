@@ -234,7 +234,7 @@
 		"whatsNew": "Wat is er nieuw",
 		"feature1": "<bold>Codebase Indexering Afgestudeerd van Experimenteel</bold>: Volledige codebase indexering is nu stabiel en klaar voor productiegebruik met verbeterde zoekfunctionaliteit en contextbegrip.",
 		"feature2": "<bold>Nieuwe Todo Lijst Functie</bold>: Houd je taken op koers met geïntegreerd todo-beheer dat je helpt georganiseerd en gefocust te blijven op je ontwikkelingsdoelen.",
-		"feature3": "<bold>Verbeterde Architect naar Code Overgangen</bold>: Soepele overdrachten van planning in Architect modus naar implementatie in Code modus.",
+		"feature3": "<bold>Verbeterde Planner naar Code Overgangen</bold>: Soepele overdrachten van planning in Planner modus naar implementatie in Code modus.",
 		"hideButton": "Aankondiging verbergen",
 		"detailsDiscussLinks": "Krijg meer details en doe mee aan discussies op <discordLink>Discord</discordLink> 🚀"
 	},

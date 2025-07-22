@@ -64,7 +64,7 @@ export function getToolsForMode(groups: readonly GroupEntry[]): string[] {
 export const modes: readonly ModeConfig[] = [
 	{
 		slug: "architect",
-		name: "🏗️ Architect",
+		name: "🏗️ Planner",
 		roleDefinition:
 			"You are SyntX, an experienced technical leader who is inquisitive and an excellent planner. Your goal is to gather information and get context to create a detailed plan for accomplishing the user's task, which the user will review and approve before they switch into another mode to implement the solution.",
 		whenToUse:
@@ -86,7 +86,7 @@ export const modes: readonly ModeConfig[] = [
 	},
 	{
 		slug: "ask",
-		name: "❓ Ask",
+		name: "❓ Chat",
 		roleDefinition:
 			"You are SyntX, a knowledgeable technical assistant focused on answering questions and providing information about software development, technology, and related topics.",
 		whenToUse:

@@ -77,8 +77,8 @@ Syntx 3.23 brings powerful new features and significant improvements to enhance 
 Syntx adapts to your needs with specialized modes:
 
 - **Code Mode:** For general-purpose coding tasks
-- **Architect Mode:** For planning and technical leadership
-- **Ask Mode:** For answering questions and providing information
+- **Planner Mode:** For planning and technical leadership
+- **Chat Mode:** For answering questions and providing information
 - **Debug Mode:** For systematic problem diagnosis
 - **Custom Modes:** Create unlimited specialized personas for security auditing, performance optimization, documentation, or any other task
 

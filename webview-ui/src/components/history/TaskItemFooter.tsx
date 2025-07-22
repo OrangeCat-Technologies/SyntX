@@ -3,6 +3,7 @@ import type { HistoryItem } from "@roo-code/types"
 import { Coins, FileIcon } from "lucide-react"
 import prettyBytes from "pretty-bytes"
 import { formatLargeNumber } from "@/utils/format"
+import { useExtensionState } from "@/context/ExtensionStateContext"
 import { CopyButton } from "./CopyButton"
 import { ExportButton } from "./ExportButton"
 
@@ -13,6 +14,11 @@ export interface TaskItemFooterProps {
 }
 
 const TaskItemFooter: React.FC<TaskItemFooterProps> = ({ item, variant, isSelectionMode = false }) => {
+	const { apiConfiguration } = useExtensionState()
+
+	// Hide tokens and cost when using SyntX provider
+	const isSyntxProvider = apiConfiguration?.apiProvider === "syntx"
+
 	return (
 		<div className="text-xs text-vscode-descriptionForeground flex justify-between items-center mt-1">
 			<div className="flex gap-2">
@@ -25,16 +31,16 @@ const TaskItemFooter: React.FC<TaskItemFooterProps> = ({ item, variant, isSelect
 					</span>
 				)}
 
-				{/* Full Tokens */}
-				{!!(item.tokensIn || item.tokensOut) && (
+				{/* Full Tokens - Hidden for SyntX provider */}
+				{!isSyntxProvider && !!(item.tokensIn || item.tokensOut) && (
 					<span className="flex items-center gap-1">
 						<span data-testid="tokens-in-footer-compact">↑ {formatLargeNumber(item.tokensIn || 0)}</span>
 						<span data-testid="tokens-out-footer-compact">↓ {formatLargeNumber(item.tokensOut || 0)}</span>
 					</span>
 				)}
 
-				{/* Full Cost */}
-				{!!item.totalCost && (
+				{/* Full Cost - Hidden for SyntX provider */}
+				{!isSyntxProvider && !!item.totalCost && (
 					<span className="flex items-center">
 						<Coins className="inline-block size-[1em] mr-1" />
 						<span data-testid="cost-footer-compact">{"$" + item.totalCost.toFixed(2)}</span>

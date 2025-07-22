@@ -79,8 +79,8 @@ Syntx 3.23 menghadirkan fitur-fitur baru yang powerful dan peningkatan signifika
 Syntx beradaptasi dengan kebutuhan kamu dengan [mode](https://docs.roocode.com/basic-usage/using-modes) khusus:
 
 - **Code Mode:** Untuk tugas coding umum
-- **Architect Mode:** Untuk perencanaan dan kepemimpinan teknis
-- **Ask Mode:** Untuk menjawab pertanyaan dan memberikan informasi
+- **Planner Mode:** Untuk perencanaan dan kepemimpinan teknis
+- **Chat Mode:** Untuk menjawab pertanyaan dan memberikan informasi
 - **Debug Mode:** Untuk diagnosis masalah sistematis
 - **[Mode Kustom](https://docs.roocode.com/advanced-usage/custom-modes):** Buat persona khusus tak terbatas untuk audit keamanan, optimasi performa, dokumentasi, atau tugas lainnya
 

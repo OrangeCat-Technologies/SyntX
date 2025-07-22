@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useEffect, useState, useRef } from "react"
-import { ChevronDown, Check } from "lucide-react"
+import { ChevronDown, Check, Plus } from "lucide-react"
 
 import type { ProviderSettings } from "@roo-code/types"
 import type { RouterModels } from "@roo/api"
@@ -213,6 +213,18 @@ const SyntXModelDropdown: React.FC<SyntXModelDropdownProps> = ({
 		setAlwaysAllowSubtasks,
 	])
 
+	const handleAddModels = useCallback(() => {
+		setOpen(false)
+		window.postMessage(
+			{
+				type: "action",
+				action: "settingsButtonClicked",
+				values: { section: "providers" },
+			},
+			"*",
+		)
+	}, [])
+
 	const displayText = useMemo(() => {
 		if (isAutoSelectEnabled) {
 			return "Auto"
@@ -296,6 +308,20 @@ const SyntXModelDropdown: React.FC<SyntXModelDropdownProps> = ({
 								))}
 							</div>
 						)}
+
+						{/* Add Models Button */}
+						<div className="border-t border-vscode-dropdown-border">
+							<div
+								className="p-2 text-sm cursor-pointer flex items-center gap-2 hover:bg-vscode-list-hoverBackground"
+								onClick={(e) => {
+									e.preventDefault()
+									e.stopPropagation()
+									handleAddModels()
+								}}>
+								<Plus className="size-4" />
+								<span>Add Models</span>
+							</div>
+						</div>
 					</div>
 				</PopoverContent>
 			</Popover>

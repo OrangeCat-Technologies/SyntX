@@ -65,11 +65,11 @@ describe("PromptsView", () => {
 		fireEvent.click(selectTrigger)
 
 		const searchInput = screen.getByTestId("mode-search-input")
-		fireEvent.change(searchInput, { target: { value: "ask" } })
+		fireEvent.change(searchInput, { target: { value: "Code" } })
 
 		await waitFor(() => {
-			expect(screen.getByTestId("mode-option-ask")).toBeInTheDocument()
-			expect(screen.queryByTestId("mode-option-code")).not.toBeInTheDocument()
+			expect(screen.getByTestId("mode-option-code")).toBeInTheDocument()
+			expect(screen.queryByTestId("mode-option-ask")).not.toBeInTheDocument()
 			expect(screen.queryByTestId("mode-option-architect")).not.toBeInTheDocument()
 		})
 	})

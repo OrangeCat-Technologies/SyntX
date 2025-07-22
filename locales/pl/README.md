@@ -80,8 +80,8 @@ Syntx 3.23 wprowadza potężne nowe funkcje i znaczące usprawnienia, aby ulepsz
 Syntx dostosowuje się do Twoich potrzeb za pomocą wyspecjalizowanych [trybów](https://docs.roocode.com/basic-usage/using-modes):
 
 - **Tryb Code:** Do ogólnych zadań kodowania
-- **Tryb Architect:** Do planowania i przywództwa technicznego
-- **Tryb Ask:** Do odpowiadania na pytania i dostarczania informacji
+- **Tryb Planner:** Do planowania i przywództwa technicznego
+- **Tryb Chat:** Do odpowiadania na pytania i dostarczania informacji
 - **Tryb Debug:** Do systematycznej diagnozy problemów
 - **[Niestandardowe tryby](https://docs.roocode.com/advanced-usage/custom-modes):** Twórz nieograniczoną liczbę wyspecjalizowanych person do audytów bezpieczeństwa, optymalizacji wydajności, dokumentacji lub dowolnych innych zadań
 

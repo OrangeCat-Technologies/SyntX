@@ -80,8 +80,8 @@ Syntx 3.23 mang đến những tính năng mới mạnh mẽ và cải tiến đ
 Syntx thích ứng với nhu cầu của bạn với các [chế độ](https://docs.roocode.com/basic-usage/using-modes) chuyên biệt:
 
 - **Chế độ Code:** Cho các tác vụ lập trình đa dụng
-- **Chế độ Architect:** Cho việc lập kế hoạch và lãnh đạo kỹ thuật
-- **Chế độ Ask:** Để trả lời câu hỏi và cung cấp thông tin
+- **Chế độ Planner:** Cho việc lập kế hoạch và lãnh đạo kỹ thuật
+- **Chế độ Chat:** Để trả lời câu hỏi và cung cấp thông tin
 - **Chế độ Debug:** Cho việc chẩn đoán vấn đề có hệ thống
 - **[Chế độ tùy chỉnh](https://docs.roocode.com/advanced-usage/custom-modes):** Tạo vô số nhân vật chuyên biệt cho kiểm toán bảo mật, tối ưu hóa hiệu suất, tài liệu, hoặc bất kỳ tác vụ nào khác
 

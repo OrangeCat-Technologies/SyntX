@@ -26,7 +26,7 @@ vi.mock("../ModeSelector", () => ({
 	default: ({ value, onChange, title }: any) => (
 		<select value={value} onChange={(e) => onChange(e.target.value)} title={title}>
 			<option value="code">Code</option>
-			<option value="architect">Architect</option>
+			<option value="architect">Planner</option>
 		</select>
 	),
 }))

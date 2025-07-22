@@ -242,13 +242,13 @@ vi.mock("../../../shared/modes", () => ({
 		},
 		{
 			slug: "architect",
-			name: "Architect Mode",
+			name: "Planner Mode",
 			roleDefinition: "You are an architect",
 			groups: ["read", "edit"],
 		},
 		{
 			slug: "ask",
-			name: "Ask Mode",
+			name: "Chat Mode",
 			roleDefinition: "You are a helpful assistant",
 			groups: ["read"],
 		},

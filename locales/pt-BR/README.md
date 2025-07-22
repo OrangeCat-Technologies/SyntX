@@ -80,8 +80,8 @@ O Syntx 3.23 traz novos recursos poderosos e melhorias significativas para aprim
 O Syntx se adapta às suas necessidades com [modos](https://docs.roocode.com/basic-usage/using-modes) especializados:
 
 - **Modo Code:** Para tarefas gerais de codificação
-- **Modo Architect:** Para planejamento e liderança técnica
-- **Modo Ask:** Para responder perguntas e fornecer informações
+- **Modo Planner:** Para planejamento e liderança técnica
+- **Modo Chat:** Para responder perguntas e fornecer informações
 - **Modo Debug:** Para diagnóstico sistemático de problemas
 - **[Modos Personalizados](https://docs.roocode.com/advanced-usage/custom-modes):** Crie personas especializadas ilimitadas para auditoria de segurança, otimização de desempenho, documentação ou qualquer outra tarefa
 

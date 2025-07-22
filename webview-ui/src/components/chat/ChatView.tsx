@@ -39,7 +39,6 @@ import { StandardTooltip } from "@src/components/ui"
 import { useAutoApprovalState } from "@src/hooks/useAutoApprovalState"
 import { useAutoApprovalToggles } from "@src/hooks/useAutoApprovalToggles"
 
-import VersionIndicator from "../common/VersionIndicator"
 import HistoryPreview from "../history/HistoryPreview"
 import Announcement from "./Announcement"
 import BrowserSessionRow from "./BrowserSessionRow"
@@ -1653,14 +1652,12 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 				</>
 			) : (
 				<div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4 relative">
-					<div className="w-full flex flex-col gap-4 m-auto px-3.5 min-[370px]:px-10 pt-5 transition-all duration-300">
-						{/* Version indicator in top-right corner - only on welcome screen */}
-						<VersionIndicator
-							onClick={() => setShowAnnouncementModal(true)}
-							className="absolute top-2 right-3 z-10"
-						/>
-
+					{/* Absolute top-left logo/username, at same level as version button */}
+					<div className="absolute top-2 left-3 z-10">
 						<RooHero />
+					</div>
+					<div className="w-full flex flex-col gap-4 m-auto px-3.5 min-[370px]:px-10 pt-28 transition-all duration-300">
+						{/* pt-28 ensures content is pushed below the logo/username row */}
 						{/* Show the task history preview if expanded and tasks exist */}
 						{taskHistory.length > 0 && <HistoryPreview />}
 						{/* Show boilerplate list if no task history */}
