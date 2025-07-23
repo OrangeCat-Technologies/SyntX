@@ -124,6 +124,11 @@
 				"icon": "$(link-external)"
 			},
 			{
+				"command": "syntx.helpButtonClicked",
+				"title": "%command.help.title%",
+				"icon": "$(question)"
+			},
+			{
 				"command": "syntx.accountButtonClicked",
 				"title": "Account",
 				"icon": "$(account)"
@@ -290,6 +295,11 @@
 					"command": "syntx.popoutButtonClicked",
 					"group": "overflow@5",
 					"when": "view == syntx.SidebarProvider"
+				},
+				{
+					"command": "syntx.helpButtonClicked",
+					"group": "overflow@6",
+					"when": "view == syntx.SidebarProvider"
 				}
 			],
 			"editor/title": [
@@ -336,6 +346,11 @@
 				{
 					"command": "syntx.popoutButtonClicked",
 					"group": "overflow@5",
+					"when": "activeWebviewPanelId == syntx.TabPanelProvider"
+				},
+				{
+					"command": "syntx.helpButtonClicked",
+					"group": "overflow@6",
 					"when": "activeWebviewPanelId == syntx.TabPanelProvider"
 				}
 			]

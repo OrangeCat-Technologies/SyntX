@@ -62,23 +62,6 @@ export const ProfileSettings: React.FC<ProfileSettingsProps> = () => {
 								Sign Out
 							</Button>
 						</div>
-
-						<div className="border-t border-vscode-widget-border pt-4">
-							<h4 className="text-sm font-medium text-vscode-foreground mb-2">Usage Statistics</h4>
-							<div className="grid grid-cols-2 gap-4 text-sm">
-								<div>
-									<p className="text-vscode-descriptionForeground">API Calls This Month</p>
-									<p className="font-medium text-vscode-foreground">1,247</p>
-								</div>
-								<div>
-									<p className="text-vscode-descriptionForeground">Hours Saved</p>
-									<p className="font-medium text-vscode-foreground">23.5</p>
-								</div>
-							</div>
-							<p className="text-xs text-vscode-descriptionForeground mt-2">
-								Statistics are placeholders and would be provided by a real API
-							</p>
-						</div>
 					</div>
 				)}
 			</div>

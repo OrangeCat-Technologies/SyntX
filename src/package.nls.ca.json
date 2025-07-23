@@ -23,6 +23,7 @@
 	"command.history.title": "Historial",
 	"command.marketplace.title": "Mercat",
 	"command.openInEditor.title": "Obrir a l'Editor",
+	"command.help.title": "Help",
 	"command.settings.title": "Configuració",
 	"command.documentation.title": "Documentació",
 	"configuration.title": "Syntx",

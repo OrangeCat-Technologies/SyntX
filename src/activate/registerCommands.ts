@@ -136,6 +136,14 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 
 		return openClineInNewTab({ context, outputChannel })
 	},
+	helpButtonClicked: async () => {
+		const visibleProvider = getVisibleProviderOrLog(outputChannel)
+		if (!visibleProvider) {
+			return
+		}
+		TelemetryService.instance.captureTitleButtonClicked("help")
+		await visibleProvider.openDemoWindow()
+	},
 	openInNewTab: () => openClineInNewTab({ context, outputChannel }),
 	settingsButtonClicked: () => {
 		const visibleProvider = getVisibleProviderOrLog(outputChannel)
