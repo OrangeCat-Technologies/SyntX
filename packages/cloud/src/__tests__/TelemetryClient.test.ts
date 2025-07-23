@@ -195,7 +195,7 @@ describe("TelemetryClient", () => {
 		})
 
 		it("should handle errors from provider gracefully", async () => {
-			const client = new TelemetryClient(mockAuthService, mockSettingsService)
+			const client = new TelemetryClient(mockAuthService, mockSettingsService, true)
 
 			const mockProvider: TelemetryPropertiesProvider = {
 				getTelemetryProperties: vi.fn().mockRejectedValue(new Error("Provider error")),

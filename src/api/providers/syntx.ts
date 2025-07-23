@@ -140,11 +140,15 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 				if (
 					errorMessage.includes("invalid api key") ||
 					errorMessage.includes("401") ||
-					errorMessage.includes("unauthorized")
+					errorMessage.includes("unauthorized") ||
+					errorMessage.includes("insufficient credits") ||
+					errorMessage.includes("credits depleted")
 				) {
 					yield {
-						type: "text",
-						text: "Buy Credits to Access Proprietary Models. Please log in at https://syntx.dev to purchase credits and go to View Profile in settings.",
+						type: "error",
+						error: "CREDITS_DEPLETED",
+						message:
+							"Buy Credits to Access Proprietary Models. Please log in at https://syntx.dev to purchase credits and go to View Profile in settings.",
 					}
 					return
 				}
@@ -198,6 +202,18 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 			return response.choices[0]?.message.content || ""
 		} catch (error) {
 			if (error instanceof Error) {
+				const errorMessage = error.message.toLowerCase()
+				if (
+					errorMessage.includes("invalid api key") ||
+					errorMessage.includes("401") ||
+					errorMessage.includes("unauthorized") ||
+					errorMessage.includes("insufficient credits") ||
+					errorMessage.includes("credits depleted")
+				) {
+					throw new Error(
+						"CREDITS_DEPLETED: Buy Credits to Access Proprietary Models. Please log in at https://syntx.dev to purchase credits and go to View Profile in settings.",
+					)
+				}
 				throw new Error(`SyntX completion error: ${error.message}`)
 			}
 			throw error

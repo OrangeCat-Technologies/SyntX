@@ -8,6 +8,15 @@ vi.mock("@src/i18n/TranslationContext", () => ({
 	}),
 }))
 
+// Mock ExtensionStateContext to simulate SyntX provider
+vi.mock("@src/context/ExtensionStateContext", () => ({
+	useExtensionState: () => ({
+		apiConfiguration: {
+			apiProvider: "syntx",
+		},
+	}),
+}))
+
 const mockItem = {
 	id: "1",
 	number: 1,
@@ -20,19 +29,19 @@ const mockItem = {
 }
 
 describe("TaskItemFooter", () => {
-	it("renders token information", () => {
+	it("does not render token information for SyntX provider", () => {
 		render(<TaskItemFooter item={mockItem} variant="full" />)
 
-		// Check for token counts using testids since the text is split across elements
-		expect(screen.getByTestId("tokens-in-footer-compact")).toBeInTheDocument()
-		expect(screen.getByTestId("tokens-out-footer-compact")).toBeInTheDocument()
+		// For SyntX provider, token information should be hidden
+		expect(screen.queryByTestId("tokens-in-footer-compact")).not.toBeInTheDocument()
+		expect(screen.queryByTestId("tokens-out-footer-compact")).not.toBeInTheDocument()
 	})
 
-	it("renders cost information", () => {
+	it("does not render cost information for SyntX provider", () => {
 		render(<TaskItemFooter item={mockItem} variant="full" />)
 
-		// The component shows $0.00 for small amounts, not the exact value
-		expect(screen.getByText("$0.00")).toBeInTheDocument()
+		// For SyntX provider, cost information should be hidden
+		expect(screen.queryByText("$0.00")).not.toBeInTheDocument()
 	})
 
 	it("shows action buttons", () => {

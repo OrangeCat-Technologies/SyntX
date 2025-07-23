@@ -67,7 +67,7 @@ vi.mock("../../common/VersionIndicator", () => ({
 }))
 
 // Get the mock function after the module is mocked
-const mockVersionIndicator = vi.mocked(
+const _mockVersionIndicator = vi.mocked(
 	// @ts-expect-error - accessing mocked module
 	(await import("../../common/VersionIndicator")).default,
 )
@@ -1147,103 +1147,20 @@ describe("ChatView - Focus Grabbing Tests", () => {
 describe("ChatView - Version Indicator Tests", () => {
 	beforeEach(() => vi.clearAllMocks())
 
-	// Helper function to create a mock VersionIndicator implementation
-	const createMockVersionIndicator = (
-		ariaLabel: string = "chat:versionIndicator.ariaLabel",
-		version: string = "v3.21.5",
-	) => {
-		return (props?: { onClick?: () => void; className?: string }) => {
-			const { onClick, className } = props || {}
-			return (
-				<button data-testid="version-indicator" onClick={onClick} className={className} aria-label={ariaLabel}>
-					{version}
-				</button>
-			)
-		}
-	}
+	it("does not display version indicator for SyntX provider", () => {
+		const { queryByTestId, queryByLabelText } = renderChatView()
 
-	it("displays version indicator button", () => {
-		// Temporarily override the mock for this test
-		mockVersionIndicator.mockImplementation(createMockVersionIndicator())
-
-		const { getByLabelText } = renderChatView()
-
-		// First hydrate state
+		// First hydrate state with no messages (welcome screen)
 		mockPostMessage({
 			clineMessages: [],
 		})
 
-		// Check that version indicator is displayed
-		const versionButton = getByLabelText(/version/i)
-		expect(versionButton).toBeInTheDocument()
-		expect(versionButton).toHaveTextContent(/^v\d+\.\d+\.\d+/)
+		// For SyntX provider, version indicator should not be displayed
+		const versionButtonByTestId = queryByTestId("version-indicator")
+		const versionButtonByLabel = queryByLabelText(/version/i)
 
-		// Reset mock
-		mockVersionIndicator.mockReturnValue(null)
-	})
-
-	it("opens announcement modal when version indicator is clicked", () => {
-		// Temporarily override the mock for this test
-		mockVersionIndicator.mockImplementation(createMockVersionIndicator("Version 3.22.5", "v3.22.5"))
-
-		const { getByTestId } = renderChatView()
-
-		// First hydrate state
-		mockPostMessage({
-			clineMessages: [],
-		})
-
-		// Find version indicator
-		const versionButton = getByTestId("version-indicator")
-		expect(versionButton).toBeInTheDocument()
-
-		// Click should trigger modal - we'll just verify the button exists and is clickable
-		// The actual modal rendering is handled by the component state
-		expect(versionButton.onclick).toBeDefined()
-
-		// Reset mock
-		mockVersionIndicator.mockReturnValue(null)
-	})
-
-	it("version indicator has correct styling classes", () => {
-		// Temporarily override the mock for this test
-		mockVersionIndicator.mockImplementation(createMockVersionIndicator("Version 3.22.5", "v3.22.5"))
-
-		const { getByTestId } = renderChatView()
-
-		// First hydrate state
-		mockPostMessage({
-			clineMessages: [],
-		})
-
-		// Check styling classes - the VersionIndicator component receives className prop
-		const versionButton = getByTestId("version-indicator")
-		expect(versionButton).toBeInTheDocument()
-		// The className is passed as a prop to VersionIndicator
-		expect(versionButton.className).toContain("absolute top-2 right-3 z-10")
-
-		// Reset mock
-		mockVersionIndicator.mockReturnValue(null)
-	})
-
-	it("version indicator has proper accessibility attributes", () => {
-		// Temporarily override the mock for this test
-		mockVersionIndicator.mockImplementation(createMockVersionIndicator("Version 3.22.5", "v3.22.5"))
-
-		const { getByTestId } = renderChatView()
-
-		// First hydrate state
-		mockPostMessage({
-			clineMessages: [],
-		})
-
-		// Check accessibility
-		const versionButton = getByTestId("version-indicator")
-		expect(versionButton).toBeInTheDocument()
-		expect(versionButton).toHaveAttribute("aria-label", "Version 3.22.5")
-
-		// Reset mock
-		mockVersionIndicator.mockReturnValue(null)
+		expect(versionButtonByTestId).not.toBeInTheDocument()
+		expect(versionButtonByLabel).not.toBeInTheDocument()
 	})
 
 	it("does not display version indicator when there is an active task", () => {
@@ -1263,50 +1180,6 @@ describe("ChatView - Version Indicator Tests", () => {
 
 		// Version indicator should not be present during task execution
 		const versionButton = queryByTestId("version-indicator")
-		expect(versionButton).not.toBeInTheDocument()
-	})
-
-	it("displays version indicator only on welcome screen (no task)", () => {
-		// Temporarily override the mock for this test
-		mockVersionIndicator.mockImplementation(createMockVersionIndicator("Version 3.22.5", "v3.22.5"))
-
-		const { queryByTestId, rerender } = renderChatView()
-
-		// First, hydrate with no messages (welcome screen)
-		mockPostMessage({
-			clineMessages: [],
-		})
-
-		// Version indicator should be present
-		let versionButton = queryByTestId("version-indicator")
-		expect(versionButton).toBeInTheDocument()
-
-		// Reset mock to return null for the second part of the test
-		mockVersionIndicator.mockReturnValue(null)
-
-		// Now add a task - any message makes task truthy
-		mockPostMessage({
-			clineMessages: [
-				{
-					type: "say",
-					say: "task",
-					ts: Date.now(),
-					text: "Starting a new task",
-				},
-			],
-		})
-
-		// Force a re-render to ensure the component updates
-		rerender(
-			<ExtensionStateContextProvider>
-				<QueryClientProvider client={queryClient}>
-					<ChatView {...defaultProps} />
-				</QueryClientProvider>
-			</ExtensionStateContextProvider>,
-		)
-
-		// Version indicator should disappear
-		versionButton = queryByTestId("version-indicator")
 		expect(versionButton).not.toBeInTheDocument()
 	})
 })

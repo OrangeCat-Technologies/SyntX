@@ -32,6 +32,7 @@ export const providerNames = [
 	"chutes",
 	"litellm",
 	"syntx",
+	"lagrange",
 ] as const
 
 export const providerNamesSchema = z.enum(providerNames)
@@ -229,6 +230,12 @@ const syntxSchema = baseProviderSettingsSchema.extend({
 	selectedSyntxModels: z.array(z.string()).optional(),
 })
 
+const lagrangeSchema = baseProviderSettingsSchema.extend({
+	lagrangeApiKey: z.string().optional(),
+	lagrangeModelId: z.string().optional(),
+	lagrangeBaseUrl: z.string().optional(),
+})
+
 const defaultSchema = z.object({
 	apiProvider: z.undefined(),
 })
@@ -258,6 +265,7 @@ export const providerSettingsSchemaDiscriminated = z.discriminatedUnion("apiProv
 	chutesSchema.merge(z.object({ apiProvider: z.literal("chutes") })),
 	litellmSchema.merge(z.object({ apiProvider: z.literal("litellm") })),
 	syntxSchema.merge(z.object({ apiProvider: z.literal("syntx") })),
+	lagrangeSchema.merge(z.object({ apiProvider: z.literal("lagrange") })),
 	defaultSchema,
 ])
 
@@ -287,6 +295,7 @@ export const providerSettingsSchema = z.object({
 	...chutesSchema.shape,
 	...litellmSchema.shape,
 	...syntxSchema.shape,
+	...lagrangeSchema.shape,
 	...codebaseIndexProviderSchema.shape,
 })
 
@@ -305,6 +314,7 @@ export const MODEL_ID_KEYS: Partial<keyof ProviderSettings>[] = [
 	"requestyModelId",
 	"litellmModelId",
 	"syntxModelId",
+	"lagrangeModelId",
 ]
 
 export const getModelId = (settings: ProviderSettings): string | undefined => {

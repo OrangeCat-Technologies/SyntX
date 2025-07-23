@@ -46,6 +46,7 @@ import { CommandExecutionError } from "./CommandExecutionError"
 import { AutoApprovedRequestLimitWarning } from "./AutoApprovedRequestLimitWarning"
 import { CondenseContextErrorRow, CondensingContextRow, ContextCondenseRow } from "./ContextCondenseRow"
 import CodebaseSearchResultsDisplay from "./CodebaseSearchResultsDisplay"
+import CreditsDepletedAlert from "./CreditsDepletedAlert"
 
 interface ChatRowProps {
 	message: ClineMessage
@@ -125,6 +126,7 @@ export const ChatRowContent = ({
 	const [editedContent, setEditedContent] = useState("")
 	const [editMode, setEditMode] = useState<Mode>(mode || "code")
 	const [editImages, setEditImages] = useState<string[]>([])
+	const [showCreditsAlert, setShowCreditsAlert] = useState(true)
 	const { copyWithFeedback } = useCopyToClipboard()
 
 	// Handle message events for image selection during edit mode
@@ -1137,6 +1139,14 @@ export const ChatRowContent = ({
 						</div>
 					)
 				case "error":
+					// Check if this is a credits depletion error for SyntX provider
+					const isCreditsError =
+						isSyntxProvider && message.text?.includes("Buy Credits to Access Proprietary Models")
+
+					if (isCreditsError && showCreditsAlert) {
+						return <CreditsDepletedAlert onClose={() => setShowCreditsAlert(false)} />
+					}
+
 					return (
 						<>
 							{title && (

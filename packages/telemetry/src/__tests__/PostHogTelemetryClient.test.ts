@@ -184,7 +184,7 @@ describe("PostHogTelemetryClient", () => {
 		})
 
 		it("should handle errors from provider gracefully", async () => {
-			const client = new PostHogTelemetryClient()
+			const client = new PostHogTelemetryClient(true)
 
 			const mockProvider: TelemetryPropertiesProvider = {
 				getTelemetryProperties: vi.fn().mockRejectedValue(new Error("Provider error")),

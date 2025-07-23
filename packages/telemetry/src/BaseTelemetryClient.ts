@@ -43,9 +43,12 @@ export abstract class BaseTelemetryClient implements TelemetryClient {
 				providerProperties = await provider.getTelemetryProperties()
 			} catch (error) {
 				// Log error but continue with capturing the event.
-				console.error(
-					`Error getting telemetry properties: ${error instanceof Error ? error.message : String(error)}`,
-				)
+				// Use debug-level logging to prevent console spam that could cause performance issues
+				if (this.debug) {
+					console.error(
+						`Error getting telemetry properties: ${error instanceof Error ? error.message : String(error)}`,
+					)
+				}
 			}
 		}
 

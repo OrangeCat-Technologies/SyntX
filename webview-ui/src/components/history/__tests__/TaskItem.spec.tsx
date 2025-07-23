@@ -9,6 +9,15 @@ vi.mock("@src/i18n/TranslationContext", () => ({
 	}),
 }))
 
+// Mock ExtensionStateContext
+vi.mock("@src/context/ExtensionStateContext", () => ({
+	useExtensionState: () => ({
+		apiConfiguration: {
+			apiProvider: "syntx",
+		},
+	}),
+}))
+
 const mockTask = {
 	id: "1",
 	number: 1,
@@ -37,7 +46,8 @@ describe("TaskItem", () => {
 		)
 
 		expect(screen.getByText("Test task")).toBeInTheDocument()
-		expect(screen.getByText("$0.00")).toBeInTheDocument() // Component shows $0.00 for small amounts
+		// For SyntX provider, cost information is hidden
+		expect(screen.queryByText("$0.00")).not.toBeInTheDocument()
 	})
 
 	it("handles selection in selection mode", () => {

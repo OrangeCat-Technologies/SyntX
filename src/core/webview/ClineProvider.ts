@@ -1951,6 +1951,15 @@ export class ClineProvider
 		await this.postStateToWebview(true) // Skip MDM redirect during auth flow
 
 		vscode.window.showInformationMessage("Successfully authenticated with SyntX website")
+
+		// Ensure provider profile is set to syntx after website login
+		const { apiConfiguration, currentApiConfigName } = await this.getState()
+		const newConfiguration = {
+			...apiConfiguration,
+			apiProvider: "syntx" as const,
+			syntxApiKey: apiKey,
+		}
+		await this.upsertProviderProfile(currentApiConfigName, newConfiguration)
 	}
 
 	async signOutWebsite() {

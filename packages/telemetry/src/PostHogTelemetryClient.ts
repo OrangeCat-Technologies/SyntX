@@ -54,11 +54,19 @@ export class PostHogTelemetryClient extends BaseTelemetryClient {
 			console.info(`[PostHogTelemetryClient#capture] ${event.event}`)
 		}
 
-		this.client.capture({
-			distinctId: this.distinctId,
-			event: event.event,
-			properties: await this.getEventProperties(event),
-		})
+		try {
+			this.client.capture({
+				distinctId: this.distinctId,
+				event: event.event,
+				properties: await this.getEventProperties(event),
+			})
+		} catch (error) {
+			// Silently handle telemetry errors to prevent infinite loops
+			// Especially important for schema validation errors that could cause cascading failures
+			if (this.debug) {
+				console.error(`[PostHogTelemetryClient#capture] Failed to capture event ${event.event}:`, error)
+			}
+		}
 	}
 
 	/**

@@ -1379,6 +1379,9 @@ export class Task extends EventEmitter<ClineEvents> {
 							cacheReadTokens += chunk.cacheReadTokens ?? 0
 							totalCost = chunk.totalCost
 							break
+						case "error":
+							await this.say("error", chunk.message)
+							return false
 						case "text": {
 							assistantMessage += chunk.text
 
