@@ -129,6 +129,9 @@
 		"description": "SyntX'nun onay gerektirmeden otomatik olarak işlemler gerçekleştirmesine izin verin. Bu ayarları yalnızca yapay zekaya tamamen güveniyorsanız ve ilgili güvenlik risklerini anlıyorsanız etkinleştirin.",
 		"toggleAriaLabel": "Otomatik onayı değiştir",
 		"disabledAriaLabel": "Otomatik onay devre dışı - önce seçenekleri belirleyin",
+		"warning": {
+			"disabled": "Otomatik onay devre dışı. Otomatik onay etkinleştirilene kadar bireysel ayarlar çalışmayacak. Etkinleştirmek için yukarıdaki \"Otomatik onay\" onay kutusuna tıklayın."
+		},
 		"readOnly": {
 			"label": "Okuma",
 			"description": "Etkinleştirildiğinde, SyntX otomatik olarak dizin içeriğini görüntüleyecek ve Onayla düğmesine tıklamanıza gerek kalmadan dosyaları okuyacaktır.",

@@ -129,6 +129,9 @@
 		"description": "允許 SyntX 無需核准即執行操作。僅在您完全信任 AI 並了解相關安全風險時啟用這些設定。",
 		"toggleAriaLabel": "切換自動核准",
 		"disabledAriaLabel": "自動核准已停用 - 請先選取選項",
+		"warning": {
+			"disabled": "自動核准已停用。在啟用自動核准之前，個別設定將無法運作。按一下上方「自動核准」複選框以啟用。"
+		},
 		"readOnly": {
 			"label": "讀取",
 			"description": "啟用後，SyntX 將自動檢視目錄內容並讀取檔案，無需點選核准按鈕。",

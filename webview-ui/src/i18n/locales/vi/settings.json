@@ -129,6 +129,9 @@
 		"description": "Cho phép SyntX tự động thực hiện các hoạt động mà không cần phê duyệt. Chỉ bật những cài đặt này nếu bạn hoàn toàn tin tưởng AI và hiểu rõ các rủi ro bảo mật liên quan.",
 		"toggleAriaLabel": "Chuyển đổi tự động phê duyệt",
 		"disabledAriaLabel": "Tự động phê duyệt bị vô hiệu hóa - hãy chọn các tùy chọn trước",
+		"warning": {
+			"disabled": "Tự động phê duyệt bị vô hiệu hóa. Các cài đặt riêng lẻ sẽ không hoạt động cho đến khi tự động phê duyệt được bật. Nhấp vào hộp kiểm ở trên \"Tự động phê duyệt\" để bật nó."
+		},
 		"readOnly": {
 			"label": "Đọc",
 			"description": "Khi được bật, SyntX sẽ tự động xem nội dung thư mục và đọc tệp mà không yêu cầu bạn nhấp vào nút Phê duyệt.",

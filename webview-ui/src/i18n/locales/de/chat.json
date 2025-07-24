@@ -101,6 +101,7 @@
 		}
 	},
 	"selectMode": "Interaktionsmodus auswählen",
+	"selectAgent": "Agent auswählen",
 	"selectApiConfig": "API-Konfiguration auswählen",
 	"enhancePrompt": "Prompt mit zusätzlichem Kontext verbessern",
 	"addImages": "Bilder zur Nachricht hinzufügen",

@@ -101,6 +101,7 @@
 		}
 	},
 	"selectMode": "Selecteer modus voor interactie",
+	"selectAgent": "Selecteer Agent",
 	"selectApiConfig": "Selecteer API-configuratie",
 	"enhancePrompt": "Prompt verbeteren met extra context",
 	"enhancePromptDescription": "De knop 'Prompt verbeteren' helpt je prompt te verbeteren door extra context, verduidelijking of herformulering te bieden. Probeer hier een prompt te typen en klik opnieuw op de knop om te zien hoe het werkt.",

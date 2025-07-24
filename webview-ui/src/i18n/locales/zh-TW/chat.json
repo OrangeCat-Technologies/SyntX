@@ -101,6 +101,7 @@
 		}
 	},
 	"selectMode": "選擇互動模式",
+	"selectAgent": "選擇代理",
 	"selectApiConfig": "選取 API 設定",
 	"enhancePrompt": "使用額外內容增強提示",
 	"addImages": "新增圖片到訊息中",

@@ -129,6 +129,9 @@
 		"description": "Erlaubt SyntX, Operationen automatisch ohne Genehmigung durchzuführen. Aktiviere diese Einstellungen nur, wenn du der KI vollständig vertraust und die damit verbundenen Sicherheitsrisiken verstehst.",
 		"toggleAriaLabel": "Automatische Genehmigung umschalten",
 		"disabledAriaLabel": "Automatische Genehmigung deaktiviert - zuerst Optionen auswählen",
+		"warning": {
+			"disabled": "Die automatische Genehmigung ist deaktiviert. Einzelne Einstellungen funktionieren erst, wenn die automatische Genehmigung aktiviert ist. Klicken Sie auf die Checkbox über \"Automatisch genehmigen\", um sie zu aktivieren."
+		},
 		"readOnly": {
 			"label": "Lesen",
 			"description": "Wenn aktiviert, wird SyntX automatisch Verzeichnisinhalte anzeigen und Dateien lesen, ohne dass du auf die Genehmigen-Schaltfläche klicken musst.",

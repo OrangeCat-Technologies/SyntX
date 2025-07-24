@@ -129,6 +129,9 @@
 		"description": "Pozwól SyntX na automatyczne wykonywanie operacji bez wymagania zatwierdzenia. Włącz te ustawienia tylko jeśli w pełni ufasz AI i rozumiesz związane z tym zagrożenia bezpieczeństwa.",
 		"toggleAriaLabel": "Przełącz automatyczne zatwierdzanie",
 		"disabledAriaLabel": "Automatyczne zatwierdzanie wyłączone - najpierw wybierz opcje",
+		"warning": {
+			"disabled": "Automatyczne zatwierdzanie jest wyłączone. Ustawienia indywidualne nie będą działać, dopóki automatyczne zatwierdzanie nie zostanie włączone. Kliknij pole wyboru powyżej \"Automatyczne zatwierdzanie\", aby je włączyć."
+		},
 		"readOnly": {
 			"label": "Odczyt",
 			"description": "Gdy włączone, SyntX automatycznie będzie wyświetlać zawartość katalogów i czytać pliki bez konieczności klikania przycisku Zatwierdź.",

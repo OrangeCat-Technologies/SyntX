@@ -101,6 +101,7 @@
 		}
 	},
 	"selectMode": "Sélectionner le mode d'interaction",
+	"selectAgent": "Sélectionner l'Agent",
 	"selectApiConfig": "Sélectionner la configuration de l'API",
 	"enhancePrompt": "Améliorer la requête avec un contexte supplémentaire",
 	"addImages": "Ajouter des images au message",

@@ -101,6 +101,7 @@
 		}
 	},
 	"selectMode": "Selecciona el mode d'interacció",
+	"selectAgent": "Selecciona Agent",
 	"selectApiConfig": "Seleccioneu la configuració de l'API",
 	"enhancePrompt": "Millora la sol·licitud amb context addicional",
 	"addImages": "Afegeix imatges al missatge",

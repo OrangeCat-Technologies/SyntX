@@ -101,6 +101,7 @@
 		}
 	},
 	"selectMode": "Etkileşim modunu seçin",
+	"selectAgent": "Aracı Seç",
 	"selectApiConfig": "API yapılandırmasını seçin",
 	"enhancePrompt": "Ek bağlamla istemi geliştir",
 	"addImages": "Mesaja resim ekle",

@@ -129,6 +129,9 @@
 		"description": "Sta SyntX toe om automatisch handelingen uit te voeren zonder goedkeuring. Schakel deze instellingen alleen in als je de AI volledig vertrouwt en de bijbehorende beveiligingsrisico's begrijpt.",
 		"toggleAriaLabel": "Automatisch goedkeuren in-/uitschakelen",
 		"disabledAriaLabel": "Automatisch goedkeuren uitgeschakeld - selecteer eerst opties",
+		"warning": {
+			"disabled": "Automatisch goedkeuren is uitgeschakeld. Individuele instellingen werken niet totdat automatisch goedkeuren is ingeschakeld. Klik op het selectievakje boven \"Automatisch goedkeuren\" om het in te schakelen."
+		},
 		"readOnly": {
 			"label": "Lezen",
 			"description": "Indien ingeschakeld, bekijkt SyntX automatisch de inhoud van mappen en leest bestanden zonder dat je op de Goedkeuren-knop hoeft te klikken.",
