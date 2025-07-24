@@ -1,28 +1,49 @@
 name: Publish Extension
 
 on:
-  pull_request:
-    types: [closed]
-  workflow_dispatch:
-
-env:
-  GIT_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || 'main' }}
+  push:
+    tags:
+      - 'v*'
 
 jobs:
-  publish-extension:
+  check-branch:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Required for pushing tags.
-    if: >
-        ( github.event_name == 'pull_request' &&
-        github.event.pull_request.base.ref == 'main' &&
-        contains(github.event.pull_request.title, 'Changeset version bump') ) ||
-        github.event_name == 'workflow_dispatch'
+    outputs:
+      is-main: ${{ steps.check.outputs.is-main }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ env.GIT_REF }}
+          fetch-depth: 0
+
+      - name: Check if tag is on main branch
+        id: check
+        run: |
+          # Ensure all branches are fetched
+          git fetch --all
+          
+          # Get the commit the tag points to
+          TAG_COMMIT=$(git rev-list -n 1 ${{ github.ref_name }})
+          echo "Tag commit: $TAG_COMMIT"
+          
+          # Check if this commit is in the main branch's history
+          if git merge-base --is-ancestor $TAG_COMMIT origin/main; then
+            echo "is-main=true" >> $GITHUB_OUTPUT
+            echo "✅ Tag is on main branch"
+          else
+            echo "is-main=false" >> $GITHUB_OUTPUT
+            echo "❌ Tag is NOT on main branch"
+          fi
+
+  publish-extension:
+    needs: check-branch
+    if: ${{ needs.check-branch.outputs.is-main == 'true' && (github.actor == 'Kraken2003' || github.actor == 'Prith870') }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Setup Node.js and pnpm
         uses: ./.github/actions/setup-node-pnpm
       - name: Configure Git
@@ -35,58 +56,12 @@ jobs:
         run: |
           current_package_version=$(node -p "require('./src/package.json').version")
           pnpm vsix
-
-          # Save VSIX contents to a temporary file to avoid broken pipe issues.
-          unzip -l bin/roo-cline-${current_package_version}.vsix > /tmp/roo-code-vsix-contents.txt
-
-          # Check for required files.
-          grep -q "extension/package.json" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q "extension/package.nls.json" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q "extension/dist/extension.js" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q "extension/webview-ui/audio/celebration.wav" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q "extension/webview-ui/build/assets/index.js" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q "extension/assets/codicons/codicon.ttf" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q "extension/assets/vscode-material-icons/icons/3d.svg" /tmp/roo-code-vsix-contents.txt || exit 1
-          grep -q ".env" /tmp/roo-code-vsix-contents.txt || exit 1
-          
-          # Clean up temporary file.
-          rm /tmp/roo-code-vsix-contents.txt
-      - name: Create and Push Git Tag
-        run: |
-          current_package_version=$(node -p "require('./src/package.json').version")
-          git tag -a "v${current_package_version}" -m "Release v${current_package_version}"
-          git push origin "v${current_package_version}" --no-verify
-          echo "Successfully created and pushed git tag v${current_package_version}"
+          echo "Successfully packaged syntx v${current_package_version}"
       - name: Publish Extension
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}
           OVSX_PAT: ${{ secrets.OVSX_PAT }}
         run: |
           current_package_version=$(node -p "require('./src/package.json').version")
-          pnpm --filter roo-cline publish:marketplace
-          echo "Successfully published version $current_package_version to VS Code Marketplace"
-      - name: Create GitHub Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          current_package_version=$(node -p "require('./src/package.json').version")
-
-          # Extract changelog for current version
-          echo "Extracting changelog for version ${current_package_version}"
-          changelog_content=$(sed -n "/## \\[${current_package_version}\\]/,/## \\[/p" CHANGELOG.md | sed '$d')
-
-          # If changelog extraction failed, use a default message
-          if [ -z "$changelog_content" ]; then
-            echo "Warning: No changelog section found for version ${current_package_version}"
-            changelog_content="Release v${current_package_version}"
-          else
-            echo "Found changelog section for version ${current_package_version}"
-          fi
-
-          # Create release with changelog content
-          gh release create "v${current_package_version}" \
-            --title "Release v${current_package_version}" \
-            --notes "$changelog_content" \
-            --target ${{ env.GIT_REF }} \
-            bin/roo-cline-${current_package_version}.vsix
-          echo "Successfully created GitHub Release v${current_package_version}"
+          pnpm --filter syntx publish:marketplace
+          echo "Successfully published syntx v${current_package_version} to VS Code Marketplace"

@@ -1,8 +1,8 @@
 # SyntX Changelog
 
-## [2.3.7] - XX-07-2025
+## [2.3.7] - 26-07-2025
 
-- Free usage for all users
+- Open Sourcing the SyntX Repo
 
 ## [2.3.6] - 15-07-2025
 

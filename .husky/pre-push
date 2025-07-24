@@ -1,3 +1,11 @@
+while read -r local_ref local_sha remote_ref remote_sha; do
+  echo "DEBUG: Pushing $local_ref to $remote_ref" >&2
+  if [[ "$remote_ref" == refs/tags/* ]]; then
+    echo "🏷️ Tag detected, skipping branch protection"
+    exit 0
+  fi
+done
+
 branch="$(git rev-parse --abbrev-ref HEAD)"
 
 if [ "$branch" = "main" ]; then
