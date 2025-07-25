@@ -144,7 +144,7 @@ describe("custom-instructions global .roo support", () => {
 
 			const result = await loadRuleFiles(mockCwd)
 
-			expect(result).toContain("# Rules from .roorules:")
+			expect(result).toContain("# Rules from .syntxrules:")
 			expect(result).toContain("legacy rule content")
 		})
 
@@ -170,14 +170,18 @@ describe("custom-instructions global .roo support", () => {
 		it("should load global and project mode-specific rules", async () => {
 			const mode = "code"
 
-			// Mock directory existence for mode-specific rules
+			// Mock directory existence for mode-specific rules - new priority order
 			mockStat
-				.mockResolvedValueOnce({ isDirectory: () => true } as any) // global rules-code dir exists
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .syntx/rules-code dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .syntx/rules-code dir doesn't exist
+				.mockResolvedValueOnce({ isDirectory: () => true } as any) // global .roo/rules-code dir exists
 				.mockResolvedValueOnce({ isFile: () => true } as any) // global mode file check
-				.mockResolvedValueOnce({ isDirectory: () => true } as any) // project rules-code dir exists
+				.mockResolvedValueOnce({ isDirectory: () => true } as any) // project .roo/rules-code dir exists
 				.mockResolvedValueOnce({ isFile: () => true } as any) // project mode file check
-				.mockRejectedValueOnce(new Error("ENOENT")) // global rules dir doesn't exist (for generic rules)
-				.mockRejectedValueOnce(new Error("ENOENT")) // project rules dir doesn't exist (for generic rules)
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .syntx/rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .syntx/rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .roo/rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .roo/rules dir doesn't exist
 
 			// Mock directory reading for mode-specific rules
 			mockReaddir
@@ -192,9 +196,10 @@ describe("custom-instructions global .roo support", () => {
 			mockReadFile
 				.mockResolvedValueOnce("global mode rule content")
 				.mockResolvedValueOnce("project mode rule content")
+				.mockResolvedValueOnce("") // syntx.md (empty)
+				.mockResolvedValueOnce("") // .syntxrules legacy file (empty)
 				.mockResolvedValueOnce("") // .roorules legacy file (empty)
 				.mockResolvedValueOnce("") // .clinerules legacy file (empty)
-				.mockResolvedValueOnce("") // .syntxrules legacy file (empty)
 
 			const result = await addCustomInstructions("", "", mockCwd, mode)
 
@@ -210,21 +215,26 @@ describe("custom-instructions global .roo support", () => {
 
 			// Mock directory existence - mode-specific dirs don't exist
 			mockStat
-				.mockRejectedValueOnce(new Error("ENOENT")) // global rules-code dir doesn't exist
-				.mockRejectedValueOnce(new Error("ENOENT")) // project rules-code dir doesn't exist
-				.mockRejectedValueOnce(new Error("ENOENT")) // global rules dir doesn't exist
-				.mockRejectedValueOnce(new Error("ENOENT")) // project rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .syntx/rules-code dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .syntx/rules-code dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .roo/rules-code dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .roo/rules-code dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .syntx/rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .syntx/rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // global .roo/rules dir doesn't exist
+				.mockRejectedValueOnce(new Error("ENOENT")) // project .roo/rules dir doesn't exist
 
-			// Mock legacy mode file reading
+			// Mock legacy mode file reading - new priority order
 			mockReadFile
-				.mockResolvedValueOnce("legacy mode rule content") // .roorules-code
+				.mockResolvedValueOnce("legacy mode rule content") // .syntxrules-code (found first)
+				.mockResolvedValueOnce("") // syntx.md (empty)
+				.mockResolvedValueOnce("") // generic .syntxrules (empty)
 				.mockResolvedValueOnce("") // generic .roorules (empty)
 				.mockResolvedValueOnce("") // generic .clinerules (empty)
-				.mockResolvedValueOnce("") // generic .syntxrules (empty)
 
 			const result = await addCustomInstructions("", "", mockCwd, mode)
 
-			expect(result).toContain("# Rules from .roorules-code:")
+			expect(result).toContain("# Rules from .syntxrules-code:")
 			expect(result).toContain("legacy mode rule content")
 		})
 	})

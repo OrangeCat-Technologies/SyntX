@@ -158,16 +158,51 @@ function formatDirectoryContent(dirPath: string, files: Array<{ filename: string
 }
 
 /**
- * Load rule files from global and project-local directories
- * Global rules are loaded first, then project-local rules which can override global ones
+ * Get ordered list of directories to check for rules (both .syntx and .roo)
+ * Returns array in priority order: [global .syntx, project .syntx, global .roo, project .roo]
+ */
+function getSyntxAndRooDirectoriesForCwd(cwd: string): Array<{ path: string; type: "syntx" | "roo" }> {
+	const directories: Array<{ path: string; type: "syntx" | "roo" }> = []
+	const homeDir = require("os").homedir()
+
+	// Add .syntx directories first (higher priority)
+	directories.push({ path: path.join(homeDir, ".syntx"), type: "syntx" })
+	directories.push({ path: path.join(cwd, ".syntx"), type: "syntx" })
+
+	// Add .roo directories for backwards compatibility (lower priority)
+	const rooDirectories = getRooDirectoriesForCwd(cwd)
+	for (const rooDir of rooDirectories) {
+		directories.push({ path: rooDir, type: "roo" })
+	}
+
+	return directories
+}
+
+/**
+ * Load syntx.md project guidance file
+ */
+async function loadSyntxMd(cwd: string): Promise<string> {
+	const syntxMdPath = path.join(cwd, "syntx.md")
+	const content = await safeReadFile(syntxMdPath)
+	if (content) {
+		return `\n# Project Guidance from syntx.md:\n${content}\n`
+	}
+	return ""
+}
+
+/**
+ * Load rule files from directories with new priority order:
+ * 1. .syntx/rules/ directories (highest priority)
+ * 2. .roo/rules/ directories (legacy, lower priority)
+ * 3. Legacy single files: .syntxrules > .roorules > .clinerules
  */
 export async function loadRuleFiles(cwd: string): Promise<string> {
 	const rules: string[] = []
-	const rooDirectories = getRooDirectoriesForCwd(cwd)
+	const directories = getSyntxAndRooDirectoriesForCwd(cwd)
 
-	// Check for .roo/rules/ directories in order (global first, then project-local)
-	for (const rooDir of rooDirectories) {
-		const rulesDir = path.join(rooDir, "rules")
+	// Check for rules/ directories in priority order
+	for (const { path: dirPath, type } of directories) {
+		const rulesDir = path.join(dirPath, "rules")
 		if (await directoryExists(rulesDir)) {
 			const files = await readTextFilesFromDirectory(rulesDir)
 			if (files.length > 0) {
@@ -177,13 +212,13 @@ export async function loadRuleFiles(cwd: string): Promise<string> {
 		}
 	}
 
-	// If we found rules in .roo/rules/ directories, return them
+	// If we found rules in directories, return them
 	if (rules.length > 0) {
 		return "\n" + rules.join("\n\n")
 	}
 
-	// Fall back to existing behavior for legacy .roorules/.clinerules files
-	const ruleFiles = [".roorules", ".clinerules", ".syntxrules"]
+	// Fall back to single rule files with new priority order
+	const ruleFiles = [".syntxrules", ".roorules", ".clinerules"]
 
 	for (const file of ruleFiles) {
 		const content = await safeReadFile(path.join(cwd, file))
@@ -210,11 +245,11 @@ export async function addCustomInstructions(
 
 	if (mode) {
 		const modeRules: string[] = []
-		const rooDirectories = getRooDirectoriesForCwd(cwd)
+		const directories = getSyntxAndRooDirectoriesForCwd(cwd)
 
-		// Check for .roo/rules-${mode}/ directories in order (global first, then project-local)
-		for (const rooDir of rooDirectories) {
-			const modeRulesDir = path.join(rooDir, `rules-${mode}`)
+		// Check for rules-${mode}/ directories in priority order (.syntx first, then .roo)
+		for (const { path: dirPath, type } of directories) {
+			const modeRulesDir = path.join(dirPath, `rules-${mode}`)
 			if (await directoryExists(modeRulesDir)) {
 				const files = await readTextFilesFromDirectory(modeRulesDir)
 				if (files.length > 0) {
@@ -224,21 +259,20 @@ export async function addCustomInstructions(
 			}
 		}
 
-		// If we found mode-specific rules in .roo/rules-${mode}/ directories, use them
+		// If we found mode-specific rules in directories, use them
 		if (modeRules.length > 0) {
 			modeRuleContent = "\n" + modeRules.join("\n\n")
 			usedRuleFile = `rules-${mode} directories`
 		} else {
-			// Fall back to existing behavior for legacy files
-			const rooModeRuleFile = `.roorules-${mode}`
-			modeRuleContent = await safeReadFile(path.join(cwd, rooModeRuleFile))
-			if (modeRuleContent) {
-				usedRuleFile = rooModeRuleFile
-			} else {
-				const clineModeRuleFile = `.clinerules-${mode}`
-				modeRuleContent = await safeReadFile(path.join(cwd, clineModeRuleFile))
-				if (modeRuleContent) {
-					usedRuleFile = clineModeRuleFile
+			// Fall back to single rule files with new priority order
+			const modeRuleFiles = [`.syntxrules-${mode}`, `.roorules-${mode}`, `.clinerules-${mode}`]
+
+			for (const ruleFile of modeRuleFiles) {
+				const content = await safeReadFile(path.join(cwd, ruleFile))
+				if (content) {
+					modeRuleContent = content
+					usedRuleFile = ruleFile
+					break
 				}
 			}
 		}
@@ -267,11 +301,20 @@ export async function addCustomInstructions(
 
 	// Add mode-specific rules first if they exist
 	if (modeRuleContent && modeRuleContent.trim()) {
-		if (usedRuleFile.includes(path.join(".roo", `rules-${mode}`))) {
+		if (
+			usedRuleFile.includes(path.join(".syntx", `rules-${mode}`)) ||
+			usedRuleFile.includes(path.join(".roo", `rules-${mode}`))
+		) {
 			rules.push(modeRuleContent.trim())
 		} else {
 			rules.push(`# Rules from ${usedRuleFile}:\n${modeRuleContent}`)
 		}
+	}
+
+	// Add project guidance from syntx.md
+	const syntxMdContent = await loadSyntxMd(cwd)
+	if (syntxMdContent && syntxMdContent.trim()) {
+		rules.push(syntxMdContent.trim())
 	}
 
 	if (options.rooIgnoreInstructions) {

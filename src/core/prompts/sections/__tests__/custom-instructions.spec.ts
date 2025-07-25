@@ -77,12 +77,12 @@ describe("loadRuleFiles", () => {
 	})
 
 	it("should read and trim file content", async () => {
-		// Simulate no .roo/rules directory
-		statMock.mockRejectedValueOnce({ code: "ENOENT" })
+		// Simulate no .syntx/rules and .roo/rules directories
+		statMock.mockRejectedValue({ code: "ENOENT" })
 		readFileMock.mockResolvedValue("  content with spaces  ")
 		const result = await loadRuleFiles("/fake/path")
 		expect(readFileMock).toHaveBeenCalled()
-		expect(result).toBe("\n# Rules from .roorules:\ncontent with spaces\n")
+		expect(result).toBe("\n# Rules from .syntxrules:\ncontent with spaces\n")
 	})
 
 	it("should handle ENOENT error", async () => {
@@ -502,7 +502,7 @@ describe("addCustomInstructions", () => {
 		expect(result).toContain("(es)") // Check for language code in parentheses
 		expect(result).toContain("Global Instructions:\nglobal instructions")
 		expect(result).toContain("Mode-specific Instructions:\nmode instructions")
-		expect(result).toContain("Rules from .roorules-test-mode:\nmode specific rules")
+		expect(result).toContain("Rules from .syntxrules-test-mode:\nmode specific rules")
 	})
 
 	it("should return empty string when no instructions provided", async () => {
@@ -832,7 +832,7 @@ describe("Directory existence checks", () => {
 		const result = await loadRuleFiles("/fake/path")
 
 		// Verify it fell back to reading rule files directly
-		expect(result).toBe("\n# Rules from .roorules:\nfallback content\n")
+		expect(result).toBe("\n# Rules from .syntxrules:\nfallback content\n")
 	})
 })
 
@@ -1045,6 +1045,6 @@ describe("Rules directory reading", () => {
 		readFileMock.mockResolvedValueOnce("fallback content")
 
 		const result = await loadRuleFiles("/fake/path")
-		expect(result).toBe("\n# Rules from .roorules:\nfallback content\n")
+		expect(result).toBe("\n# Rules from .syntxrules:\nfallback content\n")
 	})
 })

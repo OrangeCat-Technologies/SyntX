@@ -1,0 +1,89 @@
+# SyntX Rules Configuration
+
+# This is a sample .syntxrules file that demonstrates how to configure rules for your project.
+# Copy this file to .syntxrules in your project root and customize it for your needs.
+
+# === CODING STANDARDS ===
+
+Always use TypeScript instead of JavaScript for new files.
+
+Add JSDoc comments for all public functions and classes:
+```typescript
+/**
+ * Brief description of what the function does
+ * @param param1 - Description of parameter
+ * @returns Description of return value
+ */
+```
+
+Use async/await instead of .then() for promise handling.
+
+Follow consistent naming conventions:
+- Use camelCase for variables and functions
+- Use PascalCase for classes and types
+- Use UPPER_SNAKE_CASE for constants
+- Use kebab-case for file names
+
+# === PROJECT-SPECIFIC GUIDELINES ===
+
+Use the custom Button component from src/components/ui/ instead of creating new buttons.
+
+All API calls should go through the API client in src/lib/api.ts.
+
+Database queries must use the QueryBuilder class from src/lib/database.ts.
+
+API responses should follow the ApiResponse<T> interface defined in src/types/api.ts.
+
+# === TESTING REQUIREMENTS ===
+
+Write unit tests for all new functions using Jest.
+
+Integration tests should be placed in the __tests__ directory.
+
+Maintain test coverage above 80% for new code.
+
+Run tests before committing: npm test
+
+# === CODE QUALITY ===
+
+Run prettier before committing to ensure consistent formatting.
+
+Use ESLint rules and fix all warnings before submitting PRs.
+
+Avoid console.log in production code - use the logger from src/lib/logger.ts.
+
+# === ARCHITECTURAL PATTERNS ===
+
+Follow the existing folder structure:
+- src/components/ for React components
+- src/lib/ for utility functions and services  
+- src/types/ for TypeScript type definitions
+- src/hooks/ for custom React hooks
+
+Use React functional components with hooks instead of class components.
+
+Implement error boundaries for component error handling.
+
+# === SECURITY GUIDELINES ===
+
+Never commit secrets, API keys, or sensitive data to the repository.
+
+Sanitize all user inputs before processing.
+
+Use environment variables for configuration that varies between environments.
+
+# === PERFORMANCE CONSIDERATIONS ===
+
+Use React.memo() for components that receive stable props.
+
+Implement lazy loading for routes using React.lazy().
+
+Optimize images and use appropriate formats (WebP when possible).
+
+# === DEPLOYMENT NOTES ===
+
+Ensure all environment variables are configured in production.
+
+Run the build process and verify no errors before deploying.
+
+Update the CHANGELOG.md file for significant changes.

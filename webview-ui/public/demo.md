@@ -340,8 +340,319 @@ When providing feedback to SyntX:
 - Explain why certain approaches are preferred in your project
 - Share examples of the desired outcome when possible
 
+## 8. SyntX Rules System
+
+SyntX features a powerful rules system that allows you to customize how the AI behaves in your projects. Rules provide context about your coding standards, project architecture, and specific requirements, ensuring SyntX provides more relevant and consistent assistance.
+
+### Rule Types and Priority Order
+
+SyntX loads rules in the following priority order (highest to lowest):
+
+1. **`.syntx/rules/` directory files** - Organized rules for complex projects
+2. **`syntx.md`** - Project guidance and documentation
+3. **`.syntxrules`** - Simple rule file for quick setup
+
+### When to Use Each Rule Type
+
+#### 1. `.syntx/rules/` Directory - For Complex Projects
+
+**Best for:**
+
+- Large teams with multiple rule categories
+- Projects requiring organized rule structure
+- Need for modular rule management
+
+**Example structure:**
+
+```
+.syntx/rules/
+├── coding-standards.md
+├── api-guidelines.md
+├── testing-requirements.md
+└── deployment-rules.md
+```
+
+**Example content (`coding-standards.md`):**
+
+```markdown
+# Coding Standards
+
+## TypeScript Usage
+
+- Always use TypeScript for new files
+- Add strict type annotations for public APIs
+
+## Naming Conventions
+
+- Use camelCase for variables and functions
+- Use PascalCase for classes and components
+```
+
+#### 2. `syntx.md` - For Project Documentation
+
+**Best for:**
+
+- Comprehensive project context
+- Architecture explanations
+- Rich markdown formatting needs
+- Team onboarding documentation
+
+**Example content:**
+
+```markdown
+# Project Architecture
+
+This is a Next.js e-commerce platform built with:
+
+- **Frontend**: React with TypeScript
+- **Backend**: Node.js with Express
+- **Database**: PostgreSQL with Prisma ORM
+
+## Key Patterns
+
+### Component Structure
+
+All React components should use the following structure:
+
+- Functional components with TypeScript
+- Custom hooks for business logic
+- Styled with Tailwind CSS
+
+### API Integration
+
+- All API calls go through `src/lib/api.ts`
+- Use React Query for data fetching
+- Handle errors with the global error boundary
+
+## Database Schema
+
+[Include important schema information here]
+```
+
+#### 3. `.syntxrules` - For Simple Projects
+
+**Best for:**
+
+- Small to medium projects
+- Quick setup without directory structure
+- Simple, direct instructions
+
+**Example content:**
+
+```
+Use TypeScript everywhere
+Add JSDoc to all public functions
+Run prettier before commits
+Use the custom Button component from /components/ui/
+All API calls should use the fetchApi utility from /lib/api.ts
+Write tests for new features using Jest
+Maintain 80%+ test coverage
+```
+
+### Mode-Specific Rules
+
+You can create rules that only apply when using specific SyntX modes:
+
+#### File-based Mode Rules
+
+- `.syntxrules-architect` - Rules for Architect mode
+- `.syntxrules-debug` - Rules for Debug mode
+- `.syntxrules-code` - Rules for Code mode
+
+#### Directory-based Mode Rules
+
+```
+.syntx/rules-architect/
+├── system-design.md
+└── architecture-patterns.md
+
+.syntx/rules-debug/
+├── debugging-workflow.md
+└── troubleshooting-steps.md
+```
+
+**Example mode-specific rule (`.syntxrules-architect`):**
+
+```
+Focus on system design and architecture decisions
+Consider scalability and maintainability in all recommendations
+Suggest design patterns appropriate for the project scale
+Always include diagrams or visual representations when helpful
+```
+
+### Setting Up Rules for Your Project
+
+#### Quick Setup (Recommended for most projects)
+
+1. **Create a `.syntxrules` file in your project root:**
+
+```bash
+# Copy the sample file
+cp .syntxrules.sample .syntxrules
+
+# Edit to match your project
+code .syntxrules
+```
+
+2. **Add your project-specific rules:**
+
+```
+# Your coding standards
+Use TypeScript for all new files
+Follow the existing component structure in src/components/
+
+# Your project patterns
+Use the custom hooks from src/hooks/
+API calls should go through src/services/api.ts
+
+# Your testing requirements
+Write unit tests for all utilities
+Integration tests for API endpoints
+```
+
+#### Advanced Setup (For complex projects)
+
+1. **Create organized rule directories:**
+
+```bash
+mkdir -p .syntx/rules
+```
+
+2. **Create category-specific rule files:**
+
+```bash
+# Coding standards
+echo "# Coding Standards
+Use TypeScript everywhere
+Follow ESLint configuration" > .syntx/rules/coding-standards.md
+
+# API guidelines
+echo "# API Guidelines
+Use REST conventions
+Validate all inputs" > .syntx/rules/api-guidelines.md
+```
+
+3. **Add comprehensive project guidance:**
+
+```bash
+echo "# Project Architecture
+This project uses microservices..." > syntx.md
+```
+
+### Rule Best Practices
+
+#### Writing Effective Rules
+
+**Be Specific:**
+
+```
+❌ Use good practices
+✅ Use async/await instead of .then() for promises
+```
+
+**Provide Context:**
+
+```
+❌ Use the Button component
+✅ Use the custom Button component from src/components/ui/ instead of creating new buttons
+```
+
+**Include Examples:**
+
+```
+Add JSDoc comments for all public functions:
+/**
+ * Calculates the total price including tax
+ * @param price - Base price before tax
+ * @param taxRate - Tax rate as decimal (e.g., 0.08 for 8%)
+ * @returns Total price including tax
+ */
+```
+
+#### Organizing Rules
+
+**For Small Projects:**
+
+- Use `.syntxrules` for everything
+- Keep rules concise and actionable
+
+**For Medium Projects:**
+
+- Use `.syntxrules` for core standards
+- Use `syntx.md` for architecture context
+
+**For Large Projects:**
+
+- Use `.syntx/rules/` directory structure
+- Separate concerns (coding, testing, deployment)
+- Use `syntx.md` for comprehensive documentation
+
+### Common Rule Categories
+
+#### Coding Standards
+
+```
+Use TypeScript for all new files
+Follow consistent naming conventions
+Use ESLint and Prettier configurations
+Add JSDoc comments for public APIs
+```
+
+#### Project Architecture
+
+```
+Follow the existing folder structure
+Use React functional components with hooks
+Implement error boundaries for component error handling
+Use the established state management pattern
+```
+
+#### Testing Requirements
+
+```
+Write unit tests for all utilities using Jest
+Maintain test coverage above 80%
+Use integration tests for API endpoints
+Run tests before committing changes
+```
+
+#### Security Guidelines
+
+```
+Never commit secrets or API keys
+Sanitize all user inputs
+Use environment variables for configuration
+Validate data at API boundaries
+```
+
+### Troubleshooting Rules
+
+#### Rules Not Being Applied
+
+1. **Check file location** - Rules must be in project root
+2. **Verify file naming** - Use exact names (`.syntxrules`, not `.syntx-rules`)
+3. **Check file permissions** - Ensure SyntX can read the files
+
+#### Rules Conflicting
+
+- Higher priority rules override lower priority ones
+- Mode-specific rules take precedence over general rules
+- Use the priority order to resolve conflicts
+
+#### Testing Your Rules
+
+Ask SyntX to explain how it would approach a task:
+
+```
+User: "How should I create a new React component for this project?"
+
+SyntX: "Based on your project rules, I'll create a TypeScript functional component using your established patterns..."
+```
+
 ## Conclusion
 
-SyntX is a powerful AI assistant designed to enhance your development workflow. By understanding its capabilities and how to effectively communicate with it, you can leverage SyntX to increase your productivity, improve code quality, and tackle complex development challenges.
+SyntX is a powerful AI assistant designed to enhance your development workflow. By understanding its capabilities, modes, and rules system, you can leverage SyntX to increase your productivity, improve code quality, and tackle complex development challenges.
+
+The rules system ensures that SyntX understands your project's specific requirements and coding standards, providing more relevant and consistent assistance. Start with simple `.syntxrules` files and gradually expand to more sophisticated rule structures as your projects grow in complexity.
 
 Remember that SyntX is continuously learning and improving based on your interactions, so don't hesitate to provide feedback and explore new ways to incorporate it into your development process.
