@@ -8,6 +8,7 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+    # Skip notifications for automated changeset release PRs
     if: github.head_ref != 'changeset-release/main'
     steps:
       - name: Send Discord Notification
@@ -17,8 +18,7 @@ jobs:
             --arg url "${{ github.event.pull_request.html_url }}" \
             --arg author "${{ github.event.pull_request.user.login }}" \
             '{
-              content: ("🚀 **New PR:** " + $title + "\n🔗 <" + $url + ">\n👤 **Author:** " + $author),
-              thread_name: ($title + " by " + $author)
+              content: ("🚀 **New PR:** " + $title + "\n🔗 <" + $url + ">\n👤 **Author:** " + $author)
             }')
 
           curl -X POST "${{ secrets.DISCORD_WEBHOOK }}" \
