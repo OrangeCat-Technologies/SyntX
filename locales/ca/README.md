@@ -12,25 +12,25 @@
 </div>
 <br>
 <div align="center">
-  <h2>Uniu-vos a la Comunitat Syntx</h2>
+  <h1>Syntx</h1>
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Prith870/ASSETS/refs/heads/main/syntx.png" width="10%" />
+  </p>
   <p>Connecteu-vos amb desenvolupadors, contribuïu amb idees i manteniu-vos al dia amb les últimes eines de programació amb IA.</p>
   
   <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Uniu%2Dvos%20a%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Uniu-vos a Discord"></a>
   
 </div>
+<hr>
+<br>
 <br>
 <br>
 
 <div align="center">
-<h1>Syntx (abans Lagrange)</h1>
-<p align="center">
-<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
-</p>
 
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Descarregueu%20al%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Descarregueu al VS Marketplace"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=OrangecatTechPvtLtd.syntx" target="_blank"><img src="https://img.shields.io/badge/Descarregueu%20al%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Descarregueu al VS Marketplace"></a>
 <a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Sol·licituds%20de%20funcions-yellow?style=for-the-badge" alt="Sol·licituds de funcions"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Valoreu%20%26%20Reviseu-green?style=for-the-badge" alt="Valoreu & Reviseu"></a>
-<a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Documentació-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentació"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=OrangeCat-Technologies.syntx&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Valoreu%20%26%20Reviseu-green?style=for-the-badge" alt="Valoreu & Reviseu"></a>
 
 </div>
 
@@ -131,33 +131,56 @@ git clone https://github.com/OrangeCat-Technologies/SyntX.git
 2. **Instal·leu les dependències**:
 
 ```sh
-npm run install:all
+pnpm install
 ```
 
-3. **Inicieu la vista web (aplicació Vite/React amb HMR)**:
+3. **Executeu l'extensió**:
+
+Hi ha diverses maneres d'executar l'extensió Syntx:
+
+### Mode de Desenvolupament (F5)
+
+Per al desenvolupament actiu, utilitzeu la depuració integrada de VSCode:
+
+Premeu `F5` (o aneu a **Execució** → **Inicia la Depuració**) a VSCode. Això obrirà una nova finestra de VSCode amb l'extensió Syntx executant-se.
+
+- Els canvis a la vista web apareixeran immediatament.
+- Els canvis a l'extensió principal també es recarregaran automàticament.
+
+### Instal·lació Automatitzada VSIX
+
+Per construir i instal·lar l'extensió com a paquet VSIX directament a VSCode:
 
 ```sh
-npm run dev
+pnpm install:vsix [-y] [--editor=<command>]
 ```
 
-4. **Depuració**:
-   Premeu `F5` (o **Execució** → **Inicia la depuració**) a VSCode per obrir una nova sessió amb Syntx carregat.
+Aquesta comanda:
 
-Els canvis a la vista web apareixeran immediatament. Els canvis a l'extensió principal requeriran reiniciar l'amfitrió de l'extensió.
+- Preguntarà quin comandament d'editor utilitzar (code/cursor/code-insiders) - per defecte 'code'
+- Desinstal·larà qualsevol versió existent de l'extensió.
+- Construirà el paquet VSIX més recent.
+- Instal·larà el VSIX acabat de construir.
+- Us demanarà que reinicieu VS Code perquè els canvis tinguin efecte.
 
-Alternativament, podeu crear un .vsix i instal·lar-lo directament a VSCode:
+Opcions:
 
-```sh
-npm run build
-```
+- `-y`: Omet totes les confirmacions i utilitza els valors per defecte
+- `--editor=<command>`: Especifica el comandament de l'editor (p. ex., `--editor=cursor` o `--editor=code-insiders`)
 
-Apareixerà un fitxer `.vsix` al directori `bin/` que es pot instal·lar amb:
+### Instal·lació Manual VSIX
 
-```sh
-code --install-extension bin/roo-cline-<version>.vsix
-```
+Si preferiu instal·lar el paquet VSIX manualment:
 
-Utilitzem [changesets](https://github.com/changesets/changesets) per a la gestió de versions i publicació. Consulteu el nostre `CHANGELOG.md` per a notes de llançament.
+1.  Primer, construïu el paquet VSIX:
+    ```sh
+    pnpm vsix
+    ```
+2.  Es generarà un fitxer `.vsix` al directori `bin/` (p. ex., `bin/syntx-<version>.vsix`).
+3.  Instal·leu-lo manualment utilitzant la CLI de VSCode:
+    ```sh
+    code --install-extension bin/syntx-<version>.vsix
+    ```
 
 ---
 
@@ -183,7 +206,7 @@ Gràcies a tots els nostres col·laboradors que han ajudat a millorar Syntx!
 
 ## Llicència
 
-[Apache 2.0 © 2025 Syntx, Inc.](../LICENSE)
+[Apache 2.0 © 2025 OrangeCat Technologies Pvt Ltd.](./LICENSE)
 
 ---
 

@@ -12,24 +12,25 @@
 </div>
 <br>
 <div align="center">
-  <h2>Dołącz do społeczności Syntx</h2>
+  <h1>Syntx</h1>
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Prith870/ASSETS/refs/heads/main/syntx.png" width="10%" />
+  </p>
   <p>Połącz się z programistami, wnieś swoje pomysły i bądź na bieżąco z najnowszymi narzędziami do kodowania opartymi na AI.</p>
   
   <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Dołącz%20do%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Dołącz do Discord"></a>
   
 </div>
+<hr>
+<br>
 <br>
 <br>
 
 <div align="center">
-<h1>Syntx (wcześniej Lagrange)</h1>
-<p align="center">
-<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
-</p>
 
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/Pobierz%20z%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Pobierz z VS Marketplace"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=OrangecatTechPvtLtd.syntx" target="_blank"><img src="https://img.shields.io/badge/Pobierz%20z%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Pobierz z VS Marketplace"></a>
 <a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Prośby%20o%20funkcje-yellow?style=for-the-badge" alt="Prośby o funkcje"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Oceń%20%26%20Zrecenzuj-green?style=for-the-badge" alt="Oceń & Zrecenzuj"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=OrangecatTechPvtLtd.syntx&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Oceń%20%26%20Zrecenzuj-green?style=for-the-badge" alt="Oceń & Zrecenzuj"></a>
 <a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Dokumentacja-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Dokumentacja"></a>
 
 </div>
@@ -131,7 +132,7 @@ git clone https://github.com/OrangeCat-Technologies/SyntX.git
 2. **Zainstaluj zależności**:
 
 ```sh
-npm run install:all
+pnpm install
 ```
 
 3. **Uruchom webview (aplikację Vite/React z HMR)**:
@@ -183,7 +184,7 @@ Dziękujemy wszystkim naszym współtwórcom, którzy pomogli ulepszyć Syntx!
 
 ## Licencja
 
-[Apache 2.0 © 2025 Syntx, Inc.](../LICENSE)
+[Apache 2.0 © 2025 OrangeCat Technologies Pvt Ltd.](./LICENSE)
 
 ---
 

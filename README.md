@@ -44,17 +44,6 @@ Whether you’re seeking a flexible coding partner, a system architect, or speci
 
 Check out the [CHANGELOG](CHANGELOG.md) for detailed updates and fixes.
 
----
-
-## 🎉 Syntx 3.23 Released
-
-Syntx 3.23 brings powerful new features and significant improvements to enhance your development workflow!
-
-- **Codebase Indexing Graduated from Experimental** - Full codebase indexing is now stable and ready for production use with improved search and context understanding.
-- **New Todo List Feature** - Keep your tasks on track with integrated todo management that helps you stay organized and focused on your development goals.
-
----
-
 ## What Can Syntx Do?
 
 - 🚀 **Generate Code** from natural language descriptions
@@ -164,12 +153,6 @@ If you prefer to install the VSIX package manually:
     code --install-extension bin/syntx-<version>.vsix
     ```
 
----
-
-We use [changesets](https://github.com/changesets/changesets) for versioning and publishing. Check our `CHANGELOG.md` for release notes.
-
----
-
 ## Disclaimer
 
 **Please note** that Syntx, Inc does **not** make any representations or warranties regarding any code, models, or other tools provided or made available in connection with Syntx, any associated third-party tools, or any resulting outputs. You assume **all risks** associated with the use of any such tools or outputs; such tools are provided on an **"AS IS"** and **"AS AVAILABLE"** basis. Such risks may include, without limitation, intellectual property infringement, cyber vulnerabilities or attacks, bias, inaccuracies, errors, defects, viruses, downtime, property loss or damage, and/or personal injury. You are solely responsible for your use of any such tools or outputs (including, without limitation, the legality, appropriateness, and results thereof).
@@ -180,19 +163,9 @@ We use [changesets](https://github.com/changesets/changesets) for versioning and
 
 We love community contributions! Get started by reading our [CONTRIBUTING.md](CONTRIBUTING.md).
 
----
-
-## Contributors
-
-Thanks to all our contributors who have helped make Syntx better!
-
-<!-- START CONTRIBUTORS SECTION - AUTO-GENERATED, DO NOT EDIT MANUALLY -->
-
-<!-- END CONTRIBUTORS SECTION -->
-
 ## License
 
-[Apache 2.0 © 2025 Syntx, Inc.](./LICENSE)
+[Apache 2.0 © 2025 OrangeCat Technologies Pvt Ltd.](./LICENSE)
 
 ---
 

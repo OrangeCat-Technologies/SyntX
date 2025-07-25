@@ -131,33 +131,56 @@ git clone https://github.com/OrangeCat-Technologies/SyntX.git
 2. **依存関係をインストール**：
 
 ```sh
-npm run install:all
+pnpm install
 ```
 
-3. **ウェブビュー（Vite/ReactアプリとHMR）を起動**：
+3. **拡張機能を実行**：
+
+Syntx拡張機能を実行する方法はいくつかあります：
+
+### 開発モード（F5）
+
+アクティブな開発のため、VSCodeの組み込みデバッグを使用しましょう：
+
+VSCodeで`F5`キーを押す（または**実行** → **デバッグの開始**に移動）します。これによりSyntx拡張機能が実行された新しいVSCodeウィンドウが開きます。
+
+- ウェブビューの変更は即座に表示されます。
+- コア拡張機能の変更も自動的にホットリロードされます。
+
+### 自動VSIXインストール
+
+拡張機能をVSIXパッケージとしてビルドし、VSCodeに直接インストールするには：
 
 ```sh
-npm run dev
+pnpm install:vsix [-y] [--editor=<command>]
 ```
 
-4. **デバッグ**：
-   VSCodeで`F5`（または**実行**→**デバッグの開始**）を押すと、Syntxがロードされた新しいセッションが開きます。
+このコマンドは：
 
-ウェブビューへの変更はすぐに表示されます。コア拡張機能への変更には拡張機能ホストの再起動が必要です。
+- 使用するエディターコマンドを訊ねます（code/cursor/code-insiders） - デフォルトは'code'
+- 拡張機能の既存バージョンをアンインストールします。
+- 最新のVSIXパッケージをビルドします。
+- 新しくビルドされたVSIXをインストールします。
+- 変更を有効にするためVS Codeの再起動を促します。
 
-あるいは、.vsixファイルをビルドしてVSCodeに直接インストールすることもできます：
+オプション：
 
-```sh
-npm run build
-```
+- `-y`：すべての確認をスキップしてデフォルトを使用
+- `--editor=<command>`：エディターコマンドを指定（例：`--editor=cursor`または`--editor=code-insiders`）
 
-`bin/`ディレクトリに`.vsix`ファイルが作成され、次のコマンドでインストールできます：
+### 手動VSIXインストール
 
-```sh
-code --install-extension bin/roo-cline-<version>.vsix
-```
+VSIXパッケージを手動でインストールすることを好む場合：
 
-バージョン管理と公開には[changesets](https://github.com/changesets/changesets)を使用しています。リリースノートについては`CHANGELOG.md`をご確認ください。
+1.  まず、VSIXパッケージをビルドします：
+    ```sh
+    pnpm vsix
+    ```
+2.  `bin/`ディレクトリに`.vsix`ファイルが生成されます（例：`bin/syntx-<version>.vsix`）。
+3.  VSCode CLIを使用して手動でインストールします：
+    ```sh
+    code --install-extension bin/syntx-<version>.vsix
+    ```
 
 ---
 
@@ -183,7 +206,7 @@ Syntxの改善に貢献してくれたすべての貢献者に感謝します！
 
 ## ライセンス
 
-[Apache 2.0 © 2025 Syntx, Inc.](../LICENSE)
+[Apache 2.0 © 2025 OrangeCat Technologies Pvt Ltd.](./LICENSE)
 
 ---
 

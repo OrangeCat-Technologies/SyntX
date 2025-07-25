@@ -12,25 +12,25 @@
 </div>
 <br>
 <div align="center">
-  <h2>Rejoignez la communauté Syntx</h2>
+  <h1>Syntx</h1>
+  <p align="center">
+  <img src="https://raw.githubusercontent.com/Prith870/ASSETS/refs/heads/main/syntx.png" width="10%" />
+  </p>
   <p>Connectez-vous avec des développeurs, contribuez avec vos idées et restez à jour avec les derniers outils de programmation propulsés par l'IA.</p>
   
   <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Rejoindre%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Rejoindre Discord"></a>
   
 </div>
+<hr>
+<br>
 <br>
 <br>
 
 <div align="center">
-<h1>Syntx (anciennement Lagrange)</h1>
-<p align="center">
-<img src="https://media.githubusercontent.com/media/OrangeCat-Technologies/SyntX/main/src/assets/docs/demo.gif" width="100%" />
-</p>
 
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline" target="_blank"><img src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger%20sur%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Télécharger sur VS Marketplace"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=OrangecatTechPvtLtd.syntx" target="_blank"><img src="https://img.shields.io/badge/T%C3%A9l%C3%A9charger%20sur%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Télécharger sur VS Marketplace"></a>
 <a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Demandes%20de%20fonctionnalit%C3%A9s-yellow?style=for-the-badge" alt="Demandes de fonctionnalités"></a>
-<a href="https://marketplace.visualstudio.com/items?itemName=RooVeterinaryInc.roo-cline&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/%C3%89valuer%20%26%20Commenter-green?style=for-the-badge" alt="Évaluer & Commenter"></a>
-<a href="https://docs.roocode.com" target="_blank"><img src="https://img.shields.io/badge/Documentation-6B46C1?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Documentation"></a>
+<a href="https://marketplace.visualstudio.com/items?itemName=OrangeCat-Technologies.syntx&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/%C3%89valuer%20%26%20Commenter-green?style=for-the-badge" alt="Évaluer & Commenter"></a>
 
 </div>
 
@@ -131,33 +131,56 @@ git clone https://github.com/OrangeCat-Technologies/SyntX.git
 2. **Installez les dépendances** :
 
 ```sh
-npm run install:all
+pnpm install
 ```
 
-3. **Démarrez la vue web (application Vite/React avec HMR)** :
+3. **Exécutez l'extension** :
+
+Il y a plusieurs manières d'exécuter l'extension Syntx :
+
+### Mode de Développement (F5)
+
+Pour le développement actif, utilisez le débogage intégré de VSCode :
+
+Appuyez sur `F5` (ou allez à **Exécuter** → **Démarrer le Débogage**) dans VSCode. Cela ouvrira une nouvelle fenêtre VSCode avec l'extension Syntx en cours d'exécution.
+
+- Les modifications de la webview apparaîtront immédiatement.
+- Les modifications de l'extension centrale se rechargent également automatiquement.
+
+### Installation VSIX Automatisée
+
+Pour construire et installer l'extension en tant que package VSIX directement dans VSCode :
 
 ```sh
-npm run dev
+pnpm install:vsix [-y] [--editor=<command>]
 ```
 
-4. **Débogage** :
-   Appuyez sur `F5` (ou **Exécuter** → **Démarrer le débogage**) dans VSCode pour ouvrir une nouvelle session avec Syntx chargé.
+Cette commande va :
 
-Les modifications apportées à la vue web apparaîtront immédiatement. Les modifications apportées à l'extension principale nécessiteront un redémarrage de l'hôte d'extension.
+- Demander quelle commande d'éditeur utiliser (code/cursor/code-insiders) - par défaut 'code'
+- Désinstaller toute version existante de l'extension.
+- Construire le dernier package VSIX.
+- Installer le VSIX nouvellement construit.
+- Vous demander de redémarrer VS Code pour que les changements prennent effet.
 
-Vous pouvez également créer un fichier .vsix et l'installer directement dans VSCode :
+Options :
 
-```sh
-npm run build
-```
+- `-y` : Ignorer toutes les confirmations et utiliser les valeurs par défaut
+- `--editor=<command>` : Spécifier la commande de l'éditeur (ex. `--editor=cursor` ou `--editor=code-insiders`)
 
-Un fichier `.vsix` apparaîtra dans le répertoire `bin/` qui peut être installé avec :
+### Installation VSIX Manuelle
 
-```sh
-code --install-extension bin/roo-cline-<version>.vsix
-```
+Si vous préférez installer le package VSIX manuellement :
 
-Nous utilisons [changesets](https://github.com/changesets/changesets) pour le versionnement et la publication. Consultez notre `CHANGELOG.md` pour les notes de version.
+1.  D'abord, construisez le package VSIX :
+    ```sh
+    pnpm vsix
+    ```
+2.  Un fichier `.vsix` sera généré dans le répertoire `bin/` (ex. `bin/syntx-<version>.vsix`).
+3.  Installez-le manuellement en utilisant la CLI VSCode :
+    ```sh
+    code --install-extension bin/syntx-<version>.vsix
+    ```
 
 ---
 
@@ -183,7 +206,7 @@ Merci à tous nos contributeurs qui ont aidé à améliorer Syntx !
 
 ## Licence
 
-[Apache 2.0 © 2025 Syntx, Inc.](../LICENSE)
+[Apache 2.0 © 2025 OrangeCat Technologies Pvt Ltd.](./LICENSE)
 
 ---
 
