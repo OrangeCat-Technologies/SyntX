@@ -48,17 +48,6 @@ Of je nu op zoek bent naar een flexibele codeerpartner, een systeemarchitect, of
 
 Bekijk de [CHANGELOG](../../CHANGELOG.md) voor gedetailleerde updates en fixes.
 
----
-
-## 🎉 Syntx 3.23 Uitgebracht
-
-Syntx 3.23 brengt krachtige nieuwe functies en significante verbeteringen om je ontwikkelingsworkflow te verbeteren!
-
-- **Codebase indexering afgestudeerd van experimenteel** - Volledige codebase indexering is nu stabiel en klaar voor productiegebruik met verbeterde zoekfunctionaliteit en contextbegrip.
-- **Nieuwe todo-lijst functie** - Houd je taken op koers met geïntegreerd taakbeheer dat je helpt georganiseerd te blijven en gefocust op je ontwikkelingsdoelen.
-
----
-
 ## Wat kan Syntx?
 
 - 🚀 **Genereer code** vanuit natuurlijke taalbeschrijvingen
@@ -164,7 +153,7 @@ We gebruiken [changesets](https://github.com/changesets/changesets) voor versieb
 
 ## Disclaimer
 
-**Let op**: Syntx, Inc geeft **geen** garanties of waarborgen met betrekking tot enige code, modellen of andere tools die worden geleverd of beschikbaar worden gesteld in verband met Syntx, bijbehorende tools van derden, of enige resulterende output. Je neemt **alle risico's** die gepaard gaan met het gebruik van dergelijke tools of output; deze tools worden geleverd op een **"AS IS"** en **"AS AVAILABLE"** basis. Risico's kunnen onder meer zijn: inbreuk op intellectueel eigendom, cyberkwetsbaarheden of -aanvallen, vooringenomenheid, onnauwkeurigheden, fouten, defecten, virussen, uitval, verlies of schade aan eigendommen en/of persoonlijk letsel. Je bent zelf volledig verantwoordelijk voor het gebruik van dergelijke tools of output (inclusief, maar niet beperkt tot, de legaliteit, geschiktheid en resultaten daarvan).
+**Let op**: Orangecat Technologies Pvt Ltd geeft **geen** garanties of waarborgen met betrekking tot enige code, modellen of andere tools die worden geleverd of beschikbaar worden gesteld in verband met Syntx, bijbehorende tools van derden, of enige resulterende output. Je neemt **alle risico's** die gepaard gaan met het gebruik van dergelijke tools of output; deze tools worden geleverd op een **"AS IS"** en **"AS AVAILABLE"** basis. Risico's kunnen onder meer zijn: inbreuk op intellectueel eigendom, cyberkwetsbaarheden of -aanvallen, vooringenomenheid, onnauwkeurigheden, fouten, defecten, virussen, uitval, verlies of schade aan eigendommen en/of persoonlijk letsel. Je bent zelf volledig verantwoordelijk voor het gebruik van dergelijke tools of output (inclusief, maar niet beperkt tot, de legaliteit, geschiktheid en resultaten daarvan).
 
 ---
 

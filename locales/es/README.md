@@ -47,17 +47,6 @@ Ya sea que busques un socio de programación flexible, un arquitecto de sistemas
 
 Consulta el [CHANGELOG](../../CHANGELOG.md) para ver actualizaciones detalladas y correcciones.
 
----
-
-## 🎉 Syntx 3.23 Lanzado
-
-¡Syntx 3.23 trae nuevas funcionalidades poderosas y mejoras significativas para mejorar tu flujo de trabajo de desarrollo!
-
-- **Indexación de base de código graduada de experimental** - La indexación completa de la base de código ahora es estable y está lista para uso en producción con búsqueda mejorada y comprensión del contexto.
-- **Nueva funcionalidad de lista de tareas** - Mantén tus tareas en el buen camino con gestión integrada de tareas que te ayuda a mantenerte organizado y enfocado en tus objetivos de desarrollo.
-
----
-
 ## ¿Qué puede hacer Syntx?
 
 - 🚀 **Generar código** a partir de descripciones en lenguaje natural
@@ -186,7 +175,7 @@ Si prefieres instalar el paquete VSIX manualmente:
 
 ## Aviso legal
 
-**Ten en cuenta** que Syntx, Inc **no** hace ninguna representación o garantía con respecto a cualquier código, modelo u otras herramientas proporcionadas o puestas a disposición en relación con Syntx, cualquier herramienta de terceros asociada, o cualquier resultado. Asumes **todos los riesgos** asociados con el uso de dichas herramientas o resultados; tales herramientas se proporcionan "**TAL CUAL**" y "**SEGÚN DISPONIBILIDAD**". Dichos riesgos pueden incluir, sin limitación, infracciones de propiedad intelectual, vulnerabilidades o ataques cibernéticos, sesgo, imprecisiones, errores, defectos, virus, tiempo de inactividad, pérdida o daño de propiedad y/o lesiones personales. Eres el único responsable de tu uso de dichas herramientas o resultados (incluidas, entre otras, la legalidad, idoneidad y resultados de los mismos).
+**Ten en cuenta** que Orangecat Technologies Pvt Ltd **no** hace ninguna representación o garantía con respecto a cualquier código, modelo u otras herramientas proporcionadas o puestas a disposición en relación con Syntx, cualquier herramienta de terceros asociada, o cualquier resultado. Asumes **todos los riesgos** asociados con el uso de dichas herramientas o resultados; tales herramientas se proporcionan "**TAL CUAL**" y "**SEGÚN DISPONIBILIDAD**". Dichos riesgos pueden incluir, sin limitación, infracciones de propiedad intelectual, vulnerabilidades o ataques cibernéticos, sesgo, imprecisiones, errores, defectos, virus, tiempo de inactividad, pérdida o daño de propiedad y/o lesiones personales. Eres el único responsable de tu uso de dichas herramientas o resultados (incluidas, entre otras, la legalidad, idoneidad y resultados de los mismos).
 
 ---
 

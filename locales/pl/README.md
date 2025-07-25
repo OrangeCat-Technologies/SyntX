@@ -48,17 +48,6 @@ Niezależnie od tego, czy szukasz elastycznego partnera do kodowania, architekta
 
 Sprawdź [CHANGELOG](../../CHANGELOG.md), aby uzyskać szczegółowe informacje o aktualizacjach i poprawkach.
 
----
-
-## 🎉 Syntx 3.23 został wydany
-
-Syntx 3.23 wprowadza potężne nowe funkcje i znaczące usprawnienia, aby ulepszyć Twój przepływ pracy deweloperskiej!
-
-- **Indeksowanie bazy kodu ukończone z eksperymentalnego** - Pełne indeksowanie bazy kodu jest teraz stabilne i gotowe do użytku produkcyjnego z ulepszonymi wyszukiwaniem i rozumieniem kontekstu.
-- **Nowa funkcja listy zadań** - Utrzymuj swoje zadania na właściwym torze dzięki zintegrowanemu zarządzaniu zadaniami, które pomaga ci pozostać zorganizowanym i skupionym na celach deweloperskich.
-
----
-
 ## Co potrafi Syntx?
 
 - 🚀 **Generować kod** na podstawie opisów w języku naturalnym
@@ -164,7 +153,7 @@ Używamy [changesets](https://github.com/changesets/changesets) do wersjonowania
 
 ## Zastrzeżenie
 
-**Uwaga** Syntx, Inc **nie** składa żadnych oświadczeń ani gwarancji dotyczących jakiegokolwiek kodu, modeli lub innych narzędzi dostarczonych lub udostępnionych w związku z Syntx, jakichkolwiek powiązanych narzędzi stron trzecich lub jakichkolwiek wynikowych danych wyjściowych. Przyjmujesz na siebie **wszystkie ryzyka** związane z użytkowaniem takich narzędzi lub danych wyjściowych; takie narzędzia są dostarczane na zasadzie **"TAK JAK JEST"** i **"WEDŁUG DOSTĘPNOŚCI"**. Takie ryzyka mogą obejmować, bez ograniczeń, naruszenie własności intelektualnej, luki w zabezpieczeniach cybernetycznych lub ataki, uprzedzenia, niedokładności, błędy, wady, wirusy, przestoje, utratę lub uszkodzenie mienia i/lub obrażenia ciała. Ponosisz wyłączną odpowiedzialność za korzystanie z takich narzędzi lub danych wyjściowych (w tym, bez ograniczeń, ich legalność, stosowność i wyniki).
+**Uwaga** Orangecat Technologies Pvt Ltd **nie** składa żadnych oświadczeń ani gwarancji dotyczących jakiegokolwiek kodu, modeli lub innych narzędzi dostarczonych lub udostępnionych w związku z Syntx, jakichkolwiek powiązanych narzędzi stron trzecich lub jakichkolwiek wynikowych danych wyjściowych. Przyjmujesz na siebie **wszystkie ryzyka** związane z użytkowaniem takich narzędzi lub danych wyjściowych; takie narzędzia są dostarczane na zasadzie **"TAK JAK JEST"** i **"WEDŁUG DOSTĘPNOŚCI"**. Takie ryzyka mogą obejmować, bez ograniczeń, naruszenie własności intelektualnej, luki w zabezpieczeniach cybernetycznych lub ataki, uprzedzenia, niedokładności, błędy, wady, wirusy, przestoje, utratę lub uszkodzenie mienia i/lub obrażenia ciała. Ponosisz wyłączną odpowiedzialność za korzystanie z takich narzędzi lub danych wyjściowych (w tym, bez ograniczeń, ich legalność, stosowność i wyniki).
 
 ---
 

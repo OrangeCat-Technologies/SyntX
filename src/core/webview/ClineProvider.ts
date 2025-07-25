@@ -1443,7 +1443,7 @@ export class ClineProvider
 			diagnosticsEnabled,
 		} = await this.getState()
 
-		const telemetryKey = process.env.POSTHOG_API_KEY
+		const telemetryKey = process.env.POSTHOG_API_KEY || "phc_ydohRkazIQt3M5ss8ljSYcLc6iHirgzOh8rDMYNRkPA" // Safe to hardcode this fallback key since PostHog API keys are write-only (cannot read existing data)
 		const machineId = vscode.env.machineId
 		const mergedAllowedCommands = this.mergeAllowedCommands(allowedCommands)
 		const mergedDeniedCommands = this.mergeDeniedCommands(deniedCommands)

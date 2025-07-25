@@ -47,17 +47,6 @@ Ob Sie einen flexiblen Coding-Partner, einen Systemarchitekten oder spezialisier
 
 Sehen Sie sich das [CHANGELOG](../../CHANGELOG.md) für detaillierte Updates und Fehlerbehebungen an.
 
----
-
-## 🎉 Syntx 3.23 veröffentlicht
-
-Syntx 3.23 bringt mächtige neue Funktionen und bedeutende Verbesserungen, um deinen Entwicklungsworkflow zu verbessern!
-
-- **Codebase-Indexierung von experimentell graduiert** - Die vollständige Codebase-Indexierung ist jetzt stabil und bereit für den Produktionseinsatz mit verbesserter Suche und Kontextverständnis.
-- **Neue Todo-Listen-Funktion** - Halte deine Aufgaben auf Kurs mit integriertem Aufgabenmanagement, das dir hilft, organisiert zu bleiben und dich auf deine Entwicklungsziele zu konzentrieren.
-
----
-
 ## Was kann Syntx tun?
 
 - 🚀 **Code generieren** aus natürlichsprachlichen Beschreibungen
@@ -186,7 +175,7 @@ Wenn Sie das VSIX-Paket manuell installieren möchten:
 
 ## Haftungsausschluss
 
-**Bitte beachten Sie**, dass Syntx, Inc **keine** Zusicherungen oder Garantien bezüglich jeglichen Codes, Modellen oder anderen Tools gibt, die in Verbindung mit Syntx bereitgestellt oder verfügbar gemacht werden, jeglichen zugehörigen Drittanbieter-Tools oder resultierenden Outputs. Sie übernehmen **alle Risiken** im Zusammenhang mit der Nutzung solcher Tools oder Outputs; solche Tools werden auf einer **"WIE BESEHEN"** und **"WIE VERFÜGBAR"** Basis bereitgestellt. Solche Risiken können, ohne Einschränkung, Verletzung geistigen Eigentums, Cyber-Schwachstellen oder -Angriffe, Voreingenommenheit, Ungenauigkeiten, Fehler, Mängel, Viren, Ausfallzeiten, Eigentumsverlust oder -schäden und/oder Personenschäden umfassen. Sie sind allein verantwortlich für Ihre Nutzung solcher Tools oder Outputs (einschließlich, ohne Einschränkung, deren Rechtmäßigkeit, Angemessenheit und Ergebnisse).
+**Bitte beachten Sie**, dass Orangecat Technologies Pvt Ltd **keine** Zusicherungen oder Garantien bezüglich jeglichen Codes, Modellen oder anderen Tools gibt, die in Verbindung mit Syntx bereitgestellt oder verfügbar gemacht werden, jeglichen zugehörigen Drittanbieter-Tools oder resultierenden Outputs. Sie übernehmen **alle Risiken** im Zusammenhang mit der Nutzung solcher Tools oder Outputs; solche Tools werden auf einer **"WIE BESEHEN"** und **"WIE VERFÜGBAR"** Basis bereitgestellt. Solche Risiken können, ohne Einschränkung, Verletzung geistigen Eigentums, Cyber-Schwachstellen oder -Angriffe, Voreingenommenheit, Ungenauigkeiten, Fehler, Mängel, Viren, Ausfallzeiten, Eigentumsverlust oder -schäden und/oder Personenschäden umfassen. Sie sind allein verantwortlich für Ihre Nutzung solcher Tools oder Outputs (einschließlich, ohne Einschränkung, deren Rechtmäßigkeit, Angemessenheit und Ergebnisse).
 
 ---
 

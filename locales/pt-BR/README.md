@@ -48,17 +48,6 @@ Seja você esteja buscando um parceiro de codificação flexível, um arquiteto 
 
 Confira o [CHANGELOG](../../CHANGELOG.md) para atualizações e correções detalhadas.
 
----
-
-## 🎉 Syntx 3.23 foi lançado
-
-O Syntx 3.23 traz novos recursos poderosos e melhorias significativas para aprimorar seu fluxo de trabalho de desenvolvimento!
-
-- **Indexação de base de código graduada do experimental** - A indexação completa da base de código agora é estável e pronta para uso em produção com busca aprimorada e compreensão de contexto.
-- **Nova funcionalidade de lista de tarefas** - Mantenha suas tarefas no caminho certo com gerenciamento integrado de tarefas que ajuda você a se manter organizado e focado em seus objetivos de desenvolvimento.
-
----
-
 ## O que o Syntx pode fazer?
 
 - 🚀 **Gerar código** a partir de descrições em linguagem natural
@@ -164,7 +153,7 @@ Usamos [changesets](https://github.com/changesets/changesets) para versionamento
 
 ## Aviso Legal
 
-**Por favor, note** que a Syntx, Inc **não** faz nenhuma representação ou garantia em relação a qualquer código, modelos ou outras ferramentas fornecidas ou disponibilizadas em conexão com o Syntx, quaisquer ferramentas de terceiros associadas, ou quaisquer saídas resultantes. Você assume **todos os riscos** associados ao uso de tais ferramentas ou saídas; tais ferramentas são fornecidas em uma base **"COMO ESTÁ"** e **"COMO DISPONÍVEL"**. Tais riscos podem incluir, sem limitação, violação de propriedade intelectual, vulnerabilidades cibernéticas ou ataques, viés, imprecisões, erros, defeitos, vírus, tempo de inatividade, perda ou dano de propriedade e/ou lesões pessoais. Você é o único responsável pelo seu uso de tais ferramentas ou saídas (incluindo, sem limitação, a legalidade, adequação e resultados das mesmas).
+**Por favor, note** que a Orangecat Technologies Pvt Ltd **não** faz nenhuma representação ou garantia em relação a qualquer código, modelos ou outras ferramentas fornecidas ou disponibilizadas em conexão com o Syntx, quaisquer ferramentas de terceiros associadas, ou quaisquer saídas resultantes. Você assume **todos os riscos** associados ao uso de tais ferramentas ou saídas; tais ferramentas são fornecidas em uma base **"COMO ESTÁ"** e **"COMO DISPONÍVEL"**. Tais riscos podem incluir, sem limitação, violação de propriedade intelectual, vulnerabilidades cibernéticas ou ataques, viés, imprecisões, erros, defeitos, vírus, tempo de inatividade, perda ou dano de propriedade e/ou lesões pessoais. Você é o único responsável pelo seu uso de tais ferramentas ou saídas (incluindo, sem limitação, a legalidade, adequação e resultados das mesmas).
 
 ---
 

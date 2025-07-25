@@ -47,17 +47,6 @@ Tant si busqueu un soci de programació flexible, un arquitecte de sistemes o ro
 
 Consulteu el [CHANGELOG](../../CHANGELOG.md) per a actualitzacions i correccions detallades.
 
----
-
-## 🎉 Syntx 3.23 Llançat
-
-Syntx 3.23 aporta noves funcionalitats potents i millores significatives per millorar el vostre flux de treball de desenvolupament!
-
-- **Indexació de base de codi graduada d'experimental** - La indexació completa de la base de codi ara és estable i llesta per a ús en producció amb cerca millorada i comprensió del context.
-- **Nova funcionalitat de llista de tasques** - Mantingueu les vostres tasques en el bon camí amb gestió integrada de tasques que us ajuda a mantenir-vos organitzats i centrats en els vostres objectius de desenvolupament.
-
----
-
 ## Què pot fer Syntx?
 
 - 🚀 **Generar codi** a partir de descripcions en llenguatge natural
@@ -186,7 +175,7 @@ Si preferiu instal·lar el paquet VSIX manualment:
 
 ## Avís legal
 
-**Tingueu en compte** que Syntx, Inc **no** fa cap representació ni garantia pel que fa a qualsevol codi, model o altres eines proporcionades o posades a disposició en relació amb Syntx, qualsevol eina de tercers associada, o qualsevol resultat. Assumiu **tots els riscos** associats amb l'ús de tals eines o resultats; aquestes eines es proporcionen "TAL COM ESTAN" i "SEGONS DISPONIBILITAT". Aquests riscos poden incloure, sense limitació, infraccions de propietat intel·lectual, vulnerabilitats o atacs cibernètics, biaixos, inexactituds, errors, defectes, virus, temps d'inactivitat, pèrdua o dany de propietat i/o lesions personals. Sou únicament responsables del vostre ús de tals eines o resultats (incloent, sense limitació, la legalitat, idoneïtat i resultats d'aquests).
+**Tingueu en compte** que Orangecat Technologies Pvt Ltd **no** fa cap representació ni garantia pel que fa a qualsevol codi, model o altres eines proporcionades o posades a disposició en relació amb Syntx, qualsevol eina de tercers associada, o qualsevol resultat. Assumiu **tots els riscos** associats amb l'ús de tals eines o resultats; aquestes eines es proporcionen "TAL COM ESTAN" i "SEGONS DISPONIBILITAT". Aquests riscos poden incloure, sense limitació, infraccions de propietat intel·lectual, vulnerabilitats o atacs cibernètics, biaixos, inexactituds, errors, defectes, virus, temps d'inactivitat, pèrdua o dany de propietat i/o lesions personals. Sou únicament responsables del vostre ús de tals eines o resultats (incloent, sense limitació, la legalitat, idoneïtat i resultats d'aquests).
 
 ---
 

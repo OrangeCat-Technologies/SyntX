@@ -47,17 +47,6 @@ Che tu stia cercando un partner di codifica flessibile, un architetto di sistema
 
 Consulta il [CHANGELOG](../../CHANGELOG.md) per aggiornamenti dettagliati e correzioni.
 
----
-
-## 🎉 Syntx 3.23 Rilasciato
-
-Syntx 3.23 porta nuove funzionalità potenti e miglioramenti significativi per migliorare il tuo flusso di lavoro di sviluppo!
-
-- **Indicizzazione codebase graduata da sperimentale** - L'indicizzazione completa del codebase è ora stabile e pronta per l'uso in produzione con ricerca migliorata e comprensione del contesto.
-- **Nuova funzionalità lista todo** - Mantieni i tuoi task in carreggiata con gestione integrata dei task che ti aiuta a rimanere organizzato e concentrato sui tuoi obiettivi di sviluppo.
-
----
-
 ## Cosa Può Fare Syntx?
 
 - 🚀 **Generare Codice** da descrizioni in linguaggio naturale
@@ -186,7 +175,7 @@ Se preferisci installare il pacchetto VSIX manualmente:
 
 ## Disclaimer
 
-**Si prega di notare** che Syntx, Inc **non** fa alcuna dichiarazione o garanzia riguardo a qualsiasi codice, modello o altro strumento fornito o reso disponibile in relazione a Syntx, qualsiasi strumento di terze parti associato o qualsiasi output risultante. Ti assumi **tutti i rischi** associati all'uso di tali strumenti o output; tali strumenti sono forniti su base **"COSÌ COM'È"** e **"COME DISPONIBILE"**. Tali rischi possono includere, senza limitazione, violazione della proprietà intellettuale, vulnerabilità o attacchi informatici, pregiudizi, imprecisioni, errori, difetti, virus, tempi di inattività, perdita o danneggiamento della proprietà e/o lesioni personali. Sei l'unico responsabile del tuo utilizzo di tali strumenti o output (inclusi, senza limitazione, la legalità, l'appropriatezza e i risultati degli stessi).
+**Si prega di notare** che Orangecat Technologies Pvt Ltd **non** fa alcuna dichiarazione o garanzia riguardo a qualsiasi codice, modello o altro strumento fornito o reso disponibile in relazione a Syntx, qualsiasi strumento di terze parti associato o qualsiasi output risultante. Ti assumi **tutti i rischi** associati all'uso di tali strumenti o output; tali strumenti sono forniti su base **"COSÌ COM'È"** e **"COME DISPONIBILE"**. Tali rischi possono includere, senza limitazione, violazione della proprietà intellettuale, vulnerabilità o attacchi informatici, pregiudizi, imprecisioni, errori, difetti, virus, tempi di inattività, perdita o danneggiamento della proprietà e/o lesioni personali. Sei l'unico responsabile del tuo utilizzo di tali strumenti o output (inclusi, senza limitazione, la legalità, l'appropriatezza e i risultati degli stessi).
 
 ---
 

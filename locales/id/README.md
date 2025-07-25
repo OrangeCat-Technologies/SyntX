@@ -46,17 +46,6 @@ Baik kamu mencari partner coding yang fleksibel, arsitek sistem, atau peran khus
 
 Lihat [CHANGELOG](../../CHANGELOG.md) untuk update dan perbaikan detail.
 
----
-
-## 🎉 Syntx 3.23 Dirilis
-
-Syntx 3.23 menghadirkan fitur-fitur baru yang powerful dan peningkatan signifikan untuk meningkatkan workflow development kamu!
-
-- **Indexing codebase lulus dari eksperimental** - Indexing codebase lengkap sekarang stabil dan siap untuk penggunaan produksi dengan pencarian yang ditingkatkan dan pemahaman konteks.
-- **Fitur daftar todo baru** - Jaga tugas kamu tetap on track dengan manajemen tugas terintegrasi yang membantu kamu tetap terorganisir dan fokus pada tujuan development kamu.
-
----
-
 ## Apa yang Bisa Dilakukan Syntx?
 
 - 🚀 **Generate Code** dari deskripsi bahasa alami
@@ -185,7 +174,7 @@ Jika kamu prefer install package VSIX secara manual:
 
 ## Disclaimer
 
-**Harap dicatat** bahwa Syntx, Inc **tidak** membuat representasi atau jaminan apapun mengenai kode, model, atau tools lain yang disediakan atau tersedia dalam hubungannya dengan Syntx, tools pihak ketiga terkait, atau output yang dihasilkan. Kamu menanggung **semua risiko** yang terkait dengan penggunaan tools atau output tersebut; tools tersebut disediakan atas dasar **"SEBAGAIMANA ADANYA"** dan **"SEBAGAIMANA TERSEDIA"**. Risiko tersebut dapat mencakup, tanpa terbatas pada, pelanggaran kekayaan intelektual, kerentanan atau serangan siber, bias, ketidakakuratan, kesalahan, cacat, virus, downtime, kehilangan properti atau kerusakan, dan/atau cedera pribadi. Kamu bertanggung jawab penuh atas penggunaan tools atau output tersebut (termasuk, tanpa terbatas pada, legalitas, kesesuaian, dan hasilnya).
+**Harap dicatat** bahwa Orangecat Technologies Pvt Ltd **tidak** membuat representasi atau jaminan apapun mengenai kode, model, atau tools lain yang disediakan atau tersedia dalam hubungannya dengan Syntx, tools pihak ketiga terkait, atau output yang dihasilkan. Kamu menanggung **semua risiko** yang terkait dengan penggunaan tools atau output tersebut; tools tersebut disediakan atas dasar **"SEBAGAIMANA ADANYA"** dan **"SEBAGAIMANA TERSEDIA"**. Risiko tersebut dapat mencakup, tanpa terbatas pada, pelanggaran kekayaan intelektual, kerentanan atau serangan siber, bias, ketidakakuratan, kesalahan, cacat, virus, downtime, kehilangan properti atau kerusakan, dan/atau cedera pribadi. Kamu bertanggung jawab penuh atas penggunaan tools atau output tersebut (termasuk, tanpa terbatas pada, legalitas, kesesuaian, dan hasilnya).
 
 ---
 

@@ -48,17 +48,6 @@ Cho dù bạn đang tìm kiếm một đối tác lập trình linh hoạt, mộ
 
 Kiểm tra [CHANGELOG](../../CHANGELOG.md) để biết thông tin chi tiết về các cập nhật và sửa lỗi.
 
----
-
-## 🎉 Đã Phát Hành Syntx 3.23
-
-Syntx 3.23 mang đến những tính năng mới mạnh mẽ và cải tiến đáng kể để nâng cao quy trình phát triển của bạn!
-
-- **Lập Chỉ Mục Codebase Tốt Nghiệp Khỏi Thử Nghiệm** - Lập chỉ mục codebase đầy đủ hiện đã ổn định và sẵn sàng cho sử dụng sản xuất với khả năng tìm kiếm và hiểu ngữ cảnh được cải thiện.
-- **Tính Năng Danh Sách Việc Cần Làm Mới** - Giữ các tác vụ của bạn đúng hướng với quản lý tác vụ tích hợp giúp bạn có tổ chức và tập trung vào mục tiêu phát triển.
-
----
-
 ## Syntx Có Thể Làm Gì?
 
 - 🚀 **Tạo mã** từ mô tả bằng ngôn ngữ tự nhiên
@@ -164,7 +153,7 @@ Chúng tôi sử dụng [changesets](https://github.com/changesets/changesets) �
 
 ## Tuyên Bố Miễn Trừ Trách Nhiệm
 
-**Xin lưu ý** rằng Syntx, Inc **không** đưa ra bất kỳ tuyên bố hoặc bảo đảm nào liên quan đến bất kỳ mã, mô hình, hoặc công cụ khác được cung cấp hoặc cung cấp liên quan đến Syntx, bất kỳ công cụ bên thứ ba liên quan, hoặc bất kỳ đầu ra nào. Bạn chịu **tất cả rủi ro** liên quan đến việc sử dụng bất kỳ công cụ hoặc đầu ra như vậy; các công cụ đó được cung cấp trên cơ sở **"NGUYÊN TRẠNG"** và **"NHƯ CÓ SẴN"**. Những rủi ro đó có thể bao gồm, không giới hạn, vi phạm sở hữu trí tuệ, lỗ hổng mạng hoặc tấn công, thành kiến, không chính xác, lỗi, khiếm khuyết, virus, thời gian ngừng hoạt động, mất mát hoặc hư hỏng tài sản, và/hoặc thương tích cá nhân. Bạn hoàn toàn chịu trách nhiệm về việc sử dụng bất kỳ công cụ hoặc đầu ra như vậy (bao gồm, không giới hạn, tính hợp pháp, phù hợp và kết quả của chúng).
+**Xin lưu ý** rằng Orangecat Technologies Pvt Ltd **không** đưa ra bất kỳ tuyên bố hoặc bảo đảm nào liên quan đến bất kỳ mã, mô hình, hoặc công cụ khác được cung cấp hoặc cung cấp liên quan đến Syntx, bất kỳ công cụ bên thứ ba liên quan, hoặc bất kỳ đầu ra nào. Bạn chịu **tất cả rủi ro** liên quan đến việc sử dụng bất kỳ công cụ hoặc đầu ra như vậy; các công cụ đó được cung cấp trên cơ sở **"NGUYÊN TRẠNG"** và **"NHƯ CÓ SẴN"**. Những rủi ro đó có thể bao gồm, không giới hạn, vi phạm sở hữu trí tuệ, lỗ hổng mạng hoặc tấn công, thành kiến, không chính xác, lỗi, khiếm khuyết, virus, thời gian ngừng hoạt động, mất mát hoặc hư hỏng tài sản, và/hoặc thương tích cá nhân. Bạn hoàn toàn chịu trách nhiệm về việc sử dụng bất kỳ công cụ hoặc đầu ra như vậy (bao gồm, không giới hạn, tính hợp pháp, phù hợp và kết quả của chúng).
 
 ---
 

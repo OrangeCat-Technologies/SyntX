@@ -48,17 +48,6 @@
 
 Detaylı güncellemeler ve düzeltmeler için [CHANGELOG](../../CHANGELOG.md) dosyasını kontrol edin.
 
----
-
-## 🎉 Syntx 3.23 Yayınlandı
-
-Syntx 3.23 geliştirme iş akışınızı geliştirmek için güçlü yeni özellikler ve önemli iyileştirmeler getiriyor!
-
-- **Kod Tabanı İndeksleme Deneysel Aşamadan Çıktı** - Tam kod tabanı indeksleme artık kararlı ve geliştirilmiş arama ve bağlam anlayışı ile üretim kullanımına hazır.
-- **Yeni Yapılacaklar Listesi Özelliği** - Görevlerinizi yolunda tutun, organize kalmanıza ve geliştirme hedeflerinize odaklanmanıza yardımcı olan entegre görev yönetimi ile.
-
----
-
 ## Syntx Ne Yapabilir?
 
 - 🚀 Doğal dil açıklamalarından **Kod Üretme**
@@ -164,7 +153,7 @@ Sürüm oluşturma ve yayınlama için [changesets](https://github.com/changeset
 
 ## Sorumluluk Reddi
 
-**Lütfen dikkat** Syntx, Inc, Syntx ile bağlantılı olarak sağlanan veya kullanıma sunulan herhangi bir kod, model veya diğer araçlar, ilgili herhangi bir üçüncü taraf aracı veya herhangi bir sonuç çıktısı hakkında **hiçbir** temsil veya garanti vermemektedir. Bu tür araçların veya çıktıların kullanımıyla ilişkili **tüm riskleri** üstlenirsiniz; bu tür araçlar **"OLDUĞU GİBİ"** ve **"MEVCUT OLDUĞU GİBİ"** temelinde sağlanır. Bu riskler, fikri mülkiyet ihlali, siber güvenlik açıkları veya saldırılar, önyargı, yanlışlıklar, hatalar, kusurlar, virüsler, kesinti süresi, mal kaybı veya hasarı ve/veya kişisel yaralanma dâhil ancak bunlarla sınırlı olmamak üzere içerebilir. Bu tür araçların veya çıktıların kullanımından (yasallık, uygunluk ve sonuçlar dâhil ancak bunlarla sınırlı olmamak üzere) yalnızca siz sorumlusunuz.
+**Lütfen dikkat** Orangecat Technologies Pvt Ltd, Syntx ile bağlantılı olarak sağlanan veya kullanıma sunulan herhangi bir kod, model veya diğer araçlar, ilgili herhangi bir üçüncü taraf aracı veya herhangi bir sonuç çıktısı hakkında **hiçbir** temsil veya garanti vermemektedir. Bu tür araçların veya çıktıların kullanımıyla ilişkili **tüm riskleri** üstlenirsiniz; bu tür araçlar **"OLDUĞU GİBİ"** ve **"MEVCUT OLDUĞU GİBİ"** temelinde sağlanır. Bu riskler, fikri mülkiyet ihlali, siber güvenlik açıkları veya saldırılar, önyargı, yanlışlıklar, hatalar, kusurlar, virüsler, kesinti süresi, mal kaybı veya hasarı ve/veya kişisel yaralanma dâhil ancak bunlarla sınırlı olmamak üzere içerebilir. Bu tür araçların veya çıktıların kullanımından (yasallık, uygunluk ve sonuçlar dâhil ancak bunlarla sınırlı olmamak üzere) yalnızca siz sorumlusunuz.
 
 ---
 
