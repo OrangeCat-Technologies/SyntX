@@ -16,6 +16,7 @@
 # Include the built webview
 **/*.map
 !webview-ui/audio
+!webview-ui/public/demo.md
 !webview-ui/build/assets/*.js
 !webview-ui/build/assets/*.ttf
 !webview-ui/build/assets/*.css

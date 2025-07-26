@@ -1982,8 +1982,8 @@ export class ClineProvider
 
 			// Get the path to the demo.md file
 			const extensionPath = this.context.extensionPath
-			// Since extensionPath points to src, we need to go up and then into webview-ui
-			const demoPath = vscode.Uri.file(path.join(extensionPath, "..", "webview-ui", "public", "demo.md"))
+			// In production, the demo.md file is copied to webview-ui/public/demo.md relative to the extension root
+			const demoPath = vscode.Uri.file(path.join(extensionPath, "webview-ui", "public", "demo.md"))
 
 			this.log(
 				"[DEBUG] Demo file path constructed - extensionPath: " +

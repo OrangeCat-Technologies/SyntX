@@ -98,7 +98,13 @@ export function copyPaths(copyPaths: [string, string, CopyPathOptions?][], srcDi
 				const count = copyDir(path.join(srcDir, srcRelPath), path.join(dstDir, dstRelPath), 0)
 				console.log(`[copyPaths] Copied ${count} files from ${srcRelPath} to ${dstRelPath}`)
 			} else {
-				fs.copyFileSync(path.join(srcDir, srcRelPath), path.join(dstDir, dstRelPath))
+				// Ensure the destination directory exists for files
+				const dstPath = path.join(dstDir, dstRelPath)
+				const dstDirPath = path.dirname(dstPath)
+				if (!fs.existsSync(dstDirPath)) {
+					fs.mkdirSync(dstDirPath, { recursive: true })
+				}
+				fs.copyFileSync(path.join(srcDir, srcRelPath), dstPath)
 				console.log(`[copyPaths] Copied ${srcRelPath} to ${dstRelPath}`)
 			}
 		} catch (error) {
