@@ -56,7 +56,7 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 	}
 
 	private getBaseURL(): string {
-		const baseUrl = this.options.syntxBaseUrl || "http://0.0.0.0:5051"
+		const baseUrl = this.options.syntxBaseUrl || "https://lagrange-inference-server-production.up.railway.app"
 		return baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
 	}
 

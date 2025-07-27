@@ -4,7 +4,7 @@ import type { ModelInfo } from "@roo-code/types"
 
 export async function getSyntxModels(
 	apiKey: string,
-	baseUrl: string = "http://0.0.0.0:5051",
+	baseUrl: string = "https://lagrange-inference-server-production.up.railway.app",
 ): Promise<Record<string, ModelInfo>> {
 	const models: Record<string, ModelInfo> = {}
 

@@ -94,7 +94,7 @@ export const SyntX = ({
 			<VSCodeTextField
 				value={apiConfiguration?.syntxBaseUrl || ""}
 				onInput={handleInputChange("syntxBaseUrl")}
-				placeholder="http://0.0.0.0:5051"
+				placeholder="https://lagrange-inference-server-production.up.railway.app"
 				className="w-full">
 				<label className="block font-medium mb-1">Base URL (Optional)</label>
 			</VSCodeTextField>

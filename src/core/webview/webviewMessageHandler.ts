@@ -558,7 +558,9 @@ export const webviewMessageHandler = async (
 					options: {
 						provider: "syntx",
 						apiKey: apiConfiguration.syntxApiKey || "",
-						baseUrl: apiConfiguration.syntxBaseUrl || "http://0.0.0.0:5051",
+						baseUrl:
+							apiConfiguration.syntxBaseUrl ||
+							"https://lagrange-inference-server-production.up.railway.app",
 					},
 				},
 			]
