@@ -1,42 +1,60 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import { vscode } from "../../utils/vscode"
+import { vscode } from "@src/utils/vscode"
 
 interface CreditsDepletedAlertProps {
 	onClose: () => void
+	errorType?: string
+	errorData?: any
 }
 
-const CreditsDepletedAlert: React.FC<CreditsDepletedAlertProps> = ({ onClose }) => {
+const CreditsDepletedAlert: React.FC<CreditsDepletedAlertProps> = ({ onClose, errorType, errorData }) => {
+	const { t: _t } = useTranslation()
+
+	// Determine if this is a free usage limit error
+	const isFreeUsageError =
+		errorType === "free_usage_limit_exceeded" ||
+		(errorData && typeof errorData === "string" && errorData.includes("free_usage_limit_exceeded"))
+
 	const handleBuyCredits = () => {
-		// Open the profile page in the browser with auth data
-		const profileUrl = "https://syntx.dev/"
+		vscode.postMessage({ type: "openExternal", url: "https://syntx.dev" })
+	}
 
-		vscode.postMessage({
-			type: "openExternal",
-			url: profileUrl,
-		})
-
-		// Close the alert after clicking
-		onClose()
+	const _handleUpgradeModel = () => {
+		vscode.postMessage({ type: "openExternal", url: "https://syntx.dev" })
 	}
 
 	return (
-		<div className="bg-vscode-editor-background p-4 rounded-md my-4 border border-vscode-tab-border relative">
-			<button
-				className="absolute top-2 right-2 text-vscode-descriptionForeground hover:text-vscode-foreground"
-				onClick={onClose}
-				aria-label="Close">
-				<span className="codicon codicon-close" />
-			</button>
-			<h3 className="text-vscode-foreground mb-2">Buy Credits to Access Proprietary Models</h3>
-			<p className="text-vscode-descriptionForeground mb-4">
-				Please log in at https://syntx.dev to purchase credits and go to View Profile in settings.
-			</p>
-			<div className="flex gap-2">
-				<VSCodeButton appearance="primary" onClick={handleBuyCredits}>
-					Purchase Credits
+		<div className="bg-vscode-editor-background border border-vscode-border rounded-xs p-4 mb-4">
+			<div className="flex justify-between items-start mb-3">
+				<div className="flex items-center gap-2">
+					<span className="codicon codicon-warning text-vscode-editorWarning-foreground"></span>
+					<h3 className="text-vscode-foreground font-bold">
+						{isFreeUsageError ? "Free Usage Limit Reached" : "Credits Depleted"}
+					</h3>
+				</div>
+				<VSCodeButton appearance="icon" onClick={onClose} className="shrink-0">
+					<span className="codicon codicon-close"></span>
 				</VSCodeButton>
 			</div>
+
+			{isFreeUsageError ? (
+				<div className="space-y-3">
+					<p className="text-vscode-foreground">You&apos;ve reached your monthly free usage limit.</p>
+
+					<VSCodeButton onClick={handleBuyCredits}>Buy Credits</VSCodeButton>
+				</div>
+			) : (
+				<div className="space-y-3">
+					<p className="text-vscode-foreground">
+						You&apos;ve run out of credits. Please purchase more credits to continue using proprietary
+						models.
+					</p>
+
+					<VSCodeButton onClick={handleBuyCredits}>Buy Credits</VSCodeButton>
+				</div>
+			)}
 		</div>
 	)
 }

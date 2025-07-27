@@ -56,7 +56,7 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 	}
 
 	private getBaseURL(): string {
-		const baseUrl = this.options.syntxBaseUrl || "https://lagrange-inference-server-production.up.railway.app"
+		const baseUrl = this.options.syntxBaseUrl || "http://0.0.0.0:5051"
 		return baseUrl.endsWith("/") ? baseUrl.slice(0, -1) : baseUrl
 	}
 
@@ -137,6 +137,17 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 		} catch (error) {
 			if (error instanceof Error) {
 				const errorMessage = error.message.toLowerCase()
+				// Check for free usage limit exceeded specifically
+				if (errorMessage.includes("free_usage_limit_exceeded")) {
+					yield {
+						type: "error",
+						error: "FREE_USAGE_LIMIT_EXCEEDED",
+						message: error.message, // Pass through the full error message with JSON data
+					}
+					return
+				}
+
+				// Check for credits depleted or other auth errors
 				if (
 					errorMessage.includes("invalid api key") ||
 					errorMessage.includes("401") ||
@@ -148,7 +159,7 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 						type: "error",
 						error: "CREDITS_DEPLETED",
 						message:
-							"Buy Credits to Access Proprietary Models. Please log in at https://syntx.dev to purchase credits and go to View Profile in settings.",
+							"CREDITS_DEPLETED: Buy Credits to Access Proprietary Models. Please log in at https://syntx.dev to purchase credits and go to View Profile in settings.",
 					}
 					return
 				}
@@ -203,6 +214,13 @@ export class SyntxHandler extends BaseProvider implements SingleCompletionHandle
 		} catch (error) {
 			if (error instanceof Error) {
 				const errorMessage = error.message.toLowerCase()
+
+				// Check for free usage limit exceeded specifically
+				if (errorMessage.includes("free_usage_limit_exceeded")) {
+					throw new Error(error.message) // Pass through the full error message with JSON data
+				}
+
+				// Check for credits depleted or other auth errors
 				if (
 					errorMessage.includes("invalid api key") ||
 					errorMessage.includes("401") ||

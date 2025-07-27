@@ -854,6 +854,179 @@ export const ChatRowContent = ({
 	}
 
 	switch (message.type) {
+		case "ask":
+			switch (message.ask) {
+				case "api_req_failed":
+					// Check if this is a credits depletion error (handles both credits and free usage)
+					const isCreditsErrorInFailed =
+						isSyntxProvider &&
+						(message.text?.includes("CREDITS_DEPLETED:") ||
+							message.text?.includes("free_usage_limit_exceeded") ||
+							message.text?.includes("FREE_USAGE_LIMIT_EXCEEDED"))
+
+					if (isCreditsErrorInFailed && showCreditsAlert) {
+						// Extract error data from the message
+						let errorData = null
+						let errorType: string | undefined = undefined
+
+						if (message.text) {
+							if (message.text.includes("FREE_USAGE_LIMIT_EXCEEDED")) {
+								errorType = "free_usage_limit_exceeded"
+								errorData = "Free usage limit exceeded"
+							} else if (message.text.includes("CREDITS_DEPLETED:")) {
+								errorType = "authorization_error"
+								errorData = "Invalid API key"
+							} else {
+								errorData = message.text
+							}
+						}
+
+						return (
+							<CreditsDepletedAlert
+								onClose={() => setShowCreditsAlert(false)}
+								errorType={errorType}
+								errorData={errorData}
+							/>
+						)
+					}
+
+					// Fall back to regular error display
+					return (
+						<>
+							<div style={headerStyle}>
+								<span
+									className="codicon codicon-error"
+									style={{ color: errorColor, marginBottom: "-1.5px" }}></span>
+								<span style={{ color: errorColor, fontWeight: "bold" }}>
+									{t("chat:apiRequest.failed")}
+								</span>
+							</div>
+							<p style={{ ...pStyle, color: "var(--vscode-errorForeground)" }}>{message.text}</p>
+						</>
+					)
+				case "mistake_limit_reached":
+					return (
+						<>
+							<div style={headerStyle}>
+								{icon}
+								{title}
+							</div>
+							<p style={{ ...pStyle, color: "var(--vscode-errorForeground)" }}>{message.text}</p>
+						</>
+					)
+				case "command":
+					return (
+						<CommandExecution
+							executionId={message.ts.toString()}
+							text={message.text}
+							icon={icon}
+							title={title}
+						/>
+					)
+				case "use_mcp_server":
+					// Parse the message text to get the MCP server request
+					const messageJson = safeJsonParse<any>(message.text, {})
+
+					// Extract the response field if it exists
+					const { response, ...mcpServerRequest } = messageJson
+
+					// Create the useMcpServer object with the response field
+					const useMcpServer: ClineAskUseMcpServer = {
+						...mcpServerRequest,
+						response,
+					}
+
+					if (!useMcpServer) {
+						return null
+					}
+
+					const server = mcpServers.find((server) => server.name === useMcpServer.serverName)
+
+					return (
+						<>
+							<div style={headerStyle}>
+								{icon}
+								{title}
+							</div>
+							<div className="w-full bg-vscode-editor-background border border-vscode-border rounded-xs p-2 mt-2">
+								{useMcpServer.type === "access_mcp_resource" && (
+									<McpResourceRow
+										item={{
+											// Use the matched resource/template details, with fallbacks
+											...(findMatchingResourceOrTemplate(
+												useMcpServer.uri || "",
+												server?.resources,
+												server?.resourceTemplates,
+											) || {
+												name: "",
+												mimeType: "",
+												description: "",
+											}),
+											// Always use the actual URI from the request
+											uri: useMcpServer.uri || "",
+										}}
+									/>
+								)}
+								{useMcpServer.type === "use_mcp_tool" && (
+									<McpExecution
+										executionId={message.ts.toString()}
+										text={useMcpServer.arguments !== "{}" ? useMcpServer.arguments : undefined}
+										serverName={useMcpServer.serverName}
+										toolName={useMcpServer.toolName}
+										isArguments={true}
+										server={server}
+										useMcpServer={useMcpServer}
+										alwaysAllowMcp={alwaysAllowMcp}
+									/>
+								)}
+							</div>
+						</>
+					)
+				case "completion_result":
+					if (message.text) {
+						return (
+							<div>
+								<div style={headerStyle}>
+									{icon}
+									{title}
+								</div>
+								<div style={{ color: "var(--vscode-charts-green)", paddingTop: 10 }}>
+									<Markdown markdown={message.text} partial={message.partial} />
+								</div>
+							</div>
+						)
+					} else {
+						return null // Don't render anything when we get a completion_result ask without text
+					}
+				case "followup":
+					return (
+						<>
+							{title && (
+								<div style={headerStyle}>
+									{icon}
+									{title}
+								</div>
+							)}
+							<div style={{ paddingTop: 10, paddingBottom: 15 }}>
+								<Markdown
+									markdown={message.partial === true ? message?.text : followUpData?.question}
+								/>
+							</div>
+							<FollowUpSuggest
+								suggestions={followUpData?.suggest}
+								onSuggestionClick={onSuggestionClick}
+								ts={message?.ts}
+								onCancelAutoApproval={onFollowUpUnmount}
+								isAnswered={isFollowUpAnswered}
+							/>
+						</>
+					)
+				case "auto_approval_max_req_reached": {
+					return <AutoApprovedRequestLimitWarning message={message} />
+				}
+				default:
+					return null
+			}
 		case "say":
 			switch (message.say) {
 				case "diff_error":
@@ -1139,12 +1312,52 @@ export const ChatRowContent = ({
 						</div>
 					)
 				case "error":
-					// Check if this is a credits depletion error for SyntX provider
+					// Check if this is a credits depletion error (handles both credits and free usage)
 					const isCreditsError =
-						isSyntxProvider && message.text?.includes("Buy Credits to Access Proprietary Models")
+						isSyntxProvider &&
+						(message.text?.includes("CREDITS_DEPLETED:") ||
+							message.text?.includes("free_usage_limit_exceeded") ||
+							message.text?.includes("authorization_error"))
 
 					if (isCreditsError && showCreditsAlert) {
-						return <CreditsDepletedAlert onClose={() => setShowCreditsAlert(false)} />
+						// Extract error data from the message
+						let errorData = null
+						let errorType: string | undefined = undefined
+
+						if (message.text) {
+							try {
+								// Try to parse the entire message as JSON first
+								const parsed = JSON.parse(message.text)
+								if (parsed.error) {
+									errorType = parsed.error.type
+									// For free usage errors, the message is a JSON string that needs parsing
+									if (
+										parsed.error.type === "free_usage_limit_exceeded" &&
+										typeof parsed.error.message === "string"
+									) {
+										try {
+											errorData = JSON.parse(parsed.error.message)
+										} catch (_e) {
+											errorData = parsed.error.message
+										}
+									} else {
+										// For other error types (like authorization_error), use message directly
+										errorData = parsed.error.message
+									}
+								}
+							} catch (_e) {
+								// If parsing fails, use the raw message
+								errorData = message.text
+							}
+						}
+
+						return (
+							<CreditsDepletedAlert
+								onClose={() => setShowCreditsAlert(false)}
+								errorType={errorType}
+								errorData={errorData}
+							/>
+						)
 					}
 
 					return (
@@ -1234,131 +1447,6 @@ export const ChatRowContent = ({
 							</div>
 						</>
 					)
-			}
-		case "ask":
-			switch (message.ask) {
-				case "mistake_limit_reached":
-					return (
-						<>
-							<div style={headerStyle}>
-								{icon}
-								{title}
-							</div>
-							<p style={{ ...pStyle, color: "var(--vscode-errorForeground)" }}>{message.text}</p>
-						</>
-					)
-				case "command":
-					return (
-						<CommandExecution
-							executionId={message.ts.toString()}
-							text={message.text}
-							icon={icon}
-							title={title}
-						/>
-					)
-				case "use_mcp_server":
-					// Parse the message text to get the MCP server request
-					const messageJson = safeJsonParse<any>(message.text, {})
-
-					// Extract the response field if it exists
-					const { response, ...mcpServerRequest } = messageJson
-
-					// Create the useMcpServer object with the response field
-					const useMcpServer: ClineAskUseMcpServer = {
-						...mcpServerRequest,
-						response,
-					}
-
-					if (!useMcpServer) {
-						return null
-					}
-
-					const server = mcpServers.find((server) => server.name === useMcpServer.serverName)
-
-					return (
-						<>
-							<div style={headerStyle}>
-								{icon}
-								{title}
-							</div>
-							<div className="w-full bg-vscode-editor-background border border-vscode-border rounded-xs p-2 mt-2">
-								{useMcpServer.type === "access_mcp_resource" && (
-									<McpResourceRow
-										item={{
-											// Use the matched resource/template details, with fallbacks
-											...(findMatchingResourceOrTemplate(
-												useMcpServer.uri || "",
-												server?.resources,
-												server?.resourceTemplates,
-											) || {
-												name: "",
-												mimeType: "",
-												description: "",
-											}),
-											// Always use the actual URI from the request
-											uri: useMcpServer.uri || "",
-										}}
-									/>
-								)}
-								{useMcpServer.type === "use_mcp_tool" && (
-									<McpExecution
-										executionId={message.ts.toString()}
-										text={useMcpServer.arguments !== "{}" ? useMcpServer.arguments : undefined}
-										serverName={useMcpServer.serverName}
-										toolName={useMcpServer.toolName}
-										isArguments={true}
-										server={server}
-										useMcpServer={useMcpServer}
-										alwaysAllowMcp={alwaysAllowMcp}
-									/>
-								)}
-							</div>
-						</>
-					)
-				case "completion_result":
-					if (message.text) {
-						return (
-							<div>
-								<div style={headerStyle}>
-									{icon}
-									{title}
-								</div>
-								<div style={{ color: "var(--vscode-charts-green)", paddingTop: 10 }}>
-									<Markdown markdown={message.text} partial={message.partial} />
-								</div>
-							</div>
-						)
-					} else {
-						return null // Don't render anything when we get a completion_result ask without text
-					}
-				case "followup":
-					return (
-						<>
-							{title && (
-								<div style={headerStyle}>
-									{icon}
-									{title}
-								</div>
-							)}
-							<div style={{ paddingTop: 10, paddingBottom: 15 }}>
-								<Markdown
-									markdown={message.partial === true ? message?.text : followUpData?.question}
-								/>
-							</div>
-							<FollowUpSuggest
-								suggestions={followUpData?.suggest}
-								onSuggestionClick={onSuggestionClick}
-								ts={message?.ts}
-								onCancelAutoApproval={onFollowUpUnmount}
-								isAnswered={isFollowUpAnswered}
-							/>
-						</>
-					)
-				case "auto_approval_max_req_reached": {
-					return <AutoApprovedRequestLimitWarning message={message} />
-				}
-				default:
-					return null
 			}
 	}
 }

@@ -117,8 +117,8 @@
 	},
 	"storage": {
 		"prompt_custom_path": "会話履歴のカスタムストレージパスを入力してください。デフォルトの場所を使用する場合は空のままにしてください",
-		"path_placeholder": "D:\\RooCodeStorage",
-		"enter_absolute_path": "絶対パスを入力してください（例：D:\\RooCodeStorage または /home/user/storage）",
+		"path_placeholder": "D:\\SyntXStorage",
+		"enter_absolute_path": "絶対パスを入力してください（例：D:\\SyntXStorage または /home/user/storage）",
 		"enter_valid_path": "有効なパスを入力してください"
 	},
 	"input": {
