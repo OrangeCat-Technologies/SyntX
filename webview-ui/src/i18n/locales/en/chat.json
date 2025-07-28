@@ -255,10 +255,10 @@
 	},
 	"announcement": {
 		"title": "🎉 Syntx {{version}} Released",
-		"description": "Syntx {{version}} brings powerful new features and significant improvements to enhance your development workflow.",
+		"description": "Syntx {{version}} brings powerful new features",
 		"whatsNew": "What's New",
-		"feature1": "<bold>Codebase Indexing Graduated from Experimental</bold>: Full codebase indexing is now stable and ready for production use with improved search and context understanding.",
-		"feature2": "<bold>New Todo List Feature</bold>: Keep your tasks on track with integrated todo management that helps you stay organized and focused on your development goals.",
+		"feature1": "<bold>Deepseek for 10x usage</bold>: Use DeepSeek Premium if free usage limit is reached.",
+		"feature2": "<bold>Kimi K2 with groq</bold>: Use Kimi K2 for fast inference, helping you stay organized and focused on your development goals.",
 		"hideButton": "Hide announcement",
 		"detailsDiscussLinks": "Get more details and discuss in <discordLink>Discord</discordLink> 🚀"
 	},

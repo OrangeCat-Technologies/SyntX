@@ -42,9 +42,9 @@ const CreditsDepletedAlert: React.FC<CreditsDepletedAlertProps> = ({ onClose, er
 			{isFreeUsageError ? (
 				<div className="space-y-3">
 					<p className="text-vscode-foreground">
-						You&apos;ve reached your monthly free usage limit. This limit will reset on its own after a
-						month from your account creation date. If you still want to continue then buy credits and use
-						the paid models without any limits.
+						Credits renew monthly on your account start date. To continue now, you can pay per use for
+						DeepSeek or buy credits for other models. Deepseek v3 premium will be available for use after
+						payment.
 					</p>
 
 					<VSCodeButton onClick={handleBuyCredits}>Buy Credits</VSCodeButton>
