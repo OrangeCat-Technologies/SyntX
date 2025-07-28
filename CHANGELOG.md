@@ -1,5 +1,9 @@
 # SyntX Changelog
 
+## [2.3.8] - 28-07-2025
+
+- Monthly Free Usage Indicator
+
 ## [2.3.7] - 26-07-2025
 
 - Open Sourcing the SyntX Repo

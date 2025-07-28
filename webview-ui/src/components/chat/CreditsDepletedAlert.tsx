@@ -41,7 +41,11 @@ const CreditsDepletedAlert: React.FC<CreditsDepletedAlertProps> = ({ onClose, er
 
 			{isFreeUsageError ? (
 				<div className="space-y-3">
-					<p className="text-vscode-foreground">You&apos;ve reached your monthly free usage limit.</p>
+					<p className="text-vscode-foreground">
+						You&apos;ve reached your monthly free usage limit. This limit will reset on its own after a
+						month from your account creation date. If you still want to continue then buy credits and use
+						the paid models without any limits.
+					</p>
 
 					<VSCodeButton onClick={handleBuyCredits}>Buy Credits</VSCodeButton>
 				</div>

@@ -6,6 +6,7 @@ import type { HistoryItem } from "@roo-code/types"
 
 import { vscode } from "@/utils/vscode"
 import { useCopyToClipboard } from "@/utils/clipboard"
+import { useExtensionState } from "@src/context/ExtensionStateContext"
 
 import { DeleteTaskDialog } from "../history/DeleteTaskDialog"
 import { IconButton } from "./IconButton"
@@ -20,10 +21,14 @@ export const TaskActions = ({ item, buttonsDisabled }: TaskActionsProps) => {
 	const [deleteTaskId, setDeleteTaskId] = useState<string | null>(null)
 	const { t } = useTranslation()
 	const { copyWithFeedback, showCopyFeedback } = useCopyToClipboard()
+	const { apiConfiguration } = useExtensionState()
+
+	// Check if using syntx provider
+	const isSyntxProvider = apiConfiguration?.apiProvider === "syntx"
 
 	return (
 		<div className="flex flex-row gap-1">
-			<ShareButton item={item} disabled={false} />
+			{!isSyntxProvider && <ShareButton item={item} disabled={false} />}
 			<IconButton
 				iconClass="codicon-desktop-download"
 				title={t("chat:task.export")}

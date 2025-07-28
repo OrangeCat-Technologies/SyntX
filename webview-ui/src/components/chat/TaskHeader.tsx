@@ -124,7 +124,7 @@ const TaskHeader = ({
 							}
 						/>
 						{condenseButton}
-						<ShareButton item={currentTaskItem} disabled={buttonsDisabled} />
+						{!isSyntxProvider && <ShareButton item={currentTaskItem} disabled={buttonsDisabled} />}
 						{!isSyntxProvider && !!totalCost && <VSCodeBadge>${totalCost.toFixed(2)}</VSCodeBadge>}
 					</div>
 				)}
