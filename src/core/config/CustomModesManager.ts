@@ -9,7 +9,7 @@ import { type ModeConfig, type PromptComponent, customModesSettingsSchema, modeC
 
 import { fileExistsAtPath } from "../../utils/fs"
 import { getWorkspacePath } from "../../utils/path"
-import { getGlobalRooDirectory } from "../../services/roo-config"
+import { getGlobalSyntXDirectory } from "../../services/roo-config"
 import { logger } from "../../utils/logging"
 import { GlobalFileNames } from "../../shared/globalFileNames"
 import { ensureSettingsDirectoryExists } from "../../utils/globalContext"
@@ -552,7 +552,7 @@ export class CustomModesManager {
 	}
 
 	/**
-	 * Checks if a mode has associated rules files in the .roo/rules-{slug}/ directory
+	 * Checks if a mode has associated rules files in the .syntx/rules-{slug}/ directory
 	 * @param slug - The mode identifier to check
 	 * @returns True if the mode has rules files with content, false otherwise
 	 */
@@ -598,8 +598,8 @@ export class CustomModesManager {
 				}
 			}
 
-			// Check for .roo/rules-{slug}/ directory
-			const modeRulesDir = path.join(workspacePath, ".roo", `rules-${slug}`)
+			// Check for .syntx/rules-{slug}/ directory
+			const modeRulesDir = path.join(workspacePath, ".syntx", `rules-${slug}`)
 
 			try {
 				const stats = await fs.stat(modeRulesDir)
@@ -693,8 +693,8 @@ export class CustomModesManager {
 				return { success: false, error: "No workspace found" }
 			}
 
-			// Check for .roo/rules-{slug}/ directory
-			const modeRulesDir = path.join(workspacePath, ".roo", `rules-${slug}`)
+			// Check for .syntx/rules-{slug}/ directory
+			const modeRulesDir = path.join(workspacePath, ".syntx", `rules-${slug}`)
 
 			let rulesFiles: RuleFile[] = []
 			try {
@@ -827,7 +827,7 @@ export class CustomModesManager {
 
 					// Always remove the existing rules folder for this mode if it exists
 					// This ensures that if the imported mode has no rules, the folder is cleaned up
-					const rulesFolderPath = path.join(workspacePath, ".roo", `rules-${importMode.slug}`)
+					const rulesFolderPath = path.join(workspacePath, ".syntx", `rules-${importMode.slug}`)
 					try {
 						await fs.rm(rulesFolderPath, { recursive: true, force: true })
 						logger.info(`Removed existing rules folder for mode ${importMode.slug}`)
@@ -871,11 +871,11 @@ export class CustomModesManager {
 					}
 				} else if (source === "global" && rulesFiles && Array.isArray(rulesFiles)) {
 					// For global imports, preserve the rules files structure in the global .roo directory
-					const globalRooDir = getGlobalRooDirectory()
+					const globalSyntXDir = getGlobalSyntXDirectory()
 
 					// Always remove the existing rules folder for this mode if it exists
 					// This ensures that if the imported mode has no rules, the folder is cleaned up
-					const rulesFolderPath = path.join(globalRooDir, `rules-${importMode.slug}`)
+					const rulesFolderPath = path.join(globalSyntXDir, `rules-${importMode.slug}`)
 					try {
 						await fs.rm(rulesFolderPath, { recursive: true, force: true })
 						logger.info(`Removed existing global rules folder for mode ${importMode.slug}`)
@@ -896,11 +896,11 @@ export class CustomModesManager {
 								continue // Skip this file but continue with others
 							}
 
-							const targetPath = path.join(globalRooDir, normalizedRelativePath)
+							const targetPath = path.join(globalSyntXDir, normalizedRelativePath)
 							const normalizedTargetPath = path.normalize(targetPath)
-							const expectedBasePath = path.normalize(globalRooDir)
+							const expectedBasePath = path.normalize(globalSyntXDir)
 
-							// Ensure the resolved path stays within the global .roo directory
+							// Ensure the resolved path stays within the global .syntx directory
 							if (!normalizedTargetPath.startsWith(expectedBasePath)) {
 								logger.error(`Path traversal attempt detected: ${ruleFile.relativePath}`)
 								continue // Skip this file but continue with others

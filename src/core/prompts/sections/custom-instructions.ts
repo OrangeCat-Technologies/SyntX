@@ -6,7 +6,11 @@ import { Dirent } from "fs"
 import { isLanguage } from "@roo-code/types"
 
 import { LANGUAGES } from "../../../shared/language"
-import { getRooDirectoriesForCwd, getGlobalRooDirectory } from "../../../services/roo-config"
+import {
+	getSyntXDirectoriesForCwd,
+	getGlobalSyntXDirectory,
+	getRooDirectoriesForCwd,
+} from "../../../services/roo-config"
 
 /**
  * Safely read a file and return its trimmed content

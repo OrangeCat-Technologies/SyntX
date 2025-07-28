@@ -36,5 +36,5 @@
 	"settings.vsCodeLmModelSelector.family.description": "Rodzina modelu językowego (np. gpt-4)",
 	"settings.customStoragePath.description": "Niestandardowa ścieżka przechowywania. Pozostaw puste, aby użyć domyślnej lokalizacji. Obsługuje ścieżki bezwzględne (np. 'D:\\SyntXStorage')",
 	"settings.enableCodeActions.description": "Włącz szybkie poprawki Syntx.",
-	"settings.autoImportSettingsPath.description": "Ścieżka do pliku konfiguracyjnego SyntX, który ma być automatycznie importowany podczas uruchamiania rozszerzenia. Obsługuje ścieżki bezwzględne i ścieżki względne do katalogu domowego (np. '~/Documents/roo-code-settings.json'). Pozostaw puste, aby wyłączyć automatyczne importowanie."
+	"settings.autoImportSettingsPath.description": "Ścieżka do pliku konfiguracyjnego SyntX, który ma być automatycznie importowany podczas uruchamiania rozszerzenia. Obsługuje ścieżki bezwzględne i ścieżki względne do katalogu domowego (np. '~/Documents/syntx-settings.json'). Pozostaw puste, aby wyłączyć automatyczne importowanie."
 }

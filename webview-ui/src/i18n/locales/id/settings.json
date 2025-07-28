@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "Sertakan file yang dilindungi",
-				"description": "Izinkan SyntX membuat dan mengedit file yang dilindungi (seperti .syntxignore dan file konfigurasi .roo/) tanpa memerlukan persetujuan."
+				"description": "Izinkan SyntX membuat dan mengedit file yang dilindungi (seperti .syntxignore dan file konfigurasi .syntx/) tanpa memerlukan persetujuan."
 			}
 		},
 		"browser": {

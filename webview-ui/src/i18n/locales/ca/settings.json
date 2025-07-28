@@ -147,7 +147,7 @@
 			},
 			"protected": {
 				"label": "Incloure fitxers protegits",
-				"description": "Permetre a SyntX crear i editar fitxers protegits (com .syntxignore i fitxers de configuració .roo/) sense requerir aprovació."
+				"description": "Permetre a SyntX crear i editar fitxers protegits (com .syntxignore i fitxers de configuració .syntx/) sense requerir aprovació."
 			}
 		},
 		"browser": {

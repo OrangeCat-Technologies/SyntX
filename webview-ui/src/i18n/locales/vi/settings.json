@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "Bao gồm các tệp được bảo vệ",
-				"description": "Cho phép SyntX tạo và chỉnh sửa các tệp được bảo vệ (như .syntxignore và các tệp cấu hình .roo/) mà không yêu cầu phê duyệt."
+				"description": "Cho phép SyntX tạo và chỉnh sửa các tệp được bảo vệ (như .syntxignore và các tệp cấu hình .syntx/) mà không yêu cầu phê duyệt."
 			}
 		},
 		"browser": {

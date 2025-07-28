@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "Inclusief beschermde bestanden",
-				"description": "Sta SyntX toe om beschermde bestanden (zoals .syntxignore en .roo/ configuratiebestanden) aan te maken en te bewerken zonder goedkeuring."
+				"description": "Sta SyntX toe om beschermde bestanden (zoals .syntxignore en .syntx/ configuratiebestanden) aan te maken en te bewerken zonder goedkeuring."
 			}
 		},
 		"browser": {

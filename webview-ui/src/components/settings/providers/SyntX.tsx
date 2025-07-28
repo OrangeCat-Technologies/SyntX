@@ -1,5 +1,5 @@
 import { useCallback, useState, useMemo, useEffect } from "react"
-import { VSCodeTextField, VSCodeCheckbox } from "@vscode/webview-ui-toolkit/react"
+import { VSCodeCheckbox } from "@vscode/webview-ui-toolkit/react"
 
 import { type ProviderSettings } from "@roo-code/types"
 
@@ -7,7 +7,7 @@ import type { RouterModels } from "@roo/api"
 
 import { vscode } from "@src/utils/vscode"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
-import { VSCodeButtonLink } from "@src/components/common/VSCodeButtonLink"
+//import { VSCodeButtonLink } from "@src/components/common/VSCodeButtonLink"
 import { Button } from "@src/components/ui"
 
 import { inputEventTransform } from "../transforms"
@@ -33,7 +33,7 @@ export const SyntX = ({
 
 	const [didRefetch, setDidRefetch] = useState<boolean>()
 
-	const handleInputChange = useCallback(
+	const _handleInputChange = useCallback(
 		<K extends keyof ProviderSettings, E>(
 			field: K,
 			transform: (event: E) => ProviderSettings[K] = inputEventTransform,

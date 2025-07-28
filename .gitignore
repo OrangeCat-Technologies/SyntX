@@ -46,3 +46,4 @@ logs
 .qodo/
 .vercel
 .roo/mcp.json
+.syntx/mcp-json

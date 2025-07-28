@@ -211,7 +211,7 @@ describe("SimpleInstaller", () => {
 			mockFs.readFile.mockResolvedValueOnce(invalidJson)
 
 			await expect(installer.installItem(mockMcpItem, { target: "project" })).rejects.toThrow(
-				"Cannot install MCP server: The .roo/mcp.json file contains invalid JSON",
+				"Cannot install MCP server: The .syntx/mcp.json file contains invalid JSON",
 			)
 
 			// Should NOT write to file

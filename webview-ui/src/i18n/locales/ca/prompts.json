@@ -50,7 +50,7 @@
 		"title": "Instruccions personalitzades específiques del mode (opcional)",
 		"resetToDefault": "Restablir a valors predeterminats",
 		"description": "Afegiu directrius de comportament específiques per al mode {{modeName}}.",
-		"loadFromFile": "Les instruccions personalitzades específiques per al mode {{mode}} també es poden carregar des de la carpeta <span>.roo/rules-{{slug}}/</span> al vostre espai de treball (.roorules-{{slug}} i .clinerules-{{slug}} estan obsolets i deixaran de funcionar aviat)."
+		"loadFromFile": "Les instruccions personalitzades específiques per al mode {{mode}} també es poden carregar des de la carpeta <span>.syntx/rules-{{slug}}/</span> al vostre espai de treball (.roorules-{{slug}} i .clinerules-{{slug}} estan obsolets i deixaran de funcionar aviat)."
 	},
 	"exportMode": {
 		"title": "Exportar mode",
@@ -68,7 +68,7 @@
 		},
 		"project": {
 			"label": "Nivell de projecte",
-			"description": "Només disponible en aquest espai de treball. Si el mode exportat contenia fitxers de regles, es tornaran a crear a la carpeta .roo/rules-{slug}/."
+			"description": "Només disponible en aquest espai de treball. Si el mode exportat contenia fitxers de regles, es tornaran a crear a la carpeta .syntx/rules-{slug}/."
 		}
 	},
 	"advanced": {
@@ -77,7 +77,7 @@
 	"globalCustomInstructions": {
 		"title": "Instruccions personalitzades per a tots els modes",
 		"description": "Aquestes instruccions s'apliquen a tots els modes. Proporcionen un conjunt bàsic de comportaments que es poden millorar amb instruccions específiques de cada mode a continuació. <0>Més informació</0>",
-		"loadFromFile": "Les instruccions també es poden carregar des de la carpeta <span>.roo/rules/</span> al vostre espai de treball (.roorules i .clinerules estan obsolets i deixaran de funcionar aviat)."
+		"loadFromFile": "Les instruccions també es poden carregar des de la carpeta <span>.syntx/rules/</span> al vostre espai de treball (.roorules i .clinerules estan obsolets i deixaran de funcionar aviat)."
 	},
 	"systemPrompt": {
 		"preview": "Previsualització del prompt del sistema",
@@ -146,7 +146,7 @@
 	},
 	"advancedSystemPrompt": {
 		"title": "Avançat: Sobreescriure prompt del sistema",
-		"description": "<2>⚠️ Avís:</2> Aquesta funcionalitat avançada eludeix les salvaguardes. <1>LLEGIU AIXÒ ABANS D'UTILITZAR!</1>Sobreescriviu el prompt del sistema per defecte creant un fitxer a <span>.roo/system-prompt-{{slug}}</span>."
+		"description": "<2>⚠️ Avís:</2> Aquesta funcionalitat avançada eludeix les salvaguardes. <1>LLEGIU AIXÒ ABANS D'UTILITZAR!</1>Sobreescriviu el prompt del sistema per defecte creant un fitxer a <span>.syntx/system-prompt-{{slug}}</span>."
 	},
 	"createModeDialog": {
 		"title": "Crear nou mode",

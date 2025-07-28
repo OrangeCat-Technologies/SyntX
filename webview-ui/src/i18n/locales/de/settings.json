@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "Geschützte Dateien einbeziehen",
-				"description": "SyntX erlauben, geschützte Dateien (wie .syntxignore und .roo/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
+				"description": "SyntX erlauben, geschützte Dateien (wie .syntxignore und .syntx/ Konfigurationsdateien) ohne Genehmigung zu erstellen und zu bearbeiten."
 			}
 		},
 		"browser": {

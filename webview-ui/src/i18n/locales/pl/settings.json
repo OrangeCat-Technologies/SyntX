@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "Uwzględnij pliki chronione",
-				"description": "Pozwól SyntX na tworzenie i edycję plików chronionych (takich jak .syntxignore i pliki konfiguracyjne .roo/) bez konieczności zatwierdzania."
+				"description": "Pozwól SyntX na tworzenie i edycję plików chronionych (takich jak .syntxignore i pliki konfiguracyjne .syntx/) bez konieczności zatwierdzania."
 			}
 		},
 		"browser": {

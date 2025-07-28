@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "Incluir archivos protegidos",
-				"description": "Permitir a SyntX crear y editar archivos protegidos (como .syntxignore y archivos de configuración .roo/) sin requerir aprobación."
+				"description": "Permitir a SyntX crear y editar archivos protegidos (como .syntxignore y archivos de configuración .syntx/) sin requerir aprobación."
 			}
 		},
 		"browser": {

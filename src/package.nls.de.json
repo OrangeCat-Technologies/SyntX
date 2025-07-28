@@ -36,5 +36,5 @@
 	"settings.vsCodeLmModelSelector.family.description": "Die Familie des Sprachmodells (z.B. gpt-4)",
 	"settings.customStoragePath.description": "Benutzerdefinierter Speicherpfad. Leer lassen, um den Standardspeicherort zu verwenden. Unterstützt absolute Pfade (z.B. 'D:\\SyntXStorage')",
 	"settings.enableCodeActions.description": "Syntx Schnelle Problembehebung aktivieren.",
-	"settings.autoImportSettingsPath.description": "Pfad zu einer SyntX-Konfigurationsdatei, die beim Start der Erweiterung automatisch importiert wird. Unterstützt absolute Pfade und Pfade relativ zum Home-Verzeichnis (z.B. '~/Documents/roo-code-settings.json'). Leer lassen, um den automatischen Import zu deaktivieren."
+	"settings.autoImportSettingsPath.description": "Pfad zu einer SyntX-Konfigurationsdatei, die beim Start der Erweiterung automatisch importiert wird. Unterstützt absolute Pfade und Pfade relativ zum Home-Verzeichnis (z.B. '~/Documents/syntx-settings.json'). Leer lassen, um den automatischen Import zu deaktivieren."
 }

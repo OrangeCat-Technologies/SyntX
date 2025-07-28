@@ -148,7 +148,7 @@
 			},
 			"protected": {
 				"label": "Include protected files",
-				"description": "Allow SyntX to create and edit protected files (like .syntxignore and .roo/ configuration files) without requiring approval."
+				"description": "Allow SyntX to create and edit protected files (like .syntxignore and .syntx/ configuration files) without requiring approval."
 			}
 		},
 		"browser": {

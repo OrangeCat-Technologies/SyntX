@@ -150,7 +150,7 @@
 			},
 			"protected": {
 				"label": "包含受保护的文件",
-				"description": "允许 SyntX 创建和编辑受保护的文件（如 .syntxignore 和 .roo/ 配置文件），无需批准。"
+				"description": "允许 SyntX 创建和编辑受保护的文件（如 .syntxignore 和 .syntx/ 配置文件），无需批准。"
 			}
 		},
 		"browser": {

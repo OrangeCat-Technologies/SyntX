@@ -36,5 +36,5 @@
 	"settings.vsCodeLmModelSelector.family.description": "La famiglia del modello linguistico (es. gpt-4)",
 	"settings.customStoragePath.description": "Percorso di archiviazione personalizzato. Lasciare vuoto per utilizzare la posizione predefinita. Supporta percorsi assoluti (es. 'D:\\SyntXStorage')",
 	"settings.enableCodeActions.description": "Abilita correzioni rapide di Syntx.",
-	"settings.autoImportSettingsPath.description": "Percorso di un file di configurazione di SyntX da importare automaticamente all'avvio dell'estensione. Supporta percorsi assoluti e percorsi relativi alla directory home (ad es. '~/Documents/roo-code-settings.json'). Lasciare vuoto per disabilitare l'importazione automatica."
+	"settings.autoImportSettingsPath.description": "Percorso di un file di configurazione di SyntX da importare automaticamente all'avvio dell'estensione. Supporta percorsi assoluti e percorsi relativi alla directory home (ad es. '~/Documents/syntx-settings.json'). Lasciare vuoto per disabilitare l'importazione automatica."
 }
