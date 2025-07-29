@@ -91,8 +91,6 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 				return <span>Problems</span>
 			case ContextMenuOptionType.Terminal:
 				return <span>Terminal</span>
-			case ContextMenuOptionType.URL:
-				return <span>Paste URL to fetch contents</span>
 			case ContextMenuOptionType.NoResults:
 				return <span>No results found</span>
 			case ContextMenuOptionType.Git:
@@ -173,8 +171,6 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 				return "warning"
 			case ContextMenuOptionType.Terminal:
 				return "terminal"
-			case ContextMenuOptionType.URL:
-				return "link"
 			case ContextMenuOptionType.Git:
 				return "git-commit"
 			case ContextMenuOptionType.NoResults:
@@ -194,7 +190,7 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 	}
 
 	const isOptionSelectable = (option: ContextMenuQueryItem): boolean => {
-		return option.type !== ContextMenuOptionType.NoResults && option.type !== ContextMenuOptionType.URL
+		return option.type !== ContextMenuOptionType.NoResults
 	}
 
 	return (

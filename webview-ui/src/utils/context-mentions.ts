@@ -101,7 +101,6 @@ export enum ContextMenuOptionType {
 	Folder = "folder",
 	Problems = "problems",
 	Terminal = "terminal",
-	URL = "url",
 	Git = "git",
 	NoResults = "noResults",
 	Mode = "mode", // Add mode type
@@ -194,9 +193,9 @@ export function getContextMenuOptions(
 		return [
 			{ type: ContextMenuOptionType.Problems },
 			{ type: ContextMenuOptionType.Terminal },
-			{ type: ContextMenuOptionType.URL },
-			{ type: ContextMenuOptionType.Folder },
+			{ type: ContextMenuOptionType.OpenedFile },
 			{ type: ContextMenuOptionType.File },
+			{ type: ContextMenuOptionType.Folder },
 			{ type: ContextMenuOptionType.Git },
 		]
 	}
@@ -220,9 +219,6 @@ export function getContextMenuOptions(
 	}
 	if ("terminal".startsWith(lowerQuery)) {
 		suggestions.push({ type: ContextMenuOptionType.Terminal })
-	}
-	if (query.startsWith("http")) {
-		suggestions.push({ type: ContextMenuOptionType.URL, value: query })
 	}
 
 	// Add exact SHA matches to suggestions

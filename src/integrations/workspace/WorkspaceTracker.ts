@@ -3,7 +3,7 @@ import * as path from "path"
 
 import { listFiles } from "../../services/glob/list-files"
 import { ClineProvider } from "../../core/webview/ClineProvider"
-import { toRelativePath, getWorkspacePath } from "../../utils/path"
+import { toRelativePath, getWorkspacePath, getAllWorkspaceFolders, getWorkspaceFolderForPath } from "../../utils/path"
 
 const MAX_INITIAL_FILES = 1_000
 
@@ -25,16 +25,16 @@ class WorkspaceTracker {
 	}
 
 	async initializeFilePaths() {
-		// should not auto get filepaths for desktop since it would immediately show permission popup before cline ever creates a file
-		if (!this.cwd) {
+		const allWorkspaceFolders = getAllWorkspaceFolders()
+		if (allWorkspaceFolders.length === 0) {
 			return
 		}
-		const tempCwd = this.cwd
-		const [files, _] = await listFiles(tempCwd, true, MAX_INITIAL_FILES)
-		if (this.prevWorkSpacePath !== tempCwd) {
-			return
+
+		this.filePaths.clear()
+		for (const workspaceFolder of allWorkspaceFolders) {
+			const [files] = await listFiles(workspaceFolder, true, MAX_INITIAL_FILES)
+			files.forEach((file) => this.filePaths.add(this.normalizeFilePath(file)))
 		}
-		files.slice(0, MAX_INITIAL_FILES).forEach((file) => this.filePaths.add(this.normalizeFilePath(file)))
 		this.workspaceDidUpdate()
 	}
 
@@ -74,15 +74,30 @@ class WorkspaceTracker {
 	}
 
 	private getOpenedTabsInfo() {
+		const allWorkspaceFolders = getAllWorkspaceFolders()
 		return vscode.window.tabGroups.all.reduce(
 			(acc, group) => {
 				const groupTabs = group.tabs
 					.filter((tab) => tab.input instanceof vscode.TabInputText)
-					.map((tab) => ({
-						label: tab.label,
-						isActive: tab.isActive,
-						path: toRelativePath((tab.input as vscode.TabInputText).uri.fsPath, this.cwd || ""),
-					}))
+					.map((tab) => {
+						const fsPath = (tab.input as vscode.TabInputText).uri.fsPath
+						const workspaceFolder = getWorkspaceFolderForPath(fsPath)
+						let relativePath = toRelativePath(fsPath, workspaceFolder)
+
+						// For multi-folder workspaces, prefix with folder name
+						if (allWorkspaceFolders.length > 1) {
+							const folderName = path.basename(workspaceFolder)
+							// Only add folder name prefix if the relative path doesn't already start with it
+							if (!relativePath.startsWith(folderName + path.sep)) {
+								relativePath = path.join(folderName, relativePath)
+							}
+						}
+						return {
+							label: tab.label,
+							isActive: tab.isActive,
+							path: relativePath,
+						}
+					})
 
 				groupTabs.forEach((tab) => (tab.isActive ? acc.unshift(tab) : acc.push(tab)))
 				return acc
@@ -114,11 +129,26 @@ class WorkspaceTracker {
 			clearTimeout(this.updateTimer)
 		}
 		this.updateTimer = setTimeout(() => {
-			if (!this.cwd) {
+			const allWorkspaceFolders = getAllWorkspaceFolders()
+			if (allWorkspaceFolders.length === 0 && this.filePaths.size === 0) {
 				return
 			}
 
-			const relativeFilePaths = Array.from(this.filePaths).map((file) => toRelativePath(file, this.cwd))
+			const relativeFilePaths = Array.from(this.filePaths).map((file) => {
+				const workspaceFolder = getWorkspaceFolderForPath(file)
+				let relativePath = toRelativePath(file, workspaceFolder)
+
+				// For multi-folder workspaces, prefix with folder name
+				if (allWorkspaceFolders.length > 1) {
+					const folderName = path.basename(workspaceFolder)
+					// Only add folder name prefix if the relative path doesn't already start with it
+					if (!relativePath.startsWith(folderName + path.sep)) {
+						relativePath = path.join(folderName, relativePath)
+					}
+				}
+				return relativePath
+			})
+
 			this.providerRef.deref()?.postMessageToWebview({
 				type: "workspaceUpdated",
 				filePaths: relativeFilePaths,
@@ -129,8 +159,35 @@ class WorkspaceTracker {
 	}
 
 	private normalizeFilePath(filePath: string): string {
-		const resolvedPath = this.cwd ? path.resolve(this.cwd, filePath) : path.resolve(filePath)
-		return filePath.endsWith("/") ? resolvedPath + "/" : resolvedPath
+		// If the file path is already absolute, return it as is
+		if (path.isAbsolute(filePath)) {
+			return filePath.endsWith("/") ? filePath : filePath
+		}
+
+		// For relative paths, try to determine the appropriate workspace folder
+		const allWorkspaceFolders = getAllWorkspaceFolders()
+
+		// If we have multiple workspace folders, try to match the path to a folder
+		if (allWorkspaceFolders.length > 1) {
+			const pathParts = filePath.split(path.sep)
+			const firstPart = pathParts[0]
+
+			// Check if the first part matches any workspace folder name
+			for (const workspaceFolder of allWorkspaceFolders) {
+				const folderName = path.basename(workspaceFolder)
+				if (firstPart === folderName) {
+					// Remove the folder name from the path and join with the workspace folder
+					const remainingPath = pathParts.slice(1).join(path.sep)
+					const normalizedPath = path.join(workspaceFolder, remainingPath)
+					return filePath.endsWith("/") ? normalizedPath + "/" : normalizedPath
+				}
+			}
+		}
+
+		// Fall back to the first workspace folder
+		const workspaceFolder = getWorkspaceFolderForPath(filePath)
+		const normalizedPath = path.join(workspaceFolder, filePath)
+		return filePath.endsWith("/") ? normalizedPath + "/" : normalizedPath
 	}
 
 	private async addFilePath(filePath: string): Promise<string> {
