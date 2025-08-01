@@ -193,7 +193,6 @@ export function getContextMenuOptions(
 		return [
 			{ type: ContextMenuOptionType.Problems },
 			{ type: ContextMenuOptionType.Terminal },
-			{ type: ContextMenuOptionType.OpenedFile },
 			{ type: ContextMenuOptionType.File },
 			{ type: ContextMenuOptionType.Folder },
 			{ type: ContextMenuOptionType.Git },

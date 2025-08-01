@@ -152,7 +152,16 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						</div>
 					)
 				} else {
-					return <span>Add {option.type === ContextMenuOptionType.File ? "File" : "Folder"}</span>
+					switch (option.type) {
+						case ContextMenuOptionType.File:
+							return <span>Add File</span>
+						case ContextMenuOptionType.OpenedFile:
+							return <span>Opened Files</span>
+						case ContextMenuOptionType.Folder:
+							return <span>Add Folder</span>
+						default:
+							return <span>Add File</span>
+					}
 				}
 		}
 	}
