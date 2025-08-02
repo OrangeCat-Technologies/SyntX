@@ -200,9 +200,9 @@ describe("getContextMenuOptions", () => {
 		expect(result.map((item) => item.type)).toEqual([
 			ContextMenuOptionType.Problems,
 			ContextMenuOptionType.Terminal,
-			ContextMenuOptionType.URL,
-			ContextMenuOptionType.Folder,
+			ContextMenuOptionType.OpenedFile,
 			ContextMenuOptionType.File,
+			ContextMenuOptionType.Folder,
 			ContextMenuOptionType.Git,
 		])
 	})

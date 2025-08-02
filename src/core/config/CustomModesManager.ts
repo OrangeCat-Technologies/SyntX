@@ -709,8 +709,8 @@ export class CustomModesManager {
 							const filePath = path.join(modeRulesDir, entry.name)
 							const content = await fs.readFile(filePath, "utf-8")
 							if (content.trim()) {
-								// Calculate relative path from .roo directory
-								const relativePath = path.relative(path.join(workspacePath, ".roo"), filePath)
+								// Calculate relative path from .syntx directory
+								const relativePath = path.relative(path.join(workspacePath, ".syntx"), filePath)
 								rulesFiles.push({ relativePath, content: content.trim() })
 							}
 						}
@@ -850,9 +850,9 @@ export class CustomModesManager {
 									continue // Skip this file but continue with others
 								}
 
-								const targetPath = path.join(workspacePath, ".roo", normalizedRelativePath)
+								const targetPath = path.join(workspacePath, ".syntx", normalizedRelativePath)
 								const normalizedTargetPath = path.normalize(targetPath)
-								const expectedBasePath = path.normalize(path.join(workspacePath, ".roo"))
+								const expectedBasePath = path.normalize(path.join(workspacePath, ".syntx"))
 
 								// Ensure the resolved path stays within the .roo directory
 								if (!normalizedTargetPath.startsWith(expectedBasePath)) {

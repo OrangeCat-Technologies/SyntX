@@ -15,7 +15,7 @@ import { getApiMetrics } from "../../shared/getApiMetrics"
 import { listFiles } from "../../services/glob/list-files"
 import { TerminalRegistry } from "../../integrations/terminal/TerminalRegistry"
 import { Terminal } from "../../integrations/terminal/Terminal"
-import { arePathsEqual } from "../../utils/path"
+import { arePathsEqual, getAllWorkspaceFolders } from "../../utils/path"
 import { formatResponse } from "../prompts/responses"
 
 import { Task } from "../task/Task"
@@ -36,16 +36,38 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 	// file to another between messages, so we always include this context.
 	details += "\n\n# VSCode Visible Files"
 
+	const allWorkspaceFolders = getAllWorkspaceFolders()
 	const visibleFilePaths = vscode.window.visibleTextEditors
-		?.map((editor) => editor.document?.uri?.fsPath)
+		?.map((editor) => {
+			const absolutePath = editor.document?.uri?.fsPath
+			if (!absolutePath) return null
+
+			// Find the workspace folder for this file
+			const workspaceFolder = vscode.workspace.getWorkspaceFolder(editor.document.uri)
+			if (workspaceFolder) {
+				let relativePath = path.relative(workspaceFolder.uri.fsPath, absolutePath)
+				// For multi-folder workspaces, prefix with folder name
+				if (allWorkspaceFolders.length > 1) {
+					const folderName = path.basename(workspaceFolder.uri.fsPath)
+					if (!relativePath.startsWith(folderName + path.sep)) {
+						relativePath = path.join(folderName, relativePath)
+					}
+				}
+				return relativePath
+			}
+			// Fallback to relative path from first workspace folder
+			return path.relative(cline.cwd, absolutePath)
+		})
 		.filter(Boolean)
-		.map((absolutePath) => path.relative(cline.cwd, absolutePath))
 		.slice(0, maxWorkspaceFiles)
 
 	// Filter paths through rooIgnoreController
 	const allowedVisibleFiles = cline.rooIgnoreController
-		? cline.rooIgnoreController.filterPaths(visibleFilePaths)
-		: visibleFilePaths.map((p) => p.toPosix()).join("\n")
+		? cline.rooIgnoreController.filterPaths(visibleFilePaths.filter((p): p is string => p !== null))
+		: visibleFilePaths
+				.filter((p): p is string => p !== null)
+				.map((p) => p.toPosix())
+				.join("\n")
 
 	if (allowedVisibleFiles) {
 		details += `\n${allowedVisibleFiles}`
@@ -58,15 +80,36 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 	const maxTabs = maxOpenTabsContext ?? 20
 	const openTabPaths = vscode.window.tabGroups.all
 		.flatMap((group) => group.tabs)
-		.map((tab) => (tab.input as vscode.TabInputText)?.uri?.fsPath)
+		.map((tab) => {
+			const absolutePath = (tab.input as vscode.TabInputText)?.uri?.fsPath
+			if (!absolutePath) return null
+
+			// Find the workspace folder for this file
+			const workspaceFolder = vscode.workspace.getWorkspaceFolder((tab.input as vscode.TabInputText).uri)
+			if (workspaceFolder) {
+				let relativePath = path.relative(workspaceFolder.uri.fsPath, absolutePath)
+				// For multi-folder workspaces, prefix with folder name
+				if (allWorkspaceFolders.length > 1) {
+					const folderName = path.basename(workspaceFolder.uri.fsPath)
+					if (!relativePath.startsWith(folderName + path.sep)) {
+						relativePath = path.join(folderName, relativePath)
+					}
+				}
+				return relativePath.toPosix()
+			}
+			// Fallback to relative path from first workspace folder
+			return path.relative(cline.cwd, absolutePath).toPosix()
+		})
 		.filter(Boolean)
-		.map((absolutePath) => path.relative(cline.cwd, absolutePath).toPosix())
 		.slice(0, maxTabs)
 
 	// Filter paths through rooIgnoreController
 	const allowedOpenTabs = cline.rooIgnoreController
-		? cline.rooIgnoreController.filterPaths(openTabPaths)
-		: openTabPaths.map((p) => p.toPosix()).join("\n")
+		? cline.rooIgnoreController.filterPaths(openTabPaths.filter((p): p is string => p !== null))
+		: openTabPaths
+				.filter((p): p is string => p !== null)
+				.map((p) => p.toPosix())
+				.join("\n")
 
 	if (allowedOpenTabs) {
 		details += `\n${allowedOpenTabs}`
@@ -237,32 +280,64 @@ export async function getEnvironmentDetails(cline: Task, includeFileDetails: boo
 	}
 
 	if (includeFileDetails) {
-		details += `\n\n# Current Workspace Directory (${cline.cwd.toPosix()}) Files\n`
-		const isDesktop = arePathsEqual(cline.cwd, path.join(os.homedir(), "Desktop"))
+		const allWorkspaceFolders = getAllWorkspaceFolders()
 
-		if (isDesktop) {
-			// Don't want to immediately access desktop since it would show
-			// permission popup.
-			details += "(Desktop files not shown automatically. Use list_files to explore if needed.)"
-		} else {
-			const maxFiles = maxWorkspaceFiles ?? 200
+		if (allWorkspaceFolders.length === 1) {
+			// Single workspace folder - use existing logic
+			details += `\n\n# Current Workspace Directory (${cline.cwd.toPosix()}) Files\n`
+			const isDesktop = arePathsEqual(cline.cwd, path.join(os.homedir(), "Desktop"))
 
-			// Early return for limit of 0
-			if (maxFiles === 0) {
-				details += "(Workspace files context disabled. Use list_files to explore if needed.)"
+			if (isDesktop) {
+				// Don't want to immediately access desktop since it would show
+				// permission popup.
+				details += "(Desktop files not shown automatically. Use list_files to explore if needed.)"
 			} else {
-				const [files, didHitLimit] = await listFiles(cline.cwd, true, maxFiles)
-				const { showRooIgnoredFiles = true } = state ?? {}
+				const maxFiles = maxWorkspaceFiles ?? 200
 
-				const result = formatResponse.formatFilesList(
-					cline.cwd,
-					files,
-					didHitLimit,
-					cline.rooIgnoreController,
-					showRooIgnoredFiles,
-				)
+				// Early return for limit of 0
+				if (maxFiles === 0) {
+					details += "(Workspace files context disabled. Use list_files to explore if needed.)"
+				} else {
+					const [files, didHitLimit] = await listFiles(cline.cwd, true, maxFiles)
+					const { showRooIgnoredFiles = true } = state ?? {}
 
-				details += result
+					const result = formatResponse.formatFilesList(
+						cline.cwd,
+						files,
+						didHitLimit,
+						cline.rooIgnoreController,
+						showRooIgnoredFiles,
+					)
+
+					details += result
+				}
+			}
+		} else {
+			// Multi-folder workspace - show files from all folders
+			details += `\n\n# Multi-Folder Workspace Files\n`
+			const maxFiles = maxWorkspaceFiles ?? 200
+			const filesPerFolder = Math.max(1, Math.floor(maxFiles / allWorkspaceFolders.length))
+
+			for (const workspaceFolder of allWorkspaceFolders) {
+				const folderName = path.basename(workspaceFolder)
+				details += `\n## ${folderName} (${workspaceFolder.toPosix()})\n`
+
+				try {
+					const [files, didHitLimit] = await listFiles(workspaceFolder, true, filesPerFolder)
+					const { showRooIgnoredFiles = true } = state ?? {}
+
+					const result = formatResponse.formatFilesList(
+						workspaceFolder,
+						files,
+						didHitLimit,
+						cline.rooIgnoreController,
+						showRooIgnoredFiles,
+					)
+
+					details += result
+				} catch (error) {
+					details += `(Error listing files: ${error instanceof Error ? error.message : String(error)})`
+				}
 			}
 		}
 	}

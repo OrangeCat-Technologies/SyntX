@@ -116,6 +116,46 @@ export const getWorkspacePath = (defaultCwdPath = "") => {
 	return cwdPath
 }
 
+/**
+ * Returns all workspace folders as an array of paths
+ * This enables multi-folder workspace support
+ */
+export const getAllWorkspaceFolders = (): string[] => {
+	return vscode.workspace.workspaceFolders?.map((folder) => folder.uri.fsPath) || []
+}
+
+/**
+ * Returns the workspace folder that contains the given path
+ * Falls back to the first workspace folder if no specific match
+ */
+export const getWorkspaceFolderForPath = (filePath: string): string => {
+	// First try to find the workspace folder for the exact path
+	const uri = vscode.Uri.file(filePath)
+	const workspaceFolder = vscode.workspace.getWorkspaceFolder(uri)
+	if (workspaceFolder) {
+		return workspaceFolder.uri.fsPath
+	}
+
+	// If the file doesn't exist yet, try to determine which workspace folder it should belong to
+	// by checking if the path starts with any workspace folder name
+	const allWorkspaceFolders = getAllWorkspaceFolders()
+	if (allWorkspaceFolders.length > 1) {
+		const fileName = path.basename(filePath)
+		const dirName = path.dirname(filePath)
+
+		// Check if the directory name matches any workspace folder name
+		for (const workspaceFolder of allWorkspaceFolders) {
+			const folderName = path.basename(workspaceFolder)
+			if (dirName === folderName || dirName.startsWith(folderName + path.sep)) {
+				return workspaceFolder
+			}
+		}
+	}
+
+	// Fall back to the first workspace folder
+	return getWorkspacePath()
+}
+
 export const getWorkspacePathForContext = (contextPath?: string): string => {
 	// If context path provided, find its workspace
 	if (contextPath) {
