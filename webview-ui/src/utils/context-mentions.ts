@@ -104,6 +104,7 @@ export enum ContextMenuOptionType {
 	Git = "git",
 	NoResults = "noResults",
 	Mode = "mode", // Add mode type
+	PreviousChat = "previousChat", // Add previous chat type
 }
 
 export interface ContextMenuQueryItem {
@@ -156,6 +157,34 @@ export function getContextMenuOptions(
 		return matchingModes.length > 0 ? matchingModes : [{ type: ContextMenuOptionType.NoResults }]
 	}
 
+	// Handle @previous-chat mentions
+	if (
+		query.startsWith("previous") ||
+		query.startsWith("chat") ||
+		query.includes("previous-chat") ||
+		query.includes("previous") ||
+		query.includes("previouschat")
+	) {
+		const previousChatItems = queryItems.filter((item) => item.type === ContextMenuOptionType.PreviousChat)
+
+		// If we have a more specific query, filter the results
+		if (query.length > 0 && previousChatItems.length > 0) {
+			const lowerQuery = query.toLowerCase()
+			const filteredItems = previousChatItems.filter((item) => {
+				const searchText = [item.label, item.description, item.value].filter(Boolean).join(" ").toLowerCase()
+				return (
+					searchText.includes(lowerQuery) ||
+					lowerQuery.includes("previous") ||
+					lowerQuery.includes("chat") ||
+					lowerQuery.includes("previouschat")
+				)
+			})
+			return filteredItems.length > 0 ? filteredItems : previousChatItems
+		}
+
+		return previousChatItems.length > 0 ? previousChatItems : [{ type: ContextMenuOptionType.NoResults }]
+	}
+
 	const workingChanges: ContextMenuQueryItem = {
 		type: ContextMenuOptionType.Git,
 		value: "git-changes",
@@ -190,13 +219,24 @@ export function getContextMenuOptions(
 			return commits.length > 0 ? [workingChanges, ...commits] : [workingChanges]
 		}
 
-		return [
+		if (selectedType === ContextMenuOptionType.PreviousChat) {
+			const previousChats = queryItems.filter((item) => item.type === ContextMenuOptionType.PreviousChat)
+			return previousChats.length > 0 ? previousChats : [{ type: ContextMenuOptionType.NoResults }]
+		}
+
+		const defaultOptions = [
 			{ type: ContextMenuOptionType.Problems },
 			{ type: ContextMenuOptionType.Terminal },
 			{ type: ContextMenuOptionType.File },
 			{ type: ContextMenuOptionType.Folder },
 			{ type: ContextMenuOptionType.Git },
+			{
+				type: ContextMenuOptionType.PreviousChat,
+				label: "Previous Chats",
+				description: "Reference previous conversations",
+			},
 		]
+		return defaultOptions
 	}
 
 	const lowerQuery = query.toLowerCase()
@@ -218,6 +258,13 @@ export function getContextMenuOptions(
 	}
 	if ("terminal".startsWith(lowerQuery)) {
 		suggestions.push({ type: ContextMenuOptionType.Terminal })
+	}
+	if ("previouschat".startsWith(lowerQuery) || "previous-chat".startsWith(lowerQuery)) {
+		suggestions.push({
+			type: ContextMenuOptionType.PreviousChat,
+			label: "Previous Chats",
+			description: "Reference previous conversations",
+		})
 	}
 
 	// Add exact SHA matches to suggestions

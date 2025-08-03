@@ -62,6 +62,7 @@ export interface ExtensionMessage {
 		| "mcpServers"
 		| "enhancedPrompt"
 		| "commitSearchResults"
+		| "previousChatResults"
 		| "listApiConfig"
 		| "routerModels"
 		| "openAiModels"
@@ -143,6 +144,7 @@ export interface ExtensionMessage {
 	vsCodeLmModels?: { vendor?: string; family?: string; version?: string; id?: string }[]
 	mcpServers?: McpServer[]
 	commits?: GitCommit[]
+	tasks?: any[] // Previous chat tasks
 	listApiConfig?: ProviderSettingsEntry[]
 	mode?: Mode
 	customMode?: ModeConfig

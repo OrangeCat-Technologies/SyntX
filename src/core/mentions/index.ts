@@ -18,6 +18,7 @@ import { UrlContentFetcher } from "../../services/browser/UrlContentFetcher"
 import { FileContextTracker } from "../context-tracking/FileContextTracker"
 
 import { RooIgnoreController } from "../ignore/RooIgnoreController"
+import { PreviousChatProvider } from "../providers/PreviousChatProvider"
 
 import { t } from "../../i18n"
 
@@ -99,6 +100,8 @@ export async function parseMentions(
 			return `Git commit '${mention}' (see below for commit info)`
 		} else if (mention === "terminal") {
 			return `Terminal Output (see below for output)`
+		} else if (mention.startsWith("previous-chat-")) {
+			return `Previous chat conversation (see below for condensed summary)`
 		}
 		return match
 	})
@@ -190,6 +193,16 @@ export async function parseMentions(
 				parsedText += `\n\n<terminal_output>\n${terminalOutput}\n</terminal_output>`
 			} catch (error) {
 				parsedText += `\n\n<terminal_output>\nError fetching terminal output: ${error.message}\n</terminal_output>`
+			}
+		} else if (mention.startsWith("previous-chat-")) {
+			try {
+				const taskId = mention.replace("previous-chat-", "")
+				console.log(`[PREV_CHAT] Found mention for task: ${taskId}`)
+				// For now, just indicate that a previous chat was referenced
+				// The actual processing will happen in processUserContentMentions
+				parsedText += `\n\n<previous_chat_summary task_id="${taskId}">\nPrevious chat reference detected - processing will happen at task level\n</previous_chat_summary>`
+			} catch (error) {
+				parsedText += `\n\n<previous_chat_summary task_id="${mention.replace("previous-chat-", "")}">\nError processing previous chat reference: ${error.message}\n</previous_chat_summary>`
 			}
 		}
 	}

@@ -25,6 +25,7 @@ import {
 	getModesSection,
 	addCustomInstructions,
 	markdownFormattingSection,
+	getPreviousChatContextSection,
 } from "./sections"
 import { getDataScienceSystemPrompt } from "./data_science"
 
@@ -110,6 +111,8 @@ ${getCapabilitiesSection(cwd, supportsComputerUse, mcpHub, effectiveDiffStrategy
 ${modesSection}
 
 ${getRulesSection(cwd, supportsComputerUse, effectiveDiffStrategy, codeIndexManager)}
+
+${getPreviousChatContextSection()}
 
 ${getSystemInfoSection(cwd)}
 

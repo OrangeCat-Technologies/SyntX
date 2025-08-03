@@ -647,6 +647,7 @@ export class Task extends EventEmitter<ClineEvents> {
 					lastMessage.images = images
 					lastMessage.partial = partial
 					lastMessage.progressStatus = progressStatus
+					lastMessage.contextCondense = contextCondense
 					this.updateClineMessage(lastMessage)
 				} else {
 					// This is a new partial message, so add it with partial state.
@@ -679,6 +680,7 @@ export class Task extends EventEmitter<ClineEvents> {
 					lastMessage.images = images
 					lastMessage.partial = false
 					lastMessage.progressStatus = progressStatus
+					lastMessage.contextCondense = contextCondense
 
 					// Instead of streaming partialMessage events, we do a save
 					// and post like normal to persist to disk.
@@ -1234,6 +1236,10 @@ export class Task extends EventEmitter<ClineEvents> {
 			fileContextTracker: this.fileContextTracker,
 			rooIgnoreController: this.rooIgnoreController,
 			showRooIgnoredFiles,
+			globalStoragePath: this.globalStoragePath,
+			apiHandler: this.api,
+			systemPrompt: await this.getSystemPrompt(),
+			taskInstance: this,
 		})
 
 		const environmentDetails = await getEnvironmentDetails(this, includeFileDetails)

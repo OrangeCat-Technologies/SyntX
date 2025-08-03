@@ -32,6 +32,39 @@ vi.mock("@vscode/webview-ui-toolkit/react", () => ({
 	VSCodeBadge: ({ children }: { children: React.ReactNode }) => <div data-testid="vscode-badge">{children}</div>,
 }))
 
+// Mock lucide-react icons
+vi.mock("lucide-react", () => ({
+	FoldVertical: ({ size }: { size?: number }) => (
+		<svg data-testid="fold-vertical-icon" className="lucide-fold-vertical" width={size} height={size}></svg>
+	),
+	CloudUpload: ({ size }: { size?: number }) => (
+		<svg data-testid="cloud-upload-icon" width={size} height={size}></svg>
+	),
+	CloudDownload: ({ size }: { size?: number }) => (
+		<svg data-testid="cloud-download-icon" width={size} height={size}></svg>
+	),
+	XIcon: ({ size }: { size?: number }) => <svg data-testid="x-icon" width={size} height={size}></svg>,
+	X: ({ size }: { size?: number }) => <svg data-testid="x-icon" width={size} height={size}></svg>,
+}))
+
+// Mock useSelectedModel hook
+vi.mock("@/components/ui/hooks/useSelectedModel", () => ({
+	useSelectedModel: vi.fn(() => ({
+		id: "test-model",
+		info: { contextWindow: 4000 },
+	})),
+}))
+
+// Mock format utilities
+vi.mock("@src/utils/format", () => ({
+	formatLargeNumber: vi.fn((num) => num.toString()),
+}))
+
+// Mock react-use
+vi.mock("react-use", () => ({
+	useWindowSize: () => ({ width: 800, height: 600 }),
+}))
+
 // Mock the ExtensionStateContext
 vi.mock("@src/context/ExtensionStateContext", () => ({
 	useExtensionState: () => ({
@@ -68,6 +101,8 @@ describe("TaskHeader", () => {
 
 	it("should display cost when totalCost is greater than 0", () => {
 		renderTaskHeader()
+		// The cost should be displayed in the expanded view
+		// Elements are visible in collapsed state
 		expect(screen.getByText("$0.05")).toBeInTheDocument()
 	})
 
@@ -93,19 +128,23 @@ describe("TaskHeader", () => {
 
 	it("should render the condense context button", () => {
 		renderTaskHeader()
+		// The condense button should be available when contextWindow > 0 and in expanded state
+		// Elements are visible in collapsed state
+
 		// Find the button that contains the FoldVertical icon
-		const buttons = screen.getAllByRole("button")
-		const condenseButton = buttons.find((button) => button.querySelector("svg.lucide-fold-vertical"))
-		expect(condenseButton).toBeDefined()
-		expect(condenseButton?.querySelector("svg")).toBeInTheDocument()
+		const condenseIcon = screen.getByTestId("fold-vertical-icon")
+		expect(condenseIcon).toBeInTheDocument()
 	})
 
 	it("should call handleCondenseContext when condense context button is clicked", () => {
 		const handleCondenseContext = vi.fn()
 		renderTaskHeader({ handleCondenseContext })
+
+		// Elements are visible in collapsed state
+
 		// Find the button that contains the FoldVertical icon
-		const buttons = screen.getAllByRole("button")
-		const condenseButton = buttons.find((button) => button.querySelector("svg.lucide-fold-vertical"))
+		const condenseIcon = screen.getByTestId("fold-vertical-icon")
+		const condenseButton = condenseIcon.closest("button")
 		expect(condenseButton).toBeDefined()
 		fireEvent.click(condenseButton!)
 		expect(handleCondenseContext).toHaveBeenCalledWith("test-task-id")
@@ -114,9 +153,12 @@ describe("TaskHeader", () => {
 	it("should disable the condense context button when buttonsDisabled is true", () => {
 		const handleCondenseContext = vi.fn()
 		renderTaskHeader({ buttonsDisabled: true, handleCondenseContext })
+
+		// Elements are visible in collapsed state
+
 		// Find the button that contains the FoldVertical icon
-		const buttons = screen.getAllByRole("button")
-		const condenseButton = buttons.find((button) => button.querySelector("svg.lucide-fold-vertical"))
+		const condenseIcon = screen.getByTestId("fold-vertical-icon")
+		const condenseButton = condenseIcon.closest("button")
 		expect(condenseButton).toBeDefined()
 		expect(condenseButton).toBeDisabled()
 		fireEvent.click(condenseButton!)

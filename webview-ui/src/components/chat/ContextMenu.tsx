@@ -87,6 +87,25 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 						)}
 					</div>
 				)
+			case ContextMenuOptionType.PreviousChat:
+				return (
+					<div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+						<span style={{ lineHeight: "1.2" }}>{option.label}</span>
+						{option.description && (
+							<span
+								style={{
+									opacity: 0.5,
+									fontSize: "0.9em",
+									lineHeight: "1.2",
+									whiteSpace: "nowrap",
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}>
+								{option.description}
+							</span>
+						)}
+					</div>
+				)
 			case ContextMenuOptionType.Problems:
 				return <span>Problems</span>
 			case ContextMenuOptionType.Terminal:
@@ -170,6 +189,8 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 		switch (option.type) {
 			case ContextMenuOptionType.Mode:
 				return "symbol-misc"
+			case ContextMenuOptionType.PreviousChat:
+				return "history"
 			case ContextMenuOptionType.OpenedFile:
 				return "window"
 			case ContextMenuOptionType.File:
@@ -229,7 +250,11 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 					filteredOptions.map((option, index) => (
 						<div
 							key={`${option.type}-${option.value || index}`}
-							onClick={() => isOptionSelectable(option) && onSelect(option.type, option.value)}
+							onClick={() => {
+								if (isOptionSelectable(option)) {
+									onSelect(option.type, option.value)
+								}
+							}}
 							style={{
 								padding: "4px 6px",
 								cursor: isOptionSelectable(option) ? "pointer" : "default",
@@ -287,7 +312,8 @@ const ContextMenu: React.FC<ContextMenuProps> = ({
 							</div>
 							{(option.type === ContextMenuOptionType.File ||
 								option.type === ContextMenuOptionType.Folder ||
-								option.type === ContextMenuOptionType.Git) &&
+								option.type === ContextMenuOptionType.Git ||
+								option.type === ContextMenuOptionType.PreviousChat) &&
 								!option.value && (
 									<i
 										className="codicon codicon-chevron-right"

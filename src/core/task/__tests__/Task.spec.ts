@@ -132,6 +132,18 @@ vi.mock("vscode", () => {
 
 vi.mock("../../mentions", () => ({
 	parseMentions: vi.fn().mockImplementation((text) => {
+		// Handle @previous-chat mentions like the real implementation
+		if (text.includes("@previous-chat-")) {
+			const previousChatMatch = text.match(/@previous-chat-([a-f0-9-]+)/g)
+			if (previousChatMatch) {
+				let processedText = `processed: ${text}`
+				for (const mention of previousChatMatch) {
+					const taskId = mention.replace("@previous-chat-", "")
+					processedText += `\n\n<previous_chat_summary task_id="${taskId}">\nPrevious chat reference detected - processing will happen at task level\n</previous_chat_summary>`
+				}
+				return Promise.resolve(processedText)
+			}
+		}
 		return Promise.resolve(`processed: ${text}`)
 	}),
 	openMention: vi.fn(),
@@ -943,6 +955,40 @@ describe("Cline", () => {
 					expect((content2 as Anthropic.TextBlockParam).text).toBe(
 						"Regular tool result with 'path' (see below for file content)",
 					)
+
+					await cline.abortTask(true)
+					await task.catch(() => {})
+				})
+
+				it("should process @previous-chat mentions even without task or feedback tags", async () => {
+					const [cline, task] = Task.create({
+						provider: mockProvider,
+						apiConfiguration: mockApiConfig,
+						task: "test task",
+					})
+
+					const userContent = [
+						{
+							type: "text",
+							text: "Hello @previous-chat-abc123 how are you?",
+						} as const,
+					]
+
+					const processedContent = await processUserContentMentions({
+						userContent,
+						cwd: cline.cwd,
+						urlContentFetcher: cline.urlContentFetcher,
+						fileContextTracker: cline.fileContextTracker,
+						globalStoragePath: "/test/path",
+						apiHandler: cline.api,
+						systemPrompt: "test system prompt",
+					})
+
+					// Text with @previous-chat mention should be processed
+					expect((processedContent[0] as Anthropic.TextBlockParam).text).toContain("Hello")
+					expect((processedContent[0] as Anthropic.TextBlockParam).text).toContain("how are you?")
+					// Should contain the previous chat summary placeholder or actual summary
+					expect((processedContent[0] as Anthropic.TextBlockParam).text).toContain("previous_chat_summary")
 
 					await cline.abortTask(true)
 					await task.catch(() => {})

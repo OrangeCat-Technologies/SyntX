@@ -1,5 +1,10 @@
 # SyntX Changelog
 
+## [2.4.0] - 03-08-2025
+
+- Workspace Integration for adding file context from different folders in your workspace
+- Added @previouschat support for adding a past task's condensed context to a new chat.
+
 ## [2.3.8] - 28-07-2025
 
 - Monthly Free Usage Indicator

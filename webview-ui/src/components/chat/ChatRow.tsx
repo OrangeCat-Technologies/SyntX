@@ -44,7 +44,7 @@ import { Markdown } from "./Markdown"
 import { CommandExecution } from "./CommandExecution"
 import { CommandExecutionError } from "./CommandExecutionError"
 import { AutoApprovedRequestLimitWarning } from "./AutoApprovedRequestLimitWarning"
-import { CondenseContextErrorRow, CondensingContextRow, ContextCondenseRow } from "./ContextCondenseRow"
+import { CondenseContextErrorRow, ContextCondenseRow } from "./ContextCondenseRow"
 import CodebaseSearchResultsDisplay from "./CodebaseSearchResultsDisplay"
 import CreditsDepletedAlert from "./CreditsDepletedAlert"
 
@@ -1395,10 +1395,12 @@ export const ChatRowContent = ({
 						/>
 					)
 				case "condense_context":
-					if (message.partial) {
-						return <CondensingContextRow />
+					// Only show the completed state when contextCondense data is available
+					// Remove the spinner entirely since the completed state already shows a checkmark
+					if (message.contextCondense) {
+						return <ContextCondenseRow {...message.contextCondense} />
 					}
-					return message.contextCondense ? <ContextCondenseRow {...message.contextCondense} /> : null
+					return null
 				case "condense_context_error":
 					return <CondenseContextErrorRow errorText={message.text} />
 				case "codebase_search_result":

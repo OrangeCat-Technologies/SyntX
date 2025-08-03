@@ -1407,6 +1407,61 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
+		case "searchPreviousChats": {
+			try {
+				// Use existing taskHistory from extension state instead of recreating it
+				const taskHistory = getGlobalState("taskHistory") || []
+				const currentWorkspace = provider.cwd || ""
+				const query = message.query || ""
+
+				// Filter tasks based on query if provided
+				let filteredTasks = taskHistory
+
+				if (query) {
+					const searchTerms = query.toLowerCase()
+					filteredTasks = taskHistory.filter((task) => {
+						return (
+							task.id.toLowerCase().includes(searchTerms) ||
+							(task.task && task.task.toLowerCase().includes(searchTerms))
+						)
+					})
+				}
+
+				// Normalize workspace paths for comparison
+				const normalizedCurrentWorkspace = currentWorkspace.replace(/\/$/, "") // Remove trailing slash
+
+				// Prioritize current workspace tasks
+				const currentWorkspaceTasks = filteredTasks.filter((task) => {
+					const normalizedTaskWorkspace = task.workspace?.replace(/\/$/, "") || ""
+					return normalizedTaskWorkspace === normalizedCurrentWorkspace
+				})
+				const otherWorkspaceTasks = filteredTasks.filter((task) => {
+					const normalizedTaskWorkspace = task.workspace?.replace(/\/$/, "") || ""
+					return normalizedTaskWorkspace !== normalizedCurrentWorkspace
+				})
+
+				// Sort each group by timestamp and combine (current workspace first)
+				const sortedCurrentTasks = currentWorkspaceTasks.sort((a, b) => b.ts - a.ts)
+				const sortedOtherTasks = otherWorkspaceTasks.sort((a, b) => b.ts - a.ts)
+
+				const finalTasks = [...sortedCurrentTasks, ...sortedOtherTasks]
+
+				await provider.postMessageToWebview({
+					type: "previousChatResults",
+					tasks: finalTasks,
+				})
+			} catch (error) {
+				provider.log(
+					`Error searching previous chats: ${JSON.stringify(error, Object.getOwnPropertyNames(error), 2)}`,
+				)
+				// Send empty results on error
+				await provider.postMessageToWebview({
+					type: "previousChatResults",
+					tasks: [],
+				})
+			}
+			break
+		}
 		case "searchFiles": {
 			const workspacePath = getWorkspacePath()
 

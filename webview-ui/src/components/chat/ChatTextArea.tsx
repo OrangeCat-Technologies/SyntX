@@ -101,6 +101,7 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 		}, [listApiConfigMeta, currentApiConfigName])
 
 		const [gitCommits, setGitCommits] = useState<any[]>([])
+		const [previousChats, setPreviousChats] = useState<any[]>([])
 		const [showDropdown, setShowDropdown] = useState(false)
 		const [fileSearchResults, setFileSearchResults] = useState<SearchResult[]>([])
 		const [searchLoading, setSearchLoading] = useState(false)
@@ -156,6 +157,20 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					}))
 
 					setGitCommits(commits)
+				} else if (message.type === "previousChatResults") {
+					setPreviousChats(
+						message.tasks.map((task: any) => ({
+							type: ContextMenuOptionType.PreviousChat,
+							value: `previous-chat-${task.id}`,
+							label: task.task || task.title || `Task ${task.id.slice(0, 8)}`,
+							description: task.ts
+								? `${new Date(task.ts).toLocaleDateString()} - ${task.workspace || "Workspace"}`
+								: `${task.id.slice(0, 8)}`,
+							taskId: task.id,
+							timestamp: task.ts,
+							workspace: task.workspace,
+						})),
+					)
 				} else if (message.type === "fileSearchResults") {
 					setSearchLoading(false)
 					if (message.requestId === searchRequestId) {
@@ -204,6 +219,32 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			}
 		}, [selectedType, searchQuery])
 
+		// Fetch previous chats when PreviousChat is selected or when typing "previous" or "chat"
+		useEffect(() => {
+			if (
+				selectedType === ContextMenuOptionType.PreviousChat ||
+				searchQuery.includes("previous") ||
+				searchQuery.includes("chat") ||
+				searchQuery.includes("previous-chat") ||
+				searchQuery.includes("previouschat")
+			) {
+				const message: WebviewMessage = {
+					type: "searchPreviousChats",
+					query: searchQuery || "",
+				} as const
+				vscode.postMessage(message)
+			}
+		}, [selectedType, searchQuery])
+
+		// Fetch initial previous chats on component mount
+		useEffect(() => {
+			const message: WebviewMessage = {
+				type: "searchPreviousChats",
+				query: "",
+			} as const
+			vscode.postMessage(message)
+		}, [])
+
 		const handleEnhancePrompt = useCallback(() => {
 			if (sendingDisabled) {
 				return
@@ -222,10 +263,11 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 		const allModes = useMemo(() => getAllModes(customModes), [customModes])
 
 		const queryItems = useMemo(() => {
-			return [
+			const items = [
 				{ type: ContextMenuOptionType.Problems, value: "problems" },
 				{ type: ContextMenuOptionType.Terminal, value: "terminal" },
 				...gitCommits,
+				...previousChats,
 				...openedTabs
 					.filter((tab) => tab.path)
 					.map((tab) => ({
@@ -240,7 +282,8 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						value: path,
 					})),
 			]
-		}, [filePaths, gitCommits, openedTabs])
+			return items
+		}, [filePaths, gitCommits, openedTabs, previousChats])
 
 		useEffect(() => {
 			const handleClickOutside = (event: MouseEvent) => {
@@ -279,12 +322,23 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 				if (
 					type === ContextMenuOptionType.File ||
 					type === ContextMenuOptionType.Folder ||
-					type === ContextMenuOptionType.Git
+					type === ContextMenuOptionType.Git ||
+					type === ContextMenuOptionType.PreviousChat
 				) {
 					if (!value) {
 						setSelectedType(type)
 						setSearchQuery("")
 						setSelectedMenuIndex(0)
+
+						// Trigger search for previous chats when PreviousChat is selected
+						if (type === ContextMenuOptionType.PreviousChat) {
+							const message: WebviewMessage = {
+								type: "searchPreviousChats",
+								query: "",
+							} as const
+							vscode.postMessage(message)
+						}
+
 						return
 					}
 				}
@@ -302,6 +356,8 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 					} else if (type === ContextMenuOptionType.Terminal) {
 						insertValue = "terminal"
 					} else if (type === ContextMenuOptionType.Git) {
+						insertValue = value || ""
+					} else if (type === ContextMenuOptionType.PreviousChat) {
 						insertValue = value || ""
 					}
 

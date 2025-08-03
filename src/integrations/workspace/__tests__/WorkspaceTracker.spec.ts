@@ -3,7 +3,7 @@ import * as vscode from "vscode"
 import WorkspaceTracker from "../WorkspaceTracker"
 import { ClineProvider } from "../../../core/webview/ClineProvider"
 import { listFiles } from "../../../services/glob/list-files"
-import { getWorkspacePath } from "../../../utils/path"
+import { getWorkspacePath, getAllWorkspaceFolders } from "../../../utils/path"
 
 // Mock functions - must be defined before vitest.mock calls
 const mockOnDidCreate = vitest.fn()
@@ -16,6 +16,8 @@ let registeredTabChangeCallback: (() => Promise<void>) | null = null
 // Mock workspace path
 vitest.mock("../../../utils/path", () => ({
 	getWorkspacePath: vitest.fn().mockReturnValue("/test/workspace"),
+	getAllWorkspaceFolders: vitest.fn().mockReturnValue(["/test/workspace"]),
+	getWorkspaceFolderForPath: vitest.fn().mockReturnValue("/test/workspace"),
 	toRelativePath: vitest.fn((path, cwd) => {
 		// Handle both Windows and POSIX paths by using path.relative
 		const relativePath = require("path").relative(cwd, path)
@@ -62,7 +64,10 @@ vitest.mock("vscode", () => ({
 }))
 
 vitest.mock("../../../services/glob/list-files", () => ({
-	listFiles: vitest.fn(),
+	listFiles: vitest.fn().mockImplementation((path, recursive, maxFiles) => {
+		// Default implementation that can be overridden in individual tests
+		return Promise.resolve([[], false])
+	}),
 }))
 
 describe("WorkspaceTracker", () => {
@@ -157,8 +162,12 @@ describe("WorkspaceTracker", () => {
 
 	it("should respect file limits", async () => {
 		// Create array of unique file paths for initial load
-		const files = Array.from({ length: 1001 }, (_, i) => `/test/workspace/file${i}.ts`)
-		;(listFiles as Mock).mockResolvedValue([files, false])
+		const allFiles = Array.from({ length: 1001 }, (_, i) => `/test/workspace/file${i}.ts`)
+		// Mock listFiles to respect the maxFiles limit
+		;(listFiles as Mock).mockImplementation((path, recursive, maxFiles) => {
+			const limitedFiles = allFiles.slice(0, maxFiles)
+			return Promise.resolve([limitedFiles, false])
+		})
 
 		await workspaceTracker.initializeFilePaths()
 		vitest.runAllTimers()
@@ -221,6 +230,7 @@ describe("WorkspaceTracker", () => {
 
 		// Change workspace path
 		;(getWorkspacePath as Mock).mockReturnValue("/test/new-workspace")
+		;(getAllWorkspaceFolders as Mock).mockReturnValue(["/test/new-workspace"])
 
 		// Simulate tab change event
 		await registeredTabChangeCallback!()

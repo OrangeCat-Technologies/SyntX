@@ -22,6 +22,7 @@ export type FileMetadataEntry = z.infer<typeof fileMetadataEntrySchema>
 // Zod schema for TaskMetadata
 export const taskMetadataSchema = z.object({
 	files_in_context: z.array(fileMetadataEntrySchema),
+	workspace: z.string().optional(),
 })
 
 // TypeScript type derived from the Zod schema

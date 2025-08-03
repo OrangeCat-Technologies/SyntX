@@ -199,7 +199,7 @@ export async function summarizeConversation(
 	)
 
 	const newContextTokens = outputTokens + (await apiHandler.countTokens(contextBlocks))
-	if (newContextTokens >= prevContextTokens) {
+	if (prevContextTokens >= 0 && newContextTokens >= prevContextTokens) {
 		const error = t("common:errors.condense_context_grew")
 		return { ...response, cost, error }
 	}

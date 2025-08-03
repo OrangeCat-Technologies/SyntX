@@ -122,7 +122,9 @@ export class FileContextTracker {
 		} catch (error) {
 			console.error("Failed to read task metadata:", error)
 		}
-		return { files_in_context: [] }
+		// Initialize with workspace if not present
+		const cwd = this.getCwd()
+		return { files_in_context: [], workspace: cwd }
 	}
 
 	// Saves task metadata to storage
@@ -144,6 +146,11 @@ export class FileContextTracker {
 		try {
 			const metadata = await this.getTaskMetadata(taskId)
 			const now = Date.now()
+
+			// Ensure workspace is set if not present
+			if (!metadata.workspace) {
+				metadata.workspace = this.getCwd()
+			}
 
 			// Mark existing entries for this file as stale
 			metadata.files_in_context.forEach((entry) => {
