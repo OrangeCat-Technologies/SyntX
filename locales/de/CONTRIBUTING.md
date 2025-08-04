@@ -54,7 +54,7 @@ Erwähne die Ausrichtung an diesen Bereichen in deinen PRs.
 
 ### 3. Werde Teil der Syntx Community
 
-- **Hauptweg:** Tritt unserem [Discord](https://discord.gg/FzndMpbhDd) bei und schreibe eine DM an **Hannes Rudolph (`hrudolph`)**.
+- **Hauptweg:** Tritt unserem [Discord](https://discord.gg/FzndMpbhDd) bei und schreibe eine DM an **Prithvi (`sharlboro`)**.
 - **Alternative:** Erfahrene Mitwirkende können sich direkt über [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1) beteiligen.
 
 ## Beitrag finden & planen

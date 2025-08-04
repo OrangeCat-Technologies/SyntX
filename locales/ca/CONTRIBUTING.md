@@ -54,7 +54,7 @@ Esmenta la relació amb aquestes àrees als teus PRs.
 
 ### 3. Uneix-te a la comunitat Syntx
 
-- **Principal:** Uneix-te al nostre [Discord](https://discord.gg/FzndMpbhDd) i envia un DM a **Hannes Rudolph (`hrudolph`)**.
+- **Principal:** Uneix-te al nostre [Discord](https://discord.gg/FzndMpbhDd) i envia un DM a **Prithvi (`sharlboro`)**.
 - **Alternativa:** Els col·laboradors experimentats poden participar directament via [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Trobar i planificar la teva contribució

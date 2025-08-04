@@ -54,7 +54,7 @@ Lộ trình của chúng mình định hướng dự án. Hãy điều chỉnh �
 
 ### 3. Tham gia cộng đồng Syntx
 
-- **Cách chính:** Tham gia [Discord](https://discord.gg/FzndMpbhDd) của chúng mình và nhắn tin trực tiếp cho **Hannes Rudolph (`hrudolph`)**.
+- **Cách chính:** Tham gia [Discord](https://discord.gg/FzndMpbhDd) của chúng mình và nhắn tin trực tiếp cho **Prithvi (`sharlboro`)**.
 - **Cách thay thế:** Cộng tác viên có kinh nghiệm có thể tham gia trực tiếp qua [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Tìm kiếm & lên kế hoạch đóng góp

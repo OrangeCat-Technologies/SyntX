@@ -54,7 +54,7 @@ Sebutkan keselarasan dengan area ini di PR kamu.
 
 ### 3. Bergabung dengan Komunitas Syntx
 
-- **Utama:** Bergabunglah dengan [Discord](https://discord.gg/FzndMpbhDd) kami dan DM **Hannes Rudolph (`hrudolph`)**.
+- **Utama:** Bergabunglah dengan [Discord](https://discord.gg/FzndMpbhDd) kami dan DM **Prithvi (`sharlboro`)**.
 - **Alternatif:** Kontributor berpengalaman dapat berinteraksi langsung melalui [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Mencari & Merencanakan Kontribusi Kamu

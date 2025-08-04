@@ -54,7 +54,7 @@ Vermeld de afstemming met deze gebieden in je PR's.
 
 ### 3. Word lid van de Syntx-community
 
-- **Hoofdmethode:** Word lid van onze [Discord](https://discord.gg/FzndMpbhDd) en stuur een DM naar **Hannes Rudolph (`hrudolph`)**.
+- **Hoofdmethode:** Word lid van onze [Discord](https://discord.gg/FzndMpbhDd) en stuur een DM naar **Prithvi (`sharlboro`)**.
 - **Alternatief:** Ervaren bijdragers kunnen direct meedoen via [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Je bijdrage vinden & plannen

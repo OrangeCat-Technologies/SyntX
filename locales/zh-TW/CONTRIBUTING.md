@@ -54,7 +54,7 @@ Syntx 是一個由社群驅動的專案，我們深深重視每一份貢獻。�
 
 ### 3. 加入 Syntx 社群
 
-- **主要方式：** 加入我們的 [Discord](https://discord.gg/FzndMpbhDd) 並私訊 **Hannes Rudolph (`hrudolph`)**。
+- **主要方式：** 加入我們的 [Discord](https://discord.gg/FzndMpbhDd) 並私訊 **Prithvi (`sharlboro`)**。
 - **替代方式：** 有經驗的貢獻者可透過 [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1) 直接參與。
 
 ## 尋找與規劃你的貢獻

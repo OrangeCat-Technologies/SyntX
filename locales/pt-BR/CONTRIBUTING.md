@@ -54,7 +54,7 @@ Mencione o alinhamento com estas áreas em seus PRs.
 
 ### 3. Junte-se à Comunidade Syntx
 
-- **Principal:** Junte-se ao nosso [Discord](https://discord.gg/FzndMpbhDd) e envie um DM para **Hannes Rudolph (`hrudolph`)**.
+- **Principal:** Junte-se ao nosso [Discord](https://discord.gg/FzndMpbhDd) e envie um DM para **Prithvi (`sharlboro`)**.
 - **Alternativa:** Colaboradores experientes podem participar diretamente via [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Encontrando & Planejando sua Contribuição

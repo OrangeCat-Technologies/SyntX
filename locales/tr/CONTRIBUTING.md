@@ -54,7 +54,7 @@ PR'larında bu alanlarla olan bağlantıyı belirt.
 
 ### 3. Syntx Topluluğuna Katıl
 
-- **Ana yöntem:** [Discord](https://discord.gg/FzndMpbhDd)'umuza katıl ve **Hannes Rudolph (`hrudolph`)**'a DM gönder.
+- **Ana yöntem:** [Discord](https://discord.gg/FzndMpbhDd)'umuza katıl ve **Prithvi (`sharlboro`)**'a DM gönder.
 - **Alternatif:** Deneyimli katkı sağlayanlar [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1) üzerinden doğrudan katılabilir.
 
 ## Katkı Bulma & Planlama

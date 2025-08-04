@@ -82,8 +82,8 @@ body:
         - Provide technical analysis to help with implementation
         
         **For contributors who continue:**
-        - A maintainer (especially @hannesrudolph) will review this proposal. **Do not start implementation until approved and assigned.** We're a small team with limited resources, so every code addition needs careful consideration. We're always happy to receive clear, actionable proposals though!
-        - Join [Discord](https://discord.gg/FzndMpbhDd) and DM **Hannes Rudolph** (`hrudolph`) for guidance on implementation
+        - A maintainer (especially @Kraken2003) will review this proposal. **Do not start implementation until approved and assigned.** We're a small team with limited resources, so every code addition needs careful consideration. We're always happy to receive clear, actionable proposals though!
+        - Join [Discord](https://discord.gg/FzndMpbhDd) and DM **Prithvi** (`sharlboro`) for guidance on implementation
         - Check our [Roadmap](https://github.com/orgs/OrangeCat-Technologies/projects/1/views/1?query=sort%3Aupdated-desc+is%3Aopen&filterQuery=is%3Aissue%2Copen%2Cclosed+label%3A%22feature+request%22+status%3A%22Issue+%5BUnassigned%5D%22%2C%22Issue+%5BIn+Progress%5D%22) to see open feature requests ready to be implemented or currently being worked on
 
   - type: checkboxes

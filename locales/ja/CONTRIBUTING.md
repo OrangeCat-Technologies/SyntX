@@ -54,7 +54,7 @@ PRでこれらの領域との関連性に言及してください。
 
 ### 3. Syntx コミュニティに参加する
 
-- **主な方法：** [Discord](https://discord.gg/FzndMpbhDd)に参加し、**Hannes Rudolph (`hrudolph`)**にDMを送る。
+- **主な方法：** [Discord](https://discord.gg/FzndMpbhDd)に参加し、**Prithvi (`sharlboro`)**にDMを送る。
 - **代替手段：** 経験豊富なコントリビューターは[GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1)を通じて直接参加できます。
 
 ## 貢献内容の発見と計画

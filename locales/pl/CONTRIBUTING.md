@@ -54,7 +54,7 @@ Wspomnij o powiązaniu z tymi obszarami w swoich PR.
 
 ### 3. Dołącz do społeczności Syntx
 
-- **Główna metoda:** Dołącz do naszego [Discorda](https://discord.gg/FzndMpbhDd) i wyślij wiadomość prywatną do **Hannes Rudolph (`hrudolph`)**.
+- **Główna metoda:** Dołącz do naszego [Discorda](https://discord.gg/FzndMpbhDd) i wyślij wiadomość prywatną do **Prithvi (`sharlboro`)**.
 - **Alternatywa:** Doświadczeni współtwórcy mogą angażować się bezpośrednio przez [GitHub Projects](https://github.com/orgs/RooCodeInc/projects/1).
 
 ## Znajdowanie i planowanie swojego wkładu
