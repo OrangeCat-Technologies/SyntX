@@ -11,6 +11,15 @@ import { GlobalFileNames } from "../../shared/globalFileNames"
 
 const CURRENT_VERSION = "1.0.0"
 
+/**
+ * Export a local task and its messages to a JSON file chosen by the user.
+ *
+ * The exported file is a SerializedSession containing the current version, the provided task, and its stored messages.
+ * Prompts the user with a Save dialog (default filename derived from the task name). If the user cancels the dialog, the function returns without writing a file.
+ *
+ * @param task - The task (HistoryItem) to export.
+ * @param globalStoragePath - Extension global storage path used to read the task's persisted messages.
+ */
 export async function exportTask(task: HistoryItem, globalStoragePath: string): Promise<void> {
 	const messages = await readTaskMessages({ taskId: task.id, globalStoragePath })
 	const apiMessages = await readApiMessages({ taskId: task.id, globalStoragePath })
@@ -36,6 +45,16 @@ export async function exportTask(task: HistoryItem, globalStoragePath: string): 
 	vscode.window.showInformationMessage(`Task exported to ${uri.fsPath}`)
 }
 
+/**
+ * Import a serialized task session from a JSON file chosen by the user into local storage.
+ *
+ * Opens a file picker for JSON files, validates the selected file against the
+ * SerializedSessionSchema, and on success saves the session messages under the
+ * session's task id in the extension's global storage. Shows an error message
+ * for invalid files or a confirmation message on successful import.
+ *
+ * @param globalStoragePath - Filesystem path to the extension's global storage directory where task data will be written
+ */
 export async function importTask(globalStoragePath: string): Promise<void> {
 	const openDialogOptions: vscode.OpenDialogOptions = {
 		canSelectMany: false,
@@ -97,6 +116,16 @@ const SETTINGS_NAMESPACE = "syntx"
 const SETTINGS_KEY = "sessionSharing.baseUrl"
 const ENV_BASE_URL = "SYNTX_SESSIONS_BASE_URL"
 
+/**
+ * Resolves the base URL to use for session sharing.
+ *
+ * Checks the extension setting `syntx.sessionSharing.baseUrl` first, then the
+ * environment variable `SYNTX_SESSIONS_BASE_URL`. Trims whitespace and
+ * removes any trailing slashes. Returns the normalized URL string or
+ * `undefined` if neither source provides a value.
+ *
+ * @returns The normalized base URL or `undefined` when not configured.
+ */
 function resolveBaseUrl(): string | undefined {
 	const cfg = vscode.workspace.getConfiguration(SETTINGS_NAMESPACE).get<string>(SETTINGS_KEY)
 	const env = process.env[ENV_BASE_URL]
@@ -104,6 +133,15 @@ function resolveBaseUrl(): string | undefined {
 	return base || undefined
 }
 
+/**
+ * Ensure a global `fetch` function is available and return it, or `undefined` after notifying the user.
+ *
+ * Detects whether a global `fetch` is present. If available, returns the `fetch` function. If not, shows
+ * an error message prompting the user to use VS Code with Node >= 18 or add a fetch polyfill and returns
+ * `undefined`.
+ *
+ * @returns The global `fetch` function when present, otherwise `undefined`.
+ */
 function ensureFetchAvailable(): typeof fetch | undefined {
 	// VS Code on Node >=18 has global fetch. If not, instruct configuration.
 	if (typeof fetch !== "function") {
@@ -115,17 +153,46 @@ function ensureFetchAvailable(): typeof fetch | undefined {
 	return fetch
 }
 
+/**
+ * Concatenates a base URL and a path into a single URL, ensuring exactly one slash separates them.
+ *
+ * The function adds a leading slash to `path` if missing but does not modify `baseUrl` (it will not remove trailing slashes).
+ *
+ * @param baseUrl - The base URL to prepend (used as-is).
+ * @param path - The endpoint path; may start with or without a leading `/`.
+ * @returns The joined URL string.
+ */
 function apiUrl(baseUrl: string, path: string): string {
 	return `${baseUrl}${path.startsWith("/") ? "" : "/"}${path}`
 }
 
+/**
+ * Build a public share URL for a session identifier.
+ *
+ * @param baseUrl - Base site URL (no trailing slash expected)
+ * @param id - Session identifier (will be URL-encoded)
+ * @returns A full URL pointing to the session page (e.g. `{baseUrl}/session/{encodedId}`)
+ */
 function shareUrl(baseUrl: string, id: string): string {
 	return `${baseUrl}/session/${encodeURIComponent(id)}`
 }
 
 /**
- * Export current task session to cloud.
- * Returns the share URL on success (also copies to clipboard).
+ * Uploads the given task session to the configured cloud service and returns a shareable URL.
+ *
+ * This reads the task's stored messages, posts a serialized session to the configured
+ * sessions API (from the extension setting `syntx.sessionSharing.baseUrl` or env
+ * `SYNTX_SESSIONS_BASE_URL`), copies the resulting share URL to the clipboard, and
+ * shows an informational message in VS Code.
+ *
+ * If the environment lacks a global `fetch` implementation or no base URL is configured,
+ * the function shows an error and returns `undefined`. On any network or server error the
+ * function shows an error and returns `undefined`.
+ *
+ * @param task - The task history item to export; its `id` and metadata are included in the session.
+ * @param globalStoragePath - Extension global storage path used to read the task's stored messages.
+ * @param opts.token - Optional API key sent as `Syntx-Api-Key` for authenticated uploads.
+ * @returns The share URL on success, or `undefined` if the export failed or was aborted.
  */
 export async function exportTaskToCloud(
 	task: HistoryItem,
@@ -188,7 +255,15 @@ export async function exportTaskToCloud(
 }
 
 /**
- * Import a session from cloud by REST id.
+ * Fetches a serialized session from the configured server by its session id and imports it into local storage.
+ *
+ * Retrieves the session at GET /api/sessions/:id, validates the payload against the session schema, and saves its messages
+ * under a new local task id in the provided global storage path. On success shows an informational message; on failure
+ * shows an error message to the user and returns without throwing.
+ *
+ * @param id - The server-side session identifier (opaque or numeric) to fetch.
+ * @param globalStoragePath - The extension's global storage filesystem path where imported task messages will be saved.
+ * @param opts.token - Optional Bearer token to include in the request Authorization header.
  */
 export async function importTaskFromCloudById(
 	id: string,
@@ -244,8 +319,13 @@ export async function importTaskFromCloudById(
 }
 
 /**
- * Import a session directly from a full API URL.
- * Useful if the website's "Import to VS Code" deep link passes an API link instead of an id.
+ * Import a serialized session from a full session API URL and persist it as a new local task.
+ *
+ * Fetches the JSON session at `sessionApiUrl`, validates it against the session schema, and saves the session messages under the session's task id in the extension global storage.
+ *
+ * @param sessionApiUrl - Full API URL that returns a serialized session (e.g. https://.../api/sessions/abc)
+ * @param globalStoragePath - Extension global storage directory (fsPath) where the imported task's messages will be saved
+ * @param opts.token - Optional bearer token to include in the request Authorization header
  */
 export async function importTaskFromCloudByUrl(
 	sessionApiUrl: string,
@@ -293,8 +373,15 @@ export async function importTaskFromCloudByUrl(
 }
 
 /**
- * Optional: Register a VS Code URI handler to support "vscode://<ext-id>/import-session?id=..." deep links
- * Call this from your extension activation with the extension context.
+ * Register a VS Code URI handler that accepts deep links of the form
+ * `vscode://<extension-id>/import-session?id=<sessionId>` and imports the referenced session.
+ *
+ * The handler expects the URI path to be `/import-session` and a query parameter `id`.
+ * When invoked it calls `importTaskFromCloudById` using the extension's global storage path
+ * (from `context.globalStorageUri.fsPath`) to persist imported session messages.
+ *
+ * Call from your extension's activation function with the extension context. The created
+ * handler is added to `context.subscriptions`.
  */
 export function registerSessionImportUriHandler(context: vscode.ExtensionContext) {
 	const handler: vscode.UriHandler = {

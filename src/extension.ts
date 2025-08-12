@@ -53,7 +53,16 @@ let outputChannel: vscode.OutputChannel
 let extensionContext: vscode.ExtensionContext
 
 // This method is called when your extension is activated.
-// Your extension is activated the very first time the command is executed.
+/**
+ * Activate the extension: initialize services, UI providers, commands, and background managers, then return the extension API instance.
+ *
+ * This performs one-time startup work including telemetry and cloud initialization, MDM and i18n setup, terminal handlers,
+ * code indexing initialization, creation and registration of the Cline webview provider, registration of commands, code actions,
+ * URI handlers (including session import), a read-only diff content provider, and optional development-time file watchers that
+ * trigger a host reload. It also migrates legacy settings and attempts an auto-import of configuration when enabled.
+ *
+ * @returns A Promise resolving to the extension API instance used by other parts of the extension (implements RooCodeAPI).
+ */
 export async function activate(context: vscode.ExtensionContext) {
 	extensionContext = context
 	outputChannel = vscode.window.createOutputChannel(Package.outputChannel)
