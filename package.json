@@ -54,5 +54,8 @@
 			"undici": ">=5.29.0",
 			"brace-expansion": ">=2.0.2"
 		}
+	},
+	"dependencies": {
+		"pnpm": "^10.14.0"
 	}
 }

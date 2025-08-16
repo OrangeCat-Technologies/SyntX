@@ -14,7 +14,7 @@ export const getExercises = async () => {
 		exerciseLanguages.map(async (language) => {
 			const languagePath = path.join(EVALS_REPO_PATH, language)
 			const exercises = await listDirectories(__dirname, languagePath)
-			return exercises.map((exercise) => `${language}/${exercise}`)
+			return exercises.map((exercise: string) => `${language}/${exercise}`)
 		}),
 	)
 

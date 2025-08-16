@@ -310,7 +310,9 @@ export function NewRun() {
 								</Tabs>
 								{suite === "partial" && (
 									<MultiSelect
-										options={exercises.data?.map((path) => ({ value: path, label: path })) || []}
+										options={
+											exercises.data?.map((path: string) => ({ value: path, label: path })) || []
+										}
 										onValueChange={(value) => setValue("exercises", value)}
 										placeholder="Select"
 										variant="inverted"

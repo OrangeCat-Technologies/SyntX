@@ -43,7 +43,7 @@ export async function createRun({ suite, exercises = [], systemPrompt, timeout, 
 		for (const language of exerciseLanguages) {
 			const exercises = await getExercisesForLanguage(EVALS_REPO_PATH, language)
 
-			await pMap(exercises, (exercise) => createTask({ runId: run.id, language, exercise }), {
+			await pMap(exercises, (exercise: string) => createTask({ runId: run.id, language, exercise }), {
 				concurrency: 10,
 			})
 		}
