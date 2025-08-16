@@ -6,6 +6,9 @@ import removeMd from "remove-markdown"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
 import useSound from "use-sound"
 import { LRUCache } from "lru-cache"
+import { Boilerplate, starterBoilerplates } from "../../utils/boilerplates"
+import { BoilerplateList } from "./BoilerplateList"
+// import { useTelemetry } from "../../utils/useTelemetry.ts"
 
 import { useDebounceEffect } from "@src/utils/useDebounceEffect"
 import { appendImages } from "@src/utils/imageUtils"
@@ -50,8 +53,6 @@ import SystemPromptWarning from "./SystemPromptWarning"
 import ProfileViolationWarning from "./ProfileViolationWarning"
 import { CheckpointWarning } from "./CheckpointWarning"
 import { getLatestTodo } from "@roo/todo"
-import BoilerplateList, { DEFAULT_BOILERPLATES } from "./BoilerplateList"
-
 export interface ChatViewProps {
 	isHidden: boolean
 	showAnnouncement: boolean
@@ -110,6 +111,8 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		soundVolume,
 	} = useExtensionState()
 
+	// const { trackNewChat, trackFeatureUsage } = useTelemetry()
+
 	const messagesRef = useRef(messages)
 	useEffect(() => {
 		messagesRef.current = messages
@@ -161,6 +164,16 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	const autoApproveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 	const userRespondedRef = useRef<boolean>(false)
 	const [currentFollowUpTs, setCurrentFollowUpTs] = useState<number | null>(null)
+
+	// Function to handle selcting chat Boilerplates @parth handle boilerplates
+	const handleBoilerplateSelect = useCallback(
+		(boilerplate: Boilerplate) => {
+			// need help to create this. on clicking any of the boilerplates, the
+			//system needs to create a new task with the txt in the boilerplates
+			vscode.postMessage({ type: "newTask", text: boilerplate.initialInput, images: [] })
+		},
+		[], //user callback is blank for now
+	)
 
 	const clineAskRef = useRef(clineAsk)
 	useEffect(() => {
@@ -1661,14 +1674,12 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 						{/* Show the task history preview if expanded and tasks exist */}
 						{taskHistory.length > 0 && <HistoryPreview />}
 						{/* Show boilerplate list if no task history */}
-						{taskHistory.length === 0 && (
+						{
 							<BoilerplateList
-								boilerplates={DEFAULT_BOILERPLATES}
-								onSelect={(boilerplate) => {
-									vscode.postMessage({ type: "newTask", text: boilerplate.initialInput })
-								}}
+								boilerplates={starterBoilerplates}
+								onSelectBoilerplate={handleBoilerplateSelect}
 							/>
-						)}
+						}
 					</div>
 				</div>
 			)}
