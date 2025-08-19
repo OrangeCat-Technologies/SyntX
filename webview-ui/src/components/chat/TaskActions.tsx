@@ -45,12 +45,12 @@ export const TaskActions = ({ item, buttonsDisabled }: TaskActionsProps) => {
 					if (value) {
 						if (value.startsWith("http")) {
 							vscode.postMessage({
-								type: "importTaskFromCloud",
+								type: "importTaskFromCloudByUrl",
 								text: value,
 							})
 						} else {
 							vscode.postMessage({
-								type: "importTaskFromCloud",
+								type: "importTaskFromCloudByUrl",
 								text: value,
 							})
 						}

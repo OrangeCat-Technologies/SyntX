@@ -289,7 +289,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 					setShowWelcome(!checkExistKey(newState.apiConfiguration))
 					if (newState.sessionImport) {
 						vscode.postMessage({
-							type: "importTaskFromCloud",
+							type: "importTaskFromCloudByUrl",
 							values: newState.sessionImport,
 						})
 					}
