@@ -41,5 +41,9 @@
 		"mostTokens": "Most Tokens",
 		"mostRelevant": "Most Relevant"
 	},
-	"viewAllHistory": "View all tasks"
+	"viewAllHistory": "View all tasks",
+	"importFromLink": "Import session from share URL",
+	"import": "Import",
+	"importing": "Importing...",
+	"pasteShareUrl": "Paste the share URL to import a session"
 }

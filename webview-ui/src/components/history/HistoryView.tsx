@@ -1,6 +1,7 @@
 import React, { memo, useState } from "react"
 import { DeleteTaskDialog } from "./DeleteTaskDialog"
 import { BatchDeleteTaskDialog } from "./BatchDeleteTaskDialog"
+import { ImportSessionDialog } from "./ImportSessionDialog"
 import { Virtuoso } from "react-virtuoso"
 
 import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
@@ -44,6 +45,7 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 	const [isSelectionMode, setIsSelectionMode] = useState(false)
 	const [selectedTaskIds, setSelectedTaskIds] = useState<string[]>([])
 	const [showBatchDeleteDialog, setShowBatchDeleteDialog] = useState<boolean>(false)
+	const [showImportDialog, setShowImportDialog] = useState<boolean>(false)
 
 	// Toggle selection mode
 	const toggleSelectionMode = () => {
@@ -84,6 +86,12 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 				<div className="flex justify-between items-center">
 					<h3 className="text-vscode-foreground m-0">{t("history:history")}</h3>
 					<div className="flex gap-2">
+						<StandardTooltip content={t("history:importFromLink")}>
+							<Button variant="secondary" onClick={() => setShowImportDialog(true)}>
+								<span className="codicon codicon-cloud-download mr-1" />
+								{t("history:import")}
+							</Button>
+						</StandardTooltip>
 						<StandardTooltip
 							content={
 								isSelectionMode
@@ -285,6 +293,9 @@ const HistoryView = ({ onDone }: HistoryViewProps) => {
 					}}
 				/>
 			)}
+
+			{/* Import session dialog */}
+			<ImportSessionDialog open={showImportDialog} onOpenChange={setShowImportDialog} />
 		</Tab>
 	)
 }

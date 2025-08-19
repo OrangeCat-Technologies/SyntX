@@ -199,6 +199,11 @@
 				"category": "%configuration.title%"
 			},
 			{
+				"command": "syntx.importTask",
+				"title": "%command.importTask.title%",
+				"category": "%configuration.title%"
+			},
+			{
 				"command": "syntx.focusInput",
 				"title": "%command.focusInput.title%",
 				"category": "%configuration.title%"

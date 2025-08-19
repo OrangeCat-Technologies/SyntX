@@ -1,4 +1,4 @@
-import { exportTask, importTask, exportTaskToCloud } from "../sharing"
+import { exportTask, importTask, exportTaskToCloud, importTaskFromCloudByUrl } from "../sharing"
 import { vi, describe, it, expect, beforeEach } from "vitest"
 import * as vscode from "vscode"
 
@@ -126,6 +126,42 @@ describe("Task Sharing Service", () => {
 						"Syntx-Api-Key": token,
 					}),
 				}),
+			)
+		})
+	})
+
+	describe("importTaskFromCloudByUrl", () => {
+		beforeEach(() => {
+			const mockSession = {
+				version: "1.0.0",
+				task: mockTask,
+				messages: [],
+			}
+
+			global.fetch = vi.fn(() =>
+				Promise.resolve({
+					ok: true,
+					json: () => Promise.resolve(mockSession),
+					text: () => Promise.resolve(""),
+				}),
+			) as any
+
+			vi.mocked(vscode.workspace.getConfiguration).mockReturnValue({
+				get: vi.fn().mockReturnValue("https://test.syntx.dev"),
+			} as any)
+		})
+
+		it("should import a task from a cloud URL", async () => {
+			const sessionUrl = "https://test.syntx.dev/session/test-session-id"
+
+			await importTaskFromCloudByUrl(sessionUrl, mockGlobalStoragePath)
+
+			expect(global.fetch).toHaveBeenCalledWith(
+				"https://test.syntx.dev/api/sessions/test-session-id",
+				expect.any(Object),
+			)
+			expect(vscode.window.showInformationMessage).toHaveBeenCalledWith(
+				`Imported session "${mockTask.task}" from cloud.`,
 			)
 		})
 	})

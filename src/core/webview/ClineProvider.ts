@@ -72,7 +72,7 @@ import { EMBEDDING_MODEL_PROFILES } from "../../shared/embeddingModels"
 import { ProfileValidator } from "../../shared/ProfileValidator"
 import { getWorkspaceGitInfo } from "../../utils/git"
 
-import { exportTaskToCloud, importTaskFromCloudById, importTaskFromCloudByUrl } from "../../services/session/sharing"
+import { exportTaskToCloud, importTaskFromCloudByUrl } from "../../services/session/sharing"
 /**
  * https://github.com/microsoft/vscode-webview-ui-toolkit-samples/blob/main/default/weather-webview/src/providers/WeatherViewProvider.ts
  * https://github.com/KumarVariable/vscode-extension-sidebar-html/blob/master/src/customSidebarViewProvider.ts
@@ -1266,16 +1266,17 @@ export class ClineProvider
 		return undefined
 	}
 
-	async importTaskFromCloudById(id: string) {
-		const { apiConfiguration } = await this.getState()
-		await importTaskFromCloudById(id, this.context.globalStorageUri.fsPath, { token: apiConfiguration.syntxApiKey })
-	}
-
 	async importTaskFromCloudByUrl(url: string) {
 		const { apiConfiguration } = await this.getState()
-		await importTaskFromCloudByUrl(url, this.context.globalStorageUri.fsPath, {
+		const session = await importTaskFromCloudByUrl(url, this.context.globalStorageUri.fsPath, {
 			token: apiConfiguration.syntxApiKey,
 		})
+
+		if (session) {
+			await this.updateTaskHistory(session.task)
+			await this.postStateToWebview()
+			vscode.window.showInformationMessage(`Imported session "${session.task.task}" from cloud.`)
+		}
 	}
 
 	async deleteTaskFromState(id: string) {

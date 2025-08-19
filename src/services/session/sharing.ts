@@ -1,13 +1,11 @@
-import { z } from "zod"
 import * as vscode from "vscode"
 
-import type { HistoryItem, ClineMessage } from "@roo-code/types"
+import type { HistoryItem } from "@roo-code/types"
 
 import { SerializedSessionSchema, SerializedSession } from "./schema"
 import { readTaskMessages, saveTaskMessages } from "../../core/task-persistence/taskMessages"
 import { readApiMessages, saveApiMessages } from "../../core/task-persistence/apiMessages"
 import { getTaskDirectoryPath } from "../../utils/storage"
-import { GlobalFileNames } from "../../shared/globalFileNames"
 
 const CURRENT_VERSION = "1.0.0"
 
@@ -36,7 +34,7 @@ export async function exportTask(task: HistoryItem, globalStoragePath: string): 
 	vscode.window.showInformationMessage(`Task exported to ${uri.fsPath}`)
 }
 
-export async function importTask(globalStoragePath: string): Promise<void> {
+export async function importTask(globalStoragePath: string): Promise<SerializedSession | undefined> {
 	const openDialogOptions: vscode.OpenDialogOptions = {
 		canSelectMany: false,
 		openLabel: "Import Task",
@@ -46,7 +44,7 @@ export async function importTask(globalStoragePath: string): Promise<void> {
 	}
 
 	const uris = await vscode.window.showOpenDialog(openDialogOptions)
-	if (!uris || uris.length === 0) return
+	if (!uris || uris.length === 0) return undefined
 
 	const uri = uris[0]
 	const fileContent = await vscode.workspace.fs.readFile(uri)
@@ -55,7 +53,7 @@ export async function importTask(globalStoragePath: string): Promise<void> {
 	const parseResult = SerializedSessionSchema.safeParse(json)
 	if (!parseResult.success) {
 		vscode.window.showErrorMessage(`Invalid task file: ${parseResult.error.message}`)
-		return
+		return undefined
 	}
 
 	const session = parseResult.data
@@ -67,9 +65,16 @@ export async function importTask(globalStoragePath: string): Promise<void> {
 		messages: session.messages,
 	})
 
+	// Also save empty API messages to satisfy getTaskWithId requirement
+	await saveApiMessages({
+		taskId: newTaskId,
+		globalStoragePath,
+		messages: [],
+	})
+
 	const taskDir = await getTaskDirectoryPath(globalStoragePath, newTaskId)
 
-	vscode.window.showInformationMessage(`Task "${session.task.task}" imported successfully.`)
+	return session
 }
 
 // ========== Cloud Sharing (Export/Import via Website) ==========
@@ -78,18 +83,31 @@ export async function importTask(globalStoragePath: string): Promise<void> {
  * Cloud session sharing allows:
  * 1) VS Code extension to POST a SerializedSession to the website
  * 2) Website returns a session id and share URL
- * 3) Other users can GET the session by id or via the API URL embedded in the share page
+ * 3) Other users can GET the session by id or via share URL
  *
- * Website API contract (MVP):
+ * Website API contract:
  * - POST /api/sessions
  *   Body: SerializedSession (see SerializedSessionSchema)
+ *   Headers: Syntx-Api-Key: {api_key}
  *   Response: 201 { id: string, url?: string }
- * - GET /api/sessions/:id
+ *
+ * - GET /api/public/sessions/:id (Recommended for VS Code extension)
+ *   Headers: Syntx-Api-Key: {api_key} (optional but recommended)
  *   Response: 200 SerializedSession
+ *
+ * - GET /api/sessions/:id (Fallback, requires authentication)
+ *   Headers: Syntx-Api-Key: {api_key}
+ *   Response: 200 SerializedSession
+ *
+ * URL Format Support:
+ * - Share URLs: https://yoursite.com/session/ABC123
+ * - API URLs: https://yoursite.com/api/sessions/ABC123
+ * - Session IDs: ABC123
  *
  * Base URL resolution order:
  * - VS Code setting: syntx.sessionSharing.baseUrl (e.g., https://sessions.syntx.dev)
  * - Env var: SYNTX_SESSIONS_BASE_URL
+ * - Extracted from provided URL
  * If not set, the commands will show a VS Code error.
  */
 
@@ -124,6 +142,52 @@ function shareUrl(baseUrl: string, id: string): string {
 }
 
 /**
+ * Extracts session ID from various URL formats:
+ * - Share URL: https://yoursite.com/session/ABC123 -> ABC123
+ * - API URL: https://yoursite.com/api/sessions/ABC123 -> ABC123
+ * - Direct ID: ABC123 -> ABC123
+ */
+function extractSessionIdFromUrl(urlOrId: string): {
+	id: string
+	baseUrl?: string
+	username?: string
+} {
+	// Handle new format: username/sessionId (e.g., "viragtiwari/HzKozOxIxl4dO0YijPu0q")
+	if (!urlOrId.includes("://") && urlOrId.includes("/")) {
+		const parts = urlOrId.split("/")
+		if (parts.length === 2) {
+			return { username: parts[0], id: parts[1] } // Extract session ID from username/sessionId
+		}
+	}
+
+	// If it's already just an ID, return it
+	if (!urlOrId.includes("://") && !urlOrId.includes("/")) {
+		return { id: urlOrId }
+	}
+
+	try {
+		const url = new URL(urlOrId)
+		const baseUrl = `${url.protocol}//${url.host}`
+
+		// Handle share URL format: /session/ABC123
+		const sessionMatch = url.pathname.match(/\/session\/([^/]+)/)
+		if (sessionMatch) {
+			return { id: sessionMatch[1], baseUrl }
+		}
+
+		// Handle API URL format: /api/sessions/ABC123
+		const apiMatch = url.pathname.match(/\/api\/sessions\/([^/]+)/)
+		if (apiMatch) {
+			return { id: apiMatch[1], baseUrl }
+		}
+
+		throw new Error("Unable to extract session ID from URL")
+	} catch (err) {
+		throw new Error(`Invalid URL format: ${urlOrId}`)
+	}
+}
+
+/**
  * Export current task session to cloud.
  * Returns the share URL on success (also copies to clipboard).
  */
@@ -154,7 +218,7 @@ export async function exportTaskToCloud(
 	}
 
 	try {
-		const res = await f(apiUrl(baseUrl, "/api/sessions"), {
+		const res = await f(apiUrl(baseUrl, "/api/sessions/create"), {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -188,93 +252,55 @@ export async function exportTaskToCloud(
 }
 
 /**
- * Import a session from cloud by REST id.
- */
-export async function importTaskFromCloudById(
-	id: string,
-	globalStoragePath: string,
-	opts?: { token?: string },
-): Promise<void> {
-	const f = ensureFetchAvailable()
-	if (!f) return
-
-	const baseUrl = resolveBaseUrl()
-	if (!baseUrl) {
-		vscode.window.showErrorMessage(
-			`Session sharing base URL not set. Configure "${SETTINGS_NAMESPACE}.${SETTINGS_KEY}" or env ${ENV_BASE_URL}.`,
-		)
-		return
-	}
-
-	try {
-		const res = await f(apiUrl(baseUrl, `/api/sessions/${encodeURIComponent(id)}`), {
-			method: "GET",
-			headers: {
-				Accept: "application/json",
-				...(opts?.token ? { Authorization: `Bearer ${opts.token}` } : {}),
-			},
-		})
-
-		if (!res.ok) {
-			const text = await res.text().catch(() => "")
-			vscode.window.showErrorMessage(`Import failed: ${res.status} ${text || res.statusText}`)
-			return
-		}
-
-		const json = await res.json()
-		const parse = SerializedSessionSchema.safeParse(json)
-		if (!parse.success) {
-			vscode.window.showErrorMessage(`Invalid session data from cloud: ${parse.error.message}`)
-			return
-		}
-
-		const session = parse.data
-		const newTaskId = session.task.id
-
-		await saveTaskMessages({
-			taskId: newTaskId,
-			globalStoragePath,
-			messages: session.messages,
-		})
-
-		vscode.window.showInformationMessage(`Imported session "${session.task.task}" from cloud.`)
-	} catch (err: any) {
-		vscode.window.showErrorMessage(`Import failed: ${err?.message || String(err)}`)
-	}
-}
-
-/**
  * Import a session directly from a full API URL.
  * Useful if the website's "Import to VS Code" deep link passes an API link instead of an id.
  */
 export async function importTaskFromCloudByUrl(
-	sessionApiUrl: string,
+	sessionUrlOrId: string,
 	globalStoragePath: string,
 	opts?: { token?: string },
-): Promise<void> {
+): Promise<SerializedSession | undefined> {
 	const f = ensureFetchAvailable()
-	if (!f) return
+	if (!f) return undefined
 
 	try {
-		const res = await f(sessionApiUrl, {
-			method: "GET",
+		const { id, username } = extractSessionIdFromUrl(sessionUrlOrId)
+
+		const baseUrl = resolveBaseUrl()
+		if (!baseUrl) {
+			vscode.window.showErrorMessage(
+				`Session sharing base URL not set. Configure "${SETTINGS_NAMESPACE}.${SETTINGS_KEY}" or env ${ENV_BASE_URL}.`,
+			)
+			return undefined
+		}
+
+		const apiEndpoint = apiUrl(baseUrl, "/api/sessions")
+		const res = await f(apiEndpoint, {
+			method: "POST",
 			headers: {
+				"Content-Type": "application/json",
 				Accept: "application/json",
-				...(opts?.token ? { Authorization: `Bearer ${opts.token}` } : {}),
+				...(opts?.token ? { "Syntx-Api-Key": `${opts.token}` } : {}),
 			},
+			body: JSON.stringify({
+				id,
+				username,
+			}),
 		})
 
 		if (!res.ok) {
 			const text = await res.text().catch(() => "")
-			vscode.window.showErrorMessage(`Import failed: ${res.status} ${text || res.statusText}`)
-			return
+			vscode.window.showErrorMessage(
+				`Import failed: ${res.status} ${text || res.statusText} (URL: ${apiEndpoint})`,
+			)
+			return undefined
 		}
 
 		const json = await res.json()
 		const parse = SerializedSessionSchema.safeParse(json)
 		if (!parse.success) {
 			vscode.window.showErrorMessage(`Invalid session data from cloud: ${parse.error.message}`)
-			return
+			return undefined
 		}
 
 		const session = parse.data
@@ -286,36 +312,16 @@ export async function importTaskFromCloudByUrl(
 			messages: session.messages,
 		})
 
-		vscode.window.showInformationMessage(`Imported session "${session.task.task}" from cloud.`)
+		// Also save empty API messages to satisfy getTaskWithId requirement
+		await saveApiMessages({
+			taskId: newTaskId,
+			globalStoragePath,
+			messages: [],
+		})
+
+		return session
 	} catch (err: any) {
 		vscode.window.showErrorMessage(`Import failed: ${err?.message || String(err)}`)
+		return undefined
 	}
-}
-
-/**
- * Optional: Register a VS Code URI handler to support "vscode://<ext-id>/import-session?id=..." deep links
- * Call this from your extension activation with the extension context.
- */
-export function registerSessionImportUriHandler(context: vscode.ExtensionContext) {
-	const handler: vscode.UriHandler = {
-		handleUri: async (uri) => {
-			try {
-				// Expect path like "/import-session"
-				if (uri.path !== "/import-session") return
-				const params = new URLSearchParams(uri.query)
-				const id = params.get("id")
-				if (!id) {
-					vscode.window.showErrorMessage("Missing session id.")
-					return
-				}
-				// Use extension's global storage to persist messages
-				const globalStoragePath = context.globalStorageUri.fsPath
-				await importTaskFromCloudById(id, globalStoragePath)
-			} catch (err: any) {
-				vscode.window.showErrorMessage(`Failed to handle import link: ${err?.message || String(err)}`)
-			}
-		},
-	}
-
-	context.subscriptions.push(vscode.window.registerUriHandler(handler))
 }

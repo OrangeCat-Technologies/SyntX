@@ -65,19 +65,13 @@ export const webviewMessageHandler = async (
 	 */
 	const handleImportTask = async () => {
 		try {
-			const file = await vscode.window.showOpenDialog({
-				canSelectFiles: true,
-				canSelectFolders: false,
-				canSelectMany: false,
-				filters: {
-					"JSON files": ["json"],
-				},
-			})
+			const { importTask } = await import("../../services/session/sharing")
+			const session = await importTask(provider.context.globalStorageUri.fsPath)
 
-			if (file && file[0]) {
-				const content = await fs.readFile(file[0].fsPath, "utf-8")
-				const task = JSON.parse(content)
-				await provider.initClineWithHistoryItem(task)
+			if (session) {
+				await provider.updateTaskHistory(session.task)
+				await provider.postStateToWebview()
+				vscode.window.showInformationMessage(`Task "${session.task.task}" imported successfully.`)
 			}
 		} catch (error) {
 			console.error("Error importing task:", error)
@@ -457,11 +451,9 @@ export const webviewMessageHandler = async (
 			await provider.exportTaskToCloud()
 			break
 		}
-		case "importTaskFromCloud": {
-			const { id, url } = message.values || {}
-			if (id) {
-				await provider.importTaskFromCloudById(id)
-			} else if (url) {
+		case "importTaskFromCloudByUrl": {
+			const { url } = message.values || {}
+			if (url) {
 				await provider.importTaskFromCloudByUrl(url)
 			}
 			break

@@ -159,6 +159,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Prevent task completion when there are incomplete todos in the todo list"
+		},
+		"importTask": {
+			"title": "Import Task"
 		}
 	}
 }

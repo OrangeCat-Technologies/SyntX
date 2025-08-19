@@ -58,7 +58,7 @@ export interface WebviewMessage {
 		| "exportCurrentTask"
 		| "importTask"
 		| "exportTaskToCloud"
-		| "importTaskFromCloud"
+		| "importTaskFromCloudByUrl"
 		| "shareCurrentTask"
 		| "showTaskWithId"
 		| "deleteTaskWithId"

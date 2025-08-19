@@ -40,7 +40,6 @@ import {
 } from "./activate"
 import { initializeI18n } from "./i18n"
 
-import { registerSessionImportUriHandler } from "./services/session/sharing"
 /**
  * Built using https://github.com/microsoft/vscode-webview-ui-toolkit
  *
@@ -176,7 +175,6 @@ export async function activate(context: vscode.ExtensionContext) {
 	registerTerminalActions(context)
 
 	// Allows other extensions to activate once Roo is ready.
-	registerSessionImportUriHandler(context)
 	vscode.commands.executeCommand(`${Package.name}.activationCompleted`)
 
 	// Implements the `RooCodeAPI` interface.

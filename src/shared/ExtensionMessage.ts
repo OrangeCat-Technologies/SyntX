@@ -134,7 +134,7 @@ export interface ExtensionMessage {
 		| "secondaryButtonClick"
 		| "setChatBoxMessage"
 		| "exportTaskToCloud"
-		| "importTaskFromCloud"
+		| "importTaskFromCloudByUrl"
 	state?: ExtensionState
 	images?: string[]
 	filePaths?: string[]

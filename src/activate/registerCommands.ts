@@ -209,6 +209,10 @@ const getCommandsMap = ({ context, outputChannel, provider }: RegisterCommandOpt
 			filePath,
 		)
 	},
+	importTask: async () => {
+		const { importTask } = await import("../services/session/sharing")
+		await importTask(context.globalStorageUri.fsPath)
+	},
 	focusInput: async () => {
 		try {
 			await focusPanel(tabPanel, sidebarPanel)

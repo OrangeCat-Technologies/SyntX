@@ -56,17 +56,6 @@ export const handleUri = async (uri: vscode.Uri) => {
 			}
 			break
 		}
-		case "/import-session": {
-			const id = query.get("id")
-			const url = query.get("url")
-
-			if (id) {
-				await visibleProvider.importTaskFromCloudById(id)
-			} else if (url) {
-				await visibleProvider.importTaskFromCloudByUrl(url)
-			}
-			break
-		}
 		default:
 			break
 	}
