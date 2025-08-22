@@ -71,7 +71,9 @@ const RooHero = () => {
 						paddingBottom: "10px",
 					}}>
 					{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
-					<LogoSvg />
+					<div className="logo-hero">
+						<LogoSvg />
+					</div>
 					<p
 						style={{
 							background: `linear-gradient(to right, var(--vscode-editor-selectionForeground) 0%, var(--vscode-titleBar-activeForeground) 50%)`,
@@ -79,7 +81,7 @@ const RooHero = () => {
 							backgroundClip: "text",
 							color: "var(--vscode-titleBar-activeForeground)",
 							backgroundRepeat: "no-repeat",
-							fontSize: "14px",
+							fontSize: "20px",
 							display: "inline-block",
 						}}>
 						{getGreeting()}

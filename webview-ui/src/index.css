@@ -579,3 +579,7 @@ input[cmdk-input]:focus {
 .roo-hero-home {
 	transform: translateX(-3px);
 }
+
+.logo-hero {
+	transform: translateX(-3px);
+}
