@@ -1,7 +1,8 @@
 import type { RooCodeAPI } from "@roo-code/types"
 
 declare global {
-	const api: RooCodeAPI
+	// eslint-disable-next-line no-var
+	var api: RooCodeAPI
 }
 
 export {}
