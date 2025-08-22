@@ -1,6 +1,6 @@
 {
 	"name": "syntx",
-	"packageManager": "pnpm@10.15.0",
+	"packageManager": "pnpm@10.8.1",
 	"engines": {
 		"node": "20.19.2"
 	},
