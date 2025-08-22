@@ -1,4 +1,4 @@
-// import logoBase64 from "../../assets/logo-base64" hiding import for precommit script
+import LogoSvg from "../../assets/Logo"
 import { useExtensionState } from "../../context/ExtensionStateContext"
 
 const getTimeBasedGreeting = () => {
@@ -57,7 +57,7 @@ const RooHero = () => {
 							<CheckpointWarningMessage />
 						</div>
 					)}
-					*/}
+					 */}
 				</>
 			) : (
 				<div
@@ -67,28 +67,24 @@ const RooHero = () => {
 						overflowY: "auto",
 						display: "flex",
 						flexDirection: "column",
+						paddingTop: "40px",
 						paddingBottom: "10px",
 					}}>
 					{showAnnouncement && <Announcement version={version} hideAnnouncement={hideAnnouncement} />}
-					<div style={{ padding: "20px 20px", flexShrink: 0 }}>
-						<p
-							style={{
-								// color: `linear-gradient(to right,var(--vscode-titleBar-activeForeground) 50%, var(--vscode-titleBar-activeForeground) 100%)`,
-								background: "var(--vscode-editor-foreground)",
-								// background: `linear-gradient(to right, var(--vscode-editor-foreground) 50%, var(--vscode-editor-foreground), var(--vscode-editorWidget-foreground))`,
-								// background:
-								// 	"linear-gradient(to right, rgba(149, 246, 255, 1)50%,rgba(149, 255, 255, 1), rgba(255, 255, 255, 1))",
-								WebkitBackgroundClip: "text",
-								fontSize: "18px",
-								fontWeight: "650",
-								WebkitTextFillColor: "transparent",
-								backgroundClip: "text",
-								display: "inline-block",
-							}}>
-							{getGreeting()}
-							{!websiteNotAuthenticated && websiteUsername ? ` ${websiteUsername}!` : ""}
-						</p>
-					</div>
+					<LogoSvg />
+					<p
+						style={{
+							background: `linear-gradient(to right, var(--vscode-editor-selectionForeground) 0%, var(--vscode-titleBar-activeForeground) 50%)`,
+							WebkitBackgroundClip: "text",
+							backgroundClip: "text",
+							color: "var(--vscode-titleBar-activeForeground)",
+							backgroundRepeat: "no-repeat",
+							fontSize: "14px",
+							display: "inline-block",
+						}}>
+						{getGreeting()}
+						{!websiteNotAuthenticated && websiteUsername ? `, ${websiteUsername}.` : ""}
+					</p>
 				</div>
 			)}
 		</div>

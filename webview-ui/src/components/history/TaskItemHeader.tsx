@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 export interface TaskItemHeaderProps {
 	item: HistoryItem
 	isSelectionMode: boolean
+	variant?: "compact" | "full"
 	onDelete?: (taskId: string) => void
 }
 
