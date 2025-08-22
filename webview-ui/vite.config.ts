@@ -5,7 +5,7 @@ import { execSync } from "child_process"
 import { defineConfig, type PluginOption, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
-import svgr from "vite-plugin-svgr"
+// import svgr from "vite-plugin-svgr"
 
 function getGitSha() {
 	let gitSha: string | undefined = undefined
@@ -80,7 +80,7 @@ export default defineConfig(({ mode }) => {
 		define["process.env.PKG_OUTPUT_CHANNEL"] = JSON.stringify("Roo-Code-Nightly")
 	}
 
-	const plugins: PluginOption[] = [react(), tailwindcss(), persistPortPlugin(), wasmPlugin(), svgr()]
+	const plugins: PluginOption[] = [react(), tailwindcss(), persistPortPlugin(), wasmPlugin()]
 
 	return {
 		plugins,

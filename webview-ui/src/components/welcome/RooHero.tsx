@@ -31,7 +31,7 @@ const RooHero = () => {
 	return (
 		<div
 			style={{
-				overflow: "hidden",
+				overflow: "visible",
 			}}>
 			{task ? (
 				<>

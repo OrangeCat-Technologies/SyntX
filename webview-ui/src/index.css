@@ -575,3 +575,7 @@ input[cmdk-input]:focus {
 .hover-orange:hover * {
 	color: white !important;
 }
+
+.roo-hero-home {
+	transform: translateX(-3px);
+}

@@ -18,7 +18,7 @@ const Logo = ({ title, color = "var(--vscode-titleBar-activeForeground)", ...pro
 				xmlns="http://www.w3.org/2000/svg"
 				width="54"
 				height="52"
-				viewBox="0 0 336 333"
+				viewBox="0 0 333 333"
 				fill="none"
 				{...props}
 				aria-label={title}
