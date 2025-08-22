@@ -8,7 +8,17 @@ interface BoilerplateListProps {
 
 export const BoilerplateList: React.FC<BoilerplateListProps> = ({ boilerplates, onSelectBoilerplate }) => {
 	return (
-		<div>
+		<div className="boilerplate-home">
+			<p
+				className="object-center text-center text-vscode-descriptionForeground"
+				style={{
+					alignContent: "center",
+					fontSize: "14",
+				}}>
+				<div style={{ color: "var(--vscode-editor-selectionForeground)!important" }}>
+					Generate, refactor, and debug code with SyntX{" "}
+				</div>
+			</p>
 			<p
 				className="object-center text-center text-vscode-descriptionForeground"
 				style={{

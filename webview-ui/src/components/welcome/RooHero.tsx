@@ -85,7 +85,13 @@ const RooHero = () => {
 							display: "inline-block",
 						}}>
 						{getGreeting()}
-						{!websiteNotAuthenticated && websiteUsername ? `, ${websiteUsername}.` : ""}
+						{!websiteNotAuthenticated && websiteUsername ? (
+							<>
+								, <span style={{ color: "#FE6F09" }}>{websiteUsername}</span>.
+							</>
+						) : (
+							""
+						)}
 					</p>
 				</div>
 			)}
