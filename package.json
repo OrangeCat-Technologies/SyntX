@@ -1,6 +1,6 @@
 {
 	"name": "syntx",
-	"packageManager": "pnpm@10.8.1",
+	"packageManager": "pnpm@10.15.0",
 	"engines": {
 		"node": "20.19.2"
 	},
@@ -55,7 +55,6 @@
 		}
 	},
 	"dependencies": {
-		"@dotenvx/dotenvx": "^1.49.0",
-		"pnpm": "^10.14.0"
+		"@dotenvx/dotenvx": "^1.49.0"
 	}
 }
