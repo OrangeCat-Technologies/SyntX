@@ -22,6 +22,7 @@
 	"command.focusInput.title": "Focus op Invoerveld",
 	"command.setCustomStoragePath.title": "Aangepast Opslagpad Instellen",
 	"command.importSettings.title": "Instellingen Importeren",
+	"command.importTask.title": "Taak importeren",
 	"command.terminal.addToContext.title": "Terminalinhoud aan Context Toevoegen",
 	"command.terminal.fixCommand.title": "Repareer Dit Commando",
 	"command.terminal.explainCommand.title": "Leg Dit Commando Uit",
