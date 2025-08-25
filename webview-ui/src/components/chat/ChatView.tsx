@@ -6,6 +6,8 @@ import removeMd from "remove-markdown"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
 import useSound from "use-sound"
 import { LRUCache } from "lru-cache"
+import { Boilerplate, starterBoilerplates } from "../../utils/boilerplates"
+// import { useTelemetry } from "../../utils/useTelemetry.ts"
 
 import { useDebounceEffect } from "@src/utils/useDebounceEffect"
 import { appendImages } from "@src/utils/imageUtils"
@@ -34,12 +36,10 @@ import { useTranslation } from "react-i18next"
 import { useAppTranslation } from "@src/i18n/TranslationContext"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { useSelectedModel } from "@src/components/ui/hooks/useSelectedModel"
-import RooHero from "@src/components/welcome/RooHero"
 import { StandardTooltip } from "@src/components/ui"
 import { useAutoApprovalState } from "@src/hooks/useAutoApprovalState"
 import { useAutoApprovalToggles } from "@src/hooks/useAutoApprovalToggles"
 
-import HistoryPreview from "../history/HistoryPreview"
 import Announcement from "./Announcement"
 import BrowserSessionRow from "./BrowserSessionRow"
 import ChatRow from "./ChatRow"
@@ -50,8 +50,7 @@ import SystemPromptWarning from "./SystemPromptWarning"
 import ProfileViolationWarning from "./ProfileViolationWarning"
 import { CheckpointWarning } from "./CheckpointWarning"
 import { getLatestTodo } from "@roo/todo"
-import BoilerplateList, { DEFAULT_BOILERPLATES } from "./BoilerplateList"
-
+import { HomeView } from "../home/HomeView"
 export interface ChatViewProps {
 	isHidden: boolean
 	showAnnouncement: boolean
@@ -110,6 +109,8 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 		soundVolume,
 	} = useExtensionState()
 
+	// const { trackNewChat, trackFeatureUsage } = useTelemetry()
+
 	const messagesRef = useRef(messages)
 	useEffect(() => {
 		messagesRef.current = messages
@@ -161,6 +162,16 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 	const autoApproveTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 	const userRespondedRef = useRef<boolean>(false)
 	const [currentFollowUpTs, setCurrentFollowUpTs] = useState<number | null>(null)
+
+	// Function to handle selcting chat Boilerplates @parth handle boilerplates
+	const handleBoilerplateSelect = useCallback(
+		(boilerplate: Boilerplate) => {
+			// need help to create this. on clicking any of the boilerplates, the
+			//system needs to create a new task with the txt in the boilerplates
+			vscode.postMessage({ type: "newTask", text: boilerplate.initialInput, images: [] })
+		},
+		[], //user callback is blank for now
+	)
 
 	const clineAskRef = useRef(clineAsk)
 	useEffect(() => {
@@ -1654,26 +1665,11 @@ const ChatViewComponent: React.ForwardRefRenderFunction<ChatViewRef, ChatViewPro
 					)}
 				</>
 			) : (
-				<div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4 relative">
-					{/* Absolute top-left logo/username, at same level as version button */}
-					<div className="absolute top-2 left-3 z-10">
-						<RooHero />
-					</div>
-					<div className="w-full flex flex-col gap-4 m-auto px-3.5 min-[370px]:px-10 pt-28 transition-all duration-300">
-						{/* pt-28 ensures content is pushed below the logo/username row */}
-						{/* Show the task history preview if expanded and tasks exist */}
-						{taskHistory.length > 0 && <HistoryPreview />}
-						{/* Show boilerplate list if no task history */}
-						{taskHistory.length === 0 && (
-							<BoilerplateList
-								boilerplates={DEFAULT_BOILERPLATES}
-								onSelect={(boilerplate) => {
-									vscode.postMessage({ type: "newTask", text: boilerplate.initialInput })
-								}}
-							/>
-						)}
-					</div>
-				</div>
+				<HomeView
+					taskHistory={taskHistory}
+					handleBoilerplateSelect={handleBoilerplateSelect}
+					starterBoilerplates={starterBoilerplates}
+				/>
 			)}
 
 			{/* 

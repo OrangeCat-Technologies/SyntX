@@ -1,61 +1,43 @@
 import React from "react"
-import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-
-export interface Boilerplate {
-	id: string
-	title: string
-	description?: string
-	initialInput: string
-}
+import { Boilerplate } from "../../utils/boilerplates" // Assuming this path
 
 interface BoilerplateListProps {
 	boilerplates: Boilerplate[]
-	onSelect: (boilerplate: Boilerplate) => void
+	onSelectBoilerplate: (boilerplate: Boilerplate) => void
 }
 
-const BoilerplateList: React.FC<BoilerplateListProps> = ({ boilerplates, onSelect }) => {
+export const BoilerplateList: React.FC<BoilerplateListProps> = ({ boilerplates, onSelectBoilerplate }) => {
 	return (
-		<div className="flex flex-col gap-2 items-center mt-4">
-			<h3 className="text-lg font-bold mb-1">Get Started with a Sample Task</h3>
-			<div className="flex flex-col gap-4 w-full max-w-md">
-				{boilerplates.map((bp) => (
-					<div key={bp.id} className="border rounded p-4 bg-vscode-editor-background flex flex-col gap-2">
-						<div className="font-semibold text-sm">{bp.title}</div>
-						{bp.description && (
-							<div className="text-xs text-vscode-descriptionForeground mb-1">{bp.description}</div>
-						)}
-						<VSCodeButton appearance="primary" onClick={() => onSelect(bp)}>
-							Start
-						</VSCodeButton>
+		<div className="boilerplate-home">
+			<p
+				className="object-center text-center text-vscode-descriptionForeground"
+				style={{
+					alignContent: "center",
+					fontSize: "14",
+				}}>
+				<div style={{ color: "var(--vscode-editor-selectionForeground)!important" }}>
+					Generate, refactor, and debug code with SyntX{" "}
+				</div>
+			</p>
+			<p
+				className="object-center text-center text-vscode-descriptionForeground"
+				style={{
+					alignContent: "center",
+					fontSize: "14",
+				}}>
+				Dont know where to start? Try these prompts instead
+			</p>
+			<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+				{boilerplates.map((boilerplate) => (
+					<div
+						key={boilerplate.id}
+						className="border border-vscode-panel-border rounded-md p-2 cursor-pointer hover-orange"
+						onClick={() => onSelectBoilerplate(boilerplate)}>
+						<p className="text-sm float-left content-center align-middle pr-3.5">{boilerplate.emoticon}</p>
+						<p className="text-sm text-vscode-descriptionForeground">{boilerplate.description}</p>
 					</div>
 				))}
 			</div>
 		</div>
 	)
 }
-
-export const DEFAULT_BOILERPLATES: Boilerplate[] = [
-	{
-		id: "portfolio-website",
-		title: "Make me a portfolio website",
-		description: "Generate a personal portfolio website to showcase my projects and skills.",
-		initialInput:
-			"Create a modern, responsive portfolio website for me. Include sections for About, Projects, and Contact. Use a popular frontend framework if possible.",
-	},
-	{
-		id: "codebase-docs",
-		title: "Make a documentation for my codebase",
-		description: "Generate comprehensive documentation for my codebase, including setup, usage, and API details.",
-		initialInput:
-			"Analyze my codebase and generate detailed documentation, including setup instructions, usage examples, and API reference.",
-	},
-	{
-		id: "snake-game",
-		title: "Make me a snake game",
-		description: "Create a playable snake game using a modern programming language and framework.",
-		initialInput:
-			"Build a simple snake game that can be played in the browser. Use JavaScript and HTML/CSS or a suitable framework.",
-	},
-]
-
-export default BoilerplateList

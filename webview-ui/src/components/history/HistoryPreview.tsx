@@ -1,13 +1,14 @@
 import { memo } from "react"
 
-import { vscode } from "@src/utils/vscode"
-import { useAppTranslation } from "@src/i18n/TranslationContext"
+import { vscode } from "@/utils/vscode"
+import { useAppTranslation } from "@/i18n/TranslationContext"
 
 import { useTaskSearch } from "./useTaskSearch"
 import TaskItem from "./TaskItem"
 
 const HistoryPreview = () => {
 	const { tasks } = useTaskSearch()
+
 	const { t } = useAppTranslation()
 
 	const handleViewAllHistory = () => {

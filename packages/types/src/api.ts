@@ -5,7 +5,7 @@ import type { RooCodeSettings } from "./global-settings.js"
 import type { ProviderSettingsEntry, ProviderSettings } from "./provider-settings.js"
 import type { ClineMessage, TokenUsage } from "./message.js"
 import type { ToolUsage, ToolName } from "./tool.js"
-import type { IpcMessage, IpcServerEvents, IsSubtask } from "./ipc.js"
+import type { IpcMessage, IsSubtask } from "./ipc.js"
 
 // TODO: Make sure this matches `RooCodeEvents` from `@roo-code/types`.
 export interface RooCodeAPIEvents {
@@ -23,7 +23,7 @@ export interface RooCodeAPIEvents {
 	taskToolFailed: [taskId: string, toolName: ToolName, error: string]
 }
 
-export interface RooCodeAPI extends EventEmitter<RooCodeAPIEvents> {
+export interface RooCodeAPI extends EventEmitter {
 	/**
 	 * Starts a new task with an optional initial message and images.
 	 * @param task Optional initial task message.
@@ -150,7 +150,7 @@ export interface RooCodeAPI extends EventEmitter<RooCodeAPIEvents> {
 	setActiveProfile(name: string): Promise<string | undefined>
 }
 
-export interface RooCodeIpcServer extends EventEmitter<IpcServerEvents> {
+export interface RooCodeIpcServer extends EventEmitter {
 	listen(): void
 	broadcast(message: IpcMessage): void
 	send(client: string | Socket, message: IpcMessage): void

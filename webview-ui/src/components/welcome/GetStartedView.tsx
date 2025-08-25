@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { vscode } from "../../utils/vscode"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import logoBase64 from "../../assets/logo-base64"
+import LogoSvg from "../../assets/Logo"
 
 const GetStartedView = () => {
 	const [authAttempted, setAuthAttempted] = useState(false)
@@ -67,14 +67,13 @@ const GetStartedView = () => {
 					<div
 						className="flex items-center mb-4"
 						style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-						<img
-							src={logoBase64}
-							alt="SyntX Logo"
+						<LogoSvg
+							title="SyntX Logo"
 							style={{
 								width: "50px",
 								height: "50px",
-								marginRight: "12px",
 							}}
+							color="#FE6F09"
 						/>
 						<h1
 							className="text-2xl font-medium m-0"
@@ -82,7 +81,7 @@ const GetStartedView = () => {
 								fontSize: "1.5rem",
 								fontWeight: 600,
 								margin: 0,
-								fontFamily: "'Montserrat Alternates', sans-serif",
+								fontFamily: "'Arial', sans-serif",
 								color: "var(--vscode-editor-foreground)",
 							}}>
 							SyntX
