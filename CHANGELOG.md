@@ -1,5 +1,10 @@
 # SyntX Changelog
 
+## [2.4.1] - 25-08-2025
+
+- Added a new Task History feature to view and share your tasks (Preview in BETA)
+- Done some new UI tweaks
+
 ## [2.4.0] - 03-08-2025
 
 - Workspace Integration for adding file context from different folders in your workspace

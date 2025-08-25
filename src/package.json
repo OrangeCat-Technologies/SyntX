@@ -3,7 +3,7 @@
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
 	"publisher": "OrangecatTechPvtLtd",
-	"version": "2.4.0",
+	"version": "2.4.1",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",

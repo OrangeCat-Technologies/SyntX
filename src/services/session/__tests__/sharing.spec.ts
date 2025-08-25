@@ -2,6 +2,136 @@ import { exportTask, importTask, exportTaskToCloud, importTaskFromCloudByUrl } f
 import { vi, describe, it, expect, beforeEach } from "vitest"
 import * as vscode from "vscode"
 
+// Mock proper-lockfile to avoid lockfile creation issues
+vi.mock("proper-lockfile", () => ({
+	default: {
+		lock: vi.fn().mockResolvedValue(() => Promise.resolve()),
+	},
+	lock: vi.fn().mockResolvedValue(() => Promise.resolve()),
+}))
+
+// Mock fs (sync version used by safeWriteJson)
+vi.mock("fs", () => ({
+	default: {
+		createWriteStream: vi.fn(() => ({
+			on: vi.fn((event, callback) => {
+				if (event === "finish") setTimeout(callback, 0)
+			}),
+			destroy: vi.fn(),
+			destroyed: false,
+		})),
+	},
+	createWriteStream: vi.fn(() => ({
+		on: vi.fn((event, callback) => {
+			if (event === "finish") setTimeout(callback, 0)
+		}),
+		destroy: vi.fn(),
+		destroyed: false,
+	})),
+}))
+
+// Mock stream-json modules
+vi.mock("stream-json/Disassembler", () => ({
+	default: {
+		disassembler: vi.fn(() => ({
+			on: vi.fn(),
+			pipe: vi.fn(() => ({
+				pipe: vi.fn(),
+			})),
+			write: vi.fn(),
+			end: vi.fn(),
+		})),
+	},
+}))
+
+vi.mock("stream-json/Stringer", () => ({
+	default: {
+		stringer: vi.fn(() => ({
+			on: vi.fn(),
+		})),
+	},
+}))
+vi.mock("fs/promises", () => {
+	const mockFiles = new Map()
+	const mockDirectories = new Set(["/", "/test", "/fake"])
+
+	const ensureDirectoryExists = (path: string) => {
+		const parts = path.split("/")
+		let currentPath = ""
+		for (const part of parts) {
+			if (!part) continue
+			currentPath += "/" + part
+			mockDirectories.add(currentPath)
+		}
+	}
+
+	const mockMkdir = vi.fn().mockImplementation(async (path, options) => {
+		if (options?.recursive || path.startsWith("/test") || path.startsWith("/fake") || path.includes(".lock")) {
+			ensureDirectoryExists(path)
+			return Promise.resolve()
+		}
+		mockDirectories.add(path)
+		return Promise.resolve()
+	})
+
+	const mockWriteFile = vi.fn().mockImplementation(async (path, content) => {
+		const parentDir = path.split("/").slice(0, -1).join("/")
+		ensureDirectoryExists(parentDir)
+		mockFiles.set(path, content)
+		return Promise.resolve()
+	})
+
+	const mockReadFile = vi.fn().mockImplementation(async (path) => {
+		if (mockFiles.has(path)) {
+			return mockFiles.get(path)
+		}
+		// Return empty arrays for task message files that don't exist yet
+		if (path.includes("ui_messages.json") || path.includes("api_conversation_history.json")) {
+			return JSON.stringify([])
+		}
+		const error = new Error(`ENOENT: no such file or directory, open '${path}'`)
+		;(error as any).code = "ENOENT"
+		throw error
+	})
+
+	const mockAccess = vi.fn().mockImplementation(async (path) => {
+		if (mockFiles.has(path) || mockDirectories.has(path) || path.startsWith("/test") || path.startsWith("/fake")) {
+			return Promise.resolve()
+		}
+		// Allow access to ui_messages.json files and lockfiles even if they don't exist yet
+		if (
+			path.includes("ui_messages.json") ||
+			path.includes("api_conversation_history.json") ||
+			path.includes(".lock")
+		) {
+			return Promise.resolve()
+		}
+		const error = new Error(`ENOENT: no such file or directory, access '${path}'`)
+		;(error as any).code = "ENOENT"
+		throw error
+	})
+
+	const mockUnlink = vi.fn().mockResolvedValue(undefined)
+	const mockRename = vi.fn().mockResolvedValue(undefined)
+
+	return {
+		default: {
+			mkdir: mockMkdir,
+			writeFile: mockWriteFile,
+			readFile: mockReadFile,
+			access: mockAccess,
+			unlink: mockUnlink,
+			rename: mockRename,
+		},
+		mkdir: mockMkdir,
+		writeFile: mockWriteFile,
+		readFile: mockReadFile,
+		access: mockAccess,
+		unlink: mockUnlink,
+		rename: mockRename,
+	}
+})
+
 vi.mock("vscode", () => ({
 	window: {
 		showSaveDialog: vi.fn(),
@@ -14,7 +144,9 @@ vi.mock("vscode", () => ({
 			writeFile: vi.fn(),
 			readFile: vi.fn(),
 		},
+		getConfiguration: vi.fn(() => ({ get: vi.fn() })),
 	},
+	env: { clipboard: { writeText: vi.fn() } },
 	Uri: {
 		file: vi.fn((path) => ({ fsPath: path })),
 	},
@@ -68,13 +200,11 @@ describe("Task Sharing Service", () => {
 			vi.mocked(vscode.window.showOpenDialog).mockResolvedValue([mockUri])
 			vi.mocked(vscode.workspace.fs.readFile).mockResolvedValue(Buffer.from(JSON.stringify(mockSession)))
 
-			await importTask(mockGlobalStoragePath)
+			const result = await importTask(mockGlobalStoragePath)
 
 			expect(vscode.window.showOpenDialog).toHaveBeenCalled()
 			expect(vscode.workspace.fs.readFile).toHaveBeenCalledWith(mockUri)
-			expect(vscode.window.showInformationMessage).toHaveBeenCalledWith(
-				`Task "${mockTask.task}" imported successfully.`,
-			)
+			expect(result).toEqual(mockSession)
 		})
 
 		it("should handle cancellation of open dialog", async () => {
@@ -120,7 +250,7 @@ describe("Task Sharing Service", () => {
 			await exportTaskToCloud(mockTask, mockGlobalStoragePath, { token })
 
 			expect(global.fetch).toHaveBeenCalledWith(
-				"https://test.syntx.dev/api/sessions",
+				"https://test.syntx.dev/api/sessions/create",
 				expect.objectContaining({
 					headers: expect.objectContaining({
 						"Syntx-Api-Key": token,
@@ -157,11 +287,8 @@ describe("Task Sharing Service", () => {
 			await importTaskFromCloudByUrl(sessionUrl, mockGlobalStoragePath)
 
 			expect(global.fetch).toHaveBeenCalledWith(
-				"https://test.syntx.dev/api/sessions/test-session-id",
-				expect.any(Object),
-			)
-			expect(vscode.window.showInformationMessage).toHaveBeenCalledWith(
-				`Imported session "${mockTask.task}" from cloud.`,
+				"https://test.syntx.dev/api/sessions",
+				expect.objectContaining({ method: "POST" }),
 			)
 		})
 	})

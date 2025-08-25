@@ -1,3 +1,5 @@
+//this has to be reverted in next update where tasks are filtered by workspace
+
 import { renderHook, act } from "@/utils/test-utils"
 
 import type { HistoryItem } from "@roo-code/types"
@@ -63,16 +65,20 @@ describe("useTaskSearch", () => {
 	it("returns all tasks by default", () => {
 		const { result } = renderHook(() => useTaskSearch())
 
-		expect(result.current.tasks).toHaveLength(2) // Only tasks from current workspace
+		expect(result.current.tasks).toHaveLength(3) // All tasks from all workspaces
 		expect(result.current.tasks[0].id).toBe("task-2") // Newest first
 		expect(result.current.tasks[1].id).toBe("task-1")
+		expect(result.current.tasks[2].id).toBe("task-3")
 	})
 
-	it("filters tasks by current workspace by default", () => {
+	it("shows all tasks regardless of workspace", () => {
 		const { result } = renderHook(() => useTaskSearch())
 
-		expect(result.current.tasks).toHaveLength(2)
-		expect(result.current.tasks.every((task) => task.workspace === "/workspace/project1")).toBe(true)
+		expect(result.current.tasks).toHaveLength(3)
+		// Tasks from different workspaces should be included
+		const workspaces = result.current.tasks.map((task) => task.workspace)
+		expect(workspaces).toContain("/workspace/project1")
+		expect(workspaces).toContain("/workspace/project2")
 	})
 
 	it("shows all workspaces when showAllWorkspaces is true", () => {

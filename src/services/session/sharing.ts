@@ -114,11 +114,12 @@ export async function importTask(globalStoragePath: string): Promise<SerializedS
 const SETTINGS_NAMESPACE = "syntx"
 const SETTINGS_KEY = "sessionSharing.baseUrl"
 const ENV_BASE_URL = "SYNTX_SESSIONS_BASE_URL"
+const FALLBACK_BASE_URL = "https://sessions.syntx.dev" // Default fallback URL
 
 function resolveBaseUrl(): string | undefined {
 	const cfg = vscode.workspace.getConfiguration(SETTINGS_NAMESPACE).get<string>(SETTINGS_KEY)
 	const env = process.env[ENV_BASE_URL]
-	const base = (cfg?.trim() || env?.trim() || "").replace(/\/+$/, "")
+	const base = (cfg?.trim() || env?.trim() || FALLBACK_BASE_URL).replace(/\/+$/, "")
 	return base || undefined
 }
 

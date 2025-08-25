@@ -51,7 +51,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - name: Create .env file
-        run: echo "POSTHOG_API_KEY=${{ secrets.POSTHOG_API_KEY }}" >> .env
+        run: |
+          echo "POSTHOG_API_KEY=${{ secrets.POSTHOG_API_KEY }}" >> .env
+          echo "SYNTX_SESSIONS_BASE_URL=${{ secrets.SYNTX_SESSIONS_BASE_URL }}" >> .env
       - name: Package Extension
         run: |
           current_package_version=$(node -p "require('./src/package.json').version")

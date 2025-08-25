@@ -199,7 +199,7 @@ describe("TaskActions", () => {
 			} as any)
 		})
 
-		it("shows connect to cloud option when not authenticated", () => {
+		it("calls exportTaskToCloud when share button is clicked regardless of auth state", () => {
 			render(<TaskActions item={mockItem} buttonsDisabled={false} />)
 
 			// Find button by its icon class
@@ -208,9 +208,11 @@ describe("TaskActions", () => {
 			expect(shareButton).toBeDefined()
 			fireEvent.click(shareButton!)
 
-			expect(screen.getByText("Connect to Syntx Cloud")).toBeInTheDocument()
-			expect(screen.getByText("Sign in to Syntx Cloud to share tasks")).toBeInTheDocument()
-			expect(screen.getByText("Connect")).toBeInTheDocument()
+			// TaskActions provides onClick to ShareButton, so it should call exportTaskToCloud
+			expect(mockPostMessage).toHaveBeenCalledWith({
+				type: "exportTaskToCloud",
+				text: undefined, // syntxApiKey is undefined in mock
+			})
 		})
 
 		it("does not show organization and public options when not authenticated", () => {
@@ -226,7 +228,7 @@ describe("TaskActions", () => {
 			expect(screen.queryByText("Share Publicly")).not.toBeInTheDocument()
 		})
 
-		it("sends rooCloudSignIn message when connect to cloud is selected", () => {
+		it("calls exportTaskToCloud when share button is clicked, not rooCloudSignIn", () => {
 			render(<TaskActions item={mockItem} buttonsDisabled={false} />)
 
 			// Find button by its icon class
@@ -235,11 +237,10 @@ describe("TaskActions", () => {
 			expect(shareButton).toBeDefined()
 			fireEvent.click(shareButton!)
 
-			const connectOption = screen.getByText("Connect")
-			fireEvent.click(connectOption)
-
+			// TaskActions uses ShareButton with onClick prop, so modal doesn't open
 			expect(mockPostMessage).toHaveBeenCalledWith({
-				type: "rooCloudSignIn",
+				type: "exportTaskToCloud",
+				text: undefined,
 			})
 		})
 	})
@@ -308,13 +309,11 @@ describe("TaskActions", () => {
 			expect(shareButton).toBeDefined()
 			fireEvent.click(shareButton!)
 
-			// Click connect button to initiate authentication
-			const connectButton = screen.getByText("Connect")
-			fireEvent.click(connectButton)
-
-			// Verify rooCloudSignIn message was sent
+			// TaskActions uses ShareButton with onClick, so no modal opens
+			// Instead, just verify the share button clicked the expected action
 			expect(mockPostMessage).toHaveBeenCalledWith({
-				type: "rooCloudSignIn",
+				type: "exportTaskToCloud",
+				text: undefined,
 			})
 
 			// Simulate user becoming authenticated after clicking connect from share button
@@ -328,9 +327,12 @@ describe("TaskActions", () => {
 
 			rerender(<TaskActions item={mockItem} buttonsDisabled={false} />)
 
-			// Verify popover automatically opens when auth was initiated from share button
-			expect(screen.getByText("Share with Organization")).toBeInTheDocument()
-			expect(screen.getByText("Share Publicly")).toBeInTheDocument()
+			// Since TaskActions uses ShareButton with onClick prop, the popover doesn't open
+			// The share button will just call the onClick function (exportTaskToCloud)
+			expect(mockPostMessage).toHaveBeenCalledWith({
+				type: "exportTaskToCloud",
+				text: undefined,
+			})
 		})
 	})
 
@@ -371,7 +373,7 @@ describe("TaskActions", () => {
 	})
 
 	describe("Button States", () => {
-		it("keeps share, export, and copy buttons enabled but disables delete button when buttonsDisabled is true", () => {
+		it("disables share button but keeps export and copy buttons enabled when buttonsDisabled is true", () => {
 			render(<TaskActions item={mockItem} buttonsDisabled={true} />)
 
 			// Find buttons by their labels/icons
@@ -381,15 +383,16 @@ describe("TaskActions", () => {
 			const copyButton = buttons.find((btn) => btn.querySelector(".codicon-copy"))
 			const deleteButton = screen.getByLabelText("Delete Task (Shift + Click to skip confirmation)")
 
-			// Share, export, and copy buttons should be enabled regardless of buttonsDisabled
-			expect(shareButton).not.toBeDisabled()
+			// Share button should be disabled when buttonsDisabled is true
+			expect(shareButton).toBeDisabled()
+			// Export and copy buttons are not affected by buttonsDisabled
 			expect(exportButton).not.toBeDisabled()
 			expect(copyButton).not.toBeDisabled()
 			// Delete button should respect buttonsDisabled
 			expect(deleteButton).toBeDisabled()
 		})
 
-		it("share, export, and copy buttons are always enabled while delete button respects buttonsDisabled state", () => {
+		it("share button respects buttonsDisabled state while export and copy buttons are always enabled", () => {
 			// Test with buttonsDisabled = false
 			const { rerender } = render(<TaskActions item={mockItem} buttonsDisabled={false} />)
 
@@ -413,8 +416,9 @@ describe("TaskActions", () => {
 			copyButton = buttons.find((btn) => btn.querySelector(".codicon-copy"))
 			deleteButton = screen.getByLabelText("Delete Task (Shift + Click to skip confirmation)")
 
-			// Share, export, and copy remain enabled
-			expect(shareButton).not.toBeDisabled()
+			// Share button should be disabled when buttonsDisabled is true
+			expect(shareButton).toBeDisabled()
+			// Export and copy remain enabled
 			expect(exportButton).not.toBeDisabled()
 			expect(copyButton).not.toBeDisabled()
 			// Delete button is disabled
