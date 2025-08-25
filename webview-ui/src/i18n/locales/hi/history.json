@@ -41,5 +41,9 @@
 		"mostTokens": "सबसे अधिक टोकन",
 		"mostRelevant": "सबसे प्रासंगिक"
 	},
-	"viewAllHistory": "सभी कार्य देखें"
+	"viewAllHistory": "सभी कार्य देखें",
+	"importFromLink": "शेयर URL से सत्र आयात करें",
+	"import": "आयात करें",
+	"importing": "आयात किया जा रहा है...",
+	"pasteShareUrl": "सत्र आयात करने के लिए शेयर URL पेस्ट करें"
 }

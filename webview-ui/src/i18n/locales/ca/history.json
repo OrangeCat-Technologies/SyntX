@@ -48,5 +48,9 @@
 		"mostTokens": "Més tokens",
 		"mostRelevant": "Més rellevants"
 	},
-	"viewAllHistory": "Veure totes les tasques"
+	"viewAllHistory": "Veure totes les tasques",
+	"importFromLink": "Importa la sessió des de l'URL de compartició",
+	"import": "Importa",
+	"importing": "Important...",
+	"pasteShareUrl": "Enganxa l'URL de compartició per importar una sessió"
 }

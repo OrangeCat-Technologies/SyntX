@@ -170,6 +170,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Voorkom taakafronding wanneer er onvolledige todos in de todolijst staan"
+		},
+		"importTask": {
+			"title": "Taak importeren"
 		}
 	}
 }

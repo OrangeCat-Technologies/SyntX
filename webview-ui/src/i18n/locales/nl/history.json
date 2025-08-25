@@ -41,5 +41,9 @@
 		"mostTokens": "Meeste tokens",
 		"mostRelevant": "Meest relevant"
 	},
-	"viewAllHistory": "Alle geschiedenis bekijken"
+	"viewAllHistory": "Alle geschiedenis bekijken",
+	"importFromLink": "Sessie importeren van deel-URL",
+	"import": "Importeren",
+	"importing": "Bezig met importeren...",
+	"pasteShareUrl": "Plak de deel-URL om een sessie te importeren"
 }

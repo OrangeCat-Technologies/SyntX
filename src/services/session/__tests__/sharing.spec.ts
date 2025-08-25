@@ -56,17 +56,31 @@ vi.mock("fs/promises", () => {
 	const mockDirectories = new Set(["/", "/test", "/fake"])
 
 	const ensureDirectoryExists = (path: string) => {
-		const parts = path.split("/")
+		// Handle both Unix and Windows paths
+		const separator = path.includes("\\") ? "\\" : "/"
+		const parts = path.split(separator)
 		let currentPath = ""
 		for (const part of parts) {
 			if (!part) continue
-			currentPath += "/" + part
+			if (currentPath === "" && separator === "\\") {
+				// Windows absolute path (e.g., C:)
+				currentPath = part
+			} else {
+				currentPath += separator + part
+			}
 			mockDirectories.add(currentPath)
 		}
 	}
 
 	const mockMkdir = vi.fn().mockImplementation(async (path, options) => {
-		if (options?.recursive || path.startsWith("/test") || path.startsWith("/fake") || path.includes(".lock")) {
+		if (
+			options?.recursive ||
+			path.startsWith("/test") ||
+			path.startsWith("/fake") ||
+			path.includes("/fake/") ||
+			path.includes("\\fake\\") ||
+			path.includes(".lock")
+		) {
 			ensureDirectoryExists(path)
 			return Promise.resolve()
 		}
@@ -75,7 +89,8 @@ vi.mock("fs/promises", () => {
 	})
 
 	const mockWriteFile = vi.fn().mockImplementation(async (path, content) => {
-		const parentDir = path.split("/").slice(0, -1).join("/")
+		const separator = path.includes("\\") ? "\\" : "/"
+		const parentDir = path.split(separator).slice(0, -1).join(separator)
 		ensureDirectoryExists(parentDir)
 		mockFiles.set(path, content)
 		return Promise.resolve()
@@ -95,7 +110,14 @@ vi.mock("fs/promises", () => {
 	})
 
 	const mockAccess = vi.fn().mockImplementation(async (path) => {
-		if (mockFiles.has(path) || mockDirectories.has(path) || path.startsWith("/test") || path.startsWith("/fake")) {
+		if (
+			mockFiles.has(path) ||
+			mockDirectories.has(path) ||
+			path.startsWith("/test") ||
+			path.startsWith("/fake") ||
+			path.includes("/fake/") ||
+			path.includes("\\fake\\")
+		) {
 			return Promise.resolve()
 		}
 		// Allow access to ui_messages.json files and lockfiles even if they don't exist yet

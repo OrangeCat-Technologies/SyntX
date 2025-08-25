@@ -41,5 +41,9 @@
 		"mostTokens": "Najwięcej tokenów",
 		"mostRelevant": "Najbardziej trafne"
 	},
-	"viewAllHistory": "Zobacz wszystkie zadania"
+	"viewAllHistory": "Zobacz wszystkie zadania",
+	"importFromLink": "Importuj sesję z URL udostępniania",
+	"import": "Importuj",
+	"importing": "Importowanie...",
+	"pasteShareUrl": "Wklej URL udostępniania, aby zaimportować sesję"
 }

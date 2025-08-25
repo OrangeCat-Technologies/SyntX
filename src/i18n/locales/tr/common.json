@@ -170,6 +170,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Todo listesinde tamamlanmamış todolar olduğunda görev tamamlanmasını engelle"
+		},
+		"importTask": {
+			"title": "Görevi içe aktar"
 		}
 	}
 }

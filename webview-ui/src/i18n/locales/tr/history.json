@@ -41,5 +41,9 @@
 		"mostTokens": "En Çok Token",
 		"mostRelevant": "En İlgili"
 	},
-	"viewAllHistory": "Tüm görevleri görüntüle"
+	"viewAllHistory": "Tüm görevleri görüntüle",
+	"importFromLink": "Paylaşım URL'sinden oturum içe aktar",
+	"import": "İçe aktar",
+	"importing": "İçe aktarılıyor...",
+	"pasteShareUrl": "Oturumu içe aktarmak için paylaşım URL'sini yapıştırın"
 }

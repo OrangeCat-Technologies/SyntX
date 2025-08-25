@@ -41,5 +41,9 @@
 		"mostTokens": "Nhiều token nhất",
 		"mostRelevant": "Liên quan nhất"
 	},
-	"viewAllHistory": "Xem tất cả nhiệm vụ"
+	"viewAllHistory": "Xem tất cả nhiệm vụ",
+	"importFromLink": "Nhập phiên từ URL chia sẻ",
+	"import": "Nhập",
+	"importing": "Đang nhập...",
+	"pasteShareUrl": "Dán URL chia sẻ để nhập phiên"
 }

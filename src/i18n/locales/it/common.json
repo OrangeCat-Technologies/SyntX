@@ -170,6 +170,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Impedire il completamento delle attività quando ci sono todo incompleti nella lista dei todo"
+		},
+		"importTask": {
+			"title": "Importa attività"
 		}
 	}
 }

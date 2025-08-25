@@ -41,5 +41,9 @@
 		"mostTokens": "最多 Token",
 		"mostRelevant": "最相关"
 	},
-	"viewAllHistory": "查看所有历史记录"
+	"viewAllHistory": "查看所有历史记录",
+	"importFromLink": "从共享链接导入会话",
+	"import": "导入",
+	"importing": "正在导入...",
+	"pasteShareUrl": "粘贴共享链接以导入会话"
 }

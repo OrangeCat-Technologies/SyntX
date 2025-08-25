@@ -41,5 +41,9 @@
 		"mostTokens": "토큰 많은순",
 		"mostRelevant": "관련성 높은순"
 	},
-	"viewAllHistory": "모든 기록 보기"
+	"viewAllHistory": "모든 기록 보기",
+	"importFromLink": "공유 URL에서 세션 가져오기",
+	"import": "가져오기",
+	"importing": "가져오는 중...",
+	"pasteShareUrl": "세션을 가져오려면 공유 URL을 붙여넣으세요"
 }

@@ -170,6 +170,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "जब टूडू सूची में अधूरे टूडू हों तो कार्य पूर्ण होने से रोकें"
+		},
+		"importTask": {
+			"title": "कार्य आयात करें"
 		}
 	}
 }

@@ -50,5 +50,9 @@
 		"mostTokens": "Token Terbanyak",
 		"mostRelevant": "Paling Relevan"
 	},
-	"viewAllHistory": "Lihat semua tugas"
+	"viewAllHistory": "Lihat semua tugas",
+	"importFromLink": "Impor sesi dari URL berbagi",
+	"import": "Impor",
+	"importing": "Mengimpor...",
+	"pasteShareUrl": "Tempel URL berbagi untuk mengimpor sesi"
 }

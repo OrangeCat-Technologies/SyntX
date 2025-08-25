@@ -170,6 +170,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Prevenir la finalización de tareas cuando hay todos incompletos en la lista de todos"
+		},
+		"importTask": {
+			"title": "Importar tarea"
 		}
 	}
 }

@@ -48,5 +48,9 @@
 		"mostTokens": "Meiste Tokens",
 		"mostRelevant": "Relevanteste"
 	},
-	"viewAllHistory": "Gesamten Verlauf anzeigen"
+	"viewAllHistory": "Gesamten Verlauf anzeigen",
+	"importFromLink": "Sitzung aus Freigabe-URL importieren",
+	"import": "Importieren",
+	"importing": "Importiere...",
+	"pasteShareUrl": "Freigabe-URL einfügen, um eine Sitzung zu importieren"
 }

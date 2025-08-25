@@ -170,6 +170,9 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Предотвратить завершение задач при наличии незавершенных дел в списке дел"
+		},
+		"importTask": {
+			"title": "Импортировать задачу"
 		}
 	}
 }
