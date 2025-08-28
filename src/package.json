@@ -3,7 +3,7 @@
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
 	"publisher": "OrangecatTechPvtLtd",
-	"version": "2.4.1",
+	"version": "2.4.0",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -196,11 +196,6 @@
 			{
 				"command": "syntx.importSettings",
 				"title": "%command.importSettings.title%",
-				"category": "%configuration.title%"
-			},
-			{
-				"command": "syntx.importTask",
-				"title": "%command.importTask.title%",
 				"category": "%configuration.title%"
 			},
 			{
@@ -444,11 +439,6 @@
 					"type": "string",
 					"default": "",
 					"description": "%settings.autoImportSettingsPath.description%"
-				},
-				"syntx.sessionSharing.baseUrl": {
-					"type": "string",
-					"default": "",
-					"description": "%settings.sessionSharing.baseUrl.description%"
 				}
 			}
 		}

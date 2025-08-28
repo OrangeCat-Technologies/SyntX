@@ -37,11 +37,6 @@ export interface ExtensionStateContextType extends ExtensionState {
 	organizationAllowList: OrganizationAllowList
 	cloudIsAuthenticated: boolean
 	sharingEnabled: boolean
-	sessionImport?: {
-		id?: string
-		url?: string
-	}
-	isCloudShareEnabled: boolean
 	// Website authentication properties
 	websiteUsername?: string
 	syntxApiKey?: string
@@ -225,7 +220,6 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		cloudUserInfo: null,
 		cloudIsAuthenticated: false,
 		sharingEnabled: false,
-		sessionImport: undefined,
 		// Website authentication initialization
 		websiteUsername: undefined,
 		syntxApiKey: undefined,
@@ -287,12 +281,6 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 					console.log("ExtensionStateContext: received state", newState)
 					setState((prevState) => mergeExtensionState(prevState, newState))
 					setShowWelcome(!checkExistKey(newState.apiConfiguration))
-					if (newState.sessionImport) {
-						vscode.postMessage({
-							type: "importTaskFromCloudByUrl",
-							values: newState.sessionImport,
-						})
-					}
 					setDidHydrateState(true)
 					// Update alwaysAllowFollowupQuestions if present in state message
 					if ((newState as any).alwaysAllowFollowupQuestions !== undefined) {
@@ -409,8 +397,6 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		screenshotQuality: state.screenshotQuality,
 		routerModels: extensionRouterModels,
 		cloudIsAuthenticated: state.cloudIsAuthenticated ?? false,
-		isCloudShareEnabled: !!(state.cloudIsAuthenticated && state.sharingEnabled),
-		sessionImport: state.sessionImport,
 		// Website authentication properties
 		websiteUsername: state.websiteUsername,
 		syntxApiKey: state.syntxApiKey,

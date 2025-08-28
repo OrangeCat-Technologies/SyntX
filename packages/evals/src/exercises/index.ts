@@ -1,5 +1,5 @@
 import * as path from "path"
-import * as fs from "fs"
+import * as fs from "fs/promises"
 import { fileURLToPath } from "url"
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -13,10 +13,8 @@ export type ExerciseLanguage = (typeof exerciseLanguages)[number]
 export const listDirectories = async (basePath: string, relativePath: string) => {
 	try {
 		const targetPath = path.resolve(basePath, relativePath)
-		const entries = await fs.promises.readdir(targetPath, { withFileTypes: true })
-		return entries
-			.filter((entry: fs.Dirent) => entry.isDirectory() && !entry.name.startsWith("."))
-			.map((entry: fs.Dirent) => entry.name)
+		const entries = await fs.readdir(targetPath, { withFileTypes: true })
+		return entries.filter((entry) => entry.isDirectory() && !entry.name.startsWith(".")).map((entry) => entry.name)
 	} catch (error) {
 		console.error(`Error listing directories at ${relativePath}:`, error)
 		return []

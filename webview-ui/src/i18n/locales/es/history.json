@@ -48,9 +48,5 @@
 		"mostTokens": "Más tokens",
 		"mostRelevant": "Más relevantes"
 	},
-	"viewAllHistory": "Ver todo el historial",
-	"importFromLink": "Importar sesión desde URL de compartición",
-	"import": "Importar",
-	"importing": "Importando...",
-	"pasteShareUrl": "Pega la URL de compartición para importar una sesión"
+	"viewAllHistory": "Ver todo el historial"
 }

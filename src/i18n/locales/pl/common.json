@@ -170,9 +170,6 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Zapobiegaj ukończeniu zadania gdy na liście zadań są nieukończone zadania"
-		},
-		"importTask": {
-			"title": "Importuj zadanie"
 		}
 	}
 }

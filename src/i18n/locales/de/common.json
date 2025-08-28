@@ -170,9 +170,6 @@
 	"commands": {
 		"preventCompletionWithOpenTodos": {
 			"description": "Aufgabenabschluss verhindern, wenn unvollständige Todos in der Todo-Liste vorhanden sind"
-		},
-		"importTask": {
-			"title": "Aufgabe importieren"
 		}
 	}
 }

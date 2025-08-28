@@ -5,7 +5,6 @@ import { execSync } from "child_process"
 import { defineConfig, type PluginOption, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
-// import svgr from "vite-plugin-svgr"
 
 function getGitSha() {
 	let gitSha: string | undefined = undefined
@@ -97,7 +96,6 @@ export default defineConfig(({ mode }) => {
 			reportCompressedSize: false,
 			sourcemap: true,
 			rollupOptions: {
-				external: ["fs/promises", "path", "os"],
 				output: {
 					entryFileNames: `assets/[name].js`,
 					chunkFileNames: (chunkInfo) => {

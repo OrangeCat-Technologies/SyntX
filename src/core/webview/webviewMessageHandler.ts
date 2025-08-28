@@ -60,55 +60,6 @@ export const webviewMessageHandler = async (
 	message: WebviewMessage,
 	marketplaceManager?: MarketplaceManager,
 ) => {
-	/**
-	 * Handles importing a task from a file
-	 */
-	const handleImportTask = async () => {
-		try {
-			const { importTask } = await import("../../services/session/sharing")
-			const session = await importTask(provider.context.globalStorageUri.fsPath)
-
-			if (session) {
-				await provider.updateTaskHistory(session.task)
-				await provider.postStateToWebview()
-				vscode.window.showInformationMessage(`Task "${session.task.task}" imported successfully.`)
-			}
-		} catch (error) {
-			console.error("Error importing task:", error)
-			vscode.window.showErrorMessage(
-				`Error importing task: ${error instanceof Error ? error.message : String(error)}`,
-			)
-		}
-	}
-
-	/**
-	 * Handles exporting the current task to a file
-	 */
-	const handleExportTask = async () => {
-		const currentCline = provider.getCurrentCline()
-		if (currentCline) {
-			try {
-				const { historyItem } = await provider.getTaskWithId(currentCline.taskId)
-				const content = JSON.stringify(historyItem, null, 2)
-				const file = await vscode.window.showSaveDialog({
-					defaultUri: vscode.Uri.file(`${currentCline.taskId}.json`),
-					filters: {
-						"JSON files": ["json"],
-					},
-				})
-
-				if (file) {
-					await fs.writeFile(file.fsPath, content, "utf-8")
-					vscode.window.showInformationMessage("Task exported successfully!")
-				}
-			} catch (error) {
-				console.error("Error exporting task:", error)
-				vscode.window.showErrorMessage(
-					`Error exporting task: ${error instanceof Error ? error.message : String(error)}`,
-				)
-			}
-		}
-	}
 	// Utility functions provided for concise get/update of global state via contextProxy API.
 	const getGlobalState = <K extends keyof GlobalState>(key: K) => provider.contextProxy.getValue(key)
 	const updateGlobalState = async <K extends keyof GlobalState>(key: K, value: GlobalState[K]) =>
@@ -441,23 +392,12 @@ export const webviewMessageHandler = async (
 				messageTs: message.messageTs,
 			})
 			break
-		case "importTask":
-			await handleImportTask()
-			break
 		case "exportCurrentTask":
-			await handleExportTask()
-			break
-		case "exportTaskToCloud": {
-			await provider.exportTaskToCloud()
-			break
-		}
-		case "importTaskFromCloudByUrl": {
-			const { url } = message.values || {}
-			if (url) {
-				await provider.importTaskFromCloudByUrl(url)
+			const currentTaskId = provider.getCurrentCline()?.taskId
+			if (currentTaskId) {
+				provider.exportTaskWithId(currentTaskId)
 			}
 			break
-		}
 		case "shareCurrentTask":
 			const shareTaskId = provider.getCurrentCline()?.taskId
 			const clineMessages = provider.getCurrentCline()?.clineMessages
@@ -618,7 +558,9 @@ export const webviewMessageHandler = async (
 					options: {
 						provider: "syntx",
 						apiKey: apiConfiguration.syntxApiKey || "",
-						baseUrl: apiConfiguration.syntxBaseUrl || "https://api.syntx.dev",
+						baseUrl:
+							apiConfiguration.syntxBaseUrl ||
+							"https://lagrange-inference-server-production.up.railway.app",
 					},
 				},
 			]
