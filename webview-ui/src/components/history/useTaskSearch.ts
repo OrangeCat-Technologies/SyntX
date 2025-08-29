@@ -7,7 +7,7 @@ import { useExtensionState } from "@/context/ExtensionStateContext"
 type SortOption = "newest" | "oldest" | "mostExpensive" | "mostTokens" | "mostRelevant"
 
 export const useTaskSearch = () => {
-	const { taskHistory } = useExtensionState()
+	const { taskHistory, cwd } = useExtensionState()
 	const [searchQuery, setSearchQuery] = useState("")
 	const [sortOption, setSortOption] = useState<SortOption>("newest")
 	const [lastNonRelevantSort, setLastNonRelevantSort] = useState<SortOption | null>("newest")
@@ -27,11 +27,18 @@ export const useTaskSearch = () => {
 		// Filter for valid tasks only (must have timestamp and task content)
 		const tasks = taskHistory.filter((item) => item.ts && item.task)
 
-		// Workspace filtering disabled - show all tasks regardless of workspace
-		console.log("Showing all tasks regardless of workspace:", tasks.length)
+		// Filter by workspace unless showAllWorkspaces is enabled
+		if (!showAllWorkspaces && cwd) {
+			// Normalize workspace paths for comparison
+			const normalizedCurrentWorkspace = cwd.replace(/\/$/, "") // Remove trailing slash
+			return tasks.filter((task) => {
+				const normalizedTaskWorkspace = task.workspace?.replace(/\/$/, "") || ""
+				return normalizedTaskWorkspace === normalizedCurrentWorkspace
+			})
+		}
 
 		return tasks
-	}, [taskHistory])
+	}, [taskHistory, showAllWorkspaces, cwd])
 
 	const fzf = useMemo(() => {
 		return new Fzf(presentableTasks, {

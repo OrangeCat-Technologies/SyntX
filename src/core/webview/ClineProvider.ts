@@ -1912,7 +1912,10 @@ export class ClineProvider
 		const packageJSON = this.contextProxy.extension?.packageJSON
 		const publisher = packageJSON?.publisher ?? "OrangecatTechPvtLtd"
 		const name = packageJSON?.name ?? "syntx"
-		const callbackUri = `vscode://${publisher}.${name}/website/callback`
+
+		// Get URI scheme for callbacks
+		const uriScheme = vscode.env.uriScheme || "vscode"
+		const callbackUri = `${uriScheme}://${publisher}.${name}/website/callback`
 
 		const authUrl = `https://syntx.dev/login?redirect_uri=${encodeURIComponent(callbackUri)}`
 
