@@ -1,5 +1,10 @@
 # SyntX Changelog
 
+## [2.4.3] - 29-08-2025
+
+- Updated the Chat UI
+- Resolved a bug with login via cursor/windsurf/trae.
+
 ## [2.4.0] - 03-08-2025
 
 - Workspace Integration for adding file context from different folders in your workspace
