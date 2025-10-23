@@ -44,7 +44,7 @@ export class ProviderSettingsManager {
 
 	private readonly defaultProviderProfiles: ProviderProfiles = {
 		currentApiConfigName: "default",
-		apiConfigs: { default: { id: this.defaultConfigId, apiProvider: "syntx" } },
+		apiConfigs: { default: { id: this.defaultConfigId, apiProvider: "anthropic" } },
 		modeApiConfigs: this.defaultModeApiConfigs,
 		migrations: {
 			rateLimitSecondsMigrated: true, // Mark as migrated on fresh installs

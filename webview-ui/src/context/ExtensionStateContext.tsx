@@ -25,6 +25,7 @@ import { convertTextMateToHljs } from "@src/utils/textMateToHljs"
 
 export interface ExtensionStateContextType extends ExtensionState {
 	showModes?: boolean
+	showAnthropicApiKeyScreen?: boolean
 	historyPreviewCollapsed?: boolean // Add the new state property
 	didHydrateState: boolean
 	showWelcome: boolean
@@ -224,6 +225,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		websiteUsername: undefined,
 		syntxApiKey: undefined,
 		websiteNotAuthenticated: true, // Default to not authenticated
+		showAnthropicApiKeyScreen: false,
 		organizationAllowList: ORGANIZATION_ALLOW_ALL,
 		autoCondenseContext: true,
 		autoCondenseContextPercent: 100,
@@ -327,6 +329,18 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 					})
 					break
 				}
+				case "requestAnthropicApiKey": {
+					// Show the API key collection screen
+					if (message.text) {
+						const { username } = JSON.parse(message.text)
+						setState((prevState) => ({
+							...prevState,
+							showAnthropicApiKeyScreen: true,
+							websiteUsername: username,
+						}))
+					}
+					break
+				}
 				case "mcpServers": {
 					setMcpServers(message.mcpServers ?? [])
 					break
@@ -361,6 +375,8 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 							websiteNotAuthenticated: !authenticated,
 							websiteUsername: username,
 							syntxApiKey: apiKey,
+							// Hide the API key screen after successful auth
+							showAnthropicApiKeyScreen: false,
 						}))
 					}
 					break
@@ -401,6 +417,7 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		websiteUsername: state.websiteUsername,
 		syntxApiKey: state.syntxApiKey,
 		websiteNotAuthenticated: state.websiteNotAuthenticated ?? true,
+		showAnthropicApiKeyScreen: state.showAnthropicApiKeyScreen ?? false,
 		marketplaceItems,
 		marketplaceInstalledMetadata,
 		profileThresholds: state.profileThresholds ?? {},
