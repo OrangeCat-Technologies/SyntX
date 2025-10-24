@@ -1,5 +1,9 @@
 # SyntX Changelog
 
+## [2.5.0] - 25-10-2025
+
+- Added provider configuration at the startup screen
+
 ## [2.4.3] - 29-08-2025
 
 - Updated the Chat UI

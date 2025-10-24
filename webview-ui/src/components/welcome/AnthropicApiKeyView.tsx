@@ -1,11 +1,12 @@
 import React, { useState, useMemo, useCallback } from "react"
 import { vscode } from "../../utils/vscode"
 import { VSCodeButton } from "@vscode/webview-ui-toolkit/react"
-import { SearchableSelect } from "@src/components/ui"
-import { PROVIDERS } from "@src/components/settings/constants"
-import { filterProviders } from "@src/components/settings/utils/organizationFilters"
+import { SearchableSelect, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@src/components/ui"
+import { PROVIDERS, MODELS_BY_PROVIDER } from "@src/components/settings/constants"
+import { filterProviders, filterModels } from "@src/components/settings/utils/organizationFilters"
 import { useExtensionState } from "@src/context/ExtensionStateContext"
 import { useSelectedModel } from "@src/components/ui/hooks/useSelectedModel"
+import { useRouterModels } from "@src/components/ui/hooks/useRouterModels"
 import type { ProviderName, ProviderSettings } from "@roo-code/types"
 import {
 	Anthropic,
@@ -54,6 +55,7 @@ const AnthropicApiKeyView = ({ username, onComplete }: AnthropicApiKeyViewProps)
 	const [loading, setLoading] = useState(false)
 
 	const selectedProvider = apiConfiguration.apiProvider || "openrouter"
+	const { data: routerModels } = useRouterModels()
 
 	const setApiConfigurationField = useCallback(
 		<K extends keyof ProviderSettings>(field: K, value: ProviderSettings[K]) => {
@@ -75,6 +77,20 @@ const AnthropicApiKeyView = ({ username, onComplete }: AnthropicApiKeyViewProps)
 			label,
 		}))
 	}, [organizationAllowList])
+
+	// Get available models for the selected provider
+	const selectedProviderModels = useMemo(() => {
+		const models = MODELS_BY_PROVIDER[selectedProvider]
+		if (!models) return []
+
+		const filteredModels = filterModels(models, selectedProvider, organizationAllowList)
+		if (!filteredModels) return []
+
+		return Object.entries(filteredModels).map(([id, model]) => ({
+			value: id,
+			label: (model as any).name || id,
+		}))
+	}, [selectedProvider, organizationAllowList])
 
 	const handleSubmit = async () => {
 		setLoading(true)
@@ -166,9 +182,7 @@ const AnthropicApiKeyView = ({ username, onComplete }: AnthropicApiKeyViewProps)
 						<OpenRouter
 							apiConfiguration={apiConfiguration}
 							setApiConfigurationField={setApiConfigurationField}
-							routerModels={
-								undefined as any
-							} /* Will be fetched on demand, not needed for initial setup */
+							routerModels={routerModels}
 							selectedModelId={selectedModelId}
 							uriScheme={uriScheme}
 							fromWelcomeView={true}
@@ -235,6 +249,37 @@ const AnthropicApiKeyView = ({ username, onComplete }: AnthropicApiKeyViewProps)
 						/>
 					)}
 				</div>
+
+				{/* Model selection dropdown for providers with predefined models */}
+				{selectedProviderModels.length > 0 && (
+					<div style={{ marginTop: "12px" }}>
+						<label
+							style={{
+								display: "block",
+								fontWeight: "500",
+								marginBottom: "8px",
+								fontSize: "14px",
+							}}>
+							Model
+						</label>
+						<Select
+							value={selectedModelId || ""}
+							onValueChange={(value) => {
+								setApiConfigurationField("apiModelId", value)
+							}}>
+							<SelectTrigger className="w-full">
+								<SelectValue placeholder="Select a model" />
+							</SelectTrigger>
+							<SelectContent>
+								{selectedProviderModels.map((option) => (
+									<SelectItem key={option.value} value={option.value}>
+										{option.label}
+									</SelectItem>
+								))}
+							</SelectContent>
+						</Select>
+					</div>
+				)}
 
 				{/* Button in content flow */}
 				<VSCodeButton onClick={handleSubmit} disabled={loading} style={{ width: "100%", marginTop: "16px" }}>
