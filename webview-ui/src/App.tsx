@@ -15,6 +15,7 @@ import HistoryView from "./components/history/HistoryView"
 import SettingsView, { SettingsViewRef } from "./components/settings/SettingsView"
 import WelcomeView from "./components/welcome/WelcomeView"
 import GetStartedView from "./components/welcome/GetStartedView"
+import AnthropicApiKeyView from "./components/welcome/AnthropicApiKeyView"
 import McpView from "./components/mcp/McpView"
 import { MarketplaceView } from "./components/marketplace/MarketplaceView"
 import ModesView from "./components/modes/ModesView"
@@ -74,6 +75,8 @@ const App = () => {
 		renderContext,
 		mdmCompliant,
 		websiteNotAuthenticated,
+		showAnthropicApiKeyScreen,
+		websiteUsername,
 	} = useExtensionState()
 
 	// Create a persistent state manager
@@ -217,6 +220,13 @@ const App = () => {
 	// don't want to lose (user input, disableInput, askResponse promise, etc.)
 	return websiteNotAuthenticated ? (
 		<GetStartedView />
+	) : showAnthropicApiKeyScreen ? (
+		<AnthropicApiKeyView
+			username={websiteUsername}
+			onComplete={() => {
+				// API key view will handle the submission
+			}}
+		/>
 	) : showWelcome ? (
 		<WelcomeView />
 	) : (

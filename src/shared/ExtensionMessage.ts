@@ -111,6 +111,7 @@ export interface ExtensionMessage {
 		| "websiteAuthCallback"
 		| "showDeleteMessageDialog"
 		| "showEditMessageDialog"
+		| "requestAnthropicApiKey"
 	text?: string
 	payload?: any // Add a generic payload for now, can refine later
 	agentId?: string
@@ -290,6 +291,7 @@ export type ExtensionState = Pick<
 	websiteUsername?: string
 	syntxApiKey?: string
 	websiteNotAuthenticated?: boolean
+	showAnthropicApiKeyScreen?: boolean
 
 	autoCondenseContext: boolean
 	autoCondenseContextPercent: number

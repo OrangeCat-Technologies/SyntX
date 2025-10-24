@@ -1453,6 +1453,11 @@ export class ClineProvider
 		const currentMode = mode ?? defaultModeSlug
 		const hasSystemPromptOverride = await this.hasFileBasedSystemPromptOverride(currentMode)
 
+		// Get website authentication state
+		const websiteUsername = await this.contextProxy.getValue("websiteUsername")
+		const syntxApiKey = await this.contextProxy.getValue("syntxApiKey")
+		const websiteNotAuthenticated = !websiteUsername || !syntxApiKey
+
 		return {
 			version: this.context.extension?.packageJSON?.version ?? "",
 			apiConfiguration,
@@ -1562,6 +1567,10 @@ export class ClineProvider
 			alwaysAllowFollowupQuestions: alwaysAllowFollowupQuestions ?? false,
 			followupAutoApproveTimeoutMs: followupAutoApproveTimeoutMs ?? 60000,
 			diagnosticsEnabled: diagnosticsEnabled ?? true,
+			// Website authentication
+			websiteUsername,
+			syntxApiKey,
+			websiteNotAuthenticated,
 		}
 	}
 
@@ -1941,25 +1950,25 @@ export class ClineProvider
 
 		// Send authentication success message to webview
 		await this.postMessageToWebview({
-			type: "websiteAuth",
-			text: JSON.stringify({ authenticated: true, username, apiKey }),
+			type: "requestAnthropicApiKey",
+			text: JSON.stringify({ username }),
 		})
 
 		// Ensure we navigate to chat view after authentication, not settings
-		await this.postMessageToWebview({
-			type: "action",
-			action: "chatButtonClicked",
-		})
+		// await this.postMessageToWebview({
+		// 	type: "action",
+		// 	action: "chatButtonClicked",
+		// })
 
 		await this.postStateToWebview(true) // Skip MDM redirect during auth flow
 
 		vscode.window.showInformationMessage("Successfully authenticated with SyntX website")
 
-		// Ensure provider profile is set to syntx after website login
+		// Ensure provider profile is set to openrouter after website login
 		const { apiConfiguration, currentApiConfigName } = await this.getState()
 		const newConfiguration = {
 			...apiConfiguration,
-			apiProvider: "syntx" as const,
+			apiProvider: "openrouter" as const,
 			syntxApiKey: apiKey,
 		}
 		await this.upsertProviderProfile(currentApiConfigName, newConfiguration)

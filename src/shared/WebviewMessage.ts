@@ -203,6 +203,7 @@ export interface WebviewMessage {
 		| "checkRulesDirectoryResult"
 		| "saveCodeIndexSettingsAtomic"
 		| "requestCodeIndexSecretStatus"
+		| "anthropicApiKeySubmitted"
 	text?: string
 	editedMessageContent?: string
 	tab?: "settings" | "history" | "mcp" | "modes" | "chat" | "marketplace" | "account"
@@ -317,6 +318,11 @@ export type InstallMarketplaceItemWithParametersPayload = z.infer<
 	typeof installMarketplaceItemWithParametersPayloadSchema
 >
 
+export interface AnthropicApiKeySubmittedPayload {
+	apiConfiguration: any // Using any to match ProviderSettings from @roo-code/types
+	username?: string
+}
+
 export type WebViewMessagePayload =
 	| CheckpointDiffPayload
 	| CheckpointRestorePayload
@@ -324,3 +330,4 @@ export type WebViewMessagePayload =
 	| IndexClearedPayload
 	| InstallMarketplaceItemWithParametersPayload
 	| UpdateTodoListPayload
+	| AnthropicApiKeySubmittedPayload

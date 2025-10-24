@@ -2353,5 +2353,43 @@ export const webviewMessageHandler = async (
 			}
 			break
 		}
+
+		case "anthropicApiKeySubmitted": {
+			try {
+				const payload = message.payload as { apiConfiguration?: any; username?: string } | undefined
+				if (!payload?.apiConfiguration) {
+					throw new Error("API configuration is required")
+				}
+
+				const { apiConfiguration: newApiConfiguration, username } = payload
+
+				// Update provider configuration with the complete configuration from the form
+				const { apiConfiguration: existingConfig, currentApiConfigName } = await provider.getState()
+				const mergedConfiguration = {
+					...existingConfig,
+					...newApiConfiguration,
+				}
+
+				await provider.upsertProviderProfile(currentApiConfigName, mergedConfiguration)
+
+				// Send success message first to clear the API key screen
+				await provider.postMessageToWebview({
+					type: "websiteAuth",
+					text: JSON.stringify({ authenticated: true, username }),
+				})
+
+				// Update the full state to reflect changes
+				await provider.postStateToWebview()
+
+				// Show demo window last so it doesn't interfere with state updates
+				await provider.openDemoWindow()
+
+				vscode.window.showInformationMessage("Anthropic API key saved successfully")
+			} catch (error) {
+				provider.log(`Failed to save Anthropic API key: ${error}`)
+				vscode.window.showErrorMessage("Failed to save API key")
+			}
+			break
+		}
 	}
 }
