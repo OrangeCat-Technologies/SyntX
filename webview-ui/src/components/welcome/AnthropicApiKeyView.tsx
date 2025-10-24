@@ -9,18 +9,18 @@ import { useSelectedModel } from "@src/components/ui/hooks/useSelectedModel"
 import type { ProviderName, ProviderSettings } from "@roo-code/types"
 import {
 	Anthropic,
-	Chutes,
 	ClaudeCode,
 	DeepSeek,
 	Gemini,
-	Glama,
 	Groq,
-	Mistral,
 	OpenAI,
 	OpenRouter,
-	Requesty,
-	Unbound,
 	XAI,
+	Ollama,
+	LMStudio,
+	Bedrock,
+	Vertex,
+	OpenAICompatible,
 } from "@src/components/settings/providers"
 
 interface AnthropicApiKeyViewProps {
@@ -38,21 +38,22 @@ const API_KEY_PROVIDERS = [
 	"deepseek",
 	"xai",
 	"groq",
-	"mistral",
-	"glama",
-	"chutes",
-	"requesty",
-	"unbound",
+	"ollama",
+	"lmstudio",
+	"bedrock",
+	"vertex",
+	"openai",
+	"openai-compatible",
 ] as const
 
 const AnthropicApiKeyView = ({ username, onComplete }: AnthropicApiKeyViewProps) => {
 	const { organizationAllowList, uriScheme } = useExtensionState()
 	const [apiConfiguration, setApiConfiguration] = useState<ProviderSettings>({
-		apiProvider: "anthropic",
+		apiProvider: "openrouter",
 	})
 	const [loading, setLoading] = useState(false)
 
-	const selectedProvider = apiConfiguration.apiProvider || "anthropic"
+	const selectedProvider = apiConfiguration.apiProvider || "openrouter"
 
 	const setApiConfigurationField = useCallback(
 		<K extends keyof ProviderSettings>(field: K, value: ProviderSettings[K]) => {
@@ -198,49 +199,39 @@ const AnthropicApiKeyView = ({ username, onComplete }: AnthropicApiKeyViewProps)
 						<Groq apiConfiguration={apiConfiguration} setApiConfigurationField={setApiConfigurationField} />
 					)}
 
-					{selectedProvider === "mistral" && (
-						<Mistral
+					{selectedProvider === "ollama" && (
+						<Ollama
 							apiConfiguration={apiConfiguration}
 							setApiConfigurationField={setApiConfigurationField}
 						/>
 					)}
 
-					{selectedProvider === "glama" && (
-						<Glama
+					{selectedProvider === "lmstudio" && (
+						<LMStudio
 							apiConfiguration={apiConfiguration}
 							setApiConfigurationField={setApiConfigurationField}
-							routerModels={undefined as any}
-							uriScheme={uriScheme}
+						/>
+					)}
+
+					{selectedProvider === "bedrock" && (
+						<Bedrock
+							apiConfiguration={apiConfiguration}
+							setApiConfigurationField={setApiConfigurationField}
+						/>
+					)}
+
+					{selectedProvider === "vertex" && (
+						<Vertex
+							apiConfiguration={apiConfiguration}
+							setApiConfigurationField={setApiConfigurationField}
+						/>
+					)}
+
+					{selectedProvider === "openai" && (
+						<OpenAICompatible
+							apiConfiguration={apiConfiguration}
+							setApiConfigurationField={setApiConfigurationField}
 							organizationAllowList={organizationAllowList}
-							modelValidationError={undefined}
-						/>
-					)}
-
-					{selectedProvider === "chutes" && (
-						<Chutes
-							apiConfiguration={apiConfiguration}
-							setApiConfigurationField={setApiConfigurationField}
-						/>
-					)}
-
-					{selectedProvider === "requesty" && (
-						<Requesty
-							apiConfiguration={apiConfiguration}
-							setApiConfigurationField={setApiConfigurationField}
-							routerModels={undefined as any}
-							refetchRouterModels={() => {}}
-							organizationAllowList={organizationAllowList}
-							modelValidationError={undefined}
-						/>
-					)}
-
-					{selectedProvider === "unbound" && (
-						<Unbound
-							apiConfiguration={apiConfiguration}
-							setApiConfigurationField={setApiConfigurationField}
-							routerModels={undefined as any}
-							organizationAllowList={organizationAllowList}
-							modelValidationError={undefined}
 						/>
 					)}
 				</div>

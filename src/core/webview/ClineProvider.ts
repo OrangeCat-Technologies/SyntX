@@ -1964,11 +1964,11 @@ export class ClineProvider
 
 		vscode.window.showInformationMessage("Successfully authenticated with SyntX website")
 
-		// Ensure provider profile is set to anthropic after website login
+		// Ensure provider profile is set to openrouter after website login
 		const { apiConfiguration, currentApiConfigName } = await this.getState()
 		const newConfiguration = {
 			...apiConfiguration,
-			apiProvider: "anthropic" as const,
+			apiProvider: "openrouter" as const,
 			syntxApiKey: apiKey,
 		}
 		await this.upsertProviderProfile(currentApiConfigName, newConfiguration)
