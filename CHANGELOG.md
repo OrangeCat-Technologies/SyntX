@@ -1,5 +1,9 @@
 # SyntX Changelog
 
+## [2.6.0] - 14-12-2025
+
+- Added Sarvam integration for multilingual support for indic languages
+
 ## [2.5.0] - 25-10-2025
 
 - Added provider configuration at the startup screen

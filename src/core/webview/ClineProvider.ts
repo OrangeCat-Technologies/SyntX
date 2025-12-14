@@ -609,7 +609,43 @@ export class ClineProvider
 	}
 
 	public async postMessageToWebview(message: ExtensionMessage) {
-		await this.view?.webview.postMessage(message)
+		try {
+			// Check message size for large payloads
+			if (message.type === "textToSpeechResult" && message.values?.audio) {
+				const messageSize = JSON.stringify(message).length
+				console.log(
+					`[ClineProvider] Sending textToSpeechResult, size: ${messageSize} bytes (~${Math.round(messageSize / 1024)} KB)`,
+				)
+
+				// VS Code webview messages have a ~1MB limit
+				if (messageSize > 1000000) {
+					console.error(`[ClineProvider] Message too large (${messageSize} bytes), truncating audio data`)
+					// Send error instead
+					await this.view?.webview.postMessage({
+						type: "textToSpeechResult",
+						values: { error: "Audio data too large. Please try with shorter text." },
+					})
+					return
+				}
+			}
+
+			await this.view?.webview.postMessage(message)
+		} catch (error) {
+			console.error("[ClineProvider] Error posting message to webview:", error)
+			// If it's a textToSpeechResult, send error instead
+			if (message.type === "textToSpeechResult") {
+				try {
+					await this.view?.webview.postMessage({
+						type: "textToSpeechResult",
+						values: {
+							error: `Failed to send audio: ${error instanceof Error ? error.message : String(error)}`,
+						},
+					})
+				} catch (e) {
+					console.error("[ClineProvider] Failed to send error message:", e)
+				}
+			}
+		}
 	}
 
 	private async getHMRHtmlContent(webview: vscode.Webview): Promise<string> {
@@ -1441,6 +1477,9 @@ export class ClineProvider
 			alwaysAllowFollowupQuestions,
 			followupAutoApproveTimeoutMs,
 			diagnosticsEnabled,
+			multilingualEnabled,
+			sarvamApiKey,
+			multilingualTargetLanguage,
 		} = await this.getState()
 
 		const telemetryKey = process.env.POSTHOG_API_KEY || ""
@@ -1571,6 +1610,10 @@ export class ClineProvider
 			websiteUsername,
 			syntxApiKey,
 			websiteNotAuthenticated,
+			// Multilingual features
+			multilingualEnabled: multilingualEnabled ?? false,
+			sarvamApiKey: sarvamApiKey ?? "",
+			multilingualTargetLanguage: multilingualTargetLanguage ?? "hi-IN",
 		}
 	}
 
@@ -1736,6 +1779,10 @@ export class ClineProvider
 				codebaseIndexSearchMinScore: stateValues.codebaseIndexConfig?.codebaseIndexSearchMinScore,
 			},
 			profileThresholds: stateValues.profileThresholds ?? {},
+			// Multilingual features
+			multilingualEnabled: stateValues.multilingualEnabled ?? false,
+			sarvamApiKey: stateValues.sarvamApiKey ?? "",
+			multilingualTargetLanguage: stateValues.multilingualTargetLanguage ?? "hi-IN",
 		}
 	}
 

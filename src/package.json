@@ -3,7 +3,7 @@
 	"displayName": "%extension.displayName%",
 	"description": "%extension.description%",
 	"publisher": "OrangecatTechPvtLtd",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"icon": "assets/icons/icon.png",
 	"galleryBanner": {
 		"color": "#FFFFFF",
@@ -511,6 +511,7 @@
 		"puppeteer-core": "^23.4.0",
 		"reconnecting-eventsource": "^1.6.4",
 		"sanitize-filename": "^1.6.3",
+		"sarvamai": "^0.1.10",
 		"say": "^0.16.0",
 		"serialize-error": "^12.0.0",
 		"simple-git": "^3.27.0",

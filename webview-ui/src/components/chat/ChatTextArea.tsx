@@ -31,6 +31,7 @@ import { cn } from "@/lib/utils"
 import { usePromptHistory } from "./hooks/usePromptHistory"
 import SyntXModelDropdown from "./SyntXModelDropdown"
 import { EditModeControls } from "./EditModeControls"
+import VoiceRecorder from "./VoiceRecorder"
 
 interface ChatTextAreaProps {
 	inputValue: string
@@ -89,6 +90,8 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 			clineMessages,
 			apiConfiguration,
 			routerModels,
+			multilingualEnabled,
+			sarvamApiKey,
 		} = useExtensionState()
 
 		// Find the ID and display text for the currently selected API configuration
@@ -1047,6 +1050,17 @@ const ChatTextArea = forwardRef<HTMLTextAreaElement, ChatTextAreaProps>(
 						</StandardTooltip>
 					)}
 					<IndexingStatusBadge />
+					{/* Voice Recorder - only show when multilingual is enabled and API key is provided */}
+					{multilingualEnabled && sarvamApiKey?.trim() && (
+						<VoiceRecorder
+							onTranscription={(text) => {
+								// Append transcribed text to input
+								const newValue = inputValue ? `${inputValue} ${text}` : text
+								setInputValue(newValue)
+							}}
+							disabled={sendingDisabled}
+						/>
+					)}
 					<StandardTooltip content={t("chat:addImages")}>
 						<button
 							aria-label={t("chat:addImages")}

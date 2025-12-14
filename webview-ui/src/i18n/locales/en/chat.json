@@ -325,5 +325,14 @@
 	},
 	"versionIndicator": {
 		"ariaLabel": "Version {{version}} - Click to view release notes"
-	}
+	},
+	"voiceInput": "Voice Input",
+	"startRecording": "Click to start recording",
+	"stopRecording": "Click to stop recording",
+	"transcribing": "Transcribing...",
+	"recordingError": "Recording failed",
+	"transcriptionError": "Transcription failed",
+	"microphonePermissionDenied": "Microphone permission denied",
+	"microphoneNotFound": "No microphone found",
+	"voiceApiKeyMissing": "OpenAI API key not configured"
 }

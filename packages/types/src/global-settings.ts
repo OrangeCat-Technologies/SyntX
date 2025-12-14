@@ -139,6 +139,11 @@ export const globalSettingsSchema = z.object({
 
 	selectedAgentId: z.string().optional(),
 	showModes: z.boolean().optional(),
+
+	// Multilingual features
+	multilingualEnabled: z.boolean().optional(),
+	sarvamApiKey: z.string().optional(),
+	multilingualTargetLanguage: z.string().optional(),
 })
 
 export type GlobalSettings = z.infer<typeof globalSettingsSchema>

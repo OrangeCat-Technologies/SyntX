@@ -30,6 +30,7 @@
 		"terminal": "Terminal",
 		"prompts": "Prompts",
 		"experimental": "Experimental",
+		"multilingual": "Multilingual",
 		"language": "Language",
 		"about": "About Syntx"
 	},
@@ -581,6 +582,20 @@
 				"description": "This slider controls how precisely code sections must match when applying diffs. Lower values allow more flexible matching but increase the risk of incorrect replacements. Use values below 100% with extreme caution."
 			}
 		}
+	},
+	"multilingual": {
+		"description": "Enable text-to-speech and translation features for AI responses using Sarvam AI. These features allow you to hear responses spoken aloud or translate them to regional Indian languages.",
+		"enableLabel": "Enable Multilingual Features",
+		"apiKeyLabel": "Sarvam AI API Key",
+		"apiKeyPlaceholder": "Enter your Sarvam AI API key...",
+		"languageLabel": "Target Language",
+		"languageDescription": "Select the language for text-to-speech and translation. AI responses (in English) will be converted to this language.",
+		"ttsButton": "Text to Speech",
+		"translateButton": "Translate",
+		"translating": "Translating...",
+		"speakingTts": "Playing audio...",
+		"ttsError": "Failed to convert text to speech",
+		"translateError": "Failed to translate text"
 	},
 	"experimental": {
 		"DIFF_STRATEGY_UNIFIED": {

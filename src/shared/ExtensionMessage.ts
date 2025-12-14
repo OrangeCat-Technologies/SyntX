@@ -112,6 +112,12 @@ export interface ExtensionMessage {
 		| "showDeleteMessageDialog"
 		| "showEditMessageDialog"
 		| "requestAnthropicApiKey"
+		| "recordingStarted"
+		| "recordingStopped"
+		| "recordingCancelled"
+		| "audioTranscribed"
+		| "textToSpeechResult"
+		| "translateResult"
 	text?: string
 	payload?: any // Add a generic payload for now, can refine later
 	agentId?: string
@@ -299,6 +305,11 @@ export type ExtensionState = Pick<
 	marketplaceInstalledMetadata?: { project: Record<string, any>; global: Record<string, any> }
 	profileThresholds: Record<string, number>
 	hasOpenedModeSelector: boolean
+
+	// Multilingual features
+	multilingualEnabled?: boolean
+	sarvamApiKey?: string
+	multilingualTargetLanguage?: string
 }
 
 export interface ClineSayTool {

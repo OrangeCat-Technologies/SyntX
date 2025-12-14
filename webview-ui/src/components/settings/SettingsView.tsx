@@ -22,6 +22,7 @@ import {
 	Globe,
 	Info,
 	MessageSquare,
+	Languages,
 	LucideIcon,
 } from "lucide-react"
 
@@ -61,6 +62,7 @@ import { NotificationSettings } from "./NotificationSettings"
 import { ContextManagementSettings } from "./ContextManagementSettings"
 import { TerminalSettings } from "./TerminalSettings"
 import { ExperimentalSettings } from "./ExperimentalSettings"
+import { MultilingualSettings } from "./MultilingualSettings"
 import { LanguageSettings } from "./LanguageSettings"
 import { About } from "./About"
 import { Section } from "./Section"
@@ -89,6 +91,7 @@ const sectionNames = [
 	"terminal",
 	"prompts",
 	"experimental",
+	"multilingual",
 	"language",
 	"about",
 ] as const
@@ -109,6 +112,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 	const [isDiscardDialogShow, setDiscardDialogShow] = useState(false)
 	const [isChangeDetected, setChangeDetected] = useState(false)
 	const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined)
+	const [multilingualErrorMessage, setMultilingualErrorMessage] = useState<string | undefined>(undefined)
 	const [activeTab, setActiveTab] = useState<SectionName>(
 		targetSection && sectionNames.includes(targetSection as SectionName)
 			? (targetSection as SectionName)
@@ -269,7 +273,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 		})
 	}, [])
 
-	const isSettingValid = !errorMessage
+	const isSettingValid = !errorMessage && !multilingualErrorMessage
 
 	const handleSubmit = () => {
 		if (isSettingValid) {
@@ -336,6 +340,13 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 			vscode.postMessage({ type: "upsertApiConfiguration", text: currentApiConfigName, apiConfiguration })
 			vscode.postMessage({ type: "telemetrySetting", text: telemetrySetting })
 			vscode.postMessage({ type: "profileThresholds", values: profileThresholds })
+			// Multilingual settings
+			vscode.postMessage({ type: "multilingualEnabled", bool: cachedState.multilingualEnabled ?? false })
+			vscode.postMessage({ type: "sarvamApiKey", text: cachedState.sarvamApiKey ?? "" })
+			vscode.postMessage({
+				type: "multilingualTargetLanguage",
+				text: cachedState.multilingualTargetLanguage ?? "hi-IN",
+			})
 			setChangeDetected(false)
 		}
 	}
@@ -415,6 +426,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 			{ id: "terminal", icon: SquareTerminal },
 			{ id: "prompts", icon: MessageSquare },
 			{ id: "experimental", icon: FlaskConical },
+			{ id: "multilingual", icon: Languages },
 			{ id: "language", icon: Globe },
 			{ id: "about", icon: Info },
 		],
@@ -471,7 +483,7 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 					<StandardTooltip
 						content={
 							!isSettingValid
-								? errorMessage
+								? errorMessage || multilingualErrorMessage
 								: isChangeDetected
 									? t("settings:header.saveButtonTooltip")
 									: t("settings:header.nothingChangedTooltip")
@@ -704,6 +716,18 @@ const SettingsView = forwardRef<SettingsViewRef, SettingsViewProps>(({ onDone, t
 					{/* Experimental Section */}
 					{activeTab === "experimental" && (
 						<ExperimentalSettings setExperimentEnabled={setExperimentEnabled} experiments={experiments} />
+					)}
+
+					{/* Multilingual Section */}
+					{activeTab === "multilingual" && (
+						<MultilingualSettings
+							multilingualEnabled={cachedState.multilingualEnabled ?? false}
+							sarvamApiKey={cachedState.sarvamApiKey ?? ""}
+							multilingualTargetLanguage={cachedState.multilingualTargetLanguage ?? "hi-IN"}
+							setCachedStateField={setCachedStateField}
+							errorMessage={multilingualErrorMessage}
+							setErrorMessage={setMultilingualErrorMessage}
+						/>
 					)}
 
 					{/* Language Section */}

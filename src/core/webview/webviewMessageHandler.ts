@@ -35,6 +35,7 @@ import { discoverChromeHostUrl, tryChromeHostUrl } from "../../services/browser/
 import { searchWorkspaceFiles } from "../../services/search/file-search"
 import { fileExistsAtPath } from "../../utils/fs"
 import { playTts, setTtsEnabled, setTtsSpeed, stopTts } from "../../utils/tts"
+const sound = require("sound-play")
 import { singleCompletionHandler } from "../../utils/single-completion-handler"
 import { searchCommits } from "../../utils/git"
 import { exportSettings, importSettingsWithFeedback } from "../config/importExport"
@@ -1258,6 +1259,18 @@ export const webviewMessageHandler = async (
 			await updateGlobalState("language", message.text as Language)
 			await provider.postStateToWebview()
 			break
+		case "multilingualEnabled":
+			await updateGlobalState("multilingualEnabled", message.bool ?? false)
+			await provider.postStateToWebview()
+			break
+		case "sarvamApiKey":
+			await updateGlobalState("sarvamApiKey", message.text ?? "")
+			await provider.postStateToWebview()
+			break
+		case "multilingualTargetLanguage":
+			await updateGlobalState("multilingualTargetLanguage", message.text ?? "hi-IN")
+			await provider.postStateToWebview()
+			break
 		case "showRooIgnoredFiles":
 			await updateGlobalState("showRooIgnoredFiles", message.bool ?? true)
 			await provider.postStateToWebview()
@@ -2388,6 +2401,369 @@ export const webviewMessageHandler = async (
 			} catch (error) {
 				provider.log(`Failed to save Anthropic API key: ${error}`)
 				vscode.window.showErrorMessage("Failed to save API key")
+			}
+			break
+		}
+
+		// Dictation/Voice Recording handlers
+		case "startRecording": {
+			try {
+				const { audioRecordingService } = await import("../../services/dictation/AudioRecordingService")
+				const result = await audioRecordingService.startRecording()
+				await provider.postMessageToWebview({
+					type: "recordingStarted",
+					values: { success: result.success, error: result.error },
+				})
+			} catch (error) {
+				console.error("Error starting recording:", error)
+				await provider.postMessageToWebview({
+					type: "recordingStarted",
+					values: {
+						success: false,
+						error: error instanceof Error ? error.message : "Failed to start recording",
+					},
+				})
+			}
+			break
+		}
+
+		case "stopRecording": {
+			try {
+				const { audioRecordingService } = await import("../../services/dictation/AudioRecordingService")
+				const result = await audioRecordingService.stopRecording()
+
+				if (result.success && result.audioBase64) {
+					// Get Sarvam API key from settings
+					const sarvamApiKey = getGlobalState("sarvamApiKey") || ""
+					const multilingualEnabled = getGlobalState("multilingualEnabled") ?? false
+
+					// Only transcribe if multilingual is enabled and API key is provided
+					if (!multilingualEnabled || !sarvamApiKey?.trim()) {
+						await provider.postMessageToWebview({
+							type: "recordingStopped",
+							values: {
+								success: false,
+								error: "Multilingual features are not enabled or API key is missing. Please enable multilingual features and provide a SarvamAI API key in settings.",
+							},
+						})
+						break
+					}
+
+					// Automatically transcribe the audio
+					const { getVoiceTranscriptionService } = await import(
+						"../../services/dictation/VoiceTranscriptionService"
+					)
+					const transcriptionService = getVoiceTranscriptionService(sarvamApiKey)
+					const transcriptionResult = await transcriptionService.transcribeAudio(
+						result.audioBase64,
+						message.text,
+					)
+
+					await provider.postMessageToWebview({
+						type: "recordingStopped",
+						values: {
+							success: true,
+							text: transcriptionResult.text,
+							error: transcriptionResult.error,
+						},
+					})
+				} else {
+					await provider.postMessageToWebview({
+						type: "recordingStopped",
+						values: { success: false, error: result.error || "Failed to stop recording" },
+					})
+				}
+			} catch (error) {
+				console.error("Error stopping recording:", error)
+				await provider.postMessageToWebview({
+					type: "recordingStopped",
+					values: {
+						success: false,
+						error: error instanceof Error ? error.message : "Failed to stop recording",
+					},
+				})
+			}
+			break
+		}
+
+		case "cancelRecording": {
+			try {
+				const { audioRecordingService } = await import("../../services/dictation/AudioRecordingService")
+				const result = await audioRecordingService.cancelRecording()
+				await provider.postMessageToWebview({
+					type: "recordingCancelled",
+					values: { success: result.success, error: result.error },
+				})
+			} catch (error) {
+				console.error("Error canceling recording:", error)
+				await provider.postMessageToWebview({
+					type: "recordingCancelled",
+					values: {
+						success: false,
+						error: error instanceof Error ? error.message : "Failed to cancel recording",
+					},
+				})
+			}
+			break
+		}
+
+		case "transcribeAudio": {
+			try {
+				// Get Sarvam API key from settings
+				const sarvamApiKey = getGlobalState("sarvamApiKey") || ""
+				const multilingualEnabled = getGlobalState("multilingualEnabled") ?? false
+
+				// Only transcribe if multilingual is enabled and API key is provided
+				if (!multilingualEnabled || !sarvamApiKey?.trim()) {
+					await provider.postMessageToWebview({
+						type: "audioTranscribed",
+						values: {
+							text: undefined,
+							error: "Multilingual features are not enabled or API key is missing. Please enable multilingual features and provide a SarvamAI API key in settings.",
+						},
+					})
+					break
+				}
+
+				const { getVoiceTranscriptionService } = await import(
+					"../../services/dictation/VoiceTranscriptionService"
+				)
+				const transcriptionService = getVoiceTranscriptionService(sarvamApiKey)
+				const audioBase64 = message.text || ""
+				const language = message.values?.language as string | undefined
+
+				const result = await transcriptionService.transcribeAudio(audioBase64, language)
+				await provider.postMessageToWebview({
+					type: "audioTranscribed",
+					values: { text: result.text, error: result.error },
+				})
+			} catch (error) {
+				console.error("Error transcribing audio:", error)
+				await provider.postMessageToWebview({
+					type: "audioTranscribed",
+					values: { error: error instanceof Error ? error.message : "Transcription failed" },
+				})
+			}
+			break
+		}
+
+		case "textToSpeech": {
+			console.log("webviewMessageHandler: Received textToSpeech request", {
+				textLength: message.text?.length,
+				targetLanguage: message.values?.targetLanguage,
+			})
+			try {
+				// Get Sarvam API key from settings
+				const sarvamApiKey = getGlobalState("sarvamApiKey") || ""
+				const multilingualEnabled = getGlobalState("multilingualEnabled") ?? false
+
+				console.log("webviewMessageHandler: TTS config check", {
+					multilingualEnabled,
+					hasApiKey: !!sarvamApiKey?.trim(),
+				})
+
+				// Only process if multilingual is enabled and API key is provided
+				if (!multilingualEnabled || !sarvamApiKey?.trim()) {
+					console.log("webviewMessageHandler: Sending error - multilingual not enabled or no API key")
+					await provider.postMessageToWebview({
+						type: "textToSpeechResult",
+						values: {
+							error: "Multilingual features are not enabled or API key is missing. Please enable multilingual features and provide a SarvamAI API key in settings.",
+						},
+					})
+					break
+				}
+
+				const { getSarvamService } = await import("../../services/sarvam/SarvamService")
+				const sarvamService = getSarvamService()
+				const originalText = message.text || ""
+				const targetLanguage = (message.values?.targetLanguage as string) || "hi-IN"
+
+				// First, translate the text to the target language (TTS doesn't translate, it only synthesizes speech)
+				console.log("webviewMessageHandler: Translating text to target language...")
+				const translationResult = await sarvamService.translate(originalText, targetLanguage, sarvamApiKey)
+
+				if (translationResult.error) {
+					console.error("webviewMessageHandler: Translation error:", translationResult.error)
+					await provider.postMessageToWebview({
+						type: "textToSpeechResult",
+						values: { error: `Translation failed: ${translationResult.error}` },
+					})
+					break
+				}
+
+				const translatedText = translationResult.translatedText || originalText
+				console.log("webviewMessageHandler: Translation successful", {
+					originalLength: originalText.length,
+					translatedLength: translatedText.length,
+					targetLanguage,
+				})
+
+				// Now convert the translated text to speech
+				console.log("webviewMessageHandler: Calling Sarvam TTS service with translated text...")
+				const result = await sarvamService.textToSpeech(translatedText, targetLanguage, sarvamApiKey)
+				console.log("webviewMessageHandler: Sarvam TTS result", {
+					hasAudio: !!result.audio,
+					audioLength: result.audio?.length,
+					hasError: !!result.error,
+					error: result.error,
+				})
+
+				if (result.error) {
+					await provider.postMessageToWebview({
+						type: "textToSpeechResult",
+						values: { error: result.error },
+					})
+					break
+				}
+
+				if (!result.audio) {
+					await provider.postMessageToWebview({
+						type: "textToSpeechResult",
+						values: { error: "No audio data received from TTS service" },
+					})
+					break
+				}
+
+				// Save audio to temporary file and play it on the backend (similar to normal TTS)
+				// Store translatedText in outer scope for use in callbacks
+				const finalTranslatedText = translatedText
+				try {
+					// Convert base64 to buffer
+					const audioBuffer = Buffer.from(result.audio, "base64")
+
+					// Get extension storage directory
+					const storagePath = provider.contextProxy.globalStorageUri.fsPath
+					const tempDir = path.join(storagePath, "tts-audio")
+
+					// Ensure temp directory exists
+					await fs.mkdir(tempDir, { recursive: true })
+
+					// Create temporary file (Sarvam AI returns WAV format by default)
+					const tempFileName = `tts-${Date.now()}-${Math.random().toString(36).substring(7)}.wav`
+					const tempFilePath = path.join(tempDir, tempFileName)
+
+					console.log(`webviewMessageHandler: Saving audio to temp file: ${tempFilePath}`)
+
+					// Write audio buffer to temp file
+					await fs.writeFile(tempFilePath, audioBuffer)
+
+					console.log(`webviewMessageHandler: Audio saved successfully, size: ${audioBuffer.length} bytes`)
+
+					// Send success message to clear loading state
+					await provider.postMessageToWebview({
+						type: "textToSpeechResult",
+						values: { success: true },
+					})
+
+					// Notify webview that TTS is starting (similar to normal TTS)
+					await provider.postMessageToWebview({
+						type: "ttsStart",
+						text: finalTranslatedText,
+					})
+
+					// Play audio file on the backend using sound-play (similar to how normal TTS uses say)
+					console.log("webviewMessageHandler: Playing audio file on backend...")
+					sound
+						.play(tempFilePath, 1.0)
+						.then(() => {
+							console.log("webviewMessageHandler: Audio playback completed")
+							// Notify webview that TTS stopped
+							provider.postMessageToWebview({
+								type: "ttsStop",
+								text: finalTranslatedText,
+							})
+							// Clean up temp file after playback
+							fs.unlink(tempFilePath).catch((err) => {
+								console.error("Error deleting temp audio file:", err)
+							})
+						})
+						.catch((error: unknown) => {
+							console.error("webviewMessageHandler: Error playing audio:", error)
+							// Notify webview that TTS stopped with error
+							provider.postMessageToWebview({
+								type: "ttsStop",
+								text: finalTranslatedText,
+							})
+							// Clean up temp file on error
+							fs.unlink(tempFilePath).catch((err) => {
+								console.error("Error deleting temp audio file:", err)
+							})
+						})
+
+					console.log("webviewMessageHandler: Audio playback started on backend")
+				} catch (error) {
+					console.error("webviewMessageHandler: Error saving audio to temp file:", error)
+					await provider.postMessageToWebview({
+						type: "textToSpeechResult",
+						values: {
+							error: `Failed to save audio: ${error instanceof Error ? error.message : String(error)}`,
+						},
+					})
+				}
+			} catch (error) {
+				console.error("Error with text-to-speech:", error)
+				await provider.postMessageToWebview({
+					type: "textToSpeechResult",
+					values: { error: error instanceof Error ? error.message : "Text-to-speech failed" },
+				})
+			}
+			break
+		}
+
+		case "cleanupTtsAudio": {
+			// Clean up temporary audio file after playback
+			try {
+				const tempFilePath = message.values?.tempFilePath as string
+				if (tempFilePath) {
+					console.log(`webviewMessageHandler: Cleaning up temp audio file: ${tempFilePath}`)
+					await fs.unlink(tempFilePath).catch((err) => {
+						console.error("Error deleting temp audio file:", err)
+					})
+					console.log("webviewMessageHandler: Temp audio file cleaned up successfully")
+				}
+			} catch (error) {
+				console.error("Error cleaning up TTS audio file:", error)
+			}
+			break
+		}
+
+		case "translateText": {
+			try {
+				// Get Sarvam API key from settings
+				const sarvamApiKey = getGlobalState("sarvamApiKey") || ""
+				const multilingualEnabled = getGlobalState("multilingualEnabled") ?? false
+
+				// Only process if multilingual is enabled and API key is provided
+				if (!multilingualEnabled || !sarvamApiKey?.trim()) {
+					await provider.postMessageToWebview({
+						type: "translateResult",
+						values: {
+							translatedText: undefined,
+							error: "Multilingual features are not enabled or API key is missing. Please enable multilingual features and provide a SarvamAI API key in settings.",
+							messageTs: message.values?.messageTs as number | undefined,
+						},
+					})
+					break
+				}
+
+				const { getSarvamService } = await import("../../services/sarvam/SarvamService")
+				const sarvamService = getSarvamService()
+				const text = message.text || ""
+				const targetLanguage = (message.values?.targetLanguage as string) || "hi-IN"
+				const messageTs = message.values?.messageTs as number | undefined
+
+				const result = await sarvamService.translate(text, targetLanguage, sarvamApiKey)
+				await provider.postMessageToWebview({
+					type: "translateResult",
+					values: { translatedText: result.translatedText, error: result.error, messageTs },
+				})
+			} catch (error) {
+				console.error("Error with translation:", error)
+				await provider.postMessageToWebview({
+					type: "translateResult",
+					values: { error: error instanceof Error ? error.message : "Translation failed" },
+				})
 			}
 			break
 		}

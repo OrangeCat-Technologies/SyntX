@@ -5,6 +5,7 @@ import { useSize } from "react-use"
 import { useTranslation, Trans } from "react-i18next"
 import deepEqual from "fast-deep-equal"
 import { VSCodeBadge, VSCodeButton } from "@vscode/webview-ui-toolkit/react"
+import { Loader2 } from "lucide-react"
 
 import type { ClineMessage } from "@roo-code/types"
 import { Mode } from "@roo/modes"
@@ -115,7 +116,16 @@ export const ChatRowContent = ({
 	editable,
 }: ChatRowContentProps) => {
 	const { t } = useTranslation()
-	const { mcpServers, alwaysAllowMcp, currentCheckpoint, mode, apiConfiguration } = useExtensionState()
+	const {
+		mcpServers,
+		alwaysAllowMcp,
+		currentCheckpoint,
+		mode,
+		apiConfiguration,
+		multilingualEnabled,
+		sarvamApiKey,
+		multilingualTargetLanguage,
+	} = useExtensionState()
 	const [reasoningCollapsed, setReasoningCollapsed] = useState(true)
 
 	// Check if using syntx provider
@@ -129,6 +139,10 @@ export const ChatRowContent = ({
 	const [showCreditsAlert, setShowCreditsAlert] = useState(true)
 	const { copyWithFeedback } = useCopyToClipboard()
 
+	// Loading states for multilingual features
+	const [isTtsLoading, setIsTtsLoading] = useState(false)
+	const [isTranslateLoading, setIsTranslateLoading] = useState(false)
+
 	// Handle message events for image selection during edit mode
 	useEffect(() => {
 		const handleMessage = (event: MessageEvent) => {
@@ -141,6 +155,26 @@ export const ChatRowContent = ({
 		window.addEventListener("message", handleMessage)
 		return () => window.removeEventListener("message", handleMessage)
 	}, [isEditing, message.ts])
+
+	// Handle multilingual feature result messages
+	useEffect(() => {
+		const handleMessage = (event: MessageEvent) => {
+			const msg = event.data
+
+			// Handle text-to-speech result
+			if (msg.type === "textToSpeechResult") {
+				setIsTtsLoading(false)
+			}
+
+			// Handle translate result - only clear loading if it's for this message
+			if (msg.type === "translateResult" && msg.values?.messageTs === message.ts) {
+				setIsTranslateLoading(false)
+			}
+		}
+
+		window.addEventListener("message", handleMessage)
+		return () => window.removeEventListener("message", handleMessage)
+	}, [message.ts])
 
 	// Memoized callback to prevent re-renders caused by inline arrow functions
 	const handleToggleExpand = useCallback(() => {
@@ -1237,6 +1271,62 @@ export const ChatRowContent = ({
 					return (
 						<div>
 							<Markdown markdown={message.text} partial={message.partial} />
+							{/* Multilingual action buttons - only show for completed AI responses when multilingual is enabled and API key is provided */}
+							{!message.partial && multilingualEnabled && sarvamApiKey?.trim() && (
+								<div className="flex items-center gap-2 mt-2 pt-2 border-t border-vscode-editorGroup-border">
+									<Button
+										variant="ghost"
+										size="sm"
+										className="text-xs flex items-center gap-1"
+										disabled={isTtsLoading}
+										onClick={() => {
+											console.log("ChatRow: TTS button clicked", {
+												isTtsLoading,
+												textLength: message.text?.length,
+												targetLanguage: multilingualTargetLanguage,
+											})
+											if (isTtsLoading) return
+											setIsTtsLoading(true)
+											vscode.postMessage({
+												type: "textToSpeech",
+												text: message.text || "",
+												values: { targetLanguage: multilingualTargetLanguage },
+											})
+											console.log("ChatRow: Sent textToSpeech message to extension")
+										}}>
+										{isTtsLoading ? (
+											<Loader2 className="w-3 h-3 animate-spin" />
+										) : (
+											<span className="codicon codicon-unmute" />
+										)}
+										{t("settings:multilingual.ttsButton")}
+									</Button>
+									<Button
+										variant="ghost"
+										size="sm"
+										className="text-xs flex items-center gap-1"
+										disabled={isTranslateLoading}
+										onClick={() => {
+											if (isTranslateLoading) return
+											setIsTranslateLoading(true)
+											vscode.postMessage({
+												type: "translateText",
+												text: message.text || "",
+												values: {
+													targetLanguage: multilingualTargetLanguage,
+													messageTs: message.ts,
+												},
+											})
+										}}>
+										{isTranslateLoading ? (
+											<Loader2 className="w-3 h-3 animate-spin" />
+										) : (
+											<span className="codicon codicon-globe" />
+										)}
+										{t("settings:multilingual.translateButton")}
+									</Button>
+								</div>
+							)}
 						</div>
 					)
 				case "user_feedback":

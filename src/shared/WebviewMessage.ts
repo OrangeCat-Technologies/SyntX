@@ -204,6 +204,16 @@ export interface WebviewMessage {
 		| "saveCodeIndexSettingsAtomic"
 		| "requestCodeIndexSecretStatus"
 		| "anthropicApiKeySubmitted"
+		| "startRecording"
+		| "stopRecording"
+		| "cancelRecording"
+		| "transcribeAudio"
+		| "multilingualEnabled"
+		| "sarvamApiKey"
+		| "multilingualTargetLanguage"
+		| "textToSpeech"
+		| "translateText"
+		| "cleanupTtsAudio"
 	text?: string
 	editedMessageContent?: string
 	tab?: "settings" | "history" | "mcp" | "modes" | "chat" | "marketplace" | "account"

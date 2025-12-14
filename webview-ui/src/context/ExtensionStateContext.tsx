@@ -140,6 +140,13 @@ export interface ExtensionStateContextType extends ExtensionState {
 	routerModels?: RouterModels
 	alwaysAllowUpdateTodoList?: boolean
 	setAlwaysAllowUpdateTodoList: (value: boolean) => void
+	// Multilingual features state
+	multilingualEnabled: boolean
+	setMultilingualEnabled: (value: boolean) => void
+	sarvamApiKey: string
+	setSarvamApiKey: (value: string) => void
+	multilingualTargetLanguage: string
+	setMultilingualTargetLanguage: (value: string) => void
 }
 
 export const ExtensionStateContext = createContext<ExtensionStateContextType | undefined>(undefined)
@@ -241,6 +248,10 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		},
 		codebaseIndexModels: { ollama: {}, openai: {} },
 		alwaysAllowUpdateTodoList: true,
+		// Multilingual features defaults
+		multilingualEnabled: false,
+		sarvamApiKey: "",
+		multilingualTargetLanguage: "hi-IN", // Default to Hindi
 	})
 
 	const [didHydrateState, setDidHydrateState] = useState(false)
@@ -258,6 +269,8 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		project: {},
 		global: {},
 	})
+
+	// Removed chunking refs - using data URI approach instead
 
 	const setListApiConfigMeta = useCallback(
 		(value: ProviderSettingsEntry[]) => setState((prevState) => ({ ...prevState, listApiConfigMeta: value })),
@@ -277,6 +290,23 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 	const handleMessage = useCallback(
 		(event: MessageEvent) => {
 			const message: ExtensionMessage = event.data
+
+			// Debug: Log textToSpeechResult messages
+			if (message.type === "textToSpeechResult") {
+				console.log("🔊 ExtensionStateContext: RECEIVED textToSpeechResult message!")
+				console.log("=== ExtensionStateContext: textToSpeechResult RECEIVED ===")
+				console.log("Full message:", JSON.stringify(message, null, 2).substring(0, 500))
+				console.log("Message type:", message.type)
+				console.log("Has values:", !!message.values)
+				console.log("Values keys:", message.values ? Object.keys(message.values) : [])
+				console.log("Has audioChunk:", message.values?.audioChunk !== undefined)
+				console.log("Has audio:", message.values?.audio !== undefined)
+				console.log("Chunk index:", message.values?.chunkIndex)
+				console.log("Total chunks:", message.values?.totalChunks)
+				console.log("Is last chunk:", message.values?.isLastChunk)
+				console.log("Chunk length:", message.values?.audioChunk?.length)
+			}
+
 			switch (message.type) {
 				case "state": {
 					const newState = message.state!
@@ -378,6 +408,154 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 							// Hide the API key screen after successful auth
 							showAnthropicApiKeyScreen: false,
 						}))
+					}
+					break
+				}
+				case "textToSpeechResult": {
+					console.log("🔊 ExtensionStateContext: RECEIVED textToSpeechResult message!")
+					console.log("Has audioDataUri:", !!message.values?.audioDataUri)
+					console.log("Has success:", !!message.values?.success)
+					console.log("Has error:", !!message.values?.error)
+					console.log("Temp file path:", message.values?.tempFilePath)
+
+					// Handle audio data URI (from temp file) - legacy webview playback
+					if (message.values?.audioDataUri) {
+						const audioDataUri = message.values.audioDataUri as string
+						const tempFilePath = message.values.tempFilePath as string
+
+						console.log("ExtensionStateContext: Playing audio from data URI")
+
+						try {
+							// Create audio element directly from data URI
+							const audio = new Audio(audioDataUri)
+
+							// Set volume to maximum (1.0)
+							audio.volume = 1.0
+
+							// Add error handlers
+							audio.addEventListener("error", (e) => {
+								console.error("Audio playback error:", e)
+								console.error("Audio error details:", {
+									error: audio.error,
+									networkState: audio.networkState,
+									readyState: audio.readyState,
+								})
+								// Clean up temp file on error
+								if (tempFilePath) {
+									vscode.postMessage({
+										type: "cleanupTtsAudio",
+										values: { tempFilePath },
+									})
+								}
+							})
+
+							// Clean up temp file after playback completes
+							audio.addEventListener("ended", () => {
+								console.log("✅ Audio playback completed, cleaning up temp file")
+								if (tempFilePath) {
+									vscode.postMessage({
+										type: "cleanupTtsAudio",
+										values: { tempFilePath },
+									})
+								}
+							})
+
+							// Wait for audio to be ready before playing
+							const playAudio = () => {
+								console.log("Attempting to play audio, readyState:", audio.readyState)
+								const playPromise = audio.play()
+
+								if (playPromise !== undefined) {
+									playPromise
+										.then(() => {
+											console.log("✅ Audio playback started successfully!")
+										})
+										.catch((error) => {
+											console.error("❌ Error playing audio:", error)
+											console.error("Error name:", error.name)
+											console.error("Error message:", error.message)
+											// Clean up on play error
+											if (tempFilePath) {
+												vscode.postMessage({
+													type: "cleanupTtsAudio",
+													values: { tempFilePath },
+												})
+											}
+										})
+								}
+							}
+
+							// Try to play immediately, or wait for canplay event
+							if (audio.readyState >= 2) {
+								console.log("Audio ready, playing immediately")
+								playAudio()
+							} else {
+								console.log("Audio not ready, waiting for canplay...")
+								audio.addEventListener(
+									"canplaythrough",
+									() => {
+										console.log("canplaythrough fired")
+										playAudio()
+									},
+									{ once: true },
+								)
+								audio.addEventListener(
+									"loadeddata",
+									() => {
+										console.log("loadeddata fired")
+										playAudio()
+									},
+									{ once: true },
+								)
+								setTimeout(() => {
+									console.log("Timeout check, readyState:", audio.readyState)
+									if (audio.readyState >= 2) {
+										playAudio()
+									}
+								}, 100)
+							}
+						} catch (error) {
+							console.error("Error processing audio data URI:", error)
+							// Clean up on error
+							if (tempFilePath) {
+								vscode.postMessage({
+									type: "cleanupTtsAudio",
+									values: { tempFilePath },
+								})
+							}
+						}
+					} else if (message.values?.success) {
+						// Backend playback success - audio is playing on the backend
+						console.log("✅ Text-to-speech audio is playing on backend")
+					} else if (message.values?.error) {
+						console.error("Text-to-speech error:", message.values.error)
+					} else {
+						console.warn(
+							"ExtensionStateContext: textToSpeechResult received but no audioDataUri, success, or error found",
+							message,
+						)
+					}
+					break
+				}
+				case "translateResult": {
+					// Handle translation result - update message text
+					if (message.values?.translatedText && message.values?.messageTs) {
+						const messageTs = message.values.messageTs as number
+						const translatedText = message.values.translatedText as string
+						setState((prevState) => {
+							const messageIndex = prevState.clineMessages.findIndex((msg) => msg.ts === messageTs)
+							if (messageIndex !== -1) {
+								const newClineMessages = [...prevState.clineMessages]
+								newClineMessages[messageIndex] = {
+									...newClineMessages[messageIndex],
+									text: translatedText,
+								}
+								return { ...prevState, clineMessages: newClineMessages }
+							}
+							return prevState
+						})
+					} else if (message.values?.error) {
+						console.error("Translation error:", message.values.error)
 					}
 					break
 				}
@@ -519,6 +697,14 @@ export const ExtensionStateContextProvider: React.FC<{ children: React.ReactNode
 		setAlwaysAllowUpdateTodoList: (value) => {
 			setState((prevState) => ({ ...prevState, alwaysAllowUpdateTodoList: value }))
 		},
+		// Multilingual features
+		multilingualEnabled: state.multilingualEnabled ?? false,
+		setMultilingualEnabled: (value) => setState((prevState) => ({ ...prevState, multilingualEnabled: value })),
+		sarvamApiKey: state.sarvamApiKey ?? "",
+		setSarvamApiKey: (value) => setState((prevState) => ({ ...prevState, sarvamApiKey: value })),
+		multilingualTargetLanguage: state.multilingualTargetLanguage ?? "hi-IN",
+		setMultilingualTargetLanguage: (value) =>
+			setState((prevState) => ({ ...prevState, multilingualTargetLanguage: value })),
 	}
 
 	return <ExtensionStateContext.Provider value={contextValue}>{children}</ExtensionStateContext.Provider>
