@@ -17,7 +17,7 @@ const AUDIO_PROGRAM_CONFIG = {
 	darwin: {
 		command: "ffmpeg",
 		fallbackPaths: ["/usr/local/bin/ffmpeg", "/opt/homebrew/bin/ffmpeg"],
-		getArgs: (outputFile: string) => [
+		getArgs: (outputFile: string, _ffmpegPath?: string) => [
 			"-f",
 			"avfoundation",
 			"-i",
@@ -39,20 +39,25 @@ const AUDIO_PROGRAM_CONFIG = {
 	win32: {
 		command: "ffmpeg.exe",
 		fallbackPaths: ["C:\\ffmpeg\\bin\\ffmpeg.exe"],
-		getArgs: (outputFile: string) => [
-			"-f",
-			"dshow",
-			"-i",
-			"audio=Microphone",
-			"-acodec",
-			"libopus",
-			"-ar",
-			"16000",
-			"-ac",
-			"1",
-			"-y",
-			outputFile,
-		],
+		getArgs: async (outputFile: string, ffmpegPath?: string) => {
+			// Detect the actual audio device name on Windows
+			// If ffmpegPath is not provided, we'll use fallback device name
+			const deviceName = ffmpegPath ? await detectWindowsAudioDevice(ffmpegPath) : "Microphone"
+			return [
+				"-f",
+				"dshow",
+				"-i",
+				`audio=${deviceName}`,
+				"-acodec",
+				"libopus",
+				"-ar",
+				"16000",
+				"-ac",
+				"1",
+				"-y",
+				outputFile,
+			]
+		},
 		error: "FFmpeg is required for voice recording but is not installed on your system.",
 		installCommand: "winget install ffmpeg",
 		dependencyName: "FFmpeg",
@@ -61,7 +66,7 @@ const AUDIO_PROGRAM_CONFIG = {
 	linux: {
 		command: "ffmpeg",
 		fallbackPaths: ["/usr/bin/ffmpeg", "/usr/local/bin/ffmpeg"],
-		getArgs: (outputFile: string) => [
+		getArgs: (outputFile: string, _ffmpegPath?: string) => [
 			"-f",
 			"pulse",
 			"-i",
@@ -81,6 +86,100 @@ const AUDIO_PROGRAM_CONFIG = {
 		installDescription: "Install FFmpeg using your package manager",
 	},
 } as const
+
+/**
+ * Detects the default audio input device on Windows by listing DirectShow devices
+ * Falls back to common device names if detection fails
+ */
+async function detectWindowsAudioDevice(ffmpegPath: string): Promise<string> {
+	return new Promise((resolve) => {
+		// Try to list DirectShow audio devices
+		const listProcess = spawn(ffmpegPath, ["-list_devices", "true", "-f", "dshow", "-i", "dummy"])
+
+		let stderrOutput = ""
+		let stdoutOutput = ""
+
+		listProcess.stderr?.on("data", (data) => {
+			stderrOutput += data.toString()
+		})
+
+		listProcess.stdout?.on("data", (data) => {
+			stdoutOutput += data.toString()
+		})
+
+		listProcess.on("exit", (code) => {
+			// Parse the output to find audio devices
+			// FFmpeg outputs device list to stderr in format:
+			// [dshow @ ...]  "Device Name" (audio)
+			// Example: [dshow @ 0000027dde7389c0] "Microphone Array (Qualcomm(R) Aqstic(TM) ACX Static Endpoints Audio Device)" (audio)
+			const output = stderrOutput + stdoutOutput
+
+			console.log("FFmpeg device list output:", output.substring(0, 1000))
+
+			// Pattern 1: Look for devices with (audio) marker after the device name
+			// Matches: [dshow @ ...] "Device Name" (audio)
+			const audioDevicePattern = /\[dshow @ [^\]]+\]\s+"([^"]+)"\s*\(audio\)/gi
+			const matches = Array.from(output.matchAll(audioDevicePattern))
+
+			if (matches.length > 0) {
+				// Use the first available audio device
+				const deviceName = matches[0][1]
+				console.log(`Detected Windows audio device: ${deviceName}`)
+				resolve(deviceName)
+				return
+			}
+
+			// Pattern 2: Look for any quoted device name followed by (audio) anywhere in the output
+			// This is a fallback in case the dshow prefix format differs
+			const altPattern = /"([^"]+)"\s*\(audio\)/gi
+			const altMatches = Array.from(output.matchAll(altPattern))
+
+			if (altMatches.length > 0) {
+				const deviceName = altMatches[0][1]
+				console.log(`Detected Windows audio device (alt format): ${deviceName}`)
+				resolve(deviceName)
+				return
+			}
+
+			// Pattern 3: Look for devices in the "DirectShow audio devices" section
+			// Sometimes devices are listed without the (audio) marker
+			const dshowSection = output.split("DirectShow audio devices")[1] || output
+			const devicePattern = /\[dshow @ [^\]]+\]\s+"([^"]+)"/gi
+			const deviceMatches = Array.from(dshowSection.matchAll(devicePattern))
+
+			if (deviceMatches.length > 0) {
+				const deviceName = deviceMatches[0][1]
+				console.log(`Detected Windows audio device (from dshow section): ${deviceName}`)
+				resolve(deviceName)
+				return
+			}
+
+			// Fallback: try common device names
+			const fallbackDevices = ["Microphone", "Microphone Array", "Default Audio Device", "default"]
+
+			console.warn(
+				`Could not detect audio device automatically (exit code: ${code}), trying fallback names. Full output:`,
+				output,
+			)
+			resolve(fallbackDevices[0]) // Will try Microphone first, which may still work
+		})
+
+		listProcess.on("error", () => {
+			// If listing fails, fall back to default
+			console.warn("Failed to list audio devices, using fallback")
+			resolve("Microphone")
+		})
+
+		// Set a timeout to avoid hanging
+		setTimeout(() => {
+			if (!listProcess.killed) {
+				listProcess.kill()
+				console.warn("Device detection timed out, using fallback")
+				resolve("Microphone")
+			}
+		}, 3000)
+	})
+}
 
 export class AudioRecordingService {
 	private recordingProcess: ChildProcess | null = null
@@ -171,7 +270,8 @@ export class AudioRecordingService {
 			}
 			console.log(`Using recording program: ${recordProgram.path}`)
 
-			const args = recordProgram.getArgs(this.outputFile)
+			const argsResult = recordProgram.getArgs(this.outputFile, recordProgram.path)
+			const args = argsResult instanceof Promise ? await argsResult : argsResult
 
 			this.recordingProcess = spawn(recordProgram.path, args)
 			this.startTime = Date.now()
@@ -274,7 +374,9 @@ export class AudioRecordingService {
 		return { available: true }
 	}
 
-	private getRecordProgram(): { path: string; getArgs: (outputFile: string) => string[] } | undefined {
+	private getRecordProgram():
+		| { path: string; getArgs: (outputFile: string, ffmpegPath?: string) => string[] | Promise<string[]> }
+		| undefined {
 		const platform = os.platform() as keyof typeof AUDIO_PROGRAM_CONFIG
 		const config = AUDIO_PROGRAM_CONFIG[platform]
 
