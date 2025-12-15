@@ -271,11 +271,33 @@ export class AudioRecordingService {
 		}
 
 		console.log("Terminating recording process...")
-		this.recordingProcess.kill("SIGINT")
+
+		// On Windows, FFmpeg with dshow needs 'q' sent to stdin for graceful shutdown
+		// This ensures the file is properly flushed and finalized
+		const platform = os.platform()
+		if (platform === "win32") {
+			try {
+				// Send 'q' to stdin to gracefully stop FFmpeg
+				if (this.recordingProcess.stdin && !this.recordingProcess.stdin.destroyed) {
+					this.recordingProcess.stdin.write("q\n")
+					this.recordingProcess.stdin.end()
+				}
+			} catch (error) {
+				console.warn("Failed to send quit signal to FFmpeg:", error)
+				// Fall back to kill if stdin write fails
+				this.recordingProcess.kill("SIGTERM")
+			}
+		} else {
+			// On macOS/Linux, SIGINT works fine
+			this.recordingProcess.kill("SIGINT")
+		}
 
 		await new Promise<void>((resolve) => {
 			const timeoutId = setTimeout(() => {
-				console.warn("Process termination timed out after 5 seconds")
+				console.warn("Process termination timed out after 5 seconds, forcing kill")
+				if (this.recordingProcess && !this.recordingProcess.killed) {
+					this.recordingProcess.kill("SIGKILL")
+				}
 				resolve()
 			}, 5000)
 
@@ -326,8 +348,15 @@ export class AudioRecordingService {
 			const argsResult = recordProgram.getArgs(this.outputFile, recordProgram.path)
 			const args = argsResult instanceof Promise ? await argsResult : argsResult
 
-			this.recordingProcess = spawn(recordProgram.path, args)
+			// On Windows, ensure stdin is available so we can send 'q' to gracefully stop FFmpeg
+			const spawnOptions: { stdio?: ("pipe" | "inherit" | "ignore")[] } =
+				os.platform() === "win32" ? { stdio: ["pipe", "pipe", "pipe"] } : {}
+			this.recordingProcess = spawn(recordProgram.path, args, spawnOptions)
 			this.startTime = Date.now()
+
+			if (!this.recordingProcess) {
+				return { success: false, error: "Failed to spawn recording process" }
+			}
 
 			this.recordingProcess.on("error", (error) => {
 				console.error(`Recording process error: ${error.message}`)
@@ -371,19 +400,44 @@ export class AudioRecordingService {
 			await this.terminateProcess()
 			this.resetRecordingState()
 
-			// Wait for file to be fully written
-			await new Promise((resolve) => setTimeout(resolve, 500))
+			// Wait for file to be fully written and flushed
+			// Windows may need more time for FFmpeg to finalize the file
+			const platform = os.platform()
+			const waitTime = platform === "win32" ? 1500 : 500
+			await new Promise((resolve) => setTimeout(resolve, waitTime))
 
 			if (!outputFilePath) {
 				return { success: false, error: "Recording file path not found" }
+			}
+
+			// Wait for file to exist and have content (with retries on Windows)
+			let retries = platform === "win32" ? 10 : 3
+			while (retries > 0) {
+				if (fs.existsSync(outputFilePath)) {
+					const stats = fs.statSync(outputFilePath)
+					if (stats.size > 0) {
+						break
+					}
+				}
+				retries--
+				if (retries > 0) {
+					await new Promise((resolve) => setTimeout(resolve, 200))
+				}
 			}
 
 			if (!fs.existsSync(outputFilePath)) {
 				return { success: false, error: "Recording file not found" }
 			}
 
+			const stats = fs.statSync(outputFilePath)
+			if (stats.size === 0) {
+				return { success: false, error: "Recording file is empty - no audio was captured" }
+			}
+
 			const audioBuffer = fs.readFileSync(outputFilePath)
 			const audioBase64 = audioBuffer.toString("base64")
+
+			console.log(`Audio file size: ${stats.size} bytes, base64 length: ${audioBase64.length}`)
 
 			// Clean up the temp file
 			try {
