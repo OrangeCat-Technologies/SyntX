@@ -365,20 +365,34 @@ export class AudioRecordingService {
 
 			console.log("Stopping audio recording...")
 
+			// Save the output file path before resetting state
+			const outputFilePath = this.outputFile
+
 			await this.terminateProcess()
 			this.resetRecordingState()
 
 			// Wait for file to be fully written
 			await new Promise((resolve) => setTimeout(resolve, 500))
 
-			if (!fs.existsSync(this.outputFile)) {
+			if (!outputFilePath) {
+				return { success: false, error: "Recording file path not found" }
+			}
+
+			if (!fs.existsSync(outputFilePath)) {
 				return { success: false, error: "Recording file not found" }
 			}
 
-			const audioBuffer = fs.readFileSync(this.outputFile)
+			const audioBuffer = fs.readFileSync(outputFilePath)
 			const audioBase64 = audioBuffer.toString("base64")
 
-			await this.cleanupTempFile()
+			// Clean up the temp file
+			try {
+				fs.unlinkSync(outputFilePath)
+				console.log("Temporary audio file cleaned up")
+			} catch (error) {
+				console.warn("Failed to cleanup temporary audio file:", error)
+			}
+			this.outputFile = ""
 
 			console.log("Audio recording stopped and converted to base64")
 			return { success: true, audioBase64 }
