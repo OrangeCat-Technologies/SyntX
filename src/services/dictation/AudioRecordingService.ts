@@ -98,16 +98,68 @@ async function detectWindowsAudioDevice(ffmpegPath: string): Promise<string> {
 
 		let stderrOutput = ""
 		let stdoutOutput = ""
+		let resolved = false
+
+		// Helper function to resolve only once and clear timeout
+		const resolveOnce = (deviceName: string) => {
+			if (!resolved) {
+				resolved = true
+				clearTimeout(timeoutId)
+				resolve(deviceName)
+			}
+		}
+
+		// Helper function to try parsing device name from current output
+		const tryDetectDevice = (output: string): string | null => {
+			// Pattern 1: Look for devices with (audio) marker after the device name
+			// Matches: [dshow @ ...] "Device Name" (audio)
+			const audioDevicePattern = /\[dshow @ [^\]]+\]\s+"([^"]+)"\s*\(audio\)/gi
+			const matches = Array.from(output.matchAll(audioDevicePattern))
+
+			if (matches.length > 0) {
+				return matches[0][1]
+			}
+
+			// Pattern 2: Look for any quoted device name followed by (audio) anywhere in the output
+			const altPattern = /"([^"]+)"\s*\(audio\)/gi
+			const altMatches = Array.from(output.matchAll(altPattern))
+
+			if (altMatches.length > 0) {
+				return altMatches[0][1]
+			}
+
+			return null
+		}
 
 		listProcess.stderr?.on("data", (data) => {
+			if (resolved) return
 			stderrOutput += data.toString()
+
+			// Try to detect device name as soon as we see it in the output
+			const output = stderrOutput + stdoutOutput
+			const deviceName = tryDetectDevice(output)
+			if (deviceName) {
+				console.log(`Detected Windows audio device (early): ${deviceName}`)
+				resolveOnce(deviceName)
+			}
 		})
 
 		listProcess.stdout?.on("data", (data) => {
+			if (resolved) return
 			stdoutOutput += data.toString()
+
+			// Try to detect device name as soon as we see it in the output
+			const output = stderrOutput + stdoutOutput
+			const deviceName = tryDetectDevice(output)
+			if (deviceName) {
+				console.log(`Detected Windows audio device (early): ${deviceName}`)
+				resolveOnce(deviceName)
+			}
 		})
 
 		listProcess.on("exit", (code) => {
+			if (resolved) return
+
 			// Parse the output to find audio devices
 			// FFmpeg outputs device list to stderr in format:
 			// [dshow @ ...]  "Device Name" (audio)
@@ -125,7 +177,7 @@ async function detectWindowsAudioDevice(ffmpegPath: string): Promise<string> {
 				// Use the first available audio device
 				const deviceName = matches[0][1]
 				console.log(`Detected Windows audio device: ${deviceName}`)
-				resolve(deviceName)
+				resolveOnce(deviceName)
 				return
 			}
 
@@ -137,7 +189,7 @@ async function detectWindowsAudioDevice(ffmpegPath: string): Promise<string> {
 			if (altMatches.length > 0) {
 				const deviceName = altMatches[0][1]
 				console.log(`Detected Windows audio device (alt format): ${deviceName}`)
-				resolve(deviceName)
+				resolveOnce(deviceName)
 				return
 			}
 
@@ -150,7 +202,7 @@ async function detectWindowsAudioDevice(ffmpegPath: string): Promise<string> {
 			if (deviceMatches.length > 0) {
 				const deviceName = deviceMatches[0][1]
 				console.log(`Detected Windows audio device (from dshow section): ${deviceName}`)
-				resolve(deviceName)
+				resolveOnce(deviceName)
 				return
 			}
 
@@ -161,21 +213,22 @@ async function detectWindowsAudioDevice(ffmpegPath: string): Promise<string> {
 				`Could not detect audio device automatically (exit code: ${code}), trying fallback names. Full output:`,
 				output,
 			)
-			resolve(fallbackDevices[0]) // Will try Microphone first, which may still work
+			resolveOnce(fallbackDevices[0]) // Will try Microphone first, which may still work
 		})
 
 		listProcess.on("error", () => {
+			if (resolved) return
 			// If listing fails, fall back to default
 			console.warn("Failed to list audio devices, using fallback")
-			resolve("Microphone")
+			resolveOnce("Microphone")
 		})
 
 		// Set a timeout to avoid hanging
-		setTimeout(() => {
-			if (!listProcess.killed) {
+		const timeoutId = setTimeout(() => {
+			if (!resolved && !listProcess.killed) {
 				listProcess.kill()
 				console.warn("Device detection timed out, using fallback")
-				resolve("Microphone")
+				resolveOnce("Microphone")
 			}
 		}, 3000)
 	})
