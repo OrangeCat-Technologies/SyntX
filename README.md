@@ -1,3 +1,14 @@
+# ⚠️ Product Status: Discontinued
+
+This extension has been **discontinued by Orangecat Technologies Pvt Ltd** and is now maintained as a **public archive**.
+
+- No further updates, fixes, or features will be added  
+- Issues and pull requests may not be reviewed  
+- The project is kept available for reference and community exploration only  
+
+---
+<br>
+
 <div align="center">
 <sub>
 
@@ -18,7 +29,6 @@
   </p>
   <p>Connect with developers, contribute ideas, and stay ahead with the latest AI-powered coding tools.</p>
   
-  <a href="https://discord.gg/FzndMpbhDd" target="_blank"><img src="https://img.shields.io/badge/Join%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join Discord"></a>
   
 </div>
 <hr>
@@ -26,7 +36,6 @@
 <div align="center">
 
 <a href="https://marketplace.visualstudio.com/items?itemName=OrangecatTechPvtLtd.syntx" target="_blank"><img src="https://img.shields.io/badge/Download%20on%20VS%20Marketplace-blue?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="Download on VS Marketplace"></a>
-<a href="https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop" target="_blank"><img src="https://img.shields.io/badge/Feature%20Requests-yellow?style=for-the-badge" alt="Feature Requests"></a>
 <a href="https://marketplace.visualstudio.com/items?itemName=OrangeCat-Technologies.syntx&ssr=false#review-details" target="_blank"><img src="https://img.shields.io/badge/Rate%20%26%20Review-green?style=for-the-badge" alt="Rate & Review"></a>
 
 </div>
@@ -81,15 +90,6 @@ Syntx comes with powerful tools that can:
 - Use external tools via MCP (Model Context Protocol)
 
 MCP extends Syntx's capabilities by allowing you to add unlimited custom tools. Integrate with external APIs, connect to databases, or create specialized development tools - MCP provides the framework to expand Syntx's functionality to meet your specific needs.
-
-## Resources
-
-### Community
-
-- **Discord:** [Join our Discord server](https://discord.gg/FzndMpbhDd) for real-time help and discussions
-- **GitHub:** Report [issues](https://github.com/OrangeCat-Technologies/SyntX/issues) or request [features](https://github.com/OrangeCat-Technologies/SyntX/discussions/categories/feature-requests?discussions_q=is%3Aopen+category%3A%22Feature+Requests%22+sort%3Atop)
-
----
 
 ## Local Setup & Development
 
@@ -155,7 +155,6 @@ If you prefer to install the VSIX package manually:
 
 ## Disclaimer
 
-**By installing or using this extension, you agree to the terms of our [End-User License Agreement (EULA)](https://syntx.dev/enterprise/eula).**
 
 **Please note** that Orangecat Technologies Pvt Ltd does **not** make any representations or warranties regarding any code, models, or other tools provided or made available in connection with Syntx, any associated third-party tools, or any resulting outputs. You assume **all risks** associated with the use of any such tools or outputs; such tools are provided on an **"AS IS"** and **"AS AVAILABLE"** basis. Such risks may include, without limitation, intellectual property infringement, cyber vulnerabilities or attacks, bias, inaccuracies, errors, defects, viruses, downtime, property loss or damage, and/or personal injury. You are solely responsible for your use of any such tools or outputs (including, without limitation, the legality, appropriateness, and results thereof).
 
@@ -171,4 +170,4 @@ We love community contributions! Get started by reading our [CONTRIBUTING.md](CO
 
 ---
 
-**Enjoy Syntx!** Whether you keep it on a short leash or let it roam autonomously, we can’t wait to see what you build. If you have questions or feature ideas, drop by our [Discord](https://discord.gg/FzndMpbhDd). Happy coding!
+**Enjoy Syntx!** Whether you keep it on a short leash or let it roam autonomously, we can’t wait to see what you build. Happy coding!
